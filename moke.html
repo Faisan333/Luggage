@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUGGO Voyager Premium Luggage</title>
+<style>
+:root{
+  --navy:#081525;
+  --gold:#b98938;
+  --cream:#f4f2ee;
+  --line:#d8d4cc;
+  --text:#10141a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:var(--navy);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  padding:28px;
+}
+.product-page{
+  width:min(1470px,100%);
+  margin:auto;
+  background:var(--cream);
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 25px 70px rgba(0,0,0,.42);
+}
+.product-grid{
+  display:grid;
+  grid-template-columns: 49% 51%;
+  min-height:900px;
+}
+.gallery{
+  background:#eceae6;
+  padding:28px 30px 20px;
+  position:relative;
+}
+.brand{
+  position:absolute;
+  top:28px;
+  left:30px;
+  width:155px;
+  height:180px;
+  background:var(--navy);
+  color:#d5a74f;
+  clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+  letter-spacing:2px;
+}
+.brand-mark{font-size:48px;font-weight:900;line-height:1}
+.brand-name{font-size:22px;font-weight:800;margin-top:8px}
+.brand-sub{font-size:9px;margin-top:4px;color:#e0bc73}
+.main-image{
+  width:100%;
+  height:650px;
+  margin-top:0;
+  border-radius:4px;
+  overflow:hidden;
+  background:#202a35;
+}
+.main-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.thumb{
+  height:184px;
+  border:2px solid transparent;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  background:#fff;
+  padding:0;
+}
+.thumb.active{border-color:#fff;box-shadow:0 0 0 2px #cfc9bd}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+.details{
+  background:#f7f6f2;
+  padding:68px 48px 35px;
+  position:relative;
+}
+.badge{
+  position:absolute;
+  right:30px;
+  top:0;
+  width:110px;
+  height:150px;
+  background:#d4aa61;
+  clip-path:polygon(0 0,100% 0,100% 80%,50% 100%,0 80%);
+  text-align:center;
+  padding-top:28px;
+  font-weight:800;
+  font-size:15px;
+  line-height:1.25;
+}
+.badge-icon{font-size:31px;margin-top:12px}
+h1{
+  max-width:650px;
+  font-size:48px;
+  line-height:1.08;
+  letter-spacing:.5px;
+  color:var(--navy);
+}
+.tagline{
+  margin-top:14px;
+  color:#a8782c;
+  font-size:20px;
+  letter-spacing:1px;
+  font-weight:500;
+}
+.gold-line{width:42px;height:2px;background:var(--gold);margin:26px 0 22px}
+.description{
+  max-width:670px;
+  font-size:19px;
+  line-height:1.55;
+}
+.description strong{font-weight:800}
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin:35px 0 40px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:30px;
+}
+.feature{
+  text-align:center;
+  padding:0 14px;
+  border-right:1px solid #ccc8c0;
+}
+.feature:last-child{border:0}
+.icon{font-size:38px;line-height:1;margin-bottom:12px}
+.feature b{font-size:14px;line-height:1.25;display:block}
+
+.content-row{
+  display:grid;
+  grid-template-columns:1fr 255px;
+  gap:35px;
+}
+.section-title{
+  color:#a8782c;
+  font-weight:800;
+  letter-spacing:.5px;
+  font-size:17px;
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-title:after{
+  content:"";
+  width:190px;
+  height:1px;
+  background:#c9c4ba;
+}
+.check-list{list-style:none}
+.check-list li{
+  font-size:15px;
+  margin:0 0 12px;
+  padding-left:24px;
+  line-height:1.35;
+  position:relative;
+}
+.check-list li:before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:0;
+  color:#b18131;
+  font-weight:900;
+}
+.options{border-left:1px solid #ccc8c0;padding-left:28px}
+.color-dots{display:flex;gap:18px;margin:16px 0 25px}
+.dot{
+  width:34px;height:34px;border-radius:50%;
+  border:2px solid #222;
+  cursor:pointer;
+}
+.dot.navy{background:#101d2e}
+.dot.black{background:#050505}
+.dot.gray{background:#777}
+.dot.red{background:#b73535}
+.size-box{
+  border:1px solid #bdb8ae;
+  border-radius:18px;
+  padding:15px 10px;
+}
+.size-title{font-weight:800;margin-bottom:13px}
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.size{border-right:1px solid #d3cec5;padding:0 6px}
+.size:last-child{border:0}
+.case-icon{font-size:30px}
+.size b{display:block;margin-top:7px;font-size:14px}
+.size small{font-size:11px}
+
+.bottom{
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid #c9c4ba;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.price{font-size:36px;font-weight:900;color:var(--navy)}
+.vat{font-size:12px;margin-top:2px}
+.cart{
+  margin-left:auto;
+  border:0;
+  border-radius:40px;
+  background:var(--navy);
+  color:#fff;
+  padding:18px 36px;
+  font-size:18px;
+  font-weight:800;
+  cursor:pointer;
+}
+.heart{
+  width:58px;height:58px;border-radius:50%;
+  border:2px solid var(--navy);
+  background:transparent;font-size:25px;cursor:pointer;
+}
+.footer{
+  background:var(--navy);
+  color:#fff;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:22px 40px;
+}
+.footer-item{display:flex;align-items:center;justify-content:center;gap:13px}
+.footer-icon{font-size:28px;color:#d3a64f}
+.footer-item strong{display:block;color:#fff;font-size:14px}
+.footer-item span{color:#d3a64f;font-size:12px}
+
+@media(max-width:1050px){
+  .product-grid{grid-template-columns:1fr}
+  .gallery{padding-bottom:30px}
+  .main-image{height:min(650px,75vw)}
+  .details{padding-top:55px}
+}
+@media(max-width:700px){
+  body{padding:8px}
+  .product-page{border-radius:16px}
+  .brand{width:105px;height:125px;left:18px;top:18px}
+  .brand-mark{font-size:32px}.brand-name{font-size:15px}.brand-sub{font-size:7px}
+  .gallery{padding:18px}
+  .main-image{height:470px}
+  .thumb{height:105px;border-radius:10px}
+  .details{padding:35px 22px 25px}
+  .badge{width:82px;height:112px;font-size:11px}
+  h1{font-size:32px;padding-right:60px}
+  .tagline{font-size:14px}
+  .description{font-size:16px}
+  .features{grid-template-columns:repeat(2,1fr);gap:22px}
+  .feature:nth-child(2){border-right:0}
+  .content-row{grid-template-columns:1fr}
+  .options{border-left:0;border-top:1px solid #ccc8c0;padding:25px 0 0}
+  .bottom{flex-wrap:wrap}
+  .cart{margin-left:0;flex:1}
+  .footer{grid-template-columns:repeat(2,1fr);gap:20px;padding:20px}
+  .footer-item{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+
+<main class="product-page">
+
+<section class="product-grid">
+
+  <div class="gallery">
+    <div class="brand">
+      <div class="brand-mark">L</div>
+      <div class="brand-name">LUGGO</div>
+      <div class="brand-sub">TRAVEL IN STYLE</div>
+    </div>
+
+    <div class="main-image">
+      <img id="mainProductImage" src="assets/main.jpg" alt="Luggo Voyager luggage">
+    </div>
+
+    <div class="thumbs">
+      <button class="thumb active" onclick="changeImage(this,'assets/thumb-front.jpg')">
+        <img src="assets/thumb-front.jpg" alt="Front view">
+      </button>
+      <button class="thumb" onclick="changeImage(this,'assets/thumb-side.jpg')">
+        <img src="assets/thumb-side.jpg" alt="Side view">
+      </button>
+      <button class="thumb" onclick="changeImage(this,'assets/thumb-lock.jpg')">
+        <img src="assets/thumb-lock.jpg" alt="TSA lock">
+      </button>
+      <button class="thumb" onclick="changeImage(this,'assets/thumb-inside.jpg')">
+        <img src="assets/thumb-inside.jpg" alt="Interior">
+      </button>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="badge">PREMIUM<br>QUALITY<div class="badge-icon">♜</div></div>
+
+    <h1>LUGGO VOYAGER<br>PREMIUM LUGGAGE</h1>
+    <div class="tagline">BUILT FOR JOURNEYS. DESIGNED FOR YOU.</div>
+    <div class="gold-line"></div>
+
+    <p class="description">
+      Crafted with premium materials and a modern design, the
+      <strong>Luggo Voyager</strong> offers the perfect blend of style,
+      durability and functionality. Your ideal travel companion for every
+      journey near or far.
+    </p>
+
+    <div class="features">
+      <div class="feature"><div class="icon">♨</div><b>LIGHTWEIGHT<br>DESIGN</b></div>
+      <div class="feature"><div class="icon">♢</div><b>DURABLE<br>HARDSHELL</b></div>
+      <div class="feature"><div class="icon">♙</div><b>TSA<br>LOCK</b></div>
+      <div class="feature"><div class="icon">↻</div><b>360°<br>SPINNER WHEELS</b></div>
+    </div>
+
+    <div class="content-row">
+      <div>
+        <div class="section-title">PRODUCT FEATURES</div>
+        <ul class="check-list">
+          <li>High quality ABS hard shell for superior impact resistance</li>
+          <li>TSA approved lock for added security</li>
+          <li>Smooth 360° spinner wheels for effortless mobility</li>
+          <li>Spacious interior with multiple compartments</li>
+          <li>Adjustable telescopic handle for comfortable grip</li>
+          <li>Available in multiple sizes and colors</li>
+        </ul>
+      </div>
+
+      <aside class="options">
+        <div class="section-title">COLORS AVAILABLE</div>
+        <div class="color-dots">
+          <button class="dot navy" aria-label="Navy"></button>
+          <button class="dot black" aria-label="Black"></button>
+          <button class="dot gray" aria-label="Gray"></button>
+          <button class="dot red" aria-label="Red"></button>
+        </div>
+
+        <div class="size-box">
+          <div class="size-title">SELECT SIZE</div>
+          <div class="sizes">
+            <div class="size"><div class="case-icon">▯</div><b>20"</b><small>CABIN</small></div>
+            <div class="size"><div class="case-icon">▯</div><b>24"</b><small>MEDIUM</small></div>
+            <div class="size"><div class="case-icon">▯</div><b>28"</b><small>LARGE</small></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="bottom">
+      <div>
+        <div class="price">AED 299</div>
+        <div class="vat">VAT INCLUDED</div>
+      </div>
+      <button class="cart">🛒 &nbsp; ADD TO CART</button>
+      <button class="heart" aria-label="Add to wishlist">♡</button>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-item"><div class="footer-icon">♢</div><div><strong>2 YEARS</strong><span>WARRANTY</span></div></div>
+  <div class="footer-item"><div class="footer-icon">✈</div><div><strong>PERFECT FOR</strong><span>ALL TRIPS</span></div></div>
+  <div class="footer-item"><div class="footer-icon">↔</div><div><strong>EASY RETURNS</strong><span>&amp; EXCHANGE</span></div></div>
+  <div class="footer-item"><div class="footer-icon">♧</div><div><strong>CUSTOMER</strong><span>SUPPORT</span></div></div>
+</footer>
+
+</main>
+
+<script>
+function changeImage(button, src){
+  document.getElementById('mainProductImage').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  button.classList.add('active');
+}
+</script>
+
+</body>
+</html>
