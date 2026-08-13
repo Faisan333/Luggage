@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,7 @@
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
 </script>
-   
+
 
 <style>
 
@@ -2534,18 +2535,24 @@ const downloadButton =
 
 downloadButton.addEventListener(
     "click",
-    function(){
+    async function(){
 
         const button = this;
+
 
         const productPage =
             document.querySelector(
                 ".product-page"
             );
 
+
         const originalText =
             button.innerHTML;
 
+
+        /* ---------------------------------------------
+           BUTTON LOADING
+        --------------------------------------------- */
 
         button.disabled = true;
 
@@ -2553,71 +2560,252 @@ downloadButton.addEventListener(
             "<span>⏳</span> CREATING IMAGE...";
 
 
-        // Capture using html2canvas
-        html2canvas(productPage, {
-
-            scale: 2,
-
-            useCORS: true,
-
-            allowTaint: true,
-
-            backgroundColor: "#f5f3ef",
-
-            logging: false
-
-        }).then(function(canvas) {
-
-            try {
-
-                const imageUrl = canvas.toDataURL("image/png");
-
-                const downloadLink = document.createElement("a");
-
-                downloadLink.href = imageUrl;
-
-                downloadLink.download = "LUGGO-Voyager-Full-Poster.png";
-
-                document.body.appendChild(downloadLink);
-
-                downloadLink.click();
-
-                document.body.removeChild(downloadLink);
+        try{
 
 
-                button.innerHTML = "<span>✓</span> IMAGE DOWNLOADED";
+            /* -----------------------------------------
+               WAIT FOR ALL IMAGES
+            ----------------------------------------- */
 
-            } catch(e) {
-
-                console.error("DataURL generation failed:", e);
-
-                alert("Security Error: HTML file നേരിട്ട് സന്ദർശിക്കുമ്പോൾ (file:// protocol) ബ്രൗസർ സെക്യൂരിറ്റി കാരണം ഡൗൺലോഡ് തടസ്സപ്പെടാം. തത്സമയം വെബ് സെർവറിലോ (Live Server) ഓപ്പൺ ചെയ്ത് പരീക്ഷിക്കുക.");
-
-                button.innerHTML = originalText;
-
-            }
+            const images =
+                productPage.querySelectorAll(
+                    "img"
+                );
 
 
-            setTimeout(function(){
+            await Promise.all(
 
-                button.innerHTML = originalText;
+                Array.from(images).map(
+                    function(img){
 
-                button.disabled = false;
+                        if(
+                            img.complete &&
+                            img.naturalWidth > 0
+                        ){
 
-            }, 3000);
+                            return Promise.resolve();
+
+                        }
 
 
-        }).catch(function(error) {
+                        return new Promise(
+                            function(resolve){
 
-            console.error("DOWNLOAD ERROR:", error);
+                                img.onload =
+                                    resolve;
 
-            alert("Unable to create the poster image.");
+                                img.onerror =
+                                    resolve;
 
-            button.innerHTML = originalText;
+                            }
+                        );
 
-            button.disabled = false;
+                    }
+                )
 
-        });
+            );
+
+
+            /* -----------------------------------------
+               WAIT FOR RENDER
+            ----------------------------------------- */
+
+            await new Promise(
+                function(resolve){
+
+                    setTimeout(
+                        resolve,
+                        500
+                    );
+
+                }
+            );
+
+
+            /* -----------------------------------------
+               CREATE CANVAS
+            ----------------------------------------- */
+
+            const canvas =
+                await html2canvas(
+                    productPage,
+                    {
+
+                        /*
+                         * 2X = HIGH QUALITY
+                         */
+                        scale:2,
+
+                        /*
+                         * IMPORTANT FOR IMAGES
+                         */
+                        useCORS:true,
+
+                        allowTaint:false,
+
+                        /*
+                         * BACKGROUND
+                         */
+                        backgroundColor:
+                            "#f5f3ef",
+
+                        /*
+                         * NO DEBUG LOGS
+                         */
+                        logging:false,
+
+                        /*
+                         * IMAGE LOAD TIME
+                         */
+                        imageTimeout:15000,
+
+                        /*
+                         * CAPTURE FULL ELEMENT
+                         */
+                        scrollX:0,
+
+                        scrollY:0,
+
+                        /*
+                         * FULL WIDTH
+                         */
+                        width:
+                            productPage.scrollWidth,
+
+                        /*
+                         * FULL HEIGHT
+                         */
+                        height:
+                            productPage.scrollHeight,
+
+                        /*
+                         * WINDOW SIZE
+                         */
+                        windowWidth:
+                            productPage.scrollWidth,
+
+                        windowHeight:
+                            productPage.scrollHeight
+
+                    }
+                );
+
+
+            /* -----------------------------------------
+               DOWNLOAD PNG
+            ----------------------------------------- */
+
+            canvas.toBlob(
+                function(blob){
+
+                    if(!blob){
+
+                        throw new Error(
+                            "PNG creation failed."
+                        );
+
+                    }
+
+
+                    const blobURL =
+                        URL.createObjectURL(
+                            blob
+                        );
+
+
+                    const downloadLink =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    downloadLink.href =
+                        blobURL;
+
+
+                    downloadLink.download =
+                        "LUGGO-Voyager-Full-Poster.png";
+
+
+                    document.body.appendChild(
+                        downloadLink
+                    );
+
+
+                    downloadLink.click();
+
+
+                    downloadLink.remove();
+
+
+                    /*
+                     * RELEASE MEMORY
+                     */
+                    setTimeout(
+                        function(){
+
+                            URL.revokeObjectURL(
+                                blobURL
+                            );
+
+                        },
+                        1000
+                    );
+
+
+                    /* ---------------------------------
+                       SUCCESS MESSAGE
+                    --------------------------------- */
+
+                    button.innerHTML =
+                        "<span>✓</span> IMAGE DOWNLOADED";
+
+
+                },
+                "image/png",
+                1
+            );
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "DOWNLOAD ERROR:",
+                error
+            );
+
+
+            alert(
+                "Unable to create the poster image.\n\n" +
+                "Please check that all images are inside " +
+                "the assets folder and try again."
+            );
+
+
+            button.innerHTML =
+                "<span>↓</span> DOWNLOAD PRODUCT IMAGE";
+
+        }
+
+
+        /* ---------------------------------------------
+           RESET BUTTON
+        --------------------------------------------- */
+
+        setTimeout(
+            function(){
+
+                button.innerHTML =
+                    originalText;
+
+                button.disabled =
+                    false;
+
+            },
+            3000
+        );
 
     }
 );
@@ -2628,3 +2816,4 @@ downloadButton.addEventListener(
 </body>
 
 </html>
+
