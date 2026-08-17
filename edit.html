@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>H.T Luggage - Editable Product Sheet</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:#e9eaec;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#273449;
+    padding:20px 0 50px;
+}
+
+
+/* =========================================================
+   EDITOR
+========================================================= */
+
+.editor{
+    width:980px;
+    max-width:95%;
+    margin:0 auto 20px;
+    background:#ffffff;
+    border:1px solid #dce2e8;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.editor-title{
+    font-size:22px;
+    font-weight:800;
+    color:#111;
+    margin-bottom:5px;
+}
+
+.editor-subtitle{
+    font-size:12px;
+    color:#687386;
+    margin-bottom:18px;
+}
+
+.editor-section{
+    border-top:1px solid #e4e7eb;
+    padding-top:17px;
+    margin-top:17px;
+}
+
+.editor-section-title{
+    font-size:15px;
+    font-weight:800;
+    color:#222;
+    margin-bottom:12px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    font-size:11px;
+    font-weight:bold;
+    color:#526076;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    border:1px solid #d5dbe2;
+    border-radius:5px;
+    padding:9px 10px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    outline:none;
+    background:#fff;
+}
+
+.form-group textarea{
+    min-height:70px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#d7ae32;
+    box-shadow:0 0 0 2px rgba(215,174,50,.12);
+}
+
+
+/* =========================================================
+   EDITOR BUTTONS
+========================================================= */
+
+.editor-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:18px;
+}
+
+.action-btn{
+    border:none;
+    border-radius:5px;
+    padding:11px 17px;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn-save{
+    background:#111;
+    color:#fff;
+}
+
+.btn-reset{
+    background:#e9edf1;
+    color:#222;
+}
+
+.btn-add{
+    background:#d7ae32;
+    color:#111;
+}
+
+.action-btn:hover{
+    opacity:.85;
+}
+
+
+/* =========================================================
+   IMAGE UPLOAD BOX
+========================================================= */
+
+.image-upload-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.upload-card{
+    border:1px solid #dce2e8;
+    border-radius:7px;
+    padding:8px;
+    background:#f8f9fa;
+}
+
+.upload-card-title{
+    font-size:11px;
+    font-weight:bold;
+    color:#354257;
+    margin-bottom:7px;
+}
+
+.upload-preview{
+    width:100%;
+    height:110px;
+    background:#fff;
+    border:1px dashed #c9d0d8;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    margin-bottom:7px;
+}
+
+.upload-preview img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.upload-file{
+    width:100%;
+    font-size:10px;
+}
+
+
+/* =========================================================
+   COLOR EDITOR
+========================================================= */
+
+.color-editor-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.color-editor-item{
+    display:grid;
+    grid-template-columns:70px 1fr 1fr 120px 80px;
+    gap:10px;
+    align-items:center;
+    border:1px solid #e0e4e8;
+    border-radius:7px;
+    padding:8px;
+    background:#fafafa;
+}
+
+.color-editor-preview{
+    width:65px;
+    height:65px;
+    background:#fff;
+    border:1px solid #dce2e8;
+    border-radius:5px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.color-editor-preview img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.color-editor-item input{
+    width:100%;
+    padding:8px;
+    border:1px solid #d5dbe2;
+    border-radius:5px;
+    font-size:11px;
+}
+
+.color-editor-item input[type="color"]{
+    height:35px;
+    padding:2px;
+}
+
+.remove-color{
+    background:#d94b4b;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    padding:9px 7px;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   DOWNLOAD AREA
+========================================================= */
+
+.download-area{
+    width:980px;
+    max-width:95%;
+    margin:0 auto 15px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.download-btn{
+    background:#111;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    padding:13px 23px;
+    font-size:13px;
+    font-weight:bold;
+    cursor:pointer;
+    letter-spacing:.4px;
+}
+
+.download-btn:hover{
+    background:#333;
+}
+
+.download-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+
+/* =========================================================
+   POSTER
+========================================================= */
+
+#poster{
+    width:980px;
+    min-height:1386px;
+    margin:0 auto;
+    background:#f7f8fa;
+    padding:28px 30px 24px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    min-height:125px;
+    background:linear-gradient(135deg,#151515,#222222);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 28px;
+    margin-bottom:17px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.logo-img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-name{
+    color:#fff;
+    font-size:37px;
+    line-height:1;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.brand-sub{
+    color:#d7ae32;
+    font-size:16px;
+    margin-top:10px;
+    letter-spacing:.4px;
+}
+
+.model-badge{
+    background:#d9b235;
+    color:#111;
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 18px;
+    border-radius:4px;
+}
+
+
+/* =========================================================
+   TOP CONTENT
+========================================================= */
+
+.top-content{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:16px;
+}
+
+.box{
+    background:#fff;
+    border:1px solid #dce2e8;
+    border-radius:9px;
+}
+
+
+/* =========================================================
+   PRODUCT BOX
+========================================================= */
+
+.product-box{
+    padding:14px;
+    display:flex;
+    flex-direction:column;
+}
+
+.main-image-wrapper{
+    width:100%;
+    height:430px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:5px;
+}
+
+#mainImage{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    display:block;
+    max-width:100%;
+    max-height:100%;
+    transition:opacity .15s ease;
+}
+
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+.thumbnail-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:14px;
+}
+
+.thumbnail{
+    height:115px;
+    background:#fff;
+    border:1px solid #dce2e8;
+    border-radius:7px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.15s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:3px;
+}
+
+.thumbnail img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    display:block;
+}
+
+.thumbnail:hover,
+.thumbnail.active{
+    border:2px solid #d7ae32;
+}
+
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+.product-caption{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    color:#4d5b70;
+    margin-top:11px;
+}
+
+
+/* =========================================================
+   SPECIFICATION
+========================================================= */
+
+.spec-box{
+    padding:15px 16px;
+}
+
+.section-heading{
+    font-size:18px;
+    color:#1d1d1d;
+    font-weight:800;
+    padding-bottom:9px;
+    border-bottom:3px solid #d8ae32;
+    margin-bottom:5px;
+}
+
+.spec-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.spec-table tr{
+    border-bottom:1px solid #e1e6eb;
+}
+
+.spec-table td{
+    font-size:12.5px;
+    padding:8px;
+    vertical-align:middle;
+    line-height:1.35;
+}
+
+.spec-table td:first-child{
+    width:43%;
+    background:#f5f7f9;
+    font-weight:bold;
+    color:#526076;
+}
+
+.spec-table td:last-child{
+    color:#293444;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.feature-box{
+    margin-top:15px;
+    padding:15px 16px;
+}
+
+.feature-list{
+    margin-top:4px;
+}
+
+.feature{
+    display:grid;
+    grid-template-columns:27px 1fr;
+    gap:3px;
+    padding:9px 0;
+    border-bottom:1px dashed #dce2e8;
+    font-size:12.5px;
+    line-height:1.4;
+}
+
+.feature:last-child{
+    border-bottom:none;
+}
+
+.star{
+    color:#d8ae32;
+    font-size:15px;
+    text-align:center;
+}
+
+.feature strong{
+    color:#354257;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+.color-section{
+    margin-top:15px;
+    padding:13px 15px 15px;
+}
+
+.color-title{
+    font-size:18px;
+    color:#1d1d1d;
+    font-weight:800;
+    padding-bottom:9px;
+    border-bottom:3px solid #d8ae32;
+    margin-bottom:13px;
+}
+
+
+/*
+   AUTOMATIC WIDTH
+
+   1 color  = 1 card width
+   2 colors = 2 cards
+   3 colors = 3 cards
+   4 colors = 4 cards
+   5 colors = 5 cards
+   6+      = automatic wrapping
+
+   JavaScript also sets the exact column count.
+*/
+
+.color-grid{
+    display:grid;
+    gap:12px;
+    width:100%;
+}
+
+.color-card{
+    min-width:0;
+    background:#fff;
+    border:1px solid #e1e6eb;
+    border-radius:7px;
+    padding:5px;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.color-card:hover{
+    border-color:#d7ae32;
+    transform:translateY(-1px);
+}
+
+.color-card.active{
+    border:2px solid #d7ae32;
+    box-shadow:0 0 0 1px rgba(215,174,50,.15);
+}
+
+.color-image{
+    width:100%;
+    height:125px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.color-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    display:block;
+}
+
+.color-name{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    margin-top:7px;
+    color:#354257;
+    min-height:18px;
+}
+
+.color-dot{
+    display:inline-block;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    margin-right:4px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    min-height:42px;
+    margin-top:15px;
+    border-radius:6px;
+    background:#111;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 16px;
+    font-size:11px;
+}
+
+.footer-left{
+    color:#9ca7b7;
+}
+
+.footer-left strong{
+    color:#d7ae32;
+}
+
+.footer-right{
+    color:#d8ae32;
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    #poster,
+    .editor,
+    .download-area{
+        width:95%;
+    }
+
+}
+
+@media(max-width:700px){
+
+    body{
+        padding:10px 0 30px;
+    }
+
+    .editor{
+        padding:15px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .image-upload-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .color-editor-item{
+        grid-template-columns:60px 1fr;
+    }
+
+    .color-editor-item input[type="color"]{
+        width:100%;
+    }
+
+    .remove-color{
+        grid-column:1/-1;
+    }
+
+    #poster{
+        padding:15px;
+    }
+
+    .header{
+        min-height:100px;
+        padding:15px;
+    }
+
+    .brand-name{
+        font-size:25px;
+    }
+
+    .brand-sub{
+        font-size:11px;
+    }
+
+    .logo-img{
+        width:52px;
+        height:52px;
+    }
+
+    .top-content{
+        grid-template-columns:1fr;
+    }
+
+    .main-image-wrapper{
+        height:400px;
+    }
+
+    .thumbnail{
+        height:95px;
+    }
+
+    .color-grid{
+        grid-template-columns:repeat(2,1fr)!important;
+    }
+
+    .color-image{
+        height:120px;
+    }
+
+}
+
+@media(max-width:420px){
+
+    .image-upload-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .thumbnail-row{
+        gap:6px;
+    }
+
+    .thumbnail{
+        height:80px;
+    }
+
+    .color-image{
+        height:105px;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+        background:#fff;
+        padding:0;
+    }
+
+    .editor,
+    .download-area{
+        display:none!important;
+    }
+
+    #poster{
+        margin:0;
+        width:980px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     EDITOR PANEL
+========================================================= -->
+
+<div class="editor">
+
+    <div class="editor-title">
+        PRODUCT EDITOR
+    </div>
+
+    <div class="editor-subtitle">
+        Edit the product information and upload images. Changes appear immediately in the product sheet.
+    </div>
+
+
+    <!-- =====================================================
+         BASIC DETAILS
+    ====================================================== -->
+
+    <div class="editor-section">
+
+        <div class="editor-section-title">
+            PRODUCT DETAILS
+        </div>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    BRAND
+                </label>
+
+                <input
+                    id="editBrand"
+                    value="H.T"
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    MODEL
+                </label>
+
+                <input
+                    id="editModel"
+                    value="13514"
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    PRODUCT TITLE
+                </label>
+
+                <input
+                    id="editProductTitle"
+                    value="H.T LUGGAGE"
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    SUB TITLE
+                </label>
+
+                <input
+                    id="editSubtitle"
+                    value="PRODUCT SPECIFICATION SHEET"
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    MATERIAL
+                </label>
+
+                <input
+                    id="editMaterial"
+                    value="High-Grade PP (Polypropylene)"
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    SET QUANTITY
+                </label>
+
+                <input
+                    id="editSetQuantity"
+                    value='3 Pcs Set (20", 25", 29")'
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    DESIGN
+                </label>
+
+                <input
+                    id="editDesign"
+                    value="Color-Matched Components"
+                    oninput="updateProduct()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    FOOTER TEXT
+                </label>
+
+                <input
+                    id="editFooter"
+                    value="Premium Polypropylene Suitcase Collection"
+                    oninput="updateProduct()">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         IMAGE UPLOADS
+    ====================================================== -->
+
+    <div class="editor-section">
+
+        <div class="editor-section-title">
+            PRODUCT IMAGES
+        </div>
+
+        <div class="image-upload-grid">
+
+
+            <!-- LOGO -->
+
+            <div class="upload-card">
+
+                <div class="upload-card-title">
+                    LOGO
+                </div>
+
+                <div class="upload-preview">
+
+                    <img
+                        id="logoPreview"
+                        src="assets/LOGO.png">
+
+                </div>
+
+                <input
+                    class="upload-file"
+                    type="file"
+                    accept="image/*"
+                    onchange="uploadLogo(event)">
+
+            </div>
+
+
+            <!-- MAIN IMAGE -->
+
+            <div class="upload-card">
+
+                <div class="upload-card-title">
+                    MAIN IMAGE
+                </div>
+
+                <div class="upload-preview">
+
+                    <img
+                        id="mainUploadPreview"
+                        src="BAG/MODEL 1/A1.jpeg">
+
+                </div>
+
+                <input
+                    class="upload-file"
+                    type="file"
+                    accept="image/*"
+                    onchange="uploadMainImage(event)">
+
+            </div>
+
+
+            <!-- THUMB 1 -->
+
+            <div class="upload-card">
+
+                <div class="upload-card-title">
+                    THUMB 1
+                </div>
+
+                <div class="upload-preview">
+
+                    <img
+                        id="thumbPreview1"
+                        src="BAG/MODEL 1/A11.jpeg">
+
+                </div>
+
+                <input
+                    class="upload-file"
+                    type="file"
+                    accept="image/*"
+                    onchange="uploadThumbnail(event,1)">
+
+            </div>
+
+
+            <!-- THUMB 2 -->
+
+            <div class="upload-card">
+
+                <div class="upload-card-title">
+                    THUMB 2
+                </div>
+
+                <div class="upload-preview">
+
+                    <img
+                        id="thumbPreview2"
+                        src="BAG/MODEL 1/A22.jpeg">
+
+                </div>
+
+                <input
+                    class="upload-file"
+                    type="file"
+                    accept="image/*"
+                    onchange="uploadThumbnail(event,2)">
+
+            </div>
+
+
+            <!-- THUMB 3 -->
+
+            <div class="upload-card">
+
+                <div class="upload-card-title">
+                    THUMB 3
+                </div>
+
+                <div class="upload-preview">
+
+                    <img
+                        id="thumbPreview3"
+                        src="BAG/MODEL 1/A33.jpeg">
+
+                </div>
+
+                <input
+                    class="upload-file"
+                    type="file"
+                    accept="image/*"
+                    onchange="uploadThumbnail(event,3)">
+
+            </div>
+
+
+            <!-- THUMB 4 -->
+
+            <div class="upload-card">
+
+                <div class="upload-card-title">
+                    THUMB 4
+                </div>
+
+                <div class="upload-preview">
+
+                    <img
+                        id="thumbPreview4"
+                        src="BAG/MODEL 1/A44.jpeg">
+
+                </div>
+
+                <input
+                    class="upload-file"
+                    type="file"
+                    accept="image/*"
+                    onchange="uploadThumbnail(event,4)">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SPECIFICATIONS
+    ====================================================== -->
+
+    <div class="editor-section">
+
+        <div class="editor-section-title">
+            SPECIFICATIONS
+        </div>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    COLOR OPTIONS TEXT
+                </label>
+
+                <input
+                    id="editColorOptions"
+                    value="Grey, Purple, Black, Green, Blue"
+                    oninput="updateProduct()">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FEATURES
+    ====================================================== -->
+
+    <div class="editor-section">
+
+        <div class="editor-section-title">
+            KEY FEATURES
+        </div>
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>
+                    FEATURE 1
+                </label>
+
+                <input
+                    id="feature1"
+                    value="TSA Lock: Recessed combination lock for secure international travel."
+                    oninput="updateFeatures()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    FEATURE 2
+                </label>
+
+                <input
+                    id="feature2"
+                    value="Anti-Theft Zipper: Reinforced double-layer security zipper."
+                    oninput="updateFeatures()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    FEATURE 3
+                </label>
+
+                <input
+                    id="feature3"
+                    value="Expandable Zipper: Extra depth expansion for additional packing room."
+                    oninput="updateFeatures()">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    FEATURE 4
+                </label>
+
+                <input
+                    id="feature4"
+                    value="360° Double Wheels: 8 smooth-rolling dual spinner wheels."
+                    oninput="updateFeatures()">
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    FEATURE 5
+                </label>
+
+                <input
+                    id="feature5"
+                    value="Matching Color Parts: Color-matched handles, wheels, & zippers."
+                    oninput="updateFeatures()">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COLOR ITEMS
+    ====================================================== -->
+
+    <div class="editor-section">
+
+        <div class="editor-section-title">
+            AVAILABLE COLORS
+        </div>
+
+        <div
+            class="color-editor-list"
+            id="colorEditorList">
+        </div>
+
+
+        <div class="editor-buttons">
+
+            <button
+                class="action-btn btn-add"
+                onclick="addColor()">
+
+                + ADD COLOR
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SAVE / RESET
+    ====================================================== -->
+
+    <div class="editor-buttons">
+
+        <button
+            class="action-btn btn-save"
+            onclick="saveData()">
+
+            SAVE CHANGES
+
+        </button>
+
+
+        <button
+            class="action-btn btn-reset"
+            onclick="resetData()">
+
+            RESET
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     DOWNLOAD
+========================================================= -->
+
+<div class="download-area">
+
+    <button
+        id="downloadPDF"
+        class="download-btn">
+
+        DOWNLOAD PDF
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================================================
+     POSTER
+========================================================= -->
+
+<div id="poster">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="logo-area">
+
+            <img
+                id="posterLogo"
+                class="logo-img"
+                src="assets/LOGO.png"
+                alt="H.T Logo">
+
+            <div>
+
+                <div
+                    class="brand-name"
+                    id="posterBrandTitle">
+
+                    H.T LUGGAGE
+
+                </div>
+
+                <div
+                    class="brand-sub"
+                    id="posterSubtitle">
+
+                    PRODUCT SPECIFICATION SHEET
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="model-badge"
+            id="posterModelBadge">
+
+            MODEL 13514
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TOP -->
+
+    <div class="top-content">
+
+
+        <!-- PRODUCT -->
+
+        <div class="box product-box">
+
+            <div class="main-image-wrapper">
+
+                <img
+                    id="mainImage"
+                    src="BAG/MODEL 1/A1.jpeg"
+                    alt="Product">
+
+            </div>
+
+
+            <div class="thumbnail-row">
+
+
+                <div
+                    class="thumbnail active"
+                    onclick="thumbnailChange(this)">
+
+                    <img
+                        id="thumb1"
+                        src="BAG/MODEL 1/A11.jpeg">
+
+                </div>
+
+
+                <div
+                    class="thumbnail"
+                    onclick="thumbnailChange(this)">
+
+                    <img
+                        id="thumb2"
+                        src="BAG/MODEL 1/A22.jpeg">
+
+                </div>
+
+
+                <div
+                    class="thumbnail"
+                    onclick="thumbnailChange(this)">
+
+                    <img
+                        id="thumb3"
+                        src="BAG/MODEL 1/A33.jpeg">
+
+                </div>
+
+
+                <div
+                    class="thumbnail"
+                    onclick="thumbnailChange(this)">
+
+                    <img
+                        id="thumb4"
+                        src="BAG/MODEL 1/A44.jpeg">
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product-caption"
+                id="productCaption">
+
+                H.T Model 13514 — 3-Piece Polypropylene Set (Black)
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div>
+
+
+            <!-- SPECIFICATIONS -->
+
+            <div class="box spec-box">
+
+                <div class="section-heading">
+                    SPECIFICATIONS
+                </div>
+
+                <table class="spec-table">
+
+                    <tr>
+                        <td>Brand</td>
+                        <td id="specBrand">H.T</td>
+                    </tr>
+
+                    <tr>
+                        <td>Model</td>
+                        <td id="specModel">13514</td>
+                    </tr>
+
+                    <tr>
+                        <td>Material</td>
+                        <td id="specMaterial">
+                            High-Grade PP<br>
+                            (Polypropylene)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Set Quantity</td>
+                        <td id="specSet">
+                            3 Pcs Set (20", 25", 29")
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Color Options</td>
+                        <td id="specColors">
+                            Grey, Purple, Black,<br>
+                            Green, Blue
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Design</td>
+                        <td id="specDesign">
+                            Color-Matched<br>
+                            Components
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- FEATURES -->
+
+            <div class="box feature-box">
+
+                <div class="section-heading">
+                    KEY FEATURES & OPTIONS
+                </div>
+
+                <div
+                    class="feature-list"
+                    id="posterFeatures">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COLORS -->
+
+    <div class="box color-section">
+
+        <div
+            class="color-title"
+            id="colorTitle">
+
+            AVAILABLE COLOR VARIANTS (4 COLORS)
+
+        </div>
+
+
+        <div
+            class="color-grid"
+            id="colorGrid">
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <div class="footer-left">
+
+            <strong id="footerBrand">
+                H.T Luggage
+            </strong>
+
+            •
+            <span id="footerText">
+                Premium Polypropylene Suitcase Collection
+            </span>
+
+        </div>
+
+
+        <div
+            class="footer-right"
+            id="footerModel">
+
+            Model 13514 Specification Sheet
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   DEFAULT DATA
+========================================================= */
+
+const defaultData = {
+
+    brand:"H.T",
+
+    model:"13514",
+
+    productTitle:"H.T LUGGAGE",
+
+    subtitle:"PRODUCT SPECIFICATION SHEET",
+
+    material:"High-Grade PP (Polypropylene)",
+
+    setQuantity:'3 Pcs Set (20", 25", 29")',
+
+    design:"Color-Matched Components",
+
+    colorOptions:"Grey, Purple, Black, Green, Blue",
+
+    footer:"Premium Polypropylene Suitcase Collection",
+
+    logo:"assets/LOGO.png",
+
+    mainImage:"BAG/MODEL 1/A1.jpeg",
+
+    thumbnails:[
+
+        "BAG/MODEL 1/A11.jpeg",
+
+        "BAG/MODEL 1/A22.jpeg",
+
+        "BAG/MODEL 1/A33.jpeg",
+
+        "BAG/MODEL 1/A44.jpeg"
+
+    ],
+
+    features:[
+
+        "TSA Lock: Recessed combination lock for secure international travel.",
+
+        "Anti-Theft Zipper: Reinforced double-layer security zipper.",
+
+        "Expandable Zipper: Extra depth expansion for additional packing room.",
+
+        "360° Double Wheels: 8 smooth-rolling dual spinner wheels.",
+
+        "Matching Color Parts: Color-matched handles, wheels, & zippers."
+
+    ],
+
+    colors:[
+
+        {
+            name:"Black",
+            image:"BAG/MODEL 1/A1.jpeg",
+            dot:"#222222"
+        },
+
+        {
+            name:"Grey",
+            image:"BAG/MODEL 1/A2.jpeg",
+            dot:"#7c858b"
+        },
+
+        {
+            name:"Blue",
+            image:"BAG/MODEL 1/A3.jpeg",
+            dot:"#4568a5"
+        },
+
+        {
+            name:"Purple",
+            image:"BAG/MODEL 1/A4.jpeg",
+            dot:"#805b98"
+        }
+
+    ]
+
+};
+
+
+/* =========================================================
+   CURRENT DATA
+========================================================= */
+
+let data = JSON.parse(
+    JSON.stringify(defaultData)
+);
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const mainImage =
+    document.getElementById("mainImage");
+
+const productCaption =
+    document.getElementById("productCaption");
+
+const colorGrid =
+    document.getElementById("colorGrid");
+
+const colorTitle =
+    document.getElementById("colorTitle");
+
+const colorEditorList =
+    document.getElementById("colorEditorList");
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   UPDATE PRODUCT
+========================================================= */
+
+function updateProduct(){
+
+    data.brand =
+        document.getElementById("editBrand").value;
+
+    data.model =
+        document.getElementById("editModel").value;
+
+    data.productTitle =
+        document.getElementById("editProductTitle").value;
+
+    data.subtitle =
+        document.getElementById("editSubtitle").value;
+
+    data.material =
+        document.getElementById("editMaterial").value;
+
+    data.setQuantity =
+        document.getElementById("editSetQuantity").value;
+
+    data.design =
+        document.getElementById("editDesign").value;
+
+    data.footer =
+        document.getElementById("editFooter").value;
+
+    data.colorOptions =
+        document.getElementById("editColorOptions").value;
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   UPDATE FEATURES
+========================================================= */
+
+function updateFeatures(){
+
+    data.features = [
+
+        document.getElementById("feature1").value,
+
+        document.getElementById("feature2").value,
+
+        document.getElementById("feature3").value,
+
+        document.getElementById("feature4").value,
+
+        document.getElementById("feature5").value
+
+    ];
+
+    renderFeatures();
+
+}
+
+
+/* =========================================================
+   UPLOAD IMAGE TO BASE64
+========================================================= */
+
+function fileToDataURL(file, callback){
+
+    if(!file){
+
+        return;
+
+    }
+
+    const reader =
+        new FileReader();
+
+    reader.onload =
+        function(e){
+
+            callback(e.target.result);
+
+        };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================================================
+   LOGO UPLOAD
+========================================================= */
+
+function uploadLogo(event){
+
+    const file =
+        event.target.files[0];
+
+    fileToDataURL(
+        file,
+        function(result){
+
+            data.logo = result;
+
+            document.getElementById(
+                "logoPreview"
+            ).src = result;
+
+            renderPoster();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MAIN IMAGE UPLOAD
+========================================================= */
+
+function uploadMainImage(event){
+
+    const file =
+        event.target.files[0];
+
+    fileToDataURL(
+        file,
+        function(result){
+
+            data.mainImage = result;
+
+            document.getElementById(
+                "mainUploadPreview"
+            ).src = result;
+
+            renderPoster();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   THUMBNAIL UPLOAD
+========================================================= */
+
+function uploadThumbnail(event,index){
+
+    const file =
+        event.target.files[0];
+
+    fileToDataURL(
+        file,
+        function(result){
+
+            data.thumbnails[index - 1] =
+                result;
+
+            document.getElementById(
+                "thumbPreview" + index
+            ).src = result;
+
+            renderPoster();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER COLOR EDITOR
+========================================================= */
+
+function renderColorEditor(){
+
+    colorEditorList.innerHTML = "";
+
+    data.colors.forEach(
+        function(color,index){
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "color-editor-item";
+
+            item.innerHTML = `
+
+                <div class="color-editor-preview">
+
+                    <img
+                        id="colorEditorPreview${index}"
+                        src="${escapeHtml(color.image)}">
+
+                </div>
+
+
+                <input
+                    type="text"
+                    value="${escapeHtml(color.name)}"
+                    placeholder="Color name"
+                    oninput="changeColorName(${index},this.value)"
+                >
+
+
+                <input
+                    type="text"
+                    value="${escapeHtml(color.image)}"
+                    placeholder="Image path"
+                    oninput="changeColorImage(${index},this.value)"
+                >
+
+
+                <input
+                    type="color"
+                    value="${color.dot || "#777777"}"
+                    onchange="changeColorDot(${index},this.value)"
+                >
+
+
+                <button
+                    class="remove-color"
+                    onclick="removeColor(${index})">
+
+                    REMOVE
+
+                </button>
+
+            `;
+
+            colorEditorList.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   COLOR NAME
+========================================================= */
+
+function changeColorName(index,value){
+
+    data.colors[index].name =
+        value;
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   COLOR IMAGE PATH
+========================================================= */
+
+function changeColorImage(index,value){
+
+    data.colors[index].image =
+        value;
+
+    const preview =
+        document.getElementById(
+            "colorEditorPreview" + index
+        );
+
+    if(preview){
+
+        preview.src = value;
+
+    }
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   COLOR DOT
+========================================================= */
+
+function changeColorDot(index,value){
+
+    data.colors[index].dot =
+        value;
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   ADD COLOR
+========================================================= */
+
+function addColor(){
+
+    data.colors.push({
+
+        name:"New Color",
+
+        image:"",
+
+        dot:"#777777"
+
+    });
+
+    renderColorEditor();
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   REMOVE COLOR
+========================================================= */
+
+function removeColor(index){
+
+    if(data.colors.length <= 1){
+
+        alert(
+            "At least 1 color is required."
+        );
+
+        return;
+
+    }
+
+    data.colors.splice(
+        index,
+        1
+    );
+
+    renderColorEditor();
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   RENDER COLOR GRID
+========================================================= */
+
+function renderColors(){
+
+    colorGrid.innerHTML = "";
+
+    const count =
+        data.colors.length;
+
+
+    /*
+       AUTOMATIC COLUMNS
+
+       1 = 1
+       2 = 2
+       3 = 3
+       4 = 4
+       5 = 5
+       6 = 6
+       7+ = 6 max per row
+    */
+
+    let columns =
+        Math.min(
+            Math.max(count,1),
+            6
+        );
+
+
+    colorGrid.style.gridTemplateColumns =
+        "repeat(" +
+        columns +
+        ", minmax(0,1fr))";
+
+
+    colorTitle.innerText =
+        "AVAILABLE COLOR VARIANTS (" +
+        count +
+        (count === 1 ? " COLOR" : " COLORS") +
+        ")";
+
+
+    data.colors.forEach(
+        function(color,index){
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "color-card" +
+                (
+                    index === 0
+                    ? " active"
+                    : ""
+                );
+
+            card.dataset.index =
+                index;
+
+
+            card.innerHTML = `
+
+                <div class="color-image">
+
+                    <img
+                        src="${escapeHtml(color.image)}"
+                        alt="${escapeHtml(color.name)}">
+
+                </div>
+
+
+                <div class="color-name">
+
+                    <span
+                        class="color-dot"
+                        style="background:${escapeHtml(color.dot || "#777777")}">
+
+                    </span>
+
+                    ${escapeHtml(color.name)}
+
+                </div>
+
+            `;
+
+
+            card.onclick =
+                function(){
+
+                    selectColor(
+                        index
+                    );
+
+                };
+
+
+            colorGrid.appendChild(card);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SELECT COLOR
+========================================================= */
+
+function selectColor(index){
+
+    const color =
+        data.colors[index];
+
+    changeMainImage(
+        color.image
+    );
+
+
+    document
+        .querySelectorAll(".color-card")
+        .forEach(
+            function(card){
+
+                card.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const selected =
+        document.querySelector(
+            '.color-card[data-index="' +
+            index +
+            '"]'
+        );
+
+
+    if(selected){
+
+        selected.classList.add(
+            "active"
+        );
+
+    }
+
+
+    productCaption.innerText =
+        data.brand +
+        " Model " +
+        data.model +
+        " — 3-Piece Polypropylene Set (" +
+        color.name +
+        ")";
+
+}
+
+
+/* =========================================================
+   CHANGE MAIN IMAGE
+========================================================= */
+
+function changeMainImage(image){
+
+    if(!image){
+
+        return;
+
+    }
+
+    mainImage.style.opacity =
+        "0";
+
+    const newImage =
+        new Image();
+
+    newImage.onload =
+        function(){
+
+            mainImage.src =
+                image;
+
+            mainImage.style.opacity =
+                "1";
+
+        };
+
+    newImage.onerror =
+        function(){
+
+            mainImage.src =
+                image;
+
+            mainImage.style.opacity =
+                "1";
+
+        };
+
+    newImage.src =
+        image;
+
+}
+
+
+/* =========================================================
+   THUMBNAIL CLICK
+========================================================= */
+
+function thumbnailChange(element){
+
+    const image =
+        element
+        .querySelector("img")
+        .src;
+
+
+    changeMainImage(
+        image
+    );
+
+
+    document
+        .querySelectorAll(".thumbnail")
+        .forEach(
+            function(item){
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    element.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =========================================================
+   RENDER FEATURES
+========================================================= */
+
+function renderFeatures(){
+
+    const container =
+        document.getElementById(
+            "posterFeatures"
+        );
+
+    container.innerHTML = "";
+
+
+    data.features.forEach(
+        function(text){
+
+            if(!text.trim()){
+
+                return;
+
+            }
+
+            let title = "";
+            let description = text;
+
+
+            const separator =
+                text.indexOf(":");
+
+
+            if(separator > -1){
+
+                title =
+                    text.substring(
+                        0,
+                        separator + 1
+                    );
+
+                description =
+                    text.substring(
+                        separator + 1
+                    ).trim();
+
+            }
+
+
+            const feature =
+                document.createElement("div");
+
+            feature.className =
+                "feature";
+
+
+            feature.innerHTML = `
+
+                <div class="star">
+                    ★
+                </div>
+
+                <div>
+
+                    <strong>
+                        ${escapeHtml(title)}
+                    </strong>
+
+                    ${escapeHtml(description)}
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                feature
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER POSTER
+========================================================= */
+
+function renderPoster(){
+
+    document.getElementById(
+        "posterBrandTitle"
+    ).innerText =
+        data.productTitle;
+
+
+    document.getElementById(
+        "posterSubtitle"
+    ).innerText =
+        data.subtitle;
+
+
+    document.getElementById(
+        "posterModelBadge"
+    ).innerText =
+        "MODEL " + data.model;
+
+
+    document.getElementById(
+        "posterLogo"
+    ).src =
+        data.logo;
+
+
+    mainImage.src =
+        data.mainImage;
+
+
+    document.getElementById(
+        "mainUploadPreview"
+    ).src =
+        data.mainImage;
+
+
+    data.thumbnails.forEach(
+        function(image,index){
+
+            const posterThumb =
+                document.getElementById(
+                    "thumb" + (index + 1)
+                );
+
+            const preview =
+                document.getElementById(
+                    "thumbPreview" + (index + 1)
+                );
+
+
+            if(posterThumb){
+
+                posterThumb.src =
+                    image;
+
+            }
+
+            if(preview){
+
+                preview.src =
+                    image;
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "specBrand"
+    ).innerText =
+        data.brand;
+
+
+    document.getElementById(
+        "specModel"
+    ).innerText =
+        data.model;
+
+
+    document.getElementById(
+        "specMaterial"
+    ).innerText =
+        data.material;
+
+
+    document.getElementById(
+        "specSet"
+    ).innerText =
+        data.setQuantity;
+
+
+    document.getElementById(
+        "specColors"
+    ).innerText =
+        data.colorOptions;
+
+
+    document.getElementById(
+        "specDesign"
+    ).innerText =
+        data.design;
+
+
+    document.getElementById(
+        "footerBrand"
+    ).innerText =
+        data.brand + " Luggage";
+
+
+    document.getElementById(
+        "footerText"
+    ).innerText =
+        data.footer;
+
+
+    document.getElementById(
+        "footerModel"
+    ).innerText =
+        "Model " +
+        data.model +
+        " Specification Sheet";
+
+
+    /*
+       Caption
+    */
+
+    if(data.colors.length > 0){
+
+        productCaption.innerText =
+            data.brand +
+            " Model " +
+            data.model +
+            " — 3-Piece Polypropylene Set (" +
+            data.colors[0].name +
+            ")";
+
+    }
+
+
+    renderFeatures();
+
+    renderColors();
+
+}
+
+
+/* =========================================================
+   LOAD FORM
+========================================================= */
+
+function loadForm(){
+
+    document.getElementById(
+        "editBrand"
+    ).value =
+        data.brand;
+
+
+    document.getElementById(
+        "editModel"
+    ).value =
+        data.model;
+
+
+    document.getElementById(
+        "editProductTitle"
+    ).value =
+        data.productTitle;
+
+
+    document.getElementById(
+        "editSubtitle"
+    ).value =
+        data.subtitle;
+
+
+    document.getElementById(
+        "editMaterial"
+    ).value =
+        data.material;
+
+
+    document.getElementById(
+        "editSetQuantity"
+    ).value =
+        data.setQuantity;
+
+
+    document.getElementById(
+        "editDesign"
+    ).value =
+        data.design;
+
+
+    document.getElementById(
+        "editFooter"
+    ).value =
+        data.footer;
+
+
+    document.getElementById(
+        "editColorOptions"
+    ).value =
+        data.colorOptions;
+
+
+    document.getElementById(
+        "feature1"
+    ).value =
+        data.features[0] || "";
+
+
+    document.getElementById(
+        "feature2"
+    ).value =
+        data.features[1] || "";
+
+
+    document.getElementById(
+        "feature3"
+    ).value =
+        data.features[2] || "";
+
+
+    document.getElementById(
+        "feature4"
+    ).value =
+        data.features[3] || "";
+
+
+    document.getElementById(
+        "feature5"
+    ).value =
+        data.features[4] || "";
+
+
+    document.getElementById(
+        "logoPreview"
+    ).src =
+        data.logo;
+
+
+    document.getElementById(
+        "mainUploadPreview"
+    ).src =
+        data.mainImage;
+
+
+    data.thumbnails.forEach(
+        function(image,index){
+
+            document.getElementById(
+                "thumbPreview" + (index + 1)
+            ).src =
+                image;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SAVE DATA
+========================================================= */
+
+function saveData(){
+
+    try{
+
+        localStorage.setItem(
+            "HT_LUGGAGE_PRODUCT_DATA",
+            JSON.stringify(data)
+        );
+
+        alert(
+            "Product details saved successfully."
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Could not save. Uploaded images may be too large for browser storage."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD SAVED DATA
+========================================================= */
+
+function loadSavedData(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(
+                "HT_LUGGAGE_PRODUCT_DATA"
+            );
+
+
+        if(saved){
+
+            data =
+                JSON.parse(saved);
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Saved data could not be loaded.",
+            error
+        );
+
+        data =
+            JSON.parse(
+                JSON.stringify(defaultData)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   RESET DATA
+========================================================= */
+
+function resetData(){
+
+    if(
+        !confirm(
+            "Reset all product details and images?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "HT_LUGGAGE_PRODUCT_DATA"
+    );
+
+
+    data =
+        JSON.parse(
+            JSON.stringify(defaultData)
+        );
+
+
+    loadForm();
+
+    renderColorEditor();
+
+    renderPoster();
+
+}
+
+
+/* =========================================================
+   WAIT FOR IMAGES
+========================================================= */
+
+function waitForImages(container){
+
+    const images =
+        container.querySelectorAll(
+            "img"
+        );
+
+
+    return Promise.all(
+
+        Array.from(images)
+        .map(
+            function(img){
+
+                if(img.complete){
+
+                    return Promise.resolve();
+
+                }
+
+
+                return new Promise(
+                    function(resolve){
+
+                        img.onload =
+                            resolve;
+
+                        img.onerror =
+                            resolve;
+
+                    }
+                );
+
+            }
+        )
+
+    );
+
+}
+
+
+/* =========================================================
+   DOWNLOAD PDF
+========================================================= */
+
+document
+.getElementById("downloadPDF")
+.addEventListener(
+    "click",
+    async function(){
+
+        const button =
+            this;
+
+
+        button.disabled =
+            true;
+
+        button.innerText =
+            "CREATING PDF...";
+
+
+        try{
+
+            const poster =
+                document.getElementById(
+                    "poster"
+                );
+
+
+            /*
+               Make sure current
+               poster is rendered
+            */
+
+            renderPoster();
+
+
+            /*
+               Wait for all images
+            */
+
+            await waitForImages(
+                poster
+            );
+
+
+            /*
+               Give browser time
+               to finish rendering
+            */
+
+            await new Promise(
+                function(resolve){
+
+                    setTimeout(
+                        resolve,
+                        500
+                    );
+
+                }
+            );
+
+
+            /*
+               Create canvas
+            */
+
+            const canvas =
+                await html2canvas(
+                    poster,
+                    {
+
+                        scale:2,
+
+                        useCORS:true,
+
+                        allowTaint:true,
+
+                        backgroundColor:
+                            "#f7f8fa",
+
+                        logging:false,
+
+                        imageTimeout:
+                            30000,
+
+                        scrollX:0,
+
+                        scrollY:0,
+
+                        windowWidth:
+                            document.documentElement.scrollWidth,
+
+                        windowHeight:
+                            document.documentElement.scrollHeight
+
+                    }
+                );
+
+
+            /*
+               Convert to image
+            */
+
+            const imageData =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.95
+                );
+
+
+            const jsPDF =
+                window.jspdf.jsPDF;
+
+
+            /*
+               A4 PDF
+            */
+
+            const pdf =
+                new jsPDF({
+
+                    orientation:"portrait",
+
+                    unit:"mm",
+
+                    format:"a4",
+
+                    compress:true
+
+                });
+
+
+            const pageWidth =
+                pdf.internal
+                .pageSize
+                .getWidth();
+
+
+            const pageHeight =
+                pdf.internal
+                .pageSize
+                .getHeight();
+
+
+            const imageRatio =
+                canvas.height /
+                canvas.width;
+
+
+            let pdfWidth =
+                pageWidth;
+
+
+            let pdfHeight =
+                pdfWidth *
+                imageRatio;
+
+
+            /*
+               Fit poster inside A4
+            */
+
+            if(
+                pdfHeight >
+                pageHeight
+            ){
+
+                pdfHeight =
+                    pageHeight;
+
+                pdfWidth =
+                    pdfHeight /
+                    imageRatio;
+
+            }
+
+
+            const x =
+                (
+                    pageWidth -
+                    pdfWidth
+                ) / 2;
+
+
+            const y =
+                (
+                    pageHeight -
+                    pdfHeight
+                ) / 2;
+
+
+            pdf.addImage(
+
+                imageData,
+
+                "JPEG",
+
+                x,
+
+                y,
+
+                pdfWidth,
+
+                pdfHeight,
+
+                undefined,
+
+                "FAST"
+
+            );
+
+
+            /*
+               Filename
+            */
+
+            const filename =
+                "HT_Luggage_Model_" +
+                data.model +
+                ".pdf";
+
+
+            pdf.save(
+                filename
+            );
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "PDF ERROR:",
+                error
+            );
+
+
+            alert(
+                "PDF creation failed.\n\n" +
+                "Please make sure all images are loaded and try again."
+            );
+
+        }
+
+
+        button.disabled =
+            false;
+
+        button.innerText =
+            "DOWNLOAD PDF";
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadSavedData();
+
+        loadForm();
+
+        renderColorEditor();
+
+        renderPoster();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
