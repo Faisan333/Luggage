@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>H.T Luggage - Model 13514</title>
+
+
+<!-- =====================================================
+     PDF LIBRARIES
+===================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+html,
+body{
+    margin:0;
+    padding:0;
+}
+
+
+body{
+
+    background:#e9eaec;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:#273449;
+
+    padding:25px 0 50px;
+
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.download-area{
+
+    width:980px;
+
+    max-width:95%;
+
+    margin:0 auto 15px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+
+.download-btn{
+
+    background:#111111;
+
+    color:#ffffff;
+
+    border:none;
+
+    border-radius:5px;
+
+    padding:13px 23px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    letter-spacing:.4px;
+
+}
+
+
+.download-btn:hover{
+
+    background:#333333;
+
+}
+
+
+.download-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+   MAIN POSTER
+========================================================= */
+
+#poster{
+
+    width:980px;
+
+    min-height:1386px;
+
+    margin:0 auto;
+
+    background:#f7f8fa;
+
+    padding:28px 30px 24px;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    height:125px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #151515,
+            #222222
+        );
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    margin-bottom:17px;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+
+.ht-circle{
+
+    width:70px;
+
+    height:70px;
+
+    border:2px solid #d7ae32;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+.ht-circle:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:55px;
+
+    height:55px;
+
+    border:2px solid #d7ae32;
+
+    border-radius:50%;
+
+}
+
+
+.ht-text{
+
+    color:#d7ae32;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+    line-height:.9;
+
+    text-align:center;
+
+    z-index:2;
+
+}
+
+
+.brand-name{
+
+    color:#ffffff;
+
+    font-size:37px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+
+.brand-sub{
+
+    color:#d7ae32;
+
+    font-size:16px;
+
+    margin-top:10px;
+
+    letter-spacing:.4px;
+
+}
+
+
+.model-badge{
+
+    background:#d9b235;
+
+    color:#111111;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    padding:9px 18px;
+
+    border-radius:4px;
+
+}
+
+
+/* =========================================================
+   TOP CONTENT
+========================================================= */
+
+.top-content{
+
+    display:grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr;
+
+    gap:16px;
+
+}
+
+
+/* =========================================================
+   COMMON BOX
+========================================================= */
+
+.box{
+
+    background:#ffffff;
+
+    border:1px solid #dce2e8;
+
+    border-radius:9px;
+
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE BOX
+========================================================= */
+
+.product-box{
+
+    padding:14px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+/* =========================================================
+   LARGE MAIN IMAGE
+========================================================= */
+
+.main-image-wrapper{
+
+    width:100%;
+
+    height:430px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    padding:4px;
+
+}
+
+
+#mainImage{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    display:block;
+
+    transition:opacity .15s ease;
+
+}
+
+
+/* =========================================================
+   4 THUMBNAILS
+========================================================= */
+
+.thumbnail-row{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+
+.thumbnail{
+
+    height:72px;
+
+    background:#ffffff;
+
+    border:1px solid #e1e5ea;
+
+    border-radius:5px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+
+.thumbnail:hover{
+
+    border:2px solid #d7ae32;
+
+}
+
+
+.thumbnail.active{
+
+    border:2px solid #d7ae32;
+
+}
+
+
+.thumbnail img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    display:block;
+
+}
+
+
+/* =========================================================
+   PRODUCT CAPTION
+========================================================= */
+
+.product-caption{
+
+    text-align:center;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    color:#4d5b70;
+
+    margin-top:10px;
+
+    margin-bottom:2px;
+
+}
+
+
+/* =========================================================
+   SPECIFICATION BOX
+========================================================= */
+
+.spec-box{
+
+    padding:15px 16px;
+
+}
+
+
+.section-heading{
+
+    font-size:18px;
+
+    color:#1d1d1d;
+
+    font-weight:800;
+
+    padding-bottom:9px;
+
+    border-bottom:
+        3px solid #d8ae32;
+
+    margin-bottom:5px;
+
+}
+
+
+.spec-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+.spec-table tr{
+
+    border-bottom:
+        1px solid #e1e6eb;
+
+}
+
+
+.spec-table td{
+
+    font-size:12.5px;
+
+    padding:8px 8px;
+
+    vertical-align:middle;
+
+    line-height:1.35;
+
+}
+
+
+.spec-table td:first-child{
+
+    width:43%;
+
+    background:#f5f7f9;
+
+    font-weight:bold;
+
+    color:#526076;
+
+}
+
+
+.spec-table td:last-child{
+
+    color:#293444;
+
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.feature-box{
+
+    margin-top:15px;
+
+    padding:15px 16px;
+
+}
+
+
+.feature-list{
+
+    margin-top:4px;
+
+}
+
+
+.feature{
+
+    display:grid;
+
+    grid-template-columns:
+        27px 1fr;
+
+    gap:3px;
+
+    padding:9px 0;
+
+    border-bottom:
+        1px dashed #dce2e8;
+
+    font-size:12.5px;
+
+    line-height:1.4;
+
+}
+
+
+.feature:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.star{
+
+    color:#d8ae32;
+
+    font-size:15px;
+
+    text-align:center;
+
+}
+
+
+.feature strong{
+
+    color:#354257;
+
+}
+
+
+/* =========================================================
+   COLOR SECTION
+========================================================= */
+
+.color-section{
+
+    margin-top:15px;
+
+    padding:13px 15px 15px;
+
+}
+
+
+.color-title{
+
+    font-size:18px;
+
+    color:#1d1d1d;
+
+    font-weight:800;
+
+    padding-bottom:9px;
+
+    border-bottom:
+        3px solid #d8ae32;
+
+    margin-bottom:13px;
+
+}
+
+
+.color-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:10px;
+
+}
+
+
+.color-card{
+
+    background:#ffffff;
+
+    border:1px solid #e1e6eb;
+
+    border-radius:7px;
+
+    padding:5px;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+
+.color-card:hover{
+
+    border-color:#d7ae32;
+
+}
+
+
+.color-card.active{
+
+    border:
+        2px solid #d7ae32;
+
+}
+
+
+.color-image{
+
+    width:100%;
+
+    height:125px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#ffffff;
+
+    border-radius:4px;
+
+    overflow:hidden;
+
+}
+
+
+.color-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    display:block;
+
+}
+
+
+.color-name{
+
+    text-align:center;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    margin-top:7px;
+
+    color:#354257;
+
+}
+
+
+.color-dot{
+
+    display:inline-block;
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    margin-right:4px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+    height:42px;
+
+    margin-top:15px;
+
+    border-radius:6px;
+
+    background:#111111;
+
+    color:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 16px;
+
+    font-size:11px;
+
+}
+
+
+.footer-left{
+
+    color:#9ca7b7;
+
+}
+
+
+.footer-left strong{
+
+    color:#d7ae32;
+
+}
+
+
+.footer-right{
+
+    color:#d8ae32;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    #poster{
+
+        width:95%;
+
+    }
+
+
+    .download-area{
+
+        width:95%;
+
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    body{
+
+        padding:10px 0 30px;
+
+    }
+
+
+    #poster{
+
+        padding:15px;
+
+    }
+
+
+    .header{
+
+        height:auto;
+
+        min-height:100px;
+
+        padding:15px;
+
+    }
+
+
+    .brand-name{
+
+        font-size:25px;
+
+    }
+
+
+    .brand-sub{
+
+        font-size:11px;
+
+    }
+
+
+    .ht-circle{
+
+        width:52px;
+
+        height:52px;
+
+    }
+
+
+    .ht-circle:before{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+
+    .top-content{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .main-image-wrapper{
+
+        height:400px;
+
+    }
+
+
+    .color-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+
+        background:#ffffff;
+
+        padding:0;
+
+    }
+
+
+    .download-area{
+
+        display:none;
+
+    }
+
+
+    #poster{
+
+        margin:0;
+
+        width:980px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     DOWNLOAD
+===================================================== -->
+
+<div class="download-area">
+
+    <button
+        id="downloadPDF"
+        class="download-btn">
+
+        DOWNLOAD PDF
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     POSTER
+===================================================== -->
+
+<div id="poster">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <div class="header">
+
+
+        <div class="logo-area">
+
+
+            <div class="ht-circle">
+
+                <span class="ht-text">
+                    H<br>T
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <div class="brand-name">
+                    H.T LUGGAGE
+                </div>
+
+                <div class="brand-sub">
+                    PRODUCT SPECIFICATION SHEET
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="model-badge">
+
+            MODEL 13514
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         TOP CONTENT
+    ================================================== -->
+
+    <div class="top-content">
+
+
+        <!-- =============================================
+             LEFT PRODUCT IMAGE
+        ============================================== -->
+
+        <div class="box product-box">
+
+
+            <div class="main-image-wrapper">
+
+                <img
+                    id="mainImage"
+                    src="images/black-main.jpg"
+                    alt="H.T Model 13514">
+
+            </div>
+
+
+
+            <!-- =========================================
+                 4 FIXED IMAGES
+            ========================================== -->
+
+            <div class="thumbnail-row">
+
+
+                <div
+                    class="thumbnail active"
+                    onclick="
+                        thumbnailChange(
+                            'images/luggage-front.jpg',
+                            this
+                        )
+                    ">
+
+                    <img
+                        src="images/luggage-front.jpg"
+                        alt="Front">
+
+                </div>
+
+
+                <div
+                    class="thumbnail"
+                    onclick="
+                        thumbnailChange(
+                            'images/luggage-side.jpg',
+                            this
+                        )
+                    ">
+
+                    <img
+                        src="images/luggage-side.jpg"
+                        alt="Side">
+
+                </div>
+
+
+                <div
+                    class="thumbnail"
+                    onclick="
+                        thumbnailChange(
+                            'images/luggage-lock.jpg',
+                            this
+                        )
+                    ">
+
+                    <img
+                        src="images/luggage-lock.jpg"
+                        alt="Lock">
+
+                </div>
+
+
+                <div
+                    class="thumbnail"
+                    onclick="
+                        thumbnailChange(
+                            'images/luggage-inside.jpg',
+                            this
+                        )
+                    ">
+
+                    <img
+                        src="images/luggage-inside.jpg"
+                        alt="Inside">
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="product-caption"
+                id="productCaption">
+
+                H.T Model 13514 —
+                3-Piece Polypropylene Set (Black)
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             RIGHT INFORMATION
+        ============================================== -->
+
+        <div>
+
+
+            <!-- =========================================
+                 SPECIFICATIONS
+            ========================================== -->
+
+            <div class="box spec-box">
+
+
+                <div class="section-heading">
+
+                    SPECIFICATIONS
+
+                </div>
+
+
+                <table class="spec-table">
+
+
+                    <tr>
+
+                        <td>
+                            Brand
+                        </td>
+
+                        <td>
+                            H.T
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Model
+                        </td>
+
+                        <td>
+                            13514
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Material
+                        </td>
+
+                        <td>
+                            High-Grade PP<br>
+                            (Polypropylene)
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Set Quantity
+                        </td>
+
+                        <td>
+                            3 Pcs Set (20", 25", 29")
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Color Options
+                        </td>
+
+                        <td>
+                            Grey, Purple, Black,<br>
+                            Green, Blue
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Design
+                        </td>
+
+                        <td>
+                            Color-Matched<br>
+                            Components
+                        </td>
+
+                    </tr>
+
+
+                </table>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 FEATURES
+            ========================================== -->
+
+            <div class="box feature-box">
+
+
+                <div class="section-heading">
+
+                    KEY FEATURES & OPTIONS
+
+                </div>
+
+
+                <div class="feature-list">
+
+
+                    <div class="feature">
+
+                        <div class="star">
+                            ★
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                TSA Lock:
+                            </strong>
+
+                            Recessed combination lock
+                            for secure international travel.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="star">
+                            ★
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Anti-Theft Zipper:
+                            </strong>
+
+                            Reinforced double-layer
+                            security zipper.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="star">
+                            ★
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Expandable Zipper:
+                            </strong>
+
+                            Extra depth expansion for
+                            additional packing room.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="star">
+                            ★
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                360° Double Wheels:
+                            </strong>
+
+                            8 smooth-rolling dual
+                            spinner wheels.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="star">
+                            ★
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Matching Color Parts:
+                            </strong>
+
+                            Color-matched handles,
+                            wheels, & zippers.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         COLOR SECTION
+    ================================================== -->
+
+    <div class="box color-section">
+
+
+        <div class="color-title">
+
+            AVAILABLE COLOR VARIANTS (5 COLORS)
+
+        </div>
+
+
+        <div class="color-grid">
+
+
+            <!-- BLACK -->
+
+            <div
+                class="color-card active"
+                onclick="
+                    selectColor(
+                        'images/black-main.jpg',
+                        'Black',
+                        this
+                    )
+                ">
+
+
+                <div class="color-image">
+
+                    <img
+                        src="images/black-main.jpg"
+                        alt="Black">
+
+                </div>
+
+
+                <div class="color-name">
+
+                    <span
+                        class="color-dot"
+                        style="background:#222222">
+                    </span>
+
+                    Black
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- GREY -->
+
+            <div
+                class="color-card"
+                onclick="
+                    selectColor(
+                        'images/grey-main.jpg',
+                        'Grey',
+                        this
+                    )
+                ">
+
+
+                <div class="color-image">
+
+                    <img
+                        src="images/grey-main.jpg"
+                        alt="Grey">
+
+                </div>
+
+
+                <div class="color-name">
+
+                    <span
+                        class="color-dot"
+                        style="background:#7c858b">
+                    </span>
+
+                    Grey
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BLUE -->
+
+            <div
+                class="color-card"
+                onclick="
+                    selectColor(
+                        'images/blue-main.jpg',
+                        'Blue',
+                        this
+                    )
+                ">
+
+
+                <div class="color-image">
+
+                    <img
+                        src="images/blue-main.jpg"
+                        alt="Blue">
+
+                </div>
+
+
+                <div class="color-name">
+
+                    <span
+                        class="color-dot"
+                        style="background:#4568a5">
+                    </span>
+
+                    Blue
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PURPLE -->
+
+            <div
+                class="color-card"
+                onclick="
+                    selectColor(
+                        'images/purple-main.jpg',
+                        'Purple',
+                        this
+                    )
+                ">
+
+
+                <div class="color-image">
+
+                    <img
+                        src="images/purple-main.jpg"
+                        alt="Purple">
+
+                </div>
+
+
+                <div class="color-name">
+
+                    <span
+                        class="color-dot"
+                        style="background:#805b98">
+                    </span>
+
+                    Purple
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- GREEN -->
+
+            <div
+                class="color-card"
+                onclick="
+                    selectColor(
+                        'images/green-main.jpg',
+                        'Green',
+                        this
+                    )
+                ">
+
+
+                <div class="color-image">
+
+                    <img
+                        src="images/green-main.jpg"
+                        alt="Green">
+
+                </div>
+
+
+                <div class="color-name">
+
+                    <span
+                        class="color-dot"
+                        style="background:#54b69c">
+                    </span>
+
+                    Green
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <div class="footer">
+
+
+        <div class="footer-left">
+
+            <strong>
+                H.T Luggage
+            </strong>
+
+            • Premium Polypropylene Suitcase Collection
+
+        </div>
+
+
+        <div class="footer-right">
+
+            Model 13514 Specification Sheet
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   MAIN IMAGE
+========================================================= */
+
+const mainImage =
+    document.getElementById("mainImage");
+
+
+/* =========================================================
+   THUMBNAIL CHANGE
+========================================================= */
+
+function thumbnailChange(
+    image,
+    element
+){
+
+    mainImage.style.opacity = "0";
+
+
+    setTimeout(function(){
+
+        mainImage.src = image;
+
+        mainImage.onload = function(){
+
+            mainImage.style.opacity = "1";
+
+        };
+
+    },100);
+
+
+    document
+        .querySelectorAll(".thumbnail")
+        .forEach(function(item){
+
+            item.classList.remove("active");
+
+        });
+
+
+    element.classList.add("active");
+
+}
+
+
+/* =========================================================
+   COLOR CHANGE
+   ONLY MAIN IMAGE CHANGES
+========================================================= */
+
+function selectColor(
+    image,
+    colorName,
+    element
+){
+
+    mainImage.style.opacity = "0";
+
+
+    setTimeout(function(){
+
+        mainImage.src = image;
+
+        mainImage.onload = function(){
+
+            mainImage.style.opacity = "1";
+
+        };
+
+    },100);
+
+
+    /*
+       IMPORTANT:
+
+       The four thumbnails are NOT changed.
+    */
+
+
+    document
+        .querySelectorAll(".color-card")
+        .forEach(function(card){
+
+            card.classList.remove("active");
+
+        });
+
+
+    element.classList.add("active");
+
+
+    /*
+       Update product caption
+    */
+
+    document.getElementById(
+        "productCaption"
+    ).innerText =
+        "H.T Model 13514 — " +
+        "3-Piece Polypropylene Set (" +
+        colorName +
+        ")";
+
+}
+
+
+/* =========================================================
+   WAIT FOR IMAGES
+========================================================= */
+
+function waitForImages(container){
+
+    const images =
+        container.querySelectorAll("img");
+
+
+    return Promise.all(
+
+        Array.from(images)
+        .map(function(img){
+
+            if(img.complete){
+
+                return Promise.resolve();
+
+            }
+
+
+            return new Promise(
+                function(resolve){
+
+                    img.onload =
+                        resolve;
+
+                    img.onerror =
+                        resolve;
+
+                }
+            );
+
+        })
+
+    );
+
+}
+
+
+/* =========================================================
+   DOWNLOAD COMPLETE POSTER PDF
+========================================================= */
+
+document
+.getElementById("downloadPDF")
+.addEventListener(
+    "click",
+    async function(){
+
+        const button = this;
+
+
+        button.disabled = true;
+
+        button.innerText =
+            "CREATING PDF...";
+
+
+        try{
+
+
+            const poster =
+                document.getElementById(
+                    "poster"
+                );
+
+
+            /*
+               Make sure every image
+               is loaded.
+            */
+
+            await waitForImages(
+                poster
+            );
+
+
+            /*
+               Capture the FULL poster.
+            */
+
+            const canvas =
+                await html2canvas(
+                    poster,
+                    {
+
+                        scale:2,
+
+                        useCORS:true,
+
+                        allowTaint:false,
+
+                        backgroundColor:
+                            "#f7f8fa",
+
+                        logging:false,
+
+                        imageTimeout:15000
+
+                    }
+                );
+
+
+            /*
+               Convert canvas to image.
+            */
+
+            const imageData =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.97
+                );
+
+
+            /*
+               Create A4 PDF.
+            */
+
+            const {
+                jsPDF
+            } = window.jspdf;
+
+
+            const pdf =
+                new jsPDF({
+
+                    orientation:
+                        "portrait",
+
+                    unit:
+                        "mm",
+
+                    format:
+                        "a4",
+
+                    compress:true
+
+                });
+
+
+            const pageWidth =
+                pdf.internal.pageSize.getWidth();
+
+
+            const pageHeight =
+                pdf.internal.pageSize.getHeight();
+
+
+            /*
+               Poster ratio
+            */
+
+            const ratio =
+                canvas.height /
+                canvas.width;
+
+
+            let width =
+                pageWidth;
+
+
+            let height =
+                width * ratio;
+
+
+            /*
+               Fit poster exactly
+               inside A4.
+            */
+
+            if(height > pageHeight){
+
+                height =
+                    pageHeight;
+
+                width =
+                    height / ratio;
+
+            }
+
+
+            /*
+               Center the poster.
+            */
+
+            const x =
+                (pageWidth - width) / 2;
+
+
+            const y =
+                (pageHeight - height) / 2;
+
+
+            pdf.addImage(
+
+                imageData,
+
+                "JPEG",
+
+                x,
+
+                y,
+
+                width,
+
+                height,
+
+                undefined,
+
+                "FAST"
+
+            );
+
+
+            /*
+               Download.
+            */
+
+            pdf.save(
+                "HT_Luggage_Model_13514.pdf"
+            );
+
+
+        }
+
+        catch(error){
+
+            console.error(error);
+
+
+            alert(
+                "PDF download failed. Please make sure all image files are available."
+            );
+
+        }
+
+
+        button.disabled = false;
+
+        button.innerText =
+            "DOWNLOAD PDF";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
