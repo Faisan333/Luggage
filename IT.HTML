@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Product Poster</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(215,25,32,.18),transparent 28%),
+        radial-gradient(circle at 90% 85%,rgba(255,190,40,.08),transparent 25%),
+        #090a0d;
+    color:#111;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:35px;
+}
+
+.stage{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =========================================================
+   POSTER
+========================================================= */
+
+.poster{
+    position:relative;
+    width:540px;
+    height:675px;
+    overflow:hidden;
+    background:#f4f2ec;
+    border-radius:22px;
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.55),
+        0 10px 25px rgba(0,0,0,.25);
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    position:relative;
+    z-index:50;
+
+    height:82px;
+
+    padding:14px 20px;
+
+    background:#111216;
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.topbar:after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:50%;
+    height:4px;
+
+    background:#d71920;
+}
+
+/* =========================================================
+   PERMANENT LOGO
+========================================================= */
+
+.logo-box{
+    width:135px;
+    height:64px;
+
+    padding:6px 10px;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.permanent-logo{
+    display:block;
+
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+    max-height:71px;
+
+    object-fit:contain;
+}
+
+.brand-copy{
+    text-align:right;
+}
+
+.brand-copy small{
+    display:block;
+
+    color:#999ba1;
+
+    font-size:7px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    margin-bottom:5px;
+}
+
+.brand-copy strong{
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    letter-spacing:-.8px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    height:428px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d71920 0%,
+            #d71920 24%,
+            #e9e7e1 24.1%,
+            #f7f6f2 100%
+        );
+}
+
+.hero-word{
+    position:absolute;
+
+    left:-15px;
+    bottom:-48px;
+
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:190px;
+
+    font-weight:900;
+
+    line-height:1;
+
+    color:rgba(255,255,255,.12);
+
+    letter-spacing:-16px;
+
+    user-select:none;
+
+    z-index:1;
+}
+
+.hero-side{
+    position:absolute;
+
+    left:10px;
+    top:130px;
+
+    writing-mode:vertical-rl;
+
+    transform:rotate(180deg);
+
+    color:#fff;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    z-index:8;
+}
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.product-card{
+    position:absolute;
+
+    left:34px;
+    right:18px;
+
+    top:16px;
+    bottom:15px;
+
+    border-radius:26px;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            #fff 0%,
+            #faf9f6 52%,
+            #e6e4dd 100%
+        );
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.17),
+        inset 0 0 0 1px rgba(255,255,255,.9);
+
+    overflow:hidden;
+
+    z-index:3;
+}
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.product-image{
+    position:absolute;
+
+    left:50%;
+    top:43%;
+
+    transform:translate(-50%,-50%);
+
+    width:94%;
+    height:318px;
+
+    object-fit:contain;
+    object-position:center;
+
+    z-index:5;
+
+    filter:
+        drop-shadow(
+            0 30px 22px rgba(0,0,0,.24)
+        );
+
+    transition:transform .3s ease;
+}
+
+.product-image:hover{
+    transform:
+        translate(-50%,-50%)
+        scale(1.025);
+}
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.placeholder{
+    position:absolute;
+
+    left:50%;
+    top:43%;
+
+    transform:translate(-50%,-50%);
+
+    width:235px;
+    height:285px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dededc,
+            #f7f7f5,
+            #d0d0ce
+        );
+
+    z-index:4;
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.premium-tag{
+    position:absolute;
+
+    left:17px;
+    top:17px;
+
+    z-index:20;
+
+    background:#111216;
+
+    color:#fff;
+
+    padding:9px 12px;
+
+    border-radius:7px;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1.5px;
+}
+
+/* =========================================================
+   DISCOUNT
+========================================================= */
+
+.discount{
+    position:absolute;
+
+    right:17px;
+    top:17px;
+
+    width:72px;
+    height:72px;
+
+    border-radius:50%;
+
+    background:#d71920;
+
+    color:#fff;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    z-index:20;
+
+    box-shadow:
+        0 12px 25px rgba(215,25,32,.30);
+
+    transform:rotate(7deg);
+}
+
+.discount span{
+    font-size:7px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.discount strong{
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:22px;
+
+    line-height:1;
+}
+
+/* =========================================================
+   BOTTOM THUMBNAILS
+========================================================= */
+
+.thumbnail-area{
+    position:absolute;
+
+    left:12px;
+    right:12px;
+    bottom:11px;
+
+    height:62px;
+
+    padding:7px 8px;
+
+    background:rgba(255,255,255,.97);
+
+    border-radius:12px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.14);
+
+    z-index:30;
+}
+
+.thumbnail-list{
+    width:100%;
+    height:100%;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            var(--thumb-count,1),
+            minmax(0,1fr)
+        );
+
+    gap:6px;
+
+    overflow:hidden;
+}
+
+.thumbnail{
+    min-width:0;
+    width:100%;
+    height:100%;
+
+    padding:2px;
+
+    border:2px solid #e1e1e1;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.thumbnail:hover{
+    transform:translateY(-2px);
+
+    border-color:#aaa;
+}
+
+.thumbnail.active{
+    border-color:#d71920;
+
+    box-shadow:
+        0 0 0 1px #d71920;
+}
+
+.thumbnail img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    background:#fafafa;
+}
+
+.empty-thumbs{
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#f6f6f6;
+
+    border-radius:7px;
+
+    color:#999;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.info{
+    height:125px;
+
+    background:#fff;
+
+    padding:14px 20px 11px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+}
+
+.info-top{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:15px;
+}
+
+.info-left{
+    min-width:0;
+}
+
+.kicker{
+    color:#999;
+
+    font-size:7px;
+
+    font-weight:800;
+
+    letter-spacing:1.8px;
+
+    margin-bottom:4px;
+}
+
+.item-number{
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:17px;
+
+    font-weight:900;
+}
+
+.size-pill{
+    display:inline-flex;
+
+    margin-top:6px;
+
+    padding:5px 8px;
+
+    background:#f0efeb;
+
+    border-left:3px solid #d71920;
+
+    border-radius:4px;
+
+    font-size:7px;
+
+    font-weight:900;
+}
+
+.price{
+    text-align:right;
+
+    flex-shrink:0;
+}
+
+.old-price{
+    color:#999;
+
+    font-size:10px;
+
+    text-decoration:line-through;
+}
+
+.offer-price{
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    line-height:.95;
+
+    letter-spacing:-2px;
+}
+
+.offer-price .currency{
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+.saving{
+    margin-top:4px;
+
+    color:#d71920;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.feature-strip{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:6px;
+}
+
+.feature{
+    min-width:0;
+
+    padding:6px;
+
+    background:#f5f4f0;
+
+    border-radius:5px;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:6.5px;
+
+    font-weight:800;
+
+    letter-spacing:.4px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    height:40px;
+
+    background:#111216;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:7px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.open-editor{
+    position:fixed;
+
+    top:22px;
+    left:22px;
+
+    z-index:900;
+
+    border:0;
+
+    border-radius:10px;
+
+    padding:12px 16px;
+
+    background:#d71920;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.35);
+
+    transition:.2s ease;
+}
+
+.open-editor:hover{
+    background:#b9151b;
+
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.overlay{
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    background:rgba(0,0,0,.65);
+
+    z-index:950;
+
+    backdrop-filter:blur(4px);
+}
+
+.overlay.show{
+    display:block;
+}
+
+/* =========================================================
+   EDITOR
+========================================================= */
+
+.editor{
+    position:fixed;
+
+    left:22px;
+    top:22px;
+    bottom:22px;
+
+    width:375px;
+
+    max-width:calc(100vw - 44px);
+
+    padding:22px;
+
+    overflow:auto;
+
+    display:none;
+
+    z-index:1000;
+
+    background:
+        linear-gradient(
+            180deg,
+            #202125,
+            #111216
+        );
+
+    color:#fff;
+
+    border:1px solid #38393e;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.7);
+}
+
+.editor.open{
+    display:block;
+
+    animation:editorOpen .22s ease;
+}
+
+@keyframes editorOpen{
+    from{
+        opacity:0;
+        transform:translateX(-15px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.editor-head{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:flex-start;
+
+    margin-bottom:22px;
+}
+
+.editor-head h2{
+    margin:0;
+
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:20px;
+}
+
+.editor-head p{
+    margin:5px 0 0;
+
+    color:#888;
+
+    font-size:9px;
+}
+
+.close-editor{
+    width:34px;
+    height:34px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#303136;
+
+    color:#fff;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.field{
+    margin-bottom:15px;
+}
+
+.field label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#aaa;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.2px;
+}
+
+.field input[type="text"],
+.field input[type="number"]{
+    width:100%;
+    height:42px;
+
+    padding:0 12px;
+
+    border:1px solid #3b3c41;
+
+    border-radius:8px;
+
+    outline:none;
+
+    background:#0e0f12;
+
+    color:#fff;
+
+    font-family:Inter,Arial,sans-serif;
+}
+
+.field input:focus{
+    border-color:#d71920;
+}
+
+/* =========================================================
+   UPLOAD
+========================================================= */
+
+.upload-box{
+    padding:14px;
+
+    border:1px dashed #555;
+
+    border-radius:10px;
+
+    background:#111216;
+}
+
+.upload-box p{
+    margin:0 0 10px;
+
+    color:#888;
+
+    font-size:8px;
+
+    line-height:1.5;
+}
+
+.upload-box input[type="file"]{
+    width:100%;
+
+    color:#aaa;
+
+    font-size:9px;
+}
+
+/* =========================================================
+   EDITOR GALLERY
+========================================================= */
+
+.editor-gallery{
+    margin-top:12px;
+
+    padding:10px;
+
+    background:#0d0e11;
+
+    border:1px solid #333;
+
+    border-radius:9px;
+}
+
+.gallery-title{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:9px;
+
+    color:#fff;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:.8px;
+}
+
+.gallery-count{
+    color:#777;
+}
+
+.editor-thumbs{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            var(--thumb-count,1),
+            minmax(0,1fr)
+        );
+
+    gap:5px;
+}
+
+.editor-thumb{
+    width:100%;
+
+    min-width:0;
+
+    aspect-ratio:1;
+
+    padding:0;
+
+    border:2px solid transparent;
+
+    border-radius:6px;
+
+    background:#fff;
+
+    overflow:hidden;
+
+    cursor:pointer;
+}
+
+.editor-thumb.active{
+    border-color:#d71920;
+}
+
+.editor-thumb img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+.help{
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:7px;
+
+    line-height:1.45;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:8px;
+
+    margin-top:20px;
+}
+
+.btn{
+    min-height:42px;
+
+    border:0;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:.4px;
+}
+
+.btn-primary{
+    background:#d71920;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:#b9151b;
+}
+
+.btn-dark{
+    background:#303136;
+    color:#fff;
+}
+
+.btn-light{
+    background:#eee;
+    color:#111;
+}
+
+.note{
+    margin-top:14px;
+
+    padding:11px;
+
+    border-radius:8px;
+
+    background:#0d0e11;
+
+    color:#777;
+
+    font-size:7.5px;
+
+    line-height:1.5;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .app{
+        padding:
+            65px
+            8px
+            15px;
+    }
+
+    .poster{
+        width:
+            min(
+                540px,
+                calc(100vw - 16px)
+            );
+
+        height:auto;
+
+        aspect-ratio:540 / 675;
+
+        border-radius:16px;
+    }
+
+    .open-editor{
+        top:9px;
+        left:9px;
+    }
+
+    .editor{
+        left:9px;
+        right:9px;
+
+        top:9px;
+        bottom:9px;
+
+        width:auto;
+
+        max-width:none;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     EDIT BUTTON
+========================================================= -->
+
+<button
+    class="open-editor"
+    id="openEditor">
+    ✎ EDIT POSTER
+</button>
+
+<div
+    class="overlay"
+    id="overlay">
+</div>
+
+<!-- =========================================================
+     EDITOR
+========================================================= -->
+
+<div
+    class="editor"
+    id="editor">
+
+    <div class="editor-head">
+
+        <div>
+            <h2>Poster Editor</h2>
+
+            <p>
+                Edit your product poster
+            </p>
+        </div>
+
+        <button
+            class="close-editor"
+            id="closeEditor">
+            ×
+        </button>
+
+    </div>
+
+    <!-- ITEM NUMBER -->
+
+    <div class="field">
+
+        <label>
+            Item Number
+        </label>
+
+        <input
+            id="itemInput"
+            type="text"
+            value="15-288-08">
+
+    </div>
+
+    <!-- SIZE -->
+
+    <div class="field">
+
+        <label>
+            Size
+        </label>
+
+        <input
+            id="sizeInput"
+            type="text"
+            value='ONLY CABINE SIZE 21"'>
+
+    </div>
+
+    <!-- OLD PRICE -->
+
+    <div class="field">
+
+        <label>
+            Old Price
+        </label>
+
+        <input
+            id="oldPriceInput"
+            type="number"
+            value="165">
+
+    </div>
+
+    <!-- OFFER PRICE -->
+
+    <div class="field">
+
+        <label>
+            Offer Price
+        </label>
+
+        <input
+            id="offerPriceInput"
+            type="number"
+            value="95">
+
+    </div>
+
+    <!-- PRODUCT IMAGES -->
+
+    <div class="field">
+
+        <label>
+            Product Images
+        </label>
+
+        <div class="upload-box">
+
+            <p>
+                Upload one or many images.
+                The first image becomes the main image.
+                Click any thumbnail to select it.
+            </p>
+
+            <input
+                id="productUpload"
+                type="file"
+                accept="image/*"
+                multiple>
+
+        </div>
+
+        <div class="editor-gallery">
+
+            <div class="gallery-title">
+
+                <span>
+                    PRODUCT GALLERY
+                </span>
+
+                <span
+                    class="gallery-count"
+                    id="galleryCount">
+                    0 images
+                </span>
+
+            </div>
+
+            <div
+                class="editor-thumbs"
+                id="editorThumbs">
+
+                <div
+                    style="
+                        grid-column:1/-1;
+                        text-align:center;
+                        color:#666;
+                        font-size:8px;
+                        padding:8px;
+                    ">
+                    No images uploaded
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <button
+            class="btn btn-primary"
+            id="photoButton">
+            DOWNLOAD PNG
+        </button>
+
+        <button
+            class="btn btn-primary"
+            id="pdfButton">
+            DOWNLOAD A4 PDF
+        </button>
+
+        <button
+            class="btn btn-dark"
+            id="resetButton">
+            RESET
+        </button>
+
+        <button
+            class="btn btn-light"
+            id="closeButton">
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     POSTER
+========================================================= -->
+
+<div class="app">
+
+    <div class="stage">
+
+        <div
+            class="poster"
+            id="poster">
+
+            <!-- TOP BAR -->
+
+            <div class="topbar">
+
+                <div class="logo-box">
+                    <img
+                        class="permanent-logo"
+                        id="logoImage"
+                        src="assets/IT.jpeg"
+                        alt="Company Logo">
+
+                </div>
+
+                <div class="brand-copy">
+
+                    <small>
+                        PREMIUM TRAVEL COLLECTION
+                    </small>
+
+                    <strong>
+                        SPECIAL OFFER
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- HERO -->
+
+            <div class="hero">
+
+                <div class="hero-word">
+                    IT
+                </div>
+
+                <div class="hero-side">
+                    TRAVEL • STYLE • COMFORT
+                </div>
+
+                <div class="product-card">
+
+                    <div class="premium-tag">
+                        PREMIUM LUGGAGE
+                    </div>
+
+                    <div class="discount">
+
+                        <span>
+                            SAVE
+                        </span>
+
+                        <strong id="savingCircle">
+                            70
+                        </strong>
+
+                        <span>
+                            DHS
+                        </span>
+
+                    </div>
+
+                    <img
+                        id="productImage"
+                        class="product-image"
+                        alt="Product"
+                        style="display:none;">
+
+                    <div
+                        id="placeholder"
+                        class="placeholder">
+                    </div>
+
+                    <!-- BOTTOM THUMBNAILS -->
+
+                    <div class="thumbnail-area">
+
+                        <div
+                            class="thumbnail-list"
+                            id="posterThumbs">
+
+                            <div class="empty-thumbs">
+                                UPLOAD PRODUCT IMAGES
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="info">
+
+                <div class="info-top">
+
+                    <div class="info-left">
+
+                        <div class="kicker">
+                            PRODUCT CODE
+                        </div>
+
+                        <div
+                            class="item-number"
+                            id="itemText">
+                            15-288-08
+                        </div>
+
+                        <div
+                            class="size-pill"
+                            id="sizeText">
+                            ONLY CABINE SIZE 21"
+                        </div>
+
+                    </div>
+
+                    <div class="price">
+
+                        <div
+                            class="old-price"
+                            id="oldPriceText">
+                            165 DHS
+                        </div>
+
+                        <div class="offer-price">
+
+                            <span class="currency">
+                                AED
+                            </span>
+
+                            <span id="offerPriceText">
+                                95
+                            </span>
+
+                        </div>
+
+                        <div class="saving">
+
+                            SAVE
+                            <span id="savingText">
+                                70
+                            </span>
+                            DHS
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="feature-strip">
+
+                    <div class="feature">
+                        PREMIUM QUALITY
+                    </div>
+
+                    <div class="feature">
+                        MODERN DESIGN
+                    </div>
+
+                    <div class="feature">
+                        TRAVEL READY
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+
+            <div class="footer">
+
+                LIMITED TIME OFFER • WHILE STOCK LASTS
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const editor =
+    document.getElementById("editor");
+
+const overlay =
+    document.getElementById("overlay");
+
+const openEditor =
+    document.getElementById("openEditor");
+
+const closeEditor =
+    document.getElementById("closeEditor");
+
+const closeButton =
+    document.getElementById("closeButton");
+
+const itemInput =
+    document.getElementById("itemInput");
+
+const sizeInput =
+    document.getElementById("sizeInput");
+
+const oldPriceInput =
+    document.getElementById("oldPriceInput");
+
+const offerPriceInput =
+    document.getElementById("offerPriceInput");
+
+const itemText =
+    document.getElementById("itemText");
+
+const sizeText =
+    document.getElementById("sizeText");
+
+const oldPriceText =
+    document.getElementById("oldPriceText");
+
+const offerPriceText =
+    document.getElementById("offerPriceText");
+
+const savingText =
+    document.getElementById("savingText");
+
+const savingCircle =
+    document.getElementById("savingCircle");
+
+const productUpload =
+    document.getElementById("productUpload");
+
+const productImage =
+    document.getElementById("productImage");
+
+const placeholder =
+    document.getElementById("placeholder");
+
+const posterThumbs =
+    document.getElementById("posterThumbs");
+
+const editorThumbs =
+    document.getElementById("editorThumbs");
+
+const galleryCount =
+    document.getElementById("galleryCount");
+
+const photoButton =
+    document.getElementById("photoButton");
+
+const pdfButton =
+    document.getElementById("pdfButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+
+/* =========================================================
+   EDITOR OPEN / CLOSE
+========================================================= */
+
+function openEditorPanel(){
+
+    editor.classList.add("open");
+
+    overlay.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+function closeEditorPanel(){
+
+    editor.classList.remove("open");
+
+    overlay.classList.remove("show");
+
+    document.body.style.overflow =
+        "";
+}
+
+openEditor.addEventListener(
+    "click",
+    openEditorPanel
+);
+
+closeEditor.addEventListener(
+    "click",
+    closeEditorPanel
+);
+
+closeButton.addEventListener(
+    "click",
+    closeEditorPanel
+);
+
+overlay.addEventListener(
+    "click",
+    closeEditorPanel
+);
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+            closeEditorPanel();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   UPDATE TEXT
+========================================================= */
+
+function updatePoster(){
+
+    itemText.textContent =
+        itemInput.value ||
+        "15-288-08";
+
+    sizeText.textContent =
+        sizeInput.value ||
+        'ONLY CABINE SIZE 21"';
+
+    const oldPrice =
+        Number(oldPriceInput.value) || 0;
+
+    const offerPrice =
+        Number(offerPriceInput.value) || 0;
+
+    const saving =
+        Math.max(
+            0,
+            oldPrice - offerPrice
+        );
+
+    oldPriceText.textContent =
+        oldPrice + " DHS";
+
+    offerPriceText.textContent =
+        offerPrice;
+
+    savingText.textContent =
+        saving;
+
+    savingCircle.textContent =
+        saving;
+}
+
+[
+    itemInput,
+    sizeInput,
+    oldPriceInput,
+    offerPriceInput
+].forEach(function(input){
+
+    input.addEventListener(
+        "input",
+        updatePoster
+    );
+
+});
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+let gallery = [];
+
+let activeIndex = 0;
+
+
+/* =========================================================
+   AUTO THUMB WIDTH
+========================================================= */
+
+function setGridCount(
+    element,
+    count
+){
+
+    count =
+        Math.max(
+            1,
+            count
+        );
+
+    element.style.setProperty(
+        "--thumb-count",
+        count
+    );
+}
+
+
+/* =========================================================
+   SET MAIN IMAGE
+========================================================= */
+
+function setMainImage(index){
+
+    if(!gallery[index]){
+        return;
+    }
+
+    activeIndex =
+        index;
+
+    productImage.src =
+        gallery[index].src;
+
+    productImage.style.display =
+        "block";
+
+    placeholder.style.display =
+        "none";
+
+    renderGallery();
+}
+
+
+/* =========================================================
+   CREATE THUMBNAIL
+========================================================= */
+
+function createThumbnail(
+    image,
+    index,
+    container,
+    editorMode
+){
+
+    const button =
+        document.createElement("button");
+
+    button.type =
+        "button";
+
+    button.className =
+        editorMode
+        ? "editor-thumb"
+        : "thumbnail";
+
+    if(index === activeIndex){
+
+        button.classList.add(
+            "active"
+        );
+    }
+
+    const img =
+        document.createElement("img");
+
+    img.src =
+        image.src;
+
+    img.alt =
+        "Product " + (index + 1);
+
+    button.appendChild(img);
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            setMainImage(index);
+
+        }
+    );
+
+    container.appendChild(button);
+}
+
+
+/* =========================================================
+   RENDER GALLERY
+========================================================= */
+
+function renderGallery(){
+
+    posterThumbs.innerHTML =
+        "";
+
+    editorThumbs.innerHTML =
+        "";
+
+    if(gallery.length === 0){
+
+        posterThumbs.innerHTML = `
+            <div class="empty-thumbs">
+                UPLOAD PRODUCT IMAGES
+            </div>
+        `;
+
+        editorThumbs.innerHTML = `
+            <div
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    color:#666;
+                    font-size:8px;
+                    padding:8px;
+                "
+            >
+                NO IMAGES UPLOADED
+            </div>
+        `;
+
+        galleryCount.textContent =
+            "0 images";
+
+        setGridCount(
+            posterThumbs,
+            1
+        );
+
+        setGridCount(
+            editorThumbs,
+            1
+        );
+
+        return;
+    }
+
+    galleryCount.textContent =
+        gallery.length +
+        (
+            gallery.length === 1
+            ? " image"
+            : " images"
+        );
+
+    setGridCount(
+        posterThumbs,
+        gallery.length
+    );
+
+    setGridCount(
+        editorThumbs,
+        gallery.length
+    );
+
+    gallery.forEach(
+        function(image,index){
+
+            createThumbnail(
+                image,
+                index,
+                posterThumbs,
+                false
+            );
+
+            createThumbnail(
+                image,
+                index,
+                editorThumbs,
+                true
+            );
+
+        }
+    );
+}
+
+
+/* =========================================================
+   IMAGE UPLOAD
+========================================================= */
+
+function readImages(files){
+
+    const validFiles =
+        Array.from(files || [])
+        .filter(function(file){
+
+            return (
+                file.type &&
+                file.type.startsWith("image/")
+            );
+
+        });
+
+    if(validFiles.length === 0){
+        return;
+    }
+
+    const promises =
+        validFiles.map(function(file){
+
+            return new Promise(
+                function(resolve){
+
+                    const reader =
+                        new FileReader();
+
+                    reader.onload =
+                        function(event){
+
+                            resolve({
+
+                                src:
+                                    event.target.result,
+
+                                name:
+                                    file.name
+
+                            });
+
+                        };
+
+                    reader.readAsDataURL(
+                        file
+                    );
+
+                }
+            );
+
+        });
+
+    Promise.all(promises)
+    .then(function(images){
+
+        const wasEmpty =
+            gallery.length === 0;
+
+        gallery =
+            gallery.concat(images);
+
+        if(wasEmpty){
+            activeIndex = 0;
+        }
+
+        setMainImage(
+            activeIndex
+        );
+
+    });
+}
+
+productUpload.addEventListener(
+    "change",
+    function(){
+
+        readImages(
+            this.files
+        );
+
+        this.value =
+            "";
+
+    }
+);
+
+
+/* =========================================================
+   WAIT FOR IMAGES
+========================================================= */
+
+async function waitForImages(){
+
+    const images =
+        Array.from(
+            document.querySelectorAll(
+                "#poster img"
+            )
+        );
+
+    await Promise.all(
+
+        images.map(function(img){
+
+            return new Promise(
+                function(resolve){
+
+                    if(
+                        img.complete &&
+                        img.naturalWidth > 0
+                    ){
+
+                        resolve();
+
+                    }else{
+
+                        img.onload =
+                            resolve;
+
+                        img.onerror =
+                            resolve;
+
+                    }
+
+                }
+            );
+
+        })
+
+    );
+
+    if(document.fonts){
+
+        await document.fonts.ready;
+
+    }
+}
+
+
+/* =========================================================
+   CREATE EXPORT CANVAS
+========================================================= */
+
+async function createCanvas(){
+
+    await waitForImages();
+
+    return await html2canvas(
+        document.getElementById("poster"),
+        {
+            scale:3,
+
+            useCORS:true,
+
+            allowTaint:false,
+
+            backgroundColor:"#f4f2ec",
+
+            logging:false
+        }
+    );
+}
+
+
+/* =========================================================
+   FILE NAME
+========================================================= */
+
+function cleanFileName(text){
+
+    return String(
+        text || "Product-Poster"
+    )
+    .replace(
+        /[<>:"/\\|?*]+/g,
+        "-"
+    )
+    .replace(
+        /\s+/g,
+        "-"
+    )
+    .replace(
+        /-+/g,
+        "-"
+    );
+}
+
+
+/* =========================================================
+   PNG DOWNLOAD
+========================================================= */
+
+photoButton.addEventListener(
+    "click",
+    async function(){
+
+        const oldText =
+            photoButton.textContent;
+
+        photoButton.textContent =
+            "CREATING...";
+
+        try{
+
+            const canvas =
+                await createCanvas();
+
+            const link =
+                document.createElement("a");
+
+            link.download =
+                "Product-Poster-" +
+                cleanFileName(
+                    itemInput.value
+                ) +
+                ".png";
+
+            link.href =
+                canvas.toDataURL(
+                    "image/png",
+                    1
+                );
+
+            link.click();
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                "PNG download failed. Please try again."
+            );
+
+        }
+
+        photoButton.textContent =
+            oldText;
+    }
+);
+
+
+/* =========================================================
+   A4 PDF DOWNLOAD
+========================================================= */
+
+pdfButton.addEventListener(
+    "click",
+    async function(){
+
+        const oldText =
+            pdfButton.textContent;
+
+        pdfButton.textContent =
+            "CREATING...";
+
+        try{
+
+            const canvas =
+                await createCanvas();
+
+            const image =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    .98
+                );
+
+            const {
+                jsPDF
+            } =
+                window.jspdf;
+
+            const pdf =
+                new jsPDF({
+
+                    orientation:
+                        "portrait",
+
+                    unit:
+                        "mm",
+
+                    format:
+                        "a4",
+
+                    compress:
+                        true
+                });
+
+            const pageWidth =
+                210;
+
+            const pageHeight =
+                297;
+
+            const margin =
+                7;
+
+            const maxWidth =
+                pageWidth -
+                margin * 2;
+
+            const maxHeight =
+                pageHeight -
+                margin * 2;
+
+            const ratio =
+                canvas.width /
+                canvas.height;
+
+            let width =
+                maxWidth;
+
+            let height =
+                width / ratio;
+
+            if(height > maxHeight){
+
+                height =
+                    maxHeight;
+
+                width =
+                    height * ratio;
+            }
+
+            const x =
+                (pageWidth - width) / 2;
+
+            const y =
+                (pageHeight - height) / 2;
+
+            pdf.addImage(
+                image,
+                "JPEG",
+                x,
+                y,
+                width,
+                height,
+                undefined,
+                "FAST"
+            );
+
+            pdf.save(
+                "Product-Poster-" +
+                cleanFileName(
+                    itemInput.value
+                ) +
+                ".pdf"
+            );
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                "PDF download failed. Please try again."
+            );
+
+        }
+
+        pdfButton.textContent =
+            oldText;
+    }
+);
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+resetButton.addEventListener(
+    "click",
+    function(){
+
+        itemInput.value =
+            "15-288-08";
+
+        sizeInput.value =
+            'ONLY CABINE SIZE 21"';
+
+        oldPriceInput.value =
+            "165";
+
+        offerPriceInput.value =
+            "95";
+
+        gallery = [];
+
+        activeIndex = 0;
+
+        productImage.src =
+            "";
+
+        productImage.style.display =
+            "none";
+
+        placeholder.style.display =
+            "block";
+
+        productUpload.value =
+            "";
+
+        updatePoster();
+
+        renderGallery();
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updatePoster();
+
+renderGallery();
+
+</script>
+
+</body>
+</html>
