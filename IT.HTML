@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Premium Product Poster</title>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 
 <style>
 
@@ -37,9 +29,7 @@ body{
 }
 
 body{
-
     font-family:Inter,Arial,sans-serif;
-
     background:
         radial-gradient(
             circle at 10% 10%,
@@ -52,17 +42,10 @@ body{
             transparent 30%
         ),
         #031525;
-
     color:#111;
 }
 
-
-/* =========================================================
-   COLORS
-========================================================= */
-
 :root{
-
     --navy:#082746;
     --navy-dark:#061b31;
     --navy-light:#0b3155;
@@ -80,25 +63,17 @@ body{
 ========================================================= */
 
 .app{
-
     min-height:100vh;
-
     padding:80px 20px 30px;
 
     display:flex;
-
     justify-content:center;
-
     align-items:flex-start;
 }
 
-
 .poster-wrap{
-
     width:100%;
-
     display:flex;
-
     justify-content:center;
 }
 
@@ -108,11 +83,9 @@ body{
 ========================================================= */
 
 .poster{
-
     position:relative;
 
     width:794px;
-
     height:1123px;
 
     overflow:hidden;
@@ -129,7 +102,6 @@ body{
 ========================================================= */
 
 .topbar{
-
     position:relative;
 
     height:135px;
@@ -147,21 +119,16 @@ body{
     color:#fff;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     z-index:100;
 }
 
-
 .topbar::after{
-
     content:"";
 
     position:absolute;
-
     left:0;
     bottom:0;
 
@@ -179,19 +146,15 @@ body{
         );
 }
 
-
 .topbar::before{
-
     content:"";
 
     position:absolute;
 
     left:0;
-
     bottom:-5px;
 
     width:395px;
-
     height:13px;
 
     background:var(--gold-light);
@@ -211,10 +174,8 @@ body{
 ========================================================= */
 
 .logo-box{
-
     width:215px;
-
-    height:85px;
+    height:95px;
 
     padding:8px;
 
@@ -223,9 +184,7 @@ body{
     border-radius:14px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     overflow:hidden;
@@ -234,29 +193,22 @@ body{
         0 8px 20px rgba(0,0,0,.18);
 }
 
-
 .logo-box img{
-
     display:block;
 
     width:auto;
-
     height:auto;
 
     max-width:100%;
-
     max-height:95px;
 
     object-fit:contain;
 }
 
-
 .logo-fallback{
-
     color:var(--navy);
 
     font-size:12px;
-
     font-weight:900;
 
     letter-spacing:2px;
@@ -268,13 +220,10 @@ body{
 ========================================================= */
 
 .brand-copy{
-
     text-align:right;
 }
 
-
 .brand-copy small{
-
     display:block;
 
     margin-bottom:8px;
@@ -282,31 +231,24 @@ body{
     color:var(--gold-light);
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:3px;
 }
 
-
 .brand-copy strong{
-
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:30px;
-
     font-weight:900;
 }
 
-
 .brand-copy::after{
-
     content:"";
 
     display:block;
 
     width:90px;
-
     height:6px;
 
     margin:14px 0 0 auto;
@@ -327,7 +269,6 @@ body{
 ========================================================= */
 
 .hero{
-
     position:relative;
 
     height:713px;
@@ -344,19 +285,15 @@ body{
         );
 }
 
-
 .hero-word{
-
     position:absolute;
 
     left:-45px;
-
     bottom:-90px;
 
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:300px;
-
     font-weight:900;
 
     line-height:1;
@@ -366,13 +303,10 @@ body{
     pointer-events:none;
 }
 
-
 .hero-side{
-
     position:absolute;
 
     left:18px;
-
     top:185px;
 
     writing-mode:vertical-rl;
@@ -382,7 +316,6 @@ body{
     color:#fff;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:4px;
@@ -390,19 +323,15 @@ body{
     z-index:10;
 }
 
-
 .hero::before{
-
     content:"";
 
     position:absolute;
 
     left:-60px;
-
     top:-12px;
 
     width:500px;
-
     height:9px;
 
     background:
@@ -417,19 +346,15 @@ body{
     z-index:20;
 }
 
-
 .hero::after{
-
     content:"";
 
     position:absolute;
 
     left:-50px;
-
     bottom:155px;
 
     width:190px;
-
     height:9px;
 
     background:
@@ -450,15 +375,12 @@ body{
 ========================================================= */
 
 .product-card{
-
     position:absolute;
 
     left:55px;
-
     right:30px;
 
     top:28px;
-
     bottom:22px;
 
     border-radius:34px;
@@ -488,11 +410,9 @@ body{
 ========================================================= */
 
 .premium-tag{
-
     position:absolute;
 
     left:24px;
-
     top:24px;
 
     z-index:100;
@@ -511,7 +431,6 @@ body{
     color:var(--gold-light);
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:2px;
@@ -523,15 +442,12 @@ body{
 ========================================================= */
 
 .discount{
-
     position:absolute;
 
     right:24px;
-
     top:24px;
 
     width:104px;
-
     height:104px;
 
     border-radius:50%;
@@ -547,11 +463,9 @@ body{
     color:var(--navy);
 
     display:flex;
-
     flex-direction:column;
 
     justify-content:center;
-
     align-items:center;
 
     z-index:100;
@@ -560,19 +474,14 @@ body{
         0 15px 35px rgba(5,30,55,.18);
 }
 
-
 .discount span{
-
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:1px;
 }
 
-
 .discount strong{
-
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:31px;
@@ -585,58 +494,47 @@ body{
 
 /* =========================================================
    MAIN IMAGE AREA
+
+   IMPORTANT:
+   This exact area is also used by the export engine.
 ========================================================= */
 
 .main-image-area{
-
     position:absolute;
 
     left:50%;
-
     top:42%;
 
     transform:
         translate(-50%,-50%);
 
     width:78%;
-
     height:505px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     overflow:hidden;
 
     z-index:40;
-
-    /*
-    Important:
-    This gives the export renderer a predictable box.
-    */
 }
 
 
 /* =========================================================
    MAIN IMAGE
 
-   DO NOT CHANGE TO OBJECT-FIT:COVER
-
-   contain = entire image visible
+   CONTAIN = NEVER STRETCH
 ========================================================= */
 
 .main-product-image{
-
     display:block;
 
     width:100% !important;
-
     height:100% !important;
 
     max-width:none !important;
-
     max-height:none !important;
 
     object-fit:contain !important;
@@ -661,13 +559,10 @@ body{
 ========================================================= */
 
 .product-placeholder{
-
     width:350px;
-
     height:420px;
 
     max-width:100%;
-
     max-height:100%;
 
     border-radius:30px;
@@ -687,13 +582,10 @@ body{
 ========================================================= */
 
 .thumbnail-area{
-
     position:absolute;
 
     left:18px;
-
     right:18px;
-
     bottom:17px;
 
     height:105px;
@@ -702,7 +594,7 @@ body{
 
     border-radius:15px;
 
-    background:#ffffff;
+    background:#fff;
 
     box-shadow:
         0 10px 30px rgba(5,30,55,.13);
@@ -712,15 +604,11 @@ body{
     overflow:hidden;
 }
 
-
 .thumbnail-scroll{
-
     width:100%;
-
     height:100%;
 
     overflow-x:auto;
-
     overflow-y:hidden;
 
     scrollbar-width:thin;
@@ -730,11 +618,8 @@ body{
         #eee;
 }
 
-
 .thumbnail-list{
-
     width:100%;
-
     height:100%;
 
     display:flex;
@@ -748,12 +633,10 @@ body{
 /* =========================================================
    THUMBNAIL
 
-   IMPORTANT:
-   FLEX:1 MAKES ALL IMAGES FILL THE WHOLE BAR.
+   ANY NUMBER OF IMAGES WILL FIT THE WIDTH
 ========================================================= */
 
 .thumbnail{
-
     position:relative;
 
     flex:1 1 0;
@@ -784,19 +667,15 @@ body{
         box-shadow .18s ease;
 }
 
-
 .thumbnail-inner{
-
     position:relative;
 
     width:100%;
-
     height:100%;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     overflow:hidden;
@@ -806,21 +685,16 @@ body{
     background:#faf9f5;
 }
 
-
 .thumbnail img{
-
     display:block;
 
     width:100% !important;
-
     height:100% !important;
 
     max-width:100% !important;
-
     max-height:100% !important;
 
     object-fit:contain !important;
-
     object-position:center center !important;
 
     flex:none;
@@ -830,35 +704,25 @@ body{
     -webkit-user-drag:none;
 }
 
-
 .thumbnail.active{
-
-    border-color:
-        var(--gold-dark);
+    border-color:var(--gold-dark);
 
     box-shadow:
         0 0 0 1px var(--gold),
         0 7px 18px rgba(5,30,55,.15);
 }
 
-
 .thumbnail:hover{
-
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
 }
 
-
 .thumbnail-number{
-
     position:absolute;
 
     left:5px;
-
     bottom:5px;
 
     min-width:18px;
-
     height:18px;
 
     padding:0 4px;
@@ -866,7 +730,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:4px;
@@ -877,7 +740,6 @@ body{
     color:#fff;
 
     font-size:7px;
-
     font-weight:900;
 
     pointer-events:none;
@@ -885,17 +747,13 @@ body{
     z-index:5;
 }
 
-
 .empty-thumbnails{
-
     width:100%;
-
     height:100%;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:8px;
@@ -905,7 +763,6 @@ body{
     color:#999;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:1px;
@@ -913,11 +770,10 @@ body{
 
 
 /* =========================================================
-   INFO
+   INFORMATION
 ========================================================= */
 
 .info{
-
     height:215px;
 
     padding:25px 32px 20px;
@@ -931,9 +787,7 @@ body{
     justify-content:space-between;
 }
 
-
 .info-top{
-
     display:flex;
 
     justify-content:space-between;
@@ -943,35 +797,27 @@ body{
     gap:20px;
 }
 
-
 .kicker{
-
     margin-bottom:6px;
 
     color:#969696;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:2px;
 }
 
-
 .item-number{
-
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:27px;
-
     font-weight:900;
 
     color:#111;
 }
 
-
 .size-pill{
-
     display:inline-block;
 
     margin-top:10px;
@@ -994,7 +840,6 @@ body{
     color:var(--navy);
 
     font-size:10px;
-
     font-weight:900;
 }
 
@@ -1004,13 +849,10 @@ body{
 ========================================================= */
 
 .price{
-
     text-align:right;
 }
 
-
 .old-price{
-
     color:#999;
 
     font-size:15px;
@@ -1018,9 +860,7 @@ body{
     text-decoration:line-through;
 }
 
-
 .offer-price{
-
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:54px;
@@ -1034,17 +874,13 @@ body{
     color:var(--navy);
 }
 
-
 .currency{
-
     font-size:15px;
 
     letter-spacing:1px;
 }
 
-
 .saving{
-
     display:inline-block;
 
     margin-top:7px;
@@ -1063,7 +899,6 @@ body{
     color:var(--navy);
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:1px;
@@ -1075,7 +910,6 @@ body{
 ========================================================= */
 
 .feature-strip{
-
     display:grid;
 
     grid-template-columns:
@@ -1084,9 +918,7 @@ body{
     gap:10px;
 }
 
-
 .feature{
-
     padding:11px;
 
     border-radius:8px;
@@ -1119,7 +951,6 @@ body{
 ========================================================= */
 
 .footer{
-
     position:relative;
 
     height:60px;
@@ -1127,7 +958,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     background:
@@ -1149,19 +979,15 @@ body{
     overflow:hidden;
 }
 
-
 .footer::before{
-
     content:"";
 
     position:absolute;
 
     left:0;
-
     bottom:0;
 
     width:120px;
-
     height:8px;
 
     background:var(--gold-light);
@@ -1171,19 +997,15 @@ body{
         translate(-30px,0);
 }
 
-
 .footer::after{
-
     content:"";
 
     position:absolute;
 
     right:0;
-
     bottom:0;
 
     width:120px;
-
     height:8px;
 
     background:var(--gold-light);
@@ -1199,11 +1021,9 @@ body{
 ========================================================= */
 
 .edit-button{
-
     position:fixed;
 
     top:20px;
-
     left:20px;
 
     z-index:900;
@@ -1226,7 +1046,6 @@ body{
     color:var(--gold-light);
 
     font-size:10px;
-
     font-weight:900;
 
     cursor:pointer;
@@ -1237,15 +1056,12 @@ body{
     transition:.2s;
 }
 
-
 .edit-button:hover{
-
     background:var(--gold);
 
     color:var(--navy);
 
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
 }
 
 
@@ -1254,7 +1070,6 @@ body{
 ========================================================= */
 
 .editor-overlay{
-
     position:fixed;
 
     inset:0;
@@ -1266,29 +1081,23 @@ body{
     background:
         rgba(3,17,30,.75);
 
-    backdrop-filter:
-        blur(6px);
+    backdrop-filter:blur(6px);
 }
 
-
 .editor-overlay.show{
-
     display:block;
 }
 
 
 /* =========================================================
-   EDITOR PANEL
+   EDITOR
 ========================================================= */
 
 .editor-panel{
-
     position:fixed;
 
     top:20px;
-
     left:20px;
-
     bottom:20px;
 
     width:390px;
@@ -1323,36 +1132,23 @@ body{
         0 35px 100px rgba(0,0,0,.75);
 }
 
-
 .editor-panel.open{
-
     display:block;
 
     animation:
         editorIn .2s ease;
 }
 
-
 @keyframes editorIn{
-
     from{
-
         opacity:0;
-
-        transform:
-            translateX(-15px);
-
+        transform:translateX(-15px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateX(0);
-
+        transform:translateX(0);
     }
-
 }
 
 
@@ -1361,7 +1157,6 @@ body{
 ========================================================= */
 
 .editor-header{
-
     display:flex;
 
     justify-content:space-between;
@@ -1371,9 +1166,7 @@ body{
     margin-bottom:22px;
 }
 
-
 .editor-header h2{
-
     margin:0;
 
     font-family:Montserrat,Arial,sans-serif;
@@ -1381,9 +1174,7 @@ body{
     font-size:21px;
 }
 
-
 .editor-header p{
-
     margin:5px 0 0;
 
     color:#aeb8c1;
@@ -1391,11 +1182,8 @@ body{
     font-size:9px;
 }
 
-
 .close-editor{
-
     width:35px;
-
     height:35px;
 
     border:
@@ -1420,13 +1208,10 @@ body{
 ========================================================= */
 
 .form-group{
-
     margin-bottom:16px;
 }
 
-
 .form-group label{
-
     display:block;
 
     margin-bottom:7px;
@@ -1434,7 +1219,6 @@ body{
     color:var(--gold-light);
 
     font-size:8px;
-
     font-weight:900;
 
     text-transform:uppercase;
@@ -1442,12 +1226,9 @@ body{
     letter-spacing:1.2px;
 }
 
-
 .form-group input[type="text"],
 .form-group input[type="number"]{
-
     width:100%;
-
     height:43px;
 
     padding:0 12px;
@@ -1467,9 +1248,7 @@ body{
     font-family:Inter,Arial,sans-serif;
 }
 
-
 .form-group input:focus{
-
     border-color:var(--gold);
 
     box-shadow:
@@ -1483,7 +1262,6 @@ body{
 ========================================================= */
 
 .upload-area{
-
     padding:15px;
 
     border:
@@ -1496,9 +1274,7 @@ body{
         rgba(255,255,255,.04);
 }
 
-
 .upload-area p{
-
     margin:0 0 11px;
 
     color:#aeb8c1;
@@ -1508,9 +1284,7 @@ body{
     line-height:1.5;
 }
 
-
 .upload-button{
-
     display:block;
 
     width:100%;
@@ -1531,21 +1305,16 @@ body{
     text-align:center;
 
     font-size:9px;
-
     font-weight:900;
 
     cursor:pointer;
 }
 
-
 .upload-button:hover{
-
     background:var(--gold);
 }
 
-
 #imageInput{
-
     display:none;
 }
 
@@ -1555,7 +1324,6 @@ body{
 ========================================================= */
 
 .gallery-box{
-
     margin-top:12px;
 
     padding:11px;
@@ -1570,9 +1338,7 @@ body{
         rgba(0,0,0,.16);
 }
 
-
 .gallery-header{
-
     display:flex;
 
     justify-content:space-between;
@@ -1588,15 +1354,11 @@ body{
     letter-spacing:1px;
 }
 
-
 .gallery-count{
-
     color:var(--gold-light);
 }
 
-
 .editor-gallery{
-
     display:flex;
 
     gap:6px;
@@ -1606,16 +1368,13 @@ body{
     padding-bottom:4px;
 }
 
-
 .editor-image{
-
     position:relative;
 
     flex:
         0 0 75px;
 
     width:75px;
-
     height:75px;
 
     padding:3px;
@@ -1631,27 +1390,20 @@ body{
     overflow:hidden;
 }
 
-
 .editor-image.active{
-
-    border-color:
-        var(--gold-light);
+    border-color:var(--gold-light);
 
     box-shadow:
         0 0 0 1px var(--gold);
 }
 
-
 .editor-image-inner{
-
     width:100%;
-
     height:100%;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     overflow:hidden;
@@ -1661,25 +1413,19 @@ body{
     border-radius:4px;
 }
 
-
 .editor-image img{
-
     display:block;
 
     width:100% !important;
-
     height:100% !important;
 
     max-width:100% !important;
-
     max-height:100% !important;
 
     object-fit:contain !important;
 }
 
-
 .select-image{
-
     position:absolute;
 
     inset:0;
@@ -1693,17 +1439,13 @@ body{
     z-index:2;
 }
 
-
 .delete-image{
-
     position:absolute;
 
     right:3px;
-
     top:3px;
 
     width:21px;
-
     height:21px;
 
     border:0;
@@ -1723,17 +1465,13 @@ body{
     z-index:5;
 }
 
-
 .image-number{
-
     position:absolute;
 
     left:4px;
-
     bottom:4px;
 
     min-width:18px;
-
     height:18px;
 
     padding:0 4px;
@@ -1743,7 +1481,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     background:
@@ -1752,7 +1489,6 @@ body{
     color:#fff;
 
     font-size:7px;
-
     font-weight:900;
 
     pointer-events:none;
@@ -1764,7 +1500,6 @@ body{
 ========================================================= */
 
 .action-buttons{
-
     display:grid;
 
     grid-template-columns:
@@ -1775,9 +1510,7 @@ body{
     margin-top:20px;
 }
 
-
 .action-button{
-
     min-height:43px;
 
     border:0;
@@ -1791,17 +1524,13 @@ body{
     cursor:pointer;
 }
 
-
 .action-button:disabled{
-
     opacity:.55;
 
     cursor:wait;
 }
 
-
 .btn-gold{
-
     background:
         linear-gradient(
             90deg,
@@ -1812,9 +1541,7 @@ body{
     color:var(--navy);
 }
 
-
 .btn-dark{
-
     background:
         rgba(255,255,255,.09);
 
@@ -1825,17 +1552,13 @@ body{
         rgba(255,255,255,.15);
 }
 
-
 .btn-light{
-
     background:#fff;
 
     color:var(--navy);
 }
 
-
 .editor-note{
-
     margin-top:13px;
 
     padding:11px;
@@ -1864,12 +1587,10 @@ body{
 @media(max-width:700px){
 
     .app{
-
         padding:75px 8px 20px;
     }
 
     .poster{
-
         width:
             calc(100vw - 16px);
 
@@ -1881,13 +1602,10 @@ body{
     }
 
     .editor-panel{
-
         left:8px;
-
         right:8px;
 
         top:8px;
-
         bottom:8px;
 
         width:auto;
@@ -1896,31 +1614,24 @@ body{
     }
 
     .brand-copy strong{
-
         font-size:15px;
     }
 
     .brand-copy small{
-
         font-size:6px;
-
         letter-spacing:1px;
     }
 
     .logo-box{
-
         width:29%;
-
         height:65%;
     }
 
     .hero-word{
-
         font-size:170px;
     }
 
     .offer-price{
-
         font-size:
             clamp(
                 20px,
@@ -1930,7 +1641,6 @@ body{
     }
 
     .item-number{
-
         font-size:
             clamp(
                 11px,
@@ -1940,32 +1650,20 @@ body{
     }
 
     .feature{
-
         font-size:6px;
-
         padding:6px 3px;
     }
 
     .footer{
-
         font-size:5px;
-
         letter-spacing:1px;
     }
-
 }
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
 
 @media(max-width:420px){
 
     .thumbnail-area{
-
         left:10px;
-
         right:10px;
 
         height:92px;
@@ -1974,32 +1672,25 @@ body{
     }
 
     .thumbnail-list{
-
         gap:5px;
     }
 
     .thumbnail{
-
         padding:3px;
     }
 
     .thumbnail-number{
-
         left:3px;
-
         bottom:3px;
 
         min-width:15px;
-
         height:15px;
 
         font-size:6px;
     }
-
 }
 
 </style>
-
 </head>
 
 
@@ -2011,8 +1702,8 @@ body{
 ========================================================= -->
 
 <button
-class="edit-button"
-id="openEditorButton">
+    class="edit-button"
+    id="openEditorButton">
 
     ✎ EDIT POSTER
 
@@ -2020,22 +1711,22 @@ id="openEditorButton">
 
 
 <!-- =========================================================
-     EDITOR OVERLAY
+     OVERLAY
 ========================================================= -->
 
 <div
-class="editor-overlay"
-id="editorOverlay">
+    class="editor-overlay"
+    id="editorOverlay">
 </div>
 
 
 <!-- =========================================================
-     EDITOR PANEL
+     EDITOR
 ========================================================= -->
 
 <div
-class="editor-panel"
-id="editorPanel">
+    class="editor-panel"
+    id="editorPanel">
 
 
     <div class="editor-header">
@@ -2052,10 +1743,9 @@ id="editorPanel">
 
         </div>
 
-
         <button
-        class="close-editor"
-        id="closeEditorButton">
+            class="close-editor"
+            id="closeEditorButton">
 
             ×
 
@@ -2064,8 +1754,6 @@ id="editorPanel">
     </div>
 
 
-    <!-- PRODUCT CODE -->
-
     <div class="form-group">
 
         <label>
@@ -2073,14 +1761,12 @@ id="editorPanel">
         </label>
 
         <input
-        id="itemInput"
-        type="text"
-        value="15-288-08">
+            id="itemInput"
+            type="text"
+            value="15-288-08">
 
     </div>
 
-
-    <!-- DESCRIPTION -->
 
     <div class="form-group">
 
@@ -2089,14 +1775,12 @@ id="editorPanel">
         </label>
 
         <input
-        id="sizeInput"
-        type="text"
-        value='ONLY CABINE SIZE 21"'>
+            id="sizeInput"
+            type="text"
+            value='ONLY CABINE SIZE 21"'>
 
     </div>
 
-
-    <!-- OLD PRICE -->
 
     <div class="form-group">
 
@@ -2105,14 +1789,12 @@ id="editorPanel">
         </label>
 
         <input
-        id="oldPriceInput"
-        type="number"
-        value="165">
+            id="oldPriceInput"
+            type="number"
+            value="165">
 
     </div>
 
-
-    <!-- OFFER PRICE -->
 
     <div class="form-group">
 
@@ -2121,14 +1803,12 @@ id="editorPanel">
         </label>
 
         <input
-        id="offerPriceInput"
-        type="number"
-        value="95">
+            id="offerPriceInput"
+            type="number"
+            value="95">
 
     </div>
 
-
-    <!-- IMAGE UPLOAD -->
 
     <div class="form-group">
 
@@ -2136,30 +1816,27 @@ id="editorPanel">
             Product Images
         </label>
 
-
         <div class="upload-area">
 
             <p>
-                Upload as many images as you want.
-                Every image keeps its original proportions.
-                Thumbnails automatically fill the complete width.
+                Upload one or many product images.
+                Images will never be stretched.
+                Thumbnails automatically fit the available width.
             </p>
 
-
             <label
-            class="upload-button"
-            for="imageInput">
+                class="upload-button"
+                for="imageInput">
 
                 + ADD PRODUCT IMAGES
 
             </label>
 
-
             <input
-            id="imageInput"
-            type="file"
-            accept="image/*"
-            multiple>
+                id="imageInput"
+                type="file"
+                accept="image/*"
+                multiple>
 
         </div>
 
@@ -2173,8 +1850,8 @@ id="editorPanel">
                 </span>
 
                 <span
-                class="gallery-count"
-                id="galleryCount">
+                    class="gallery-count"
+                    id="galleryCount">
 
                     0 IMAGES
 
@@ -2184,17 +1861,17 @@ id="editorPanel">
 
 
             <div
-            class="editor-gallery"
-            id="editorGallery">
+                class="editor-gallery"
+                id="editorGallery">
 
                 <div
-                style="
-                    color:#777;
-                    width:100%;
-                    text-align:center;
-                    font-size:8px;
-                    padding:10px;
-                ">
+                    style="
+                        color:#777;
+                        width:100%;
+                        text-align:center;
+                        font-size:8px;
+                        padding:10px;
+                    ">
 
                     NO IMAGES
 
@@ -2207,13 +1884,11 @@ id="editorPanel">
     </div>
 
 
-    <!-- ACTION BUTTONS -->
-
     <div class="action-buttons">
 
         <button
-        class="action-button btn-gold"
-        id="downloadPngButton">
+            class="action-button btn-gold"
+            id="downloadPngButton">
 
             DOWNLOAD A4 PNG
 
@@ -2221,8 +1896,8 @@ id="editorPanel">
 
 
         <button
-        class="action-button btn-gold"
-        id="downloadPdfButton">
+            class="action-button btn-gold"
+            id="downloadPdfButton">
 
             DOWNLOAD A4 PDF
 
@@ -2230,8 +1905,8 @@ id="editorPanel">
 
 
         <button
-        class="action-button btn-dark"
-        id="clearImagesButton">
+            class="action-button btn-dark"
+            id="clearImagesButton">
 
             CLEAR IMAGES
 
@@ -2239,8 +1914,8 @@ id="editorPanel">
 
 
         <button
-        class="action-button btn-light"
-        id="closePanelButton">
+            class="action-button btn-light"
+            id="closePanelButton">
 
             DONE
 
@@ -2252,18 +1927,30 @@ id="editorPanel">
     <div class="editor-note">
 
         <strong style="color:#fff;">
-            EXPORT FIX
+            EXPORT FIXED
         </strong>
 
         <br><br>
 
-        Main product image is rendered using a
-        dedicated contain calculation during export.
+        The main product image is drawn directly
+        onto the final A4 export canvas.
 
         <br><br>
 
-        This prevents the PDF from cropping,
-        shifting or stretching the product image.
+        Therefore it will appear in:
+
+        <br>
+        • A4 PNG
+        <br>
+        • A4 PDF
+
+        <br><br>
+
+        The image uses
+        <strong style="color:#fff;">
+            CONTAIN
+        </strong>
+        mode so the complete product is visible.
 
         <br><br>
 
@@ -2276,11 +1963,10 @@ id="editorPanel">
 
         PDF:
         <strong style="color:#fff;">
-            210 × 297 mm A4
+            210 × 297 mm
         </strong>
 
     </div>
-
 
 </div>
 
@@ -2294,36 +1980,35 @@ id="editorPanel">
 <div class="poster-wrap">
 
 <div
-class="poster"
-id="poster">
+    class="poster"
+    id="poster">
 
 
     <!-- HEADER -->
 
     <div class="topbar">
 
-
         <div class="logo-box">
 
             <!--
-                KEEP logo.png IN THE SAME FOLDER
+                KEEP logo.png IN SAME FOLDER
                 AS THIS HTML FILE
             -->
 
             <img
-            src="assets/IT.jpeg"
-            alt="Permanent Logo"
-            id="logoImage"
-            onerror="
-                this.style.display='none';
-                document.getElementById('logoFallback').style.display='block';
-            ">
-
+                src="assets/IT.jpeg"
+                alt="Permanent Logo"
+                id="logoImage"
+                onerror="
+                    this.style.display='none';
+                    document.getElementById('logoFallback').style.display='block';
+                "
+            >
 
             <div
-            class="logo-fallback"
-            id="logoFallback"
-            style="display:none;">
+                class="logo-fallback"
+                id="logoFallback"
+                style="display:none;">
 
                 YOUR LOGO
 
@@ -2344,14 +2029,12 @@ id="poster">
 
         </div>
 
-
     </div>
 
 
     <!-- HERO -->
 
     <div class="hero">
-
 
         <div class="hero-word">
             IT
@@ -2378,7 +2061,7 @@ id="poster">
                 </span>
 
                 <strong
-                id="savingCircle">
+                    id="savingCircle">
 
                     70
 
@@ -2391,39 +2074,42 @@ id="poster">
             </div>
 
 
-            <!-- MAIN IMAGE -->
+            <!-- =================================================
+                 MAIN IMAGE AREA
+            ================================================= -->
 
-            <div class="main-image-area"
-                 id="mainImageArea">
-
+            <div
+                class="main-image-area"
+                id="mainImageArea">
 
                 <img
-                class="main-product-image"
-                id="mainProductImage"
-                alt="Product Image">
-
+                    class="main-product-image"
+                    id="mainProductImage"
+                    alt="Product Image"
+                >
 
                 <div
-                class="product-placeholder"
-                id="productPlaceholder">
+                    class="product-placeholder"
+                    id="productPlaceholder">
                 </div>
-
 
             </div>
 
 
-            <!-- THUMBNAILS -->
+            <!-- =================================================
+                 THUMBNAILS
+            ================================================= -->
 
             <div class="thumbnail-area">
 
                 <div class="thumbnail-scroll">
 
                     <div
-                    class="thumbnail-list"
-                    id="thumbnailList">
+                        class="thumbnail-list"
+                        id="thumbnailList">
 
                         <div
-                        class="empty-thumbnails">
+                            class="empty-thumbnails">
 
                             UPLOAD PRODUCT IMAGES
 
@@ -2445,9 +2131,7 @@ id="poster">
 
     <div class="info">
 
-
         <div class="info-top">
-
 
             <div>
 
@@ -2455,19 +2139,17 @@ id="poster">
                     PRODUCT CODE
                 </div>
 
-
                 <div
-                class="item-number"
-                id="itemText">
+                    class="item-number"
+                    id="itemText">
 
                     15-288-08
 
                 </div>
 
-
                 <div
-                class="size-pill"
-                id="sizeText">
+                    class="size-pill"
+                    id="sizeText">
 
                     ONLY CABINE SIZE 21"
 
@@ -2478,10 +2160,9 @@ id="poster">
 
             <div class="price">
 
-
                 <div
-                class="old-price"
-                id="oldPriceText">
+                    class="old-price"
+                    id="oldPriceText">
 
                     165 DHS
 
@@ -2494,11 +2175,8 @@ id="poster">
                         AED
                     </span>
 
-                    <span
-                    id="offerPriceText">
-
+                    <span id="offerPriceText">
                         95
-
                     </span>
 
                 </div>
@@ -2516,30 +2194,24 @@ id="poster">
 
             </div>
 
-
         </div>
 
 
         <div class="feature-strip">
 
-
             <div class="feature">
                 ◆ &nbsp; PREMIUM QUALITY
             </div>
-
 
             <div class="feature">
                 ⚙ &nbsp; MODERN DESIGN
             </div>
 
-
             <div class="feature">
                 ✈ &nbsp; TRAVEL READY
             </div>
 
-
         </div>
-
 
     </div>
 
@@ -2563,7 +2235,7 @@ id="poster">
 <script>
 
 /* =========================================================
-   GLOBAL DATA
+   DATA
 ========================================================= */
 
 let gallery = [];
@@ -2576,128 +2248,128 @@ let activeIndex = 0;
 ========================================================= */
 
 const editorPanel =
-document.getElementById(
-    "editorPanel"
-);
+    document.getElementById(
+        "editorPanel"
+    );
 
 const editorOverlay =
-document.getElementById(
-    "editorOverlay"
-);
+    document.getElementById(
+        "editorOverlay"
+    );
 
 const openEditorButton =
-document.getElementById(
-    "openEditorButton"
-);
+    document.getElementById(
+        "openEditorButton"
+    );
 
 const closeEditorButton =
-document.getElementById(
-    "closeEditorButton"
-);
+    document.getElementById(
+        "closeEditorButton"
+    );
 
 const closePanelButton =
-document.getElementById(
-    "closePanelButton"
-);
+    document.getElementById(
+        "closePanelButton"
+    );
 
 const imageInput =
-document.getElementById(
-    "imageInput"
-);
+    document.getElementById(
+        "imageInput"
+    );
 
 const thumbnailList =
-document.getElementById(
-    "thumbnailList"
-);
+    document.getElementById(
+        "thumbnailList"
+    );
 
 const editorGallery =
-document.getElementById(
-    "editorGallery"
-);
+    document.getElementById(
+        "editorGallery"
+    );
 
 const galleryCount =
-document.getElementById(
-    "galleryCount"
-);
+    document.getElementById(
+        "galleryCount"
+    );
 
 const mainProductImage =
-document.getElementById(
-    "mainProductImage"
-);
+    document.getElementById(
+        "mainProductImage"
+    );
 
 const productPlaceholder =
-document.getElementById(
-    "productPlaceholder"
-);
+    document.getElementById(
+        "productPlaceholder"
+    );
 
 const itemInput =
-document.getElementById(
-    "itemInput"
-);
+    document.getElementById(
+        "itemInput"
+    );
 
 const sizeInput =
-document.getElementById(
-    "sizeInput"
-);
+    document.getElementById(
+        "sizeInput"
+    );
 
 const oldPriceInput =
-document.getElementById(
-    "oldPriceInput"
-);
+    document.getElementById(
+        "oldPriceInput"
+    );
 
 const offerPriceInput =
-document.getElementById(
-    "offerPriceInput"
-);
+    document.getElementById(
+        "offerPriceInput"
+    );
 
 const itemText =
-document.getElementById(
-    "itemText"
-);
+    document.getElementById(
+        "itemText"
+    );
 
 const sizeText =
-document.getElementById(
-    "sizeText"
-);
+    document.getElementById(
+        "sizeText"
+    );
 
 const oldPriceText =
-document.getElementById(
-    "oldPriceText"
-);
+    document.getElementById(
+        "oldPriceText"
+    );
 
 const offerPriceText =
-document.getElementById(
-    "offerPriceText"
-);
+    document.getElementById(
+        "offerPriceText"
+    );
 
 const savingText =
-document.getElementById(
-    "savingText"
-);
+    document.getElementById(
+        "savingText"
+    );
 
 const savingCircle =
-document.getElementById(
-    "savingCircle"
-);
+    document.getElementById(
+        "savingCircle"
+    );
 
 const clearImagesButton =
-document.getElementById(
-    "clearImagesButton"
-);
+    document.getElementById(
+        "clearImagesButton"
+    );
 
 const downloadPngButton =
-document.getElementById(
-    "downloadPngButton"
-);
+    document.getElementById(
+        "downloadPngButton"
+    );
 
 const downloadPdfButton =
-document.getElementById(
-    "downloadPdfButton"
-);
+    document.getElementById(
+        "downloadPdfButton"
+    );
 
 
 /* =========================================================
-   OPEN EDITOR
+   EDITOR
 ========================================================= */
 
 function openEditor(){
@@ -2714,16 +2386,11 @@ function openEditor(){
         "hidden";
 }
 
-
 openEditorButton.addEventListener(
     "click",
     openEditor
 );
 
-
-/* =========================================================
-   CLOSE EDITOR
-========================================================= */
 
 function closeEditor(){
 
@@ -2739,33 +2406,27 @@ function closeEditor(){
         "";
 }
 
-
 closeEditorButton.addEventListener(
     "click",
     closeEditor
 );
-
 
 closePanelButton.addEventListener(
     "click",
     closeEditor
 );
 
-
 editorOverlay.addEventListener(
     "click",
     closeEditor
 );
-
 
 document.addEventListener(
     "keydown",
     function(e){
 
         if(e.key === "Escape"){
-
             closeEditor();
-
         }
 
     }
@@ -2782,23 +2443,19 @@ function updateText(){
         itemInput.value ||
         "15-288-08";
 
-
     sizeText.textContent =
         sizeInput.value ||
         'ONLY CABINE SIZE 21"';
-
 
     const oldPrice =
         Number(
             oldPriceInput.value
         ) || 0;
 
-
     const offerPrice =
         Number(
             offerPriceInput.value
         ) || 0;
-
 
     const saving =
         Math.max(
@@ -2806,24 +2463,18 @@ function updateText(){
             oldPrice - offerPrice
         );
 
-
     oldPriceText.textContent =
         oldPrice + " DHS";
-
 
     offerPriceText.textContent =
         offerPrice;
 
-
     savingText.textContent =
         saving;
 
-
     savingCircle.textContent =
         saving;
-
 }
-
 
 itemInput.addEventListener(
     "input",
@@ -2847,7 +2498,7 @@ offerPriceInput.addEventListener(
 
 
 /* =========================================================
-   FILE READER
+   READ IMAGE
 ========================================================= */
 
 function readFile(file){
@@ -2856,28 +2507,25 @@ function readFile(file){
         function(resolve,reject){
 
             const reader =
-            new FileReader();
-
+                new FileReader();
 
             reader.onload =
-            function(e){
+                function(e){
 
-                resolve({
+                    resolve({
 
-                    src:
-                        e.target.result,
+                        src:
+                            e.target.result,
 
-                    name:
-                        file.name
+                        name:
+                            file.name
 
-                });
+                    });
 
-            };
-
+                };
 
             reader.onerror =
-            reject;
-
+                reject;
 
             reader.readAsDataURL(
                 file
@@ -2885,12 +2533,11 @@ function readFile(file){
 
         }
     );
-
 }
 
 
 /* =========================================================
-   UPLOAD
+   IMAGE UPLOAD
 ========================================================= */
 
 imageInput.addEventListener(
@@ -2902,7 +2549,6 @@ imageInput.addEventListener(
                 this.files
             );
 
-
         const validFiles =
             files.filter(
                 file =>
@@ -2912,7 +2558,6 @@ imageInput.addEventListener(
                     )
             );
 
-
         if(
             !validFiles.length
         ){
@@ -2920,9 +2565,7 @@ imageInput.addEventListener(
             this.value = "";
 
             return;
-
         }
-
 
         try{
 
@@ -2933,30 +2576,22 @@ imageInput.addEventListener(
                     )
                 );
 
-
             const wasEmpty =
                 gallery.length === 0;
-
 
             gallery.push(
                 ...images
             );
 
-
             if(wasEmpty){
-
                 activeIndex = 0;
-
             }
 
-
             renderGallery();
-
 
             showMainImage(
                 activeIndex
             );
-
 
         }
         catch(error){
@@ -2968,7 +2603,6 @@ imageInput.addEventListener(
             );
 
         }
-
 
         this.value = "";
 
@@ -2985,37 +2619,29 @@ function showMainImage(index){
     if(
         !gallery[index]
     ){
-
         return;
-
     }
-
 
     activeIndex =
         index;
 
-
     mainProductImage.src =
         gallery[index].src;
-
 
     mainProductImage.style.display =
         "block";
 
-
     productPlaceholder.style.display =
         "none";
-
 
     renderPosterThumbnails();
 
     renderEditorGallery();
-
 }
 
 
 /* =========================================================
-   DELETE IMAGE
+   DELETE
 ========================================================= */
 
 function deleteImage(index){
@@ -3025,14 +2651,14 @@ function deleteImage(index){
         1
     );
 
-
     if(
         gallery.length === 0
     ){
 
         activeIndex = 0;
 
-        mainProductImage.src = "";
+        mainProductImage.src =
+            "";
 
         mainProductImage.style.display =
             "none";
@@ -3043,35 +2669,26 @@ function deleteImage(index){
         renderGallery();
 
         return;
-
     }
-
 
     if(
         activeIndex > index
     ){
-
         activeIndex--;
-
     }
-
 
     if(
         activeIndex >= gallery.length
     ){
-
         activeIndex =
             gallery.length - 1;
-
     }
-
 
     renderGallery();
 
     showMainImage(
         activeIndex
     );
-
 }
 
 
@@ -3081,8 +2698,8 @@ function deleteImage(index){
 
 function renderPosterThumbnails(){
 
-    thumbnailList.innerHTML = "";
-
+    thumbnailList.innerHTML =
+        "";
 
     if(
         gallery.length === 0
@@ -3091,46 +2708,33 @@ function renderPosterThumbnails(){
         thumbnailList.style.width =
             "100%";
 
-
         thumbnailList.innerHTML = `
 
             <div class="empty-thumbnails">
-
                 UPLOAD PRODUCT IMAGES
-
             </div>
 
         `;
 
         return;
-
     }
 
-
     /*
-    IMPORTANT:
+       IMPORTANT:
 
-    The thumbnail list is ALWAYS 100% width.
+       Always 100% width.
 
-    Each thumbnail:
-        flex:1
+       1 image  = 100%
+       2 images = 50%
+       3 images = 33%
+       4 images = 25%
+       etc.
 
-    Therefore:
-
-        1 image  -> full width
-        2 images -> 50%
-        3 images -> 33.33%
-        4 images -> 25%
-        5 images -> 20%
-        10 images -> 10%
-
-    No blank area.
+       NO STRETCH.
     */
-
 
     thumbnailList.style.width =
         "100%";
-
 
     gallery.forEach(
         function(image,index){
@@ -3140,14 +2744,11 @@ function renderPosterThumbnails(){
                     "button"
                 );
 
-
             button.type =
                 "button";
 
-
             button.className =
                 "thumbnail";
-
 
             if(
                 index === activeIndex
@@ -3159,60 +2760,48 @@ function renderPosterThumbnails(){
 
             }
 
-
             const inner =
                 document.createElement(
                     "div"
                 );
 
-
             inner.className =
                 "thumbnail-inner";
-
 
             const img =
                 document.createElement(
                     "img"
                 );
 
-
             img.src =
                 image.src;
-
 
             img.alt =
                 "Product " +
                 (index + 1);
 
-
             inner.appendChild(
                 img
             );
 
-
             button.appendChild(
                 inner
             );
-
 
             const number =
                 document.createElement(
                     "div"
                 );
 
-
             number.className =
                 "thumbnail-number";
-
 
             number.textContent =
                 index + 1;
 
-
             button.appendChild(
                 number
             );
-
 
             button.addEventListener(
                 "click",
@@ -3225,14 +2814,12 @@ function renderPosterThumbnails(){
                 }
             );
 
-
             thumbnailList.appendChild(
                 button
             );
 
         }
     );
-
 }
 
 
@@ -3242,8 +2829,8 @@ function renderPosterThumbnails(){
 
 function renderEditorGallery(){
 
-    editorGallery.innerHTML = "";
-
+    editorGallery.innerHTML =
+        "";
 
     if(
         gallery.length === 0
@@ -3252,28 +2839,24 @@ function renderEditorGallery(){
         galleryCount.textContent =
             "0 IMAGES";
 
-
         editorGallery.innerHTML = `
 
             <div
-            style="
-                color:#777;
-                width:100%;
-                text-align:center;
-                font-size:8px;
-                padding:10px;
-            ">
-
+                style="
+                    color:#777;
+                    width:100%;
+                    text-align:center;
+                    font-size:8px;
+                    padding:10px;
+                "
+            >
                 NO IMAGES
-
             </div>
 
         `;
 
         return;
-
     }
-
 
     galleryCount.textContent =
         gallery.length +
@@ -3283,7 +2866,6 @@ function renderEditorGallery(){
             : " IMAGES"
         );
 
-
     gallery.forEach(
         function(image,index){
 
@@ -3292,10 +2874,8 @@ function renderEditorGallery(){
                     "div"
                 );
 
-
             box.className =
                 "editor-image";
-
 
             if(
                 index === activeIndex
@@ -3307,50 +2887,40 @@ function renderEditorGallery(){
 
             }
 
-
             const inner =
                 document.createElement(
                     "div"
                 );
 
-
             inner.className =
                 "editor-image-inner";
-
 
             const img =
                 document.createElement(
                     "img"
                 );
 
-
             img.src =
                 image.src;
-
 
             inner.appendChild(
                 img
             );
 
-
             box.appendChild(
                 inner
             );
-
 
             const select =
                 document.createElement(
                     "button"
                 );
 
-
             select.type =
                 "button";
 
-
             select.className =
                 "select-image";
-
 
             select.addEventListener(
                 "click",
@@ -3363,29 +2933,23 @@ function renderEditorGallery(){
                 }
             );
 
-
             box.appendChild(
                 select
             );
-
 
             const deleteButton =
                 document.createElement(
                     "button"
                 );
 
-
             deleteButton.type =
                 "button";
-
 
             deleteButton.className =
                 "delete-image";
 
-
             deleteButton.textContent =
                 "×";
-
 
             deleteButton.addEventListener(
                 "click",
@@ -3400,30 +2964,24 @@ function renderEditorGallery(){
                 }
             );
 
-
             box.appendChild(
                 deleteButton
             );
-
 
             const number =
                 document.createElement(
                     "div"
                 );
 
-
             number.className =
                 "image-number";
-
 
             number.textContent =
                 index + 1;
 
-
             box.appendChild(
                 number
             );
-
 
             editorGallery.appendChild(
                 box
@@ -3431,7 +2989,6 @@ function renderEditorGallery(){
 
         }
     );
-
 }
 
 
@@ -3444,7 +3001,6 @@ function renderGallery(){
     renderPosterThumbnails();
 
     renderEditorGallery();
-
 }
 
 
@@ -3459,29 +3015,23 @@ clearImagesButton.addEventListener(
         if(
             gallery.length === 0
         ){
-
             return;
-
         }
-
 
         if(
             !confirm(
                 "Delete all product images?"
             )
         ){
-
             return;
-
         }
-
 
         gallery = [];
 
         activeIndex = 0;
 
-
-        mainProductImage.src = "";
+        mainProductImage.src =
+            "";
 
         mainProductImage.style.display =
             "none";
@@ -3489,18 +3039,46 @@ clearImagesButton.addEventListener(
         productPlaceholder.style.display =
             "block";
 
-
         renderGallery();
-
     }
 );
 
 
 /* =========================================================
-   WAIT FOR IMAGES
+   WAIT FOR IMAGE
 ========================================================= */
 
-async function waitForImages(){
+function waitForImage(img){
+
+    return new Promise(
+        function(resolve){
+
+            if(
+                img.complete &&
+                img.naturalWidth > 0
+            ){
+
+                resolve();
+
+                return;
+            }
+
+            img.onload =
+                resolve;
+
+            img.onerror =
+                resolve;
+
+        }
+    );
+}
+
+
+/* =========================================================
+   WAIT EVERYTHING
+========================================================= */
+
+async function waitForPoster(){
 
     const images =
         Array.from(
@@ -3509,41 +3087,11 @@ async function waitForImages(){
             )
         );
 
-
     await Promise.all(
-
         images.map(
-            function(img){
-
-                return new Promise(
-                    function(resolve){
-
-                        if(
-                            img.complete &&
-                            img.naturalWidth > 0
-                        ){
-
-                            resolve();
-
-                            return;
-
-                        }
-
-
-                        img.onload =
-                            resolve;
-
-                        img.onerror =
-                            resolve;
-
-                    }
-                );
-
-            }
+            waitForImage
         )
-
     );
-
 
     if(
         document.fonts &&
@@ -3551,17 +3099,25 @@ async function waitForImages(){
     ){
 
         await document.fonts.ready;
-
     }
 
+    await new Promise(
+        resolve =>
+            requestAnimationFrame(
+                () =>
+                    requestAnimationFrame(
+                        resolve
+                    )
+            )
+    );
 }
 
 
 /* =========================================================
-   IMAGE LOADER FOR EXPORT
+   LOAD IMAGE DIRECTLY
 ========================================================= */
 
-function loadImageForExport(src){
+function loadExportImage(src){
 
     return new Promise(
         function(resolve,reject){
@@ -3569,35 +3125,42 @@ function loadImageForExport(src){
             const img =
                 new Image();
 
-
             img.onload =
                 function(){
-
                     resolve(img);
-
                 };
 
-
             img.onerror =
-                reject;
+                function(){
+                    reject(
+                        new Error(
+                            "Unable to load product image."
+                        )
+                    );
+                };
 
+            /*
+              Since uploaded files are
+              Data URLs, CORS is not an issue.
+            */
 
             img.src =
                 src;
 
         }
     );
-
 }
 
 
 /* =========================================================
-   DRAW IMAGE CONTAIN
+   DRAW IMAGE WITHOUT STRETCHING
+
+   THIS FUNCTION IS THE MAIN FIX.
 ========================================================= */
 
-function drawImageContain(
+function drawContain(
     ctx,
-    image,
+    img,
     x,
     y,
     width,
@@ -3605,24 +3168,19 @@ function drawImageContain(
 ){
 
     const iw =
-        image.naturalWidth ||
-        image.width;
-
+        img.naturalWidth ||
+        img.width;
 
     const ih =
-        image.naturalHeight ||
-        image.height;
-
+        img.naturalHeight ||
+        img.height;
 
     if(
         !iw ||
         !ih
     ){
-
         return;
-
     }
-
 
     const scale =
         Math.min(
@@ -3630,14 +3188,11 @@ function drawImageContain(
             height / ih
         );
 
-
     const drawWidth =
         iw * scale;
 
-
     const drawHeight =
         ih * scale;
-
 
     const drawX =
         x +
@@ -3646,7 +3201,6 @@ function drawImageContain(
             drawWidth
         ) / 2;
 
-
     const drawY =
         y +
         (
@@ -3654,44 +3208,48 @@ function drawImageContain(
             drawHeight
         ) / 2;
 
-
     ctx.drawImage(
-        image,
+        img,
         drawX,
         drawY,
         drawWidth,
         drawHeight
     );
-
 }
 
 
 /* =========================================================
-   PREPARE EXPORT CLONE
+   CREATE EXPORT
 
-   THIS IS THE IMPORTANT PDF FIX.
+   IMPORTANT:
+   1. Hide main image temporarily in clone.
+   2. Render complete poster.
+   3. Draw main product image manually.
 ========================================================= */
 
-async function prepareExportClone(){
+async function createExportCanvas(){
 
-    const original =
+    await waitForPoster();
+
+
+    const poster =
         document.getElementById(
             "poster"
         );
 
 
     /*
-    Clone poster.
+       Clone poster.
     */
 
     const clone =
-        original.cloneNode(
+        poster.cloneNode(
             true
         );
 
 
     /*
-    Put clone off-screen.
+       Fixed exact poster size.
     */
 
     clone.style.position =
@@ -3720,14 +3278,13 @@ async function prepareExportClone(){
 
 
     /*
-    Make export container.
+       Create hidden export container.
     */
 
     const holder =
         document.createElement(
             "div"
         );
-
 
     holder.style.position =
         "fixed";
@@ -3755,394 +3312,53 @@ async function prepareExportClone(){
         clone
     );
 
-
     document.body.appendChild(
         holder
     );
 
 
-    /*
-    ---------------------------------------------------------
-    MAIN IMAGE EXPORT FIX
-    ---------------------------------------------------------
-
-    Instead of asking html2canvas to understand
-    object-fit for the main image, create a canvas
-    ourselves and draw the image using contain.
-    */
-
-    const clonedMain =
-        clone.querySelector(
-            "#mainProductImage"
-        );
-
-
-    const clonedArea =
-        clone.querySelector(
-            "#mainImageArea"
-        );
-
-
-    if(
-        clonedMain &&
-        clonedArea &&
-        gallery[activeIndex]
-    ){
-
-        try{
-
-            const sourceImage =
-                await loadImageForExport(
-                    gallery[activeIndex].src
-                );
-
-
-            const areaWidth =
-                clonedArea.clientWidth;
-
-
-            const areaHeight =
-                clonedArea.clientHeight;
-
-
-            /*
-            Create a real canvas.
-            */
-
-            const imageCanvas =
-                document.createElement(
-                    "canvas"
-                );
-
-
-            /*
-            Higher resolution canvas
-            for clean export.
-            */
-
-            imageCanvas.width =
-                Math.round(
-                    areaWidth * 3
-                );
-
-
-            imageCanvas.height =
-                Math.round(
-                    areaHeight * 3
-                );
-
-
-            const imageCtx =
-                imageCanvas.getContext(
-                    "2d"
-                );
-
-
-            imageCtx.imageSmoothingEnabled =
-                true;
-
-
-            imageCtx.imageSmoothingQuality =
-                "high";
-
-
-            /*
-            White/transparent background.
-            */
-
-            imageCtx.clearRect(
-                0,
-                0,
-                imageCanvas.width,
-                imageCanvas.height
-            );
-
-
-            /*
-            Draw complete product image.
-            */
-
-            drawImageContain(
-                imageCtx,
-                sourceImage,
-                0,
-                0,
-                imageCanvas.width,
-                imageCanvas.height
-            );
-
-
-            /*
-            Copy CSS appearance from image.
-            */
-
-            imageCanvas.style.position =
-                "absolute";
-
-            imageCanvas.style.left =
-                "0";
-
-            imageCanvas.style.top =
-                "0";
-
-            imageCanvas.style.width =
-                "100%";
-
-            imageCanvas.style.height =
-                "100%";
-
-            imageCanvas.style.display =
-                "block";
-
-            imageCanvas.style.objectFit =
-                "contain";
-
-
-            /*
-            Replace problematic IMG
-            with our real canvas.
-            */
-
-            clonedMain.replaceWith(
-                imageCanvas
-            );
-
-        }
-        catch(error){
-
-            console.error(
-                "Export image error:",
-                error
-            );
-
-        }
-
-    }
-
-
-    /*
-    ---------------------------------------------------------
-    THUMBNAILS
-    ---------------------------------------------------------
-
-    Also replace thumbnail IMG elements with
-    canvases so export never stretches them.
-    */
-
-    const clonedThumbs =
-        Array.from(
-            clone.querySelectorAll(
-                ".thumbnail img"
-            )
-        );
-
-
-    for(
-        let i = 0;
-        i < clonedThumbs.length;
-        i++
-    ){
-
-        const thumb =
-            clonedThumbs[i];
-
-
-        if(
-            !gallery[i]
-        ){
-
-            continue;
-
-        }
-
-
-        try{
-
-            const source =
-                await loadImageForExport(
-                    gallery[i].src
-                );
-
-
-            const thumbParent =
-                thumb.parentElement;
-
-
-            const w =
-                thumbParent.clientWidth;
-
-
-            const h =
-                thumbParent.clientHeight;
-
-
-            const canvas =
-                document.createElement(
-                    "canvas"
-                );
-
-
-            canvas.width =
-                Math.max(
-                    1,
-                    Math.round(
-                        w * 3
-                    )
-                );
-
-
-            canvas.height =
-                Math.max(
-                    1,
-                    Math.round(
-                        h * 3
-                    )
-                );
-
-
-            const ctx =
-                canvas.getContext(
-                    "2d"
-                );
-
-
-            ctx.imageSmoothingEnabled =
-                true;
-
-
-            ctx.imageSmoothingQuality =
-                "high";
-
-
-            drawImageContain(
-                ctx,
-                source,
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-
-
-            canvas.style.display =
-                "block";
-
-            canvas.style.width =
-                "100%";
-
-            canvas.style.height =
-                "100%";
-
-
-            thumb.replaceWith(
-                canvas
-            );
-
-        }
-        catch(error){
-
-            console.error(
-                "Thumbnail export error:",
-                error
-            );
-
-        }
-
-    }
-
-
-    /*
-    ---------------------------------------------------------
-    LOGO
-    ---------------------------------------------------------
-    */
-
-    const logo =
-        clone.querySelector(
-            "#logoImage"
-        );
-
-
-    if(
-        logo &&
-        logo.complete
-    ){
-
-        logo.style.maxWidth =
-            "100%";
-
-        logo.style.maxHeight =
-            "66px";
-
-        logo.style.width =
-            "auto";
-
-        logo.style.height =
-            "auto";
-
-        logo.style.objectFit =
-            "contain";
-
-    }
-
-
-    /*
-    Return clone holder.
-    */
-
-    return holder;
-
-}
-
-
-/* =========================================================
-   CREATE EXPORT CANVAS
-========================================================= */
-
-async function createExportCanvas(){
-
-    await waitForImages();
-
-
-    const holder =
-        await prepareExportClone();
-
-
     try{
 
         /*
-        Give browser a moment to paint
-        the cloned canvas.
+        =====================================================
+        MAIN IMAGE
+
+        HIDE IT IN HTML2CANVAS.
+
+        We will draw it manually later.
+        =====================================================
         */
 
-        await new Promise(
-            function(resolve){
-
-                requestAnimationFrame(
-                    function(){
-
-                        requestAnimationFrame(
-                            resolve
-                        );
-
-                    }
-                );
-
-            }
-        );
+        const clonedMain =
+            clone.querySelector(
+                "#mainProductImage"
+            );
 
 
-        const clone =
-            holder.querySelector(
-                "#poster"
+        if(
+            clonedMain
+        ){
+
+            clonedMain.style.display =
+                "none";
+        }
+
+
+        /*
+        Get exact image area.
+        */
+
+        const clonedArea =
+            clone.querySelector(
+                "#mainImageArea"
             );
 
 
         /*
-        EXACT POSTER SIZE
+        Render poster.
         */
 
-        const source =
+        const rendered =
             await html2canvas(
                 clone,
                 {
@@ -4157,12 +3373,12 @@ async function createExportCanvas(){
 
                     windowHeight:1123,
 
+                    backgroundColor:
+                        "#f7f3e9",
+
                     useCORS:true,
 
                     allowTaint:false,
-
-                    backgroundColor:
-                        "#f7f3e9",
 
                     imageTimeout:0,
 
@@ -4176,7 +3392,293 @@ async function createExportCanvas(){
             );
 
 
-        return source;
+        /*
+        =====================================================
+        CREATE FINAL HIGH-RES A4 CANVAS
+        =====================================================
+        */
+
+        const finalCanvas =
+            document.createElement(
+                "canvas"
+            );
+
+
+        /*
+        EXACT A4:
+
+        2480 x 3508
+        */
+
+        finalCanvas.width =
+            2480;
+
+        finalCanvas.height =
+            3508;
+
+
+        const finalCtx =
+            finalCanvas.getContext(
+                "2d"
+            );
+
+
+        finalCtx.imageSmoothingEnabled =
+            true;
+
+        finalCtx.imageSmoothingQuality =
+            "high";
+
+
+        /*
+        White/cream background.
+        */
+
+        finalCtx.fillStyle =
+            "#f7f3e9";
+
+        finalCtx.fillRect(
+            0,
+            0,
+            2480,
+            3508
+        );
+
+
+        /*
+        Draw rendered poster.
+        */
+
+        finalCtx.drawImage(
+            rendered,
+            0,
+            0,
+            2480,
+            3508
+        );
+
+
+        /*
+        =====================================================
+        NOW DRAW MAIN PRODUCT IMAGE DIRECTLY
+        =====================================================
+        */
+
+        if(
+            gallery.length > 0 &&
+            gallery[activeIndex] &&
+            clonedArea
+        ){
+
+            const sourceImage =
+                await loadExportImage(
+                    gallery[activeIndex].src
+                );
+
+
+            /*
+            Original poster coordinates.
+
+            Since poster is 794 x 1123,
+            A4 scale is:
+
+            2480 / 794
+            3508 / 1123
+            */
+
+            const posterRect =
+                clone.getBoundingClientRect();
+
+
+            const areaRect =
+                clonedArea.getBoundingClientRect();
+
+
+            /*
+            Convert CSS coordinates
+            into final A4 pixels.
+            */
+
+            const scaleX =
+                2480 / 794;
+
+            const scaleY =
+                3508 / 1123;
+
+
+            const x =
+                (
+                    areaRect.left -
+                    posterRect.left
+                ) *
+                scaleX;
+
+
+            const y =
+                (
+                    areaRect.top -
+                    posterRect.top
+                ) *
+                scaleY;
+
+
+            const width =
+                areaRect.width *
+                scaleX;
+
+
+            const height =
+                areaRect.height *
+                scaleY;
+
+
+            /*
+            Clear only the image area.
+
+            This is important because the
+            placeholder/old image must not remain.
+            */
+
+            /*
+            We DON'T clear the complete area,
+            because shadows/background may be
+            part of the design.
+
+            Instead the original main image
+            was hidden before rendering, so
+            there is nothing to clear.
+            */
+
+
+            /*
+            Draw entire product image
+            using CONTAIN.
+            */
+
+            drawContain(
+                finalCtx,
+                sourceImage,
+                x,
+                y,
+                width,
+                height
+            );
+
+        }
+
+
+        /*
+        =====================================================
+        DRAW THUMBNAILS DIRECTLY TOO
+        =====================================================
+
+        This guarantees thumbnails are also
+        correct in PNG/PDF.
+        */
+
+        const thumbElements =
+            Array.from(
+                clone.querySelectorAll(
+                    ".thumbnail"
+                )
+            );
+
+
+        if(
+            gallery.length > 0 &&
+            thumbElements.length > 0
+        ){
+
+            for(
+                let i = 0;
+                i < thumbElements.length;
+                i++
+            ){
+
+                if(
+                    !gallery[i]
+                ){
+                    continue;
+                }
+
+
+                const thumb =
+                    thumbElements[i];
+
+
+                const thumbInner =
+                    thumb.querySelector(
+                        ".thumbnail-inner"
+                    );
+
+
+                if(
+                    !thumbInner
+                ){
+                    continue;
+                }
+
+
+                const rect =
+                    thumbInner.getBoundingClientRect();
+
+
+                const posterRect =
+                    clone.getBoundingClientRect();
+
+
+                const x =
+                    (
+                        rect.left -
+                        posterRect.left
+                    ) *
+                    scaleX;
+
+
+                const y =
+                    (
+                        rect.top -
+                        posterRect.top
+                    ) *
+                    scaleY;
+
+
+                const width =
+                    rect.width *
+                    scaleX;
+
+
+                const height =
+                    rect.height *
+                    scaleY;
+
+
+                const thumbImage =
+                    await loadExportImage(
+                        gallery[i].src
+                    );
+
+
+                /*
+                Draw over the HTML thumbnail
+                using exact contain.
+                */
+
+                drawContain(
+                    finalCtx,
+                    thumbImage,
+                    x,
+                    y,
+                    width,
+                    height
+                );
+
+            }
+
+        }
+
+
+        return finalCanvas;
 
     }
     finally{
@@ -4212,90 +3714,40 @@ function safeName(text){
 
 
 /* =========================================================
-   DOWNLOAD A4 PNG
+   DOWNLOAD PNG
 ========================================================= */
 
 async function downloadPNG(){
 
-    const oldText =
+    const originalText =
         downloadPngButton.textContent;
-
-
-    downloadPngButton.textContent =
-        "CREATING PNG...";
 
 
     downloadPngButton.disabled =
         true;
 
+    downloadPngButton.textContent =
+        "CREATING A4 PNG...";
+
 
     try{
 
-        const source =
+        const canvas =
             await createExportCanvas();
 
 
         /*
-        EXACT A4 PIXEL SIZE
+        PNG is ALREADY:
 
         2480 × 3508
+
+        EXACT A4.
         */
 
-        const output =
-            document.createElement(
-                "canvas"
+        const data =
+            canvas.toDataURL(
+                "image/png"
             );
-
-
-        output.width =
-            2480;
-
-
-        output.height =
-            3508;
-
-
-        const ctx =
-            output.getContext(
-                "2d"
-            );
-
-
-        ctx.imageSmoothingEnabled =
-            true;
-
-
-        ctx.imageSmoothingQuality =
-            "high";
-
-
-        /*
-        Fill A4.
-        */
-
-        ctx.fillStyle =
-            "#f7f3e9";
-
-
-        ctx.fillRect(
-            0,
-            0,
-            2480,
-            3508
-        );
-
-
-        /*
-        Fit poster exactly into A4.
-        */
-
-        ctx.drawImage(
-            source,
-            0,
-            0,
-            2480,
-            3508
-        );
 
 
         const link =
@@ -4313,9 +3765,7 @@ async function downloadPNG(){
 
 
         link.href =
-            output.toDataURL(
-                "image/png"
-            );
+            data;
 
 
         document.body.appendChild(
@@ -4331,7 +3781,10 @@ async function downloadPNG(){
     }
     catch(error){
 
-        console.error(error);
+        console.error(
+            "PNG ERROR:",
+            error
+        );
 
         alert(
             "PNG export failed.\n\n" +
@@ -4344,40 +3797,41 @@ async function downloadPNG(){
     downloadPngButton.disabled =
         false;
 
-
     downloadPngButton.textContent =
-        oldText;
+        originalText;
 
 }
 
 
 /* =========================================================
-   DOWNLOAD A4 PDF
+   DOWNLOAD PDF
 ========================================================= */
 
 async function downloadPDF(){
 
-    const oldText =
+    const originalText =
         downloadPdfButton.textContent;
-
-
-    downloadPdfButton.textContent =
-        "CREATING PDF...";
 
 
     downloadPdfButton.disabled =
         true;
 
+    downloadPdfButton.textContent =
+        "CREATING A4 PDF...";
+
 
     try{
+
+        /*
+        Get final 2480x3508 canvas.
+
+        Main image is already manually
+        drawn here.
+        */
 
         const canvas =
             await createExportCanvas();
 
-
-        /*
-        Convert poster canvas to image.
-        */
 
         const image =
             canvas.toDataURL(
@@ -4392,8 +3846,6 @@ async function downloadPDF(){
 
         /*
         EXACT A4 PDF
-
-        210 × 297 mm
         */
 
         const pdf =
@@ -4415,48 +3867,41 @@ async function downloadPDF(){
 
 
         /*
-        Full page.
+        EXACT FULL PAGE:
 
-        NO margins.
-        NO cropping.
-        NO shifting.
+        x = 0
+        y = 0
+        width = 210mm
+        height = 297mm
         */
 
         pdf.addImage(
-
             image,
-
             "JPEG",
-
             0,
-
             0,
-
             210,
-
             297,
-
             undefined,
-
             "FAST"
-
         );
 
 
         pdf.save(
-
             "IT -" +
             safeName(
                 itemInput.value
             ) +
             ".pdf"
-
         );
 
     }
     catch(error){
 
-        console.error(error);
+        console.error(
+            "PDF ERROR:",
+            error
+        );
 
         alert(
             "PDF export failed.\n\n" +
@@ -4469,22 +3914,20 @@ async function downloadPDF(){
     downloadPdfButton.disabled =
         false;
 
-
     downloadPdfButton.textContent =
-        oldText;
+        originalText;
 
 }
 
 
 /* =========================================================
-   DOWNLOAD EVENTS
+   EVENTS
 ========================================================= */
 
 downloadPngButton.addEventListener(
     "click",
     downloadPNG
 );
-
 
 downloadPdfButton.addEventListener(
     "click",
@@ -4502,7 +3945,7 @@ renderGallery();
 
 
 /* =========================================================
-   LOGO CHECK
+   LOGO
 ========================================================= */
 
 window.addEventListener(
@@ -4513,7 +3956,6 @@ window.addEventListener(
             document.getElementById(
                 "logoImage"
             );
-
 
         if(
             logo &&
@@ -4532,7 +3974,5 @@ window.addEventListener(
 
 </script>
 
-
 </body>
-
 </html>
