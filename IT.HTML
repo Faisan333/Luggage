@@ -3,26 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Premium Product Poster</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <style>
+*{box-sizing:border-box}
 
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    box-sizing:border-box;
-}
-
-html,
-body{
+html,body{
     margin:0;
     padding:0;
     min-height:100%;
@@ -30,18 +18,7 @@ body{
 
 body{
     font-family:Inter,Arial,sans-serif;
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(217,169,40,.12),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(217,169,40,.08),
-            transparent 30%
-        ),
-        #031525;
+    background:#031525;
     color:#111;
 }
 
@@ -49,23 +26,19 @@ body{
     --navy:#082746;
     --navy-dark:#061b31;
     --navy-light:#0b3155;
-
     --gold:#d9a928;
     --gold-light:#f5d77b;
     --gold-dark:#b98616;
-
     --cream:#f7f3e9;
 }
 
-
-/* =========================================================
+/* =========================
    APP
-========================================================= */
+========================= */
 
 .app{
     min-height:100vh;
     padding:80px 20px 30px;
-
     display:flex;
     justify-content:center;
     align-items:flex-start;
@@ -77,147 +50,93 @@ body{
     justify-content:center;
 }
 
-
-/* =========================================================
+/* =========================
    POSTER
-========================================================= */
+========================= */
 
 .poster{
     position:relative;
-
     width:794px;
     height:1123px;
-
     overflow:hidden;
-
     background:#f7f3e9;
-
-    box-shadow:
-        0 35px 90px rgba(0,0,0,.55);
+    box-shadow:0 35px 90px rgba(0,0,0,.55);
 }
 
-
-/* =========================================================
-   TOP HEADER
-========================================================= */
+/* =========================
+   HEADER
+========================= */
 
 .topbar{
     position:relative;
-
     height:135px;
-
     padding:22px 30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #061b31 0%,
-            #082746 52%,
-            #0b3155 100%
-        );
-
+    background:linear-gradient(
+        135deg,
+        #061b31 0%,
+        #082746 52%,
+        #0b3155 100%
+    );
     color:#fff;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     z-index:100;
 }
 
 .topbar::after{
     content:"";
-
     position:absolute;
     left:0;
     bottom:0;
-
     width:100%;
     height:5px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light),
-            var(--gold),
-            var(--gold-light),
-            var(--gold-dark)
-        );
+    background:linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light),
+        var(--gold),
+        var(--gold-light),
+        var(--gold-dark)
+    );
 }
 
-.topbar::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-5px;
-
-    width:395px;
-    height:13px;
-
-    background:var(--gold-light);
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            91% 100%,
-            0 100%
-        );
-}
-
-
-/* =========================================================
+/* =========================
    LOGO
-========================================================= */
+========================= */
 
 .logo-box{
     width:215px;
-    height:95px;
-
+    height:85px;
     padding:8px;
-
     background:#fff;
-
     border-radius:14px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     overflow:hidden;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.18);
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
 }
 
 .logo-box img{
     display:block;
-
     width:auto;
     height:auto;
-
     max-width:100%;
     max-height:95px;
-
     object-fit:contain;
 }
 
 .logo-fallback{
     color:var(--navy);
-
     font-size:12px;
     font-weight:900;
-
     letter-spacing:2px;
 }
 
-
-/* =========================================================
+/* =========================
    HEADER TEXT
-========================================================= */
+========================= */
 
 .brand-copy{
     text-align:right;
@@ -225,628 +144,383 @@ body{
 
 .brand-copy small{
     display:block;
-
     margin-bottom:8px;
-
     color:var(--gold-light);
-
     font-size:10px;
     font-weight:900;
-
     letter-spacing:3px;
 }
 
 .brand-copy strong{
     font-family:Montserrat,Arial,sans-serif;
-
     font-size:30px;
     font-weight:900;
 }
 
 .brand-copy::after{
     content:"";
-
     display:block;
-
     width:90px;
     height:6px;
-
     margin:14px 0 0 auto;
-
     border-radius:10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-light),
-            var(--gold-dark)
-        );
+    background:linear-gradient(
+        90deg,
+        var(--gold-light),
+        var(--gold-dark)
+    );
 }
 
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
     position:relative;
-
     height:713px;
-
     overflow:hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--navy) 0%,
-            var(--navy) 24%,
-            #f1ede4 24.1%,
-            #fbfaf7 100%
-        );
+    background:linear-gradient(
+        135deg,
+        var(--navy) 0%,
+        var(--navy) 24%,
+        #f1ede4 24.1%,
+        #fbfaf7 100%
+    );
 }
 
 .hero-word{
     position:absolute;
-
     left:-45px;
     bottom:-90px;
-
     font-family:Montserrat,Arial,sans-serif;
-
     font-size:300px;
     font-weight:900;
-
     line-height:1;
-
     color:rgba(255,255,255,.06);
-
     pointer-events:none;
 }
 
 .hero-side{
     position:absolute;
-
     left:18px;
     top:185px;
-
     writing-mode:vertical-rl;
-
     transform:rotate(180deg);
-
     color:#fff;
-
     font-size:10px;
     font-weight:900;
-
     letter-spacing:4px;
-
     z-index:10;
 }
 
 .hero::before{
     content:"";
-
     position:absolute;
-
     left:-60px;
     top:-12px;
-
     width:500px;
     height:9px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light)
-        );
-
+    background:linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light)
+    );
     transform:skewX(-42deg);
-
     z-index:20;
 }
 
-.hero::after{
-    content:"";
-
-    position:absolute;
-
-    left:-50px;
-    bottom:155px;
-
-    width:190px;
-    height:9px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light)
-        );
-
-    transform:rotate(-45deg);
-
-    z-index:20;
-}
-
-
-/* =========================================================
+/* =========================
    PRODUCT CARD
-========================================================= */
+========================= */
 
 .product-card{
     position:absolute;
-
     left:55px;
     right:30px;
-
     top:28px;
     bottom:22px;
-
     border-radius:34px;
-
-    background:
-        radial-gradient(
-            circle at 50% 38%,
-            #ffffff 0%,
-            #faf8f2 62%,
-            #eee9de 100%
-        );
-
+    background:radial-gradient(
+        circle at 50% 38%,
+        #ffffff 0%,
+        #faf8f2 62%,
+        #eee9de 100%
+    );
     box-shadow:
         0 30px 65px rgba(0,0,0,.18),
-
-        inset 0 0 0 1px
-        rgba(255,255,255,.9);
-
+        inset 0 0 0 1px rgba(255,255,255,.9);
     overflow:hidden;
-
     z-index:30;
 }
 
-
-/* =========================================================
-   PREMIUM TAG
-========================================================= */
+/* =========================
+   TAG
+========================= */
 
 .premium-tag{
     position:absolute;
-
     left:24px;
     top:24px;
-
     z-index:100;
-
     padding:12px 18px;
-
     border-radius:9px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #061b31,
-            #0b3155
-        );
-
+    background:linear-gradient(
+        135deg,
+        #061b31,
+        #0b3155
+    );
     color:var(--gold-light);
-
     font-size:10px;
     font-weight:900;
-
     letter-spacing:2px;
 }
 
-
-/* =========================================================
+/* =========================
    DISCOUNT
-========================================================= */
+========================= */
 
 .discount{
     position:absolute;
-
     right:24px;
     top:24px;
-
     width:104px;
     height:104px;
-
     border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff0a8,
-            #e9bd43 50%,
-            #c8941d 100%
-        );
-
+    background:radial-gradient(
+        circle at 35% 30%,
+        #fff0a8,
+        #e9bd43 50%,
+        #c8941d 100%
+    );
     color:var(--navy);
-
     display:flex;
     flex-direction:column;
-
     justify-content:center;
     align-items:center;
-
     z-index:100;
-
-    box-shadow:
-        0 15px 35px rgba(5,30,55,.18);
+    box-shadow:0 15px 35px rgba(5,30,55,.18);
 }
 
 .discount span{
     font-size:10px;
     font-weight:900;
-
     letter-spacing:1px;
 }
 
 .discount strong{
     font-family:Montserrat,Arial,sans-serif;
-
     font-size:31px;
-
     line-height:1;
-
     font-weight:900;
 }
 
-
-/* =========================================================
-   MAIN IMAGE AREA
-
-   IMPORTANT:
-   This exact area is also used by the export engine.
-========================================================= */
+/* =========================
+   MAIN IMAGE
+========================= */
 
 .main-image-area{
     position:absolute;
-
     left:50%;
     top:42%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     width:78%;
     height:505px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     overflow:hidden;
-
     z-index:40;
 }
 
-
-/* =========================================================
-   MAIN IMAGE
-
-   CONTAIN = NEVER STRETCH
-========================================================= */
-
 .main-product-image{
     display:block;
-
     width:100% !important;
     height:100% !important;
-
-    max-width:none !important;
-    max-height:none !important;
-
     object-fit:contain !important;
-
     object-position:center center !important;
-
-    flex:none;
-
-    filter:
-        drop-shadow(
-            0 30px 25px rgba(5,25,45,.20)
-        );
-
+    filter:drop-shadow(
+        0 30px 25px rgba(5,25,45,.20)
+    );
     user-select:none;
-
     -webkit-user-drag:none;
 }
-
-
-/* =========================================================
-   PLACEHOLDER
-========================================================= */
 
 .product-placeholder{
     width:350px;
     height:420px;
-
     max-width:100%;
     max-height:100%;
-
     border-radius:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5e3de,
-            #faf9f6,
-            #ddd9cf
-        );
+    background:linear-gradient(
+        135deg,
+        #e5e3de,
+        #faf9f6,
+        #ddd9cf
+    );
 }
 
-
-/* =========================================================
-   THUMBNAIL AREA
-========================================================= */
+/* =========================
+   THUMBNAILS
+========================= */
 
 .thumbnail-area{
     position:absolute;
-
     left:18px;
     right:18px;
     bottom:17px;
-
     height:105px;
-
     padding:9px;
-
     border-radius:15px;
-
     background:#fff;
-
-    box-shadow:
-        0 10px 30px rgba(5,30,55,.13);
-
+    box-shadow:0 10px 30px rgba(5,30,55,.13);
     z-index:100;
-
     overflow:hidden;
 }
 
 .thumbnail-scroll{
     width:100%;
     height:100%;
-
     overflow-x:auto;
     overflow-y:hidden;
-
     scrollbar-width:thin;
-
-    scrollbar-color:
-        var(--gold)
-        #eee;
 }
 
 .thumbnail-list{
     width:100%;
     height:100%;
-
     display:flex;
-
     align-items:stretch;
-
     gap:9px;
 }
 
-
-/* =========================================================
-   THUMBNAIL
-
-   ANY NUMBER OF IMAGES WILL FIT THE WIDTH
-========================================================= */
-
 .thumbnail{
     position:relative;
-
     flex:1 1 0;
-
     width:0;
-
     min-width:0;
-
     height:100%;
-
     padding:4px;
-
-    border:
-        2px solid
-        #e3dfd4;
-
+    border:2px solid #e3dfd4;
     border-radius:9px;
-
     background:#fff;
-
     cursor:pointer;
-
     overflow:hidden;
-
-    transition:
-        transform .18s ease,
-        border-color .18s ease,
-        box-shadow .18s ease;
+    transition:.18s;
 }
 
 .thumbnail-inner{
     position:relative;
-
     width:100%;
     height:100%;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     overflow:hidden;
-
     border-radius:5px;
-
     background:#faf9f5;
 }
 
 .thumbnail img{
     display:block;
-
     width:100% !important;
     height:100% !important;
-
-    max-width:100% !important;
-    max-height:100% !important;
-
     object-fit:contain !important;
     object-position:center center !important;
-
-    flex:none;
-
-    user-select:none;
-
-    -webkit-user-drag:none;
 }
 
 .thumbnail.active{
     border-color:var(--gold-dark);
-
     box-shadow:
         0 0 0 1px var(--gold),
         0 7px 18px rgba(5,30,55,.15);
 }
 
-.thumbnail:hover{
-    transform:translateY(-2px);
-}
-
 .thumbnail-number{
     position:absolute;
-
     left:5px;
     bottom:5px;
-
     min-width:18px;
     height:18px;
-
     padding:0 4px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:4px;
-
-    background:
-        rgba(6,27,49,.82);
-
+    background:rgba(6,27,49,.82);
     color:#fff;
-
     font-size:7px;
     font-weight:900;
-
     pointer-events:none;
-
-    z-index:5;
 }
 
 .empty-thumbnails{
     width:100%;
     height:100%;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:8px;
-
     background:#f7f5ef;
-
     color:#999;
-
     font-size:10px;
     font-weight:900;
-
     letter-spacing:1px;
 }
 
-
-/* =========================================================
-   INFORMATION
-========================================================= */
+/* =========================
+   INFO
+========================= */
 
 .info{
     height:215px;
-
     padding:25px 32px 20px;
-
     background:#fff;
-
     display:flex;
-
     flex-direction:column;
-
     justify-content:space-between;
 }
 
 .info-top{
     display:flex;
-
     justify-content:space-between;
-
     align-items:flex-start;
-
     gap:20px;
 }
 
 .kicker{
     margin-bottom:6px;
-
     color:#969696;
-
     font-size:10px;
     font-weight:900;
-
     letter-spacing:2px;
 }
 
 .item-number{
     font-family:Montserrat,Arial,sans-serif;
-
     font-size:27px;
     font-weight:900;
-
     color:#111;
 }
 
 .size-pill{
     display:inline-block;
-
     margin-top:10px;
-
     padding:8px 12px;
-
-    border-left:
-        5px solid
-        var(--gold);
-
+    border-left:5px solid var(--gold);
     border-radius:6px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #f0eadb,
-            #faf8f2
-        );
-
+    background:linear-gradient(
+        90deg,
+        #f0eadb,
+        #faf8f2
+    );
     color:var(--navy);
-
     font-size:10px;
     font-weight:900;
 }
 
-
-/* =========================================================
+/* =========================
    PRICE
-========================================================= */
+========================= */
 
 .price{
     text-align:right;
@@ -854,233 +528,122 @@ body{
 
 .old-price{
     color:#999;
-
     font-size:15px;
-
     text-decoration:line-through;
 }
 
 .offer-price{
     font-family:Montserrat,Arial,sans-serif;
-
     font-size:54px;
-
     font-weight:900;
-
     line-height:.95;
-
     letter-spacing:-3px;
-
     color:var(--navy);
 }
 
 .currency{
     font-size:15px;
-
     letter-spacing:1px;
 }
 
 .saving{
     display:inline-block;
-
     margin-top:7px;
-
     padding:7px 16px;
-
     border-radius:6px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            var(--gold-light)
-        );
-
+    background:linear-gradient(
+        90deg,
+        var(--gold),
+        var(--gold-light)
+    );
     color:var(--navy);
-
     font-size:10px;
     font-weight:900;
-
     letter-spacing:1px;
 }
 
-
-/* =========================================================
+/* =========================
    FEATURES
-========================================================= */
+========================= */
 
 .feature-strip{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:10px;
 }
 
 .feature{
     padding:11px;
-
     border-radius:8px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f1ede3,
-            #faf8f2
-        );
-
+    background:linear-gradient(
+        135deg,
+        #f1ede3,
+        #faf8f2
+    );
     color:var(--navy);
-
     text-align:center;
-
     font-size:9px;
-
     font-weight:900;
-
     letter-spacing:.5px;
-
-    border-bottom:
-        2px solid
-        rgba(217,169,40,.45);
+    border-bottom:2px solid rgba(217,169,40,.45);
 }
 
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 .footer{
     position:relative;
-
     height:60px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #061b31,
-            #082746,
-            #061b31
-        );
-
+    background:linear-gradient(
+        135deg,
+        #061b31,
+        #082746,
+        #061b31
+    );
     color:#fff;
-
     font-size:10px;
-
     font-weight:900;
-
     letter-spacing:3px;
-
-    overflow:hidden;
 }
 
-.footer::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:0;
-
-    width:120px;
-    height:8px;
-
-    background:var(--gold-light);
-
-    transform:
-        rotate(-45deg)
-        translate(-30px,0);
-}
-
-.footer::after{
-    content:"";
-
-    position:absolute;
-
-    right:0;
-    bottom:0;
-
-    width:120px;
-    height:8px;
-
-    background:var(--gold-light);
-
-    transform:
-        rotate(45deg)
-        translate(30px,0);
-}
-
-
-/* =========================================================
+/* =========================
    EDIT BUTTON
-========================================================= */
+========================= */
 
 .edit-button{
     position:fixed;
-
     top:20px;
     left:20px;
-
     z-index:900;
-
-    border:
-        1px solid
-        var(--gold);
-
+    border:1px solid var(--gold);
     padding:13px 19px;
-
     border-radius:9px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--navy),
-            var(--navy-light)
-        );
-
+    background:linear-gradient(
+        135deg,
+        var(--navy),
+        var(--navy-light)
+    );
     color:var(--gold-light);
-
     font-size:10px;
     font-weight:900;
-
     cursor:pointer;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.35);
-
-    transition:.2s;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-.edit-button:hover{
-    background:var(--gold);
-
-    color:var(--navy);
-
-    transform:translateY(-2px);
-}
-
-
-/* =========================================================
-   EDITOR OVERLAY
-========================================================= */
+/* =========================
+   EDITOR
+========================= */
 
 .editor-overlay{
     position:fixed;
-
     inset:0;
-
     z-index:1000;
-
     display:none;
-
-    background:
-        rgba(3,17,30,.75);
-
+    background:rgba(3,17,30,.75);
     backdrop-filter:blur(6px);
 }
 
@@ -1088,124 +651,61 @@ body{
     display:block;
 }
 
-
-/* =========================================================
-   EDITOR
-========================================================= */
-
 .editor-panel{
     position:fixed;
-
     top:20px;
     left:20px;
     bottom:20px;
-
     width:390px;
-
-    max-width:
-        calc(100vw - 40px);
-
+    max-width:calc(100vw - 40px);
     z-index:1100;
-
     display:none;
-
     overflow-y:auto;
-
     padding:22px;
-
-    border:
-        1px solid
-        rgba(217,169,40,.4);
-
+    border:1px solid rgba(217,169,40,.4);
     border-radius:18px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #0b3155,
-            #061b31
-        );
-
+    background:linear-gradient(
+        180deg,
+        #0b3155,
+        #061b31
+    );
     color:#fff;
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.75);
+    box-shadow:0 35px 100px rgba(0,0,0,.75);
 }
 
 .editor-panel.open{
     display:block;
-
-    animation:
-        editorIn .2s ease;
 }
-
-@keyframes editorIn{
-    from{
-        opacity:0;
-        transform:translateX(-15px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-
-/* =========================================================
-   EDITOR HEADER
-========================================================= */
 
 .editor-header{
     display:flex;
-
     justify-content:space-between;
-
     align-items:flex-start;
-
     margin-bottom:22px;
 }
 
 .editor-header h2{
     margin:0;
-
     font-family:Montserrat,Arial,sans-serif;
-
     font-size:21px;
 }
 
 .editor-header p{
     margin:5px 0 0;
-
     color:#aeb8c1;
-
     font-size:9px;
 }
 
 .close-editor{
     width:35px;
     height:35px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
+    border:1px solid rgba(255,255,255,.2);
     border-radius:50%;
-
-    background:
-        rgba(255,255,255,.08);
-
+    background:rgba(255,255,255,.08);
     color:#fff;
-
     font-size:21px;
-
     cursor:pointer;
 }
-
-
-/* =========================================================
-   FORM
-========================================================= */
 
 .form-group{
     margin-bottom:16px;
@@ -1213,16 +713,11 @@ body{
 
 .form-group label{
     display:block;
-
     margin-bottom:7px;
-
     color:var(--gold-light);
-
     font-size:8px;
     font-weight:900;
-
     text-transform:uppercase;
-
     letter-spacing:1.2px;
 }
 
@@ -1230,127 +725,64 @@ body{
 .form-group input[type="number"]{
     width:100%;
     height:43px;
-
     padding:0 12px;
-
     outline:none;
-
-    border:
-        1px solid
-        rgba(255,255,255,.18);
-
+    border:1px solid rgba(255,255,255,.18);
     border-radius:8px;
-
     background:#061b31;
-
     color:#fff;
-
-    font-family:Inter,Arial,sans-serif;
 }
-
-.form-group input:focus{
-    border-color:var(--gold);
-
-    box-shadow:
-        0 0 0 2px
-        rgba(217,169,40,.12);
-}
-
-
-/* =========================================================
-   UPLOAD
-========================================================= */
 
 .upload-area{
     padding:15px;
-
-    border:
-        1px dashed
-        rgba(245,215,123,.5);
-
+    border:1px dashed rgba(245,215,123,.5);
     border-radius:10px;
-
-    background:
-        rgba(255,255,255,.04);
+    background:rgba(255,255,255,.04);
 }
 
 .upload-area p{
     margin:0 0 11px;
-
     color:#aeb8c1;
-
     font-size:8px;
-
     line-height:1.5;
 }
 
 .upload-button{
     display:block;
-
     width:100%;
-
     padding:12px;
-
     border-radius:8px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light)
-        );
-
+    background:linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light)
+    );
     color:var(--navy);
-
     text-align:center;
-
     font-size:9px;
     font-weight:900;
-
     cursor:pointer;
-}
-
-.upload-button:hover{
-    background:var(--gold);
 }
 
 #imageInput{
     display:none;
 }
 
-
-/* =========================================================
-   EDITOR GALLERY
-========================================================= */
-
 .gallery-box{
     margin-top:12px;
-
     padding:11px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
+    border:1px solid rgba(255,255,255,.12);
     border-radius:9px;
-
-    background:
-        rgba(0,0,0,.16);
+    background:rgba(0,0,0,.16);
 }
 
 .gallery-header{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:9px;
-
     font-size:8px;
-
     font-weight:900;
-
     letter-spacing:1px;
 }
 
@@ -1360,229 +792,171 @@ body{
 
 .editor-gallery{
     display:flex;
-
     gap:6px;
-
     overflow-x:auto;
-
     padding-bottom:4px;
 }
 
 .editor-image{
     position:relative;
-
-    flex:
-        0 0 75px;
-
+    flex:0 0 75px;
     width:75px;
     height:75px;
-
     padding:3px;
-
-    border:
-        2px solid
-        rgba(255,255,255,.15);
-
+    border:2px solid rgba(255,255,255,.15);
     border-radius:7px;
-
     background:#fff;
-
     overflow:hidden;
 }
 
 .editor-image.active{
     border-color:var(--gold-light);
-
-    box-shadow:
-        0 0 0 1px var(--gold);
+    box-shadow:0 0 0 1px var(--gold);
 }
 
 .editor-image-inner{
     width:100%;
     height:100%;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     overflow:hidden;
-
     background:#f7f5ef;
-
     border-radius:4px;
 }
 
 .editor-image img{
     display:block;
-
     width:100% !important;
     height:100% !important;
-
-    max-width:100% !important;
-    max-height:100% !important;
-
     object-fit:contain !important;
 }
 
 .select-image{
     position:absolute;
-
     inset:0;
-
     border:0;
-
     background:transparent;
-
     cursor:pointer;
-
     z-index:2;
 }
 
 .delete-image{
     position:absolute;
-
     right:3px;
     top:3px;
-
     width:21px;
     height:21px;
-
     border:0;
-
     border-radius:50%;
-
     background:#c31e24;
-
     color:#fff;
-
     font-size:13px;
-
     font-weight:900;
-
     cursor:pointer;
-
     z-index:5;
 }
 
 .image-number{
     position:absolute;
-
     left:4px;
     bottom:4px;
-
     min-width:18px;
     height:18px;
-
     padding:0 4px;
-
     border-radius:4px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
-    background:
-        rgba(6,27,49,.82);
-
+    background:rgba(6,27,49,.82);
     color:#fff;
-
     font-size:7px;
     font-weight:900;
-
     pointer-events:none;
 }
 
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
 .action-buttons{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:8px;
-
     margin-top:20px;
 }
 
 .action-button{
     min-height:43px;
-
     border:0;
-
     border-radius:8px;
-
     font-size:8px;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
 .action-button:disabled{
     opacity:.55;
-
     cursor:wait;
 }
 
 .btn-gold{
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light)
-        );
-
+    background:linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light)
+    );
     color:var(--navy);
 }
 
 .btn-dark{
-    background:
-        rgba(255,255,255,.09);
-
+    background:rgba(255,255,255,.09);
     color:#fff;
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.15);
 }
 
 .btn-light{
     background:#fff;
-
     color:var(--navy);
 }
 
 .editor-note{
     margin-top:13px;
-
     padding:11px;
-
-    border-left:
-        3px solid
-        var(--gold);
-
+    border-left:3px solid var(--gold);
     border-radius:6px;
-
-    background:
-        rgba(0,0,0,.18);
-
+    background:rgba(0,0,0,.18);
     color:#9ba8b2;
-
     font-size:7px;
-
     line-height:1.55;
 }
 
+/* =========================
+   STATUS
+========================= */
 
-/* =========================================================
+.export-status{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translateX(-50%);
+    z-index:3000;
+    display:none;
+    min-width:280px;
+    padding:14px 20px;
+    border-radius:10px;
+    background:#061b31;
+    color:#fff;
+    text-align:center;
+    font-size:10px;
+    font-weight:800;
+    box-shadow:0 15px 50px rgba(0,0,0,.5);
+    border:1px solid var(--gold);
+}
+
+.export-status.show{
+    display:block;
+}
+
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:700px){
 
@@ -1591,25 +965,18 @@ body{
     }
 
     .poster{
-        width:
-            calc(100vw - 16px);
-
-        height:
-            calc(
-                (100vw - 16px)
-                * 1.4142857
-            );
+        width:calc(100vw - 16px);
+        height:calc(
+            (100vw - 16px) * 1.4142857
+        );
     }
 
     .editor-panel{
         left:8px;
         right:8px;
-
         top:8px;
         bottom:8px;
-
         width:auto;
-
         max-width:none;
     }
 
@@ -1632,21 +999,19 @@ body{
     }
 
     .offer-price{
-        font-size:
-            clamp(
-                20px,
-                6vw,
-                54px
-            );
+        font-size:clamp(
+            20px,
+            6vw,
+            54px
+        );
     }
 
     .item-number{
-        font-size:
-            clamp(
-                11px,
-                3vw,
-                27px
-            );
+        font-size:clamp(
+            11px,
+            3vw,
+            27px
+        );
     }
 
     .feature{
@@ -1665,9 +1030,7 @@ body{
     .thumbnail-area{
         left:10px;
         right:10px;
-
         height:92px;
-
         padding:7px;
     }
 
@@ -1682,83 +1045,49 @@ body{
     .thumbnail-number{
         left:3px;
         bottom:3px;
-
         min-width:15px;
         height:15px;
-
         font-size:6px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================================================
-     EDIT BUTTON
-========================================================= -->
 
 <button
     class="edit-button"
     id="openEditorButton">
-
     ✎ EDIT POSTER
-
 </button>
-
-
-<!-- =========================================================
-     OVERLAY
-========================================================= -->
 
 <div
     class="editor-overlay"
     id="editorOverlay">
 </div>
 
-
-<!-- =========================================================
-     EDITOR
-========================================================= -->
-
 <div
     class="editor-panel"
     id="editorPanel">
 
-
     <div class="editor-header">
 
         <div>
-
-            <h2>
-                Poster Editor
-            </h2>
-
-            <p>
-                Premium Navy & Gold
-            </p>
-
+            <h2>Poster Editor</h2>
+            <p>Premium Navy & Gold</p>
         </div>
 
         <button
             class="close-editor"
             id="closeEditorButton">
-
             ×
-
         </button>
 
     </div>
 
-
     <div class="form-group">
 
-        <label>
-            Product Code
-        </label>
+        <label>Product Code</label>
 
         <input
             id="itemInput"
@@ -1767,12 +1096,9 @@ body{
 
     </div>
 
-
     <div class="form-group">
 
-        <label>
-            Product Description
-        </label>
+        <label>Product Description</label>
 
         <input
             id="sizeInput"
@@ -1781,12 +1107,9 @@ body{
 
     </div>
 
-
     <div class="form-group">
 
-        <label>
-            Old Price
-        </label>
+        <label>Old Price</label>
 
         <input
             id="oldPriceInput"
@@ -1795,12 +1118,9 @@ body{
 
     </div>
 
-
     <div class="form-group">
 
-        <label>
-            Offer Price
-        </label>
+        <label>Offer Price</label>
 
         <input
             id="offerPriceInput"
@@ -1809,19 +1129,15 @@ body{
 
     </div>
 
-
     <div class="form-group">
 
-        <label>
-            Product Images
-        </label>
+        <label>Product Images</label>
 
         <div class="upload-area">
 
             <p>
-                Upload one or many product images.
-                Images will never be stretched.
-                Thumbnails automatically fit the available width.
+                Select one or many product images.
+                Images always keep their original aspect ratio.
             </p>
 
             <label
@@ -1840,25 +1156,19 @@ body{
 
         </div>
 
-
         <div class="gallery-box">
 
             <div class="gallery-header">
 
-                <span>
-                    IMAGE GALLERY
-                </span>
+                <span>IMAGE GALLERY</span>
 
                 <span
                     class="gallery-count"
                     id="galleryCount">
-
                     0 IMAGES
-
                 </span>
 
             </div>
-
 
             <div
                 class="editor-gallery"
@@ -1872,9 +1182,7 @@ body{
                         font-size:8px;
                         padding:10px;
                     ">
-
                     NO IMAGES
-
                 </div>
 
             </div>
@@ -1883,97 +1191,65 @@ body{
 
     </div>
 
-
     <div class="action-buttons">
 
         <button
             class="action-button btn-gold"
             id="downloadPngButton">
-
             DOWNLOAD A4 PNG
-
         </button>
-
 
         <button
             class="action-button btn-gold"
             id="downloadPdfButton">
-
             DOWNLOAD A4 PDF
-
         </button>
-
 
         <button
             class="action-button btn-dark"
             id="clearImagesButton">
-
             CLEAR IMAGES
-
         </button>
-
 
         <button
             class="action-button btn-light"
             id="closePanelButton">
-
             DONE
-
         </button>
 
     </div>
 
-
     <div class="editor-note">
 
         <strong style="color:#fff;">
-            EXPORT FIXED
+            A4 EXPORT
         </strong>
-
-        <br><br>
-
-        The main product image is drawn directly
-        onto the final A4 export canvas.
-
-        <br><br>
-
-        Therefore it will appear in:
-
-        <br>
-        • A4 PNG
-        <br>
-        • A4 PDF
-
-        <br><br>
-
-        The image uses
-        <strong style="color:#fff;">
-            CONTAIN
-        </strong>
-        mode so the complete product is visible.
 
         <br><br>
 
         PNG:
-        <strong style="color:#fff;">
-            2480 × 3508 px
-        </strong>
+        2480 × 3508 px
 
         <br>
 
         PDF:
-        <strong style="color:#fff;">
-            210 × 297 mm
-        </strong>
+        210 × 297 mm
+
+        <br><br>
+
+        Main product image and thumbnails are
+        redrawn during export to prevent missing
+        images and stretching.
 
     </div>
 
 </div>
 
-
-<!-- =========================================================
-     POSTER
-========================================================= -->
+<div
+    class="export-status"
+    id="exportStatus">
+    Preparing download...
+</div>
 
 <div class="app">
 
@@ -1983,7 +1259,6 @@ body{
     class="poster"
     id="poster">
 
-
     <!-- HEADER -->
 
     <div class="topbar">
@@ -1991,14 +1266,18 @@ body{
         <div class="logo-box">
 
             <!--
-                KEEP logo.png IN SAME FOLDER
-                AS THIS HTML FILE
+                IMPORTANT:
+                Put your logo file as:
+
+                logo.png
+
+                in the same folder as this HTML.
             -->
 
             <img
                 src="assets/IT.jpeg"
-                alt="Permanent Logo"
                 id="logoImage"
+                alt="Logo"
                 onerror="
                     this.style.display='none';
                     document.getElementById('logoFallback').style.display='block';
@@ -2009,13 +1288,10 @@ body{
                 class="logo-fallback"
                 id="logoFallback"
                 style="display:none;">
-
                 YOUR LOGO
-
             </div>
 
         </div>
-
 
         <div class="brand-copy">
 
@@ -2031,7 +1307,6 @@ body{
 
     </div>
 
-
     <!-- HERO -->
 
     <div class="hero">
@@ -2040,43 +1315,27 @@ body{
             IT
         </div>
 
-
         <div class="hero-side">
             TRAVEL • STYLE • COMFORT
         </div>
 
-
         <div class="product-card">
-
 
             <div class="premium-tag">
                 PREMIUM PRODUCT
             </div>
 
-
             <div class="discount">
 
-                <span>
-                    SAVE
-                </span>
+                <span>SAVE</span>
 
-                <strong
-                    id="savingCircle">
-
+                <strong id="savingCircle">
                     70
-
                 </strong>
 
-                <span>
-                    DHS
-                </span>
+                <span>DHS</span>
 
             </div>
-
-
-            <!-- =================================================
-                 MAIN IMAGE AREA
-            ================================================= -->
 
             <div
                 class="main-image-area"
@@ -2085,8 +1344,8 @@ body{
                 <img
                     class="main-product-image"
                     id="mainProductImage"
-                    alt="Product Image"
-                >
+                    alt="Product"
+                    style="display:none;">
 
                 <div
                     class="product-placeholder"
@@ -2094,11 +1353,6 @@ body{
                 </div>
 
             </div>
-
-
-            <!-- =================================================
-                 THUMBNAILS
-            ================================================= -->
 
             <div class="thumbnail-area">
 
@@ -2108,11 +1362,8 @@ body{
                         class="thumbnail-list"
                         id="thumbnailList">
 
-                        <div
-                            class="empty-thumbnails">
-
+                        <div class="empty-thumbnails">
                             UPLOAD PRODUCT IMAGES
-
                         </div>
 
                     </div>
@@ -2121,13 +1372,11 @@ body{
 
             </div>
 
-
         </div>
 
     </div>
 
-
-    <!-- INFORMATION -->
+    <!-- INFO -->
 
     <div class="info">
 
@@ -2142,32 +1391,24 @@ body{
                 <div
                     class="item-number"
                     id="itemText">
-
                     15-288-08
-
                 </div>
 
                 <div
                     class="size-pill"
                     id="sizeText">
-
                     ONLY CABINE SIZE 21"
-
                 </div>
 
             </div>
-
 
             <div class="price">
 
                 <div
                     class="old-price"
                     id="oldPriceText">
-
                     165 DHS
-
                 </div>
-
 
                 <div class="offer-price">
 
@@ -2180,7 +1421,6 @@ body{
                     </span>
 
                 </div>
-
 
                 <div class="saving">
 
@@ -2195,7 +1435,6 @@ body{
             </div>
 
         </div>
-
 
         <div class="feature-strip">
 
@@ -2215,31 +1454,25 @@ body{
 
     </div>
 
-
     <!-- FOOTER -->
 
     <div class="footer">
-
         LIMITED TIME OFFER • WHILE STOCK LASTS
-
     </div>
 
-
 </div>
 
 </div>
 
 </div>
-
 
 <script>
 
 /* =========================================================
-   DATA
+   GLOBAL
 ========================================================= */
 
 let gallery = [];
-
 let activeIndex = 0;
 
 
@@ -2248,223 +1481,141 @@ let activeIndex = 0;
 ========================================================= */
 
 const editorPanel =
-    document.getElementById(
-        "editorPanel"
-    );
+    document.getElementById("editorPanel");
 
 const editorOverlay =
-    document.getElementById(
-        "editorOverlay"
-    );
+    document.getElementById("editorOverlay");
 
 const openEditorButton =
-    document.getElementById(
-        "openEditorButton"
-    );
+    document.getElementById("openEditorButton");
 
 const closeEditorButton =
-    document.getElementById(
-        "closeEditorButton"
-    );
+    document.getElementById("closeEditorButton");
 
 const closePanelButton =
-    document.getElementById(
-        "closePanelButton"
-    );
+    document.getElementById("closePanelButton");
 
 const imageInput =
-    document.getElementById(
-        "imageInput"
-    );
+    document.getElementById("imageInput");
 
 const thumbnailList =
-    document.getElementById(
-        "thumbnailList"
-    );
+    document.getElementById("thumbnailList");
 
 const editorGallery =
-    document.getElementById(
-        "editorGallery"
-    );
+    document.getElementById("editorGallery");
 
 const galleryCount =
-    document.getElementById(
-        "galleryCount"
-    );
+    document.getElementById("galleryCount");
 
 const mainProductImage =
-    document.getElementById(
-        "mainProductImage"
-    );
+    document.getElementById("mainProductImage");
 
 const productPlaceholder =
-    document.getElementById(
-        "productPlaceholder"
-    );
+    document.getElementById("productPlaceholder");
 
 const itemInput =
-    document.getElementById(
-        "itemInput"
-    );
+    document.getElementById("itemInput");
 
 const sizeInput =
-    document.getElementById(
-        "sizeInput"
-    );
+    document.getElementById("sizeInput");
 
 const oldPriceInput =
-    document.getElementById(
-        "oldPriceInput"
-    );
+    document.getElementById("oldPriceInput");
 
 const offerPriceInput =
-    document.getElementById(
-        "offerPriceInput"
-    );
+    document.getElementById("offerPriceInput");
 
 const itemText =
-    document.getElementById(
-        "itemText"
-    );
+    document.getElementById("itemText");
 
 const sizeText =
-    document.getElementById(
-        "sizeText"
-    );
+    document.getElementById("sizeText");
 
 const oldPriceText =
-    document.getElementById(
-        "oldPriceText"
-    );
+    document.getElementById("oldPriceText");
 
 const offerPriceText =
-    document.getElementById(
-        "offerPriceText"
-    );
+    document.getElementById("offerPriceText");
 
 const savingText =
-    document.getElementById(
-        "savingText"
-    );
+    document.getElementById("savingText");
 
 const savingCircle =
-    document.getElementById(
-        "savingCircle"
-    );
+    document.getElementById("savingCircle");
 
 const clearImagesButton =
-    document.getElementById(
-        "clearImagesButton"
-    );
+    document.getElementById("clearImagesButton");
 
 const downloadPngButton =
-    document.getElementById(
-        "downloadPngButton"
-    );
+    document.getElementById("downloadPngButton");
 
 const downloadPdfButton =
-    document.getElementById(
-        "downloadPdfButton"
-    );
+    document.getElementById("downloadPdfButton");
+
+const exportStatus =
+    document.getElementById("exportStatus");
 
 
 /* =========================================================
-   EDITOR
+   EDITOR OPEN/CLOSE
 ========================================================= */
 
 function openEditor(){
 
-    editorPanel.classList.add(
-        "open"
-    );
+    editorPanel.classList.add("open");
+    editorOverlay.classList.add("show");
 
-    editorOverlay.classList.add(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow="hidden";
 }
-
-openEditorButton.addEventListener(
-    "click",
-    openEditor
-);
-
 
 function closeEditor(){
 
-    editorPanel.classList.remove(
-        "open"
-    );
+    editorPanel.classList.remove("open");
+    editorOverlay.classList.remove("show");
 
-    editorOverlay.classList.remove(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow="";
 }
 
-closeEditorButton.addEventListener(
-    "click",
-    closeEditor
-);
+openEditorButton.onclick=openEditor;
+closeEditorButton.onclick=closeEditor;
+closePanelButton.onclick=closeEditor;
+editorOverlay.onclick=closeEditor;
 
-closePanelButton.addEventListener(
-    "click",
-    closeEditor
-);
+document.addEventListener("keydown",function(e){
 
-editorOverlay.addEventListener(
-    "click",
-    closeEditor
-);
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        if(e.key === "Escape"){
-            closeEditor();
-        }
-
+    if(e.key==="Escape"){
+        closeEditor();
     }
-);
+
+});
 
 
 /* =========================================================
-   TEXT
+   UPDATE TEXT
 ========================================================= */
 
 function updateText(){
 
     itemText.textContent =
-        itemInput.value ||
-        "15-288-08";
+        itemInput.value || "15-288-08";
 
     sizeText.textContent =
-        sizeInput.value ||
-        'ONLY CABINE SIZE 21"';
+        sizeInput.value || 'ONLY CABINE SIZE 21"';
 
     const oldPrice =
-        Number(
-            oldPriceInput.value
-        ) || 0;
+        Number(oldPriceInput.value)||0;
 
     const offerPrice =
-        Number(
-            offerPriceInput.value
-        ) || 0;
+        Number(offerPriceInput.value)||0;
 
     const saving =
         Math.max(
             0,
-            oldPrice - offerPrice
+            oldPrice-offerPrice
         );
 
     oldPriceText.textContent =
-        oldPrice + " DHS";
+        oldPrice+" DHS";
 
     offerPriceText.textContent =
         offerPrice;
@@ -2503,36 +1654,26 @@ offerPriceInput.addEventListener(
 
 function readFile(file){
 
-    return new Promise(
-        function(resolve,reject){
+    return new Promise(function(resolve,reject){
 
-            const reader =
-                new FileReader();
+        const reader =
+            new FileReader();
 
-            reader.onload =
-                function(e){
+        reader.onload=function(e){
 
-                    resolve({
+            resolve({
+                src:e.target.result,
+                name:file.name
+            });
 
-                        src:
-                            e.target.result,
+        };
 
-                        name:
-                            file.name
+        reader.onerror=reject;
 
-                    });
+        reader.readAsDataURL(file);
 
-                };
+    });
 
-            reader.onerror =
-                reject;
-
-            reader.readAsDataURL(
-                file
-            );
-
-        }
-    );
 }
 
 
@@ -2545,24 +1686,19 @@ imageInput.addEventListener(
     async function(){
 
         const files =
-            Array.from(
-                this.files
-            );
+            Array.from(this.files);
 
         const validFiles =
-            files.filter(
-                file =>
-                    file.type &&
-                    file.type.startsWith(
-                        "image/"
-                    )
-            );
+            files.filter(function(file){
 
-        if(
-            !validFiles.length
-        ){
+                return file.type &&
+                    file.type.startsWith("image/");
 
-            this.value = "";
+            });
+
+        if(!validFiles.length){
+
+            this.value="";
 
             return;
         }
@@ -2571,27 +1707,21 @@ imageInput.addEventListener(
 
             const images =
                 await Promise.all(
-                    validFiles.map(
-                        readFile
-                    )
+                    validFiles.map(readFile)
                 );
 
             const wasEmpty =
-                gallery.length === 0;
+                gallery.length===0;
 
-            gallery.push(
-                ...images
-            );
+            gallery.push(...images);
 
             if(wasEmpty){
-                activeIndex = 0;
+                activeIndex=0;
             }
 
             renderGallery();
 
-            showMainImage(
-                activeIndex
-            );
+            showMainImage(activeIndex);
 
         }
         catch(error){
@@ -2599,31 +1729,28 @@ imageInput.addEventListener(
             console.error(error);
 
             alert(
-                "Could not load image."
+                "Image upload failed."
             );
 
         }
 
-        this.value = "";
+        this.value="";
 
     }
 );
 
 
 /* =========================================================
-   SHOW MAIN IMAGE
+   MAIN IMAGE
 ========================================================= */
 
 function showMainImage(index){
 
-    if(
-        !gallery[index]
-    ){
+    if(!gallery[index]){
         return;
     }
 
-    activeIndex =
-        index;
+    activeIndex=index;
 
     mainProductImage.src =
         gallery[index].src;
@@ -2635,60 +1762,44 @@ function showMainImage(index){
         "none";
 
     renderPosterThumbnails();
-
     renderEditorGallery();
 }
 
 
 /* =========================================================
-   DELETE
+   DELETE IMAGE
 ========================================================= */
 
 function deleteImage(index){
 
-    gallery.splice(
-        index,
-        1
-    );
+    gallery.splice(index,1);
 
-    if(
-        gallery.length === 0
-    ){
+    if(gallery.length===0){
 
-        activeIndex = 0;
+        activeIndex=0;
 
-        mainProductImage.src =
-            "";
+        mainProductImage.src="";
 
-        mainProductImage.style.display =
-            "none";
+        mainProductImage.style.display="none";
 
-        productPlaceholder.style.display =
-            "block";
+        productPlaceholder.style.display="block";
 
         renderGallery();
 
         return;
     }
 
-    if(
-        activeIndex > index
-    ){
+    if(activeIndex>index){
         activeIndex--;
     }
 
-    if(
-        activeIndex >= gallery.length
-    ){
-        activeIndex =
-            gallery.length - 1;
+    if(activeIndex>=gallery.length){
+        activeIndex=gallery.length-1;
     }
 
     renderGallery();
 
-    showMainImage(
-        activeIndex
-    );
+    showMainImage(activeIndex);
 }
 
 
@@ -2698,128 +1809,65 @@ function deleteImage(index){
 
 function renderPosterThumbnails(){
 
-    thumbnailList.innerHTML =
-        "";
+    thumbnailList.innerHTML="";
 
-    if(
-        gallery.length === 0
-    ){
+    if(gallery.length===0){
 
-        thumbnailList.style.width =
-            "100%";
-
-        thumbnailList.innerHTML = `
-
+        thumbnailList.innerHTML=`
             <div class="empty-thumbnails">
                 UPLOAD PRODUCT IMAGES
             </div>
-
         `;
 
         return;
     }
 
-    /*
-       IMPORTANT:
+    gallery.forEach(function(image,index){
 
-       Always 100% width.
+        const button =
+            document.createElement("button");
 
-       1 image  = 100%
-       2 images = 50%
-       3 images = 33%
-       4 images = 25%
-       etc.
+        button.type="button";
 
-       NO STRETCH.
-    */
+        button.className="thumbnail";
 
-    thumbnailList.style.width =
-        "100%";
-
-    gallery.forEach(
-        function(image,index){
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-            button.type =
-                "button";
-
-            button.className =
-                "thumbnail";
-
-            if(
-                index === activeIndex
-            ){
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-
-            const inner =
-                document.createElement(
-                    "div"
-                );
-
-            inner.className =
-                "thumbnail-inner";
-
-            const img =
-                document.createElement(
-                    "img"
-                );
-
-            img.src =
-                image.src;
-
-            img.alt =
-                "Product " +
-                (index + 1);
-
-            inner.appendChild(
-                img
-            );
-
-            button.appendChild(
-                inner
-            );
-
-            const number =
-                document.createElement(
-                    "div"
-                );
-
-            number.className =
-                "thumbnail-number";
-
-            number.textContent =
-                index + 1;
-
-            button.appendChild(
-                number
-            );
-
-            button.addEventListener(
-                "click",
-                function(){
-
-                    showMainImage(
-                        index
-                    );
-
-                }
-            );
-
-            thumbnailList.appendChild(
-                button
-            );
-
+        if(index===activeIndex){
+            button.classList.add("active");
         }
-    );
+
+        const inner =
+            document.createElement("div");
+
+        inner.className="thumbnail-inner";
+
+        const img =
+            document.createElement("img");
+
+        img.src=image.src;
+
+        inner.appendChild(img);
+
+        button.appendChild(inner);
+
+        const number =
+            document.createElement("div");
+
+        number.className="thumbnail-number";
+
+        number.textContent=index+1;
+
+        button.appendChild(number);
+
+        button.onclick=function(){
+
+            showMainImage(index);
+
+        };
+
+        thumbnailList.appendChild(button);
+
+    });
+
 }
 
 
@@ -2829,18 +1877,13 @@ function renderPosterThumbnails(){
 
 function renderEditorGallery(){
 
-    editorGallery.innerHTML =
-        "";
+    editorGallery.innerHTML="";
 
-    if(
-        gallery.length === 0
-    ){
+    if(gallery.length===0){
 
-        galleryCount.textContent =
-            "0 IMAGES";
+        galleryCount.textContent="0 IMAGES";
 
-        editorGallery.innerHTML = `
-
+        editorGallery.innerHTML=`
             <div
                 style="
                     color:#777;
@@ -2848,249 +1891,316 @@ function renderEditorGallery(){
                     text-align:center;
                     font-size:8px;
                     padding:10px;
-                "
-            >
+                ">
                 NO IMAGES
             </div>
-
         `;
 
         return;
     }
 
     galleryCount.textContent =
-        gallery.length +
+        gallery.length+
         (
-            gallery.length === 1
+            gallery.length===1
             ? " IMAGE"
             : " IMAGES"
         );
 
-    gallery.forEach(
-        function(image,index){
+    gallery.forEach(function(image,index){
 
-            const box =
-                document.createElement(
-                    "div"
-                );
+        const box =
+            document.createElement("div");
 
-            box.className =
-                "editor-image";
+        box.className="editor-image";
 
-            if(
-                index === activeIndex
-            ){
-
-                box.classList.add(
-                    "active"
-                );
-
-            }
-
-            const inner =
-                document.createElement(
-                    "div"
-                );
-
-            inner.className =
-                "editor-image-inner";
-
-            const img =
-                document.createElement(
-                    "img"
-                );
-
-            img.src =
-                image.src;
-
-            inner.appendChild(
-                img
-            );
-
-            box.appendChild(
-                inner
-            );
-
-            const select =
-                document.createElement(
-                    "button"
-                );
-
-            select.type =
-                "button";
-
-            select.className =
-                "select-image";
-
-            select.addEventListener(
-                "click",
-                function(){
-
-                    showMainImage(
-                        index
-                    );
-
-                }
-            );
-
-            box.appendChild(
-                select
-            );
-
-            const deleteButton =
-                document.createElement(
-                    "button"
-                );
-
-            deleteButton.type =
-                "button";
-
-            deleteButton.className =
-                "delete-image";
-
-            deleteButton.textContent =
-                "×";
-
-            deleteButton.addEventListener(
-                "click",
-                function(e){
-
-                    e.stopPropagation();
-
-                    deleteImage(
-                        index
-                    );
-
-                }
-            );
-
-            box.appendChild(
-                deleteButton
-            );
-
-            const number =
-                document.createElement(
-                    "div"
-                );
-
-            number.className =
-                "image-number";
-
-            number.textContent =
-                index + 1;
-
-            box.appendChild(
-                number
-            );
-
-            editorGallery.appendChild(
-                box
-            );
-
+        if(index===activeIndex){
+            box.classList.add("active");
         }
-    );
+
+        const inner =
+            document.createElement("div");
+
+        inner.className="editor-image-inner";
+
+        const img =
+            document.createElement("img");
+
+        img.src=image.src;
+
+        inner.appendChild(img);
+
+        box.appendChild(inner);
+
+        const select =
+            document.createElement("button");
+
+        select.type="button";
+
+        select.className="select-image";
+
+        select.onclick=function(){
+
+            showMainImage(index);
+
+        };
+
+        box.appendChild(select);
+
+        const deleteButton =
+            document.createElement("button");
+
+        deleteButton.type="button";
+
+        deleteButton.className="delete-image";
+
+        deleteButton.textContent="×";
+
+        deleteButton.onclick=function(e){
+
+            e.stopPropagation();
+
+            deleteImage(index);
+
+        };
+
+        box.appendChild(deleteButton);
+
+        const number =
+            document.createElement("div");
+
+        number.className="image-number";
+
+        number.textContent=index+1;
+
+        box.appendChild(number);
+
+        editorGallery.appendChild(box);
+
+    });
+
 }
 
 
 /* =========================================================
-   RENDER
+   RENDER ALL
 ========================================================= */
 
 function renderGallery(){
 
     renderPosterThumbnails();
-
     renderEditorGallery();
+
 }
 
 
 /* =========================================================
-   CLEAR
+   CLEAR IMAGES
 ========================================================= */
 
-clearImagesButton.addEventListener(
-    "click",
-    function(){
+clearImagesButton.onclick=function(){
 
-        if(
-            gallery.length === 0
-        ){
-            return;
-        }
-
-        if(
-            !confirm(
-                "Delete all product images?"
-            )
-        ){
-            return;
-        }
-
-        gallery = [];
-
-        activeIndex = 0;
-
-        mainProductImage.src =
-            "";
-
-        mainProductImage.style.display =
-            "none";
-
-        productPlaceholder.style.display =
-            "block";
-
-        renderGallery();
+    if(gallery.length===0){
+        return;
     }
-);
+
+    if(!confirm(
+        "Delete all product images?"
+    )){
+        return;
+    }
+
+    gallery=[];
+
+    activeIndex=0;
+
+    mainProductImage.src="";
+
+    mainProductImage.style.display="none";
+
+    productPlaceholder.style.display="block";
+
+    renderGallery();
+
+};
 
 
 /* =========================================================
-   WAIT FOR IMAGE
+   STATUS
+========================================================= */
+
+function showStatus(text){
+
+    exportStatus.textContent=text;
+
+    exportStatus.classList.add("show");
+
+}
+
+function hideStatus(){
+
+    exportStatus.classList.remove("show");
+
+}
+
+
+/* =========================================================
+   LOAD SCRIPT
+========================================================= */
+
+function loadScript(url){
+
+    return new Promise(function(resolve,reject){
+
+        const script =
+            document.createElement("script");
+
+        script.src=url;
+
+        script.onload=function(){
+            resolve();
+        };
+
+        script.onerror=function(){
+            reject(
+                new Error(
+                    "Could not load library."
+                )
+            );
+        };
+
+        document.head.appendChild(script);
+
+    });
+
+}
+
+
+/* =========================================================
+   HTML2CANVAS
+========================================================= */
+
+async function ensureHtml2Canvas(){
+
+    if(typeof html2canvas==="function"){
+        return;
+    }
+
+    try{
+
+        await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        );
+
+    }
+    catch(error){
+
+        await loadScript(
+            "https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"
+        );
+
+    }
+
+    if(typeof html2canvas!=="function"){
+
+        throw new Error(
+            "PNG export library failed to load."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   JSPDF
+========================================================= */
+
+async function ensureJsPDF(){
+
+    if(
+        window.jspdf &&
+        window.jspdf.jsPDF
+    ){
+        return;
+    }
+
+    try{
+
+        await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        );
+
+    }
+    catch(error){
+
+        await loadScript(
+            "https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"
+        );
+
+    }
+
+    if(
+        !window.jspdf ||
+        !window.jspdf.jsPDF
+    ){
+
+        throw new Error(
+            "PDF export library failed to load."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   WAIT IMAGE
 ========================================================= */
 
 function waitForImage(img){
 
-    return new Promise(
-        function(resolve){
+    return new Promise(function(resolve){
 
-            if(
-                img.complete &&
-                img.naturalWidth > 0
-            ){
+        if(
+            img.complete &&
+            img.naturalWidth>0
+        ){
 
-                resolve();
+            resolve();
 
-                return;
-            }
-
-            img.onload =
-                resolve;
-
-            img.onerror =
-                resolve;
-
+            return;
         }
-    );
+
+        img.onload=function(){
+            resolve();
+        };
+
+        img.onerror=function(){
+            resolve();
+        };
+
+    });
+
 }
 
 
 /* =========================================================
-   WAIT EVERYTHING
+   WAIT POSTER
 ========================================================= */
 
 async function waitForPoster(){
 
+    const poster =
+        document.getElementById("poster");
+
     const images =
         Array.from(
-            document.querySelectorAll(
-                "#poster img"
-            )
+            poster.querySelectorAll("img")
         );
 
     await Promise.all(
-        images.map(
-            waitForImage
-        )
+        images.map(waitForImage)
     );
 
     if(
@@ -3099,63 +2209,56 @@ async function waitForPoster(){
     ){
 
         await document.fonts.ready;
+
     }
 
-    await new Promise(
-        resolve =>
-            requestAnimationFrame(
-                () =>
-                    requestAnimationFrame(
-                        resolve
-                    )
-            )
-    );
+    await new Promise(function(resolve){
+
+        requestAnimationFrame(function(){
+
+            requestAnimationFrame(resolve);
+
+        });
+
+    });
+
 }
 
 
 /* =========================================================
-   LOAD IMAGE DIRECTLY
+   LOAD IMAGE
 ========================================================= */
 
-function loadExportImage(src){
+function loadImage(src){
 
-    return new Promise(
-        function(resolve,reject){
+    return new Promise(function(resolve,reject){
 
-            const img =
-                new Image();
+        const img =
+            new Image();
 
-            img.onload =
-                function(){
-                    resolve(img);
-                };
+        img.onload=function(){
+            resolve(img);
+        };
 
-            img.onerror =
-                function(){
-                    reject(
-                        new Error(
-                            "Unable to load product image."
-                        )
-                    );
-                };
+        img.onerror=function(){
 
-            /*
-              Since uploaded files are
-              Data URLs, CORS is not an issue.
-            */
+            reject(
+                new Error(
+                    "Product image failed to load."
+                )
+            );
 
-            img.src =
-                src;
+        };
 
-        }
-    );
+        img.src=src;
+
+    });
+
 }
 
 
 /* =========================================================
-   DRAW IMAGE WITHOUT STRETCHING
-
-   THIS FUNCTION IS THE MAIN FIX.
+   DRAW CONTAIN
 ========================================================= */
 
 function drawContain(
@@ -3175,281 +2278,143 @@ function drawContain(
         img.naturalHeight ||
         img.height;
 
-    if(
-        !iw ||
-        !ih
-    ){
+    if(!iw || !ih){
         return;
     }
 
     const scale =
         Math.min(
-            width / iw,
-            height / ih
+            width/iw,
+            height/ih
         );
 
-    const drawWidth =
-        iw * scale;
+    const dw =
+        iw*scale;
 
-    const drawHeight =
-        ih * scale;
+    const dh =
+        ih*scale;
 
-    const drawX =
-        x +
-        (
-            width -
-            drawWidth
-        ) / 2;
+    const dx =
+        x+(width-dw)/2;
 
-    const drawY =
-        y +
-        (
-            height -
-            drawHeight
-        ) / 2;
+    const dy =
+        y+(height-dh)/2;
 
     ctx.drawImage(
         img,
-        drawX,
-        drawY,
-        drawWidth,
-        drawHeight
+        dx,
+        dy,
+        dw,
+        dh
     );
+
 }
 
 
 /* =========================================================
-   CREATE EXPORT
-
-   IMPORTANT:
-   1. Hide main image temporarily in clone.
-   2. Render complete poster.
-   3. Draw main product image manually.
+   CREATE EXPORT CANVAS
 ========================================================= */
 
 async function createExportCanvas(){
 
+    await ensureHtml2Canvas();
+
     await waitForPoster();
 
-
     const poster =
-        document.getElementById(
-            "poster"
-        );
-
-
-    /*
-       Clone poster.
-    */
+        document.getElementById("poster");
 
     const clone =
-        poster.cloneNode(
-            true
-        );
+        poster.cloneNode(true);
 
-
-    /*
-       Fixed exact poster size.
-    */
-
-    clone.style.position =
-        "fixed";
-
-    clone.style.left =
-        "-100000px";
-
-    clone.style.top =
-        "0";
-
-    clone.style.width =
-        "794px";
-
-    clone.style.height =
-        "1123px";
-
-    clone.style.margin =
-        "0";
-
-    clone.style.transform =
-        "none";
-
-    clone.style.boxShadow =
-        "none";
-
-
-    /*
-       Create hidden export container.
-    */
+    clone.style.position="fixed";
+    clone.style.left="-100000px";
+    clone.style.top="0";
+    clone.style.width="794px";
+    clone.style.height="1123px";
+    clone.style.margin="0";
+    clone.style.transform="none";
+    clone.style.boxShadow="none";
 
     const holder =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
-    holder.style.position =
-        "fixed";
+    holder.style.position="fixed";
+    holder.style.left="-100000px";
+    holder.style.top="0";
+    holder.style.width="794px";
+    holder.style.height="1123px";
+    holder.style.overflow="hidden";
+    holder.style.background="#f7f3e9";
 
-    holder.style.left =
-        "-100000px";
+    holder.appendChild(clone);
 
-    holder.style.top =
-        "0";
-
-    holder.style.width =
-        "794px";
-
-    holder.style.height =
-        "1123px";
-
-    holder.style.overflow =
-        "hidden";
-
-    holder.style.background =
-        "#f7f3e9";
-
-
-    holder.appendChild(
-        clone
-    );
-
-    document.body.appendChild(
-        holder
-    );
-
+    document.body.appendChild(holder);
 
     try{
-
-        /*
-        =====================================================
-        MAIN IMAGE
-
-        HIDE IT IN HTML2CANVAS.
-
-        We will draw it manually later.
-        =====================================================
-        */
 
         const clonedMain =
             clone.querySelector(
                 "#mainProductImage"
             );
 
-
-        if(
-            clonedMain
-        ){
-
-            clonedMain.style.display =
-                "none";
+        if(clonedMain){
+            clonedMain.style.display="none";
         }
 
-
-        /*
-        Get exact image area.
-        */
-
-        const clonedArea =
-            clone.querySelector(
-                "#mainImageArea"
+        const clonedThumbImages =
+            clone.querySelectorAll(
+                ".thumbnail img"
             );
 
-
-        /*
-        Render poster.
-        */
+        clonedThumbImages.forEach(
+            function(img){
+                img.style.visibility="hidden";
+            }
+        );
 
         const rendered =
             await html2canvas(
                 clone,
                 {
-
                     scale:3,
-
                     width:794,
-
                     height:1123,
-
                     windowWidth:794,
-
                     windowHeight:1123,
-
-                    backgroundColor:
-                        "#f7f3e9",
-
+                    backgroundColor:"#f7f3e9",
                     useCORS:true,
-
                     allowTaint:false,
-
                     imageTimeout:0,
-
                     logging:false,
-
+                    removeContainer:true,
                     scrollX:0,
-
                     scrollY:0
-
                 }
             );
 
-
-        /*
-        =====================================================
-        CREATE FINAL HIGH-RES A4 CANVAS
-        =====================================================
-        */
-
         const finalCanvas =
-            document.createElement(
-                "canvas"
-            );
+            document.createElement("canvas");
 
+        finalCanvas.width=2480;
+        finalCanvas.height=3508;
 
-        /*
-        EXACT A4:
+        const ctx =
+            finalCanvas.getContext("2d");
 
-        2480 x 3508
-        */
+        ctx.imageSmoothingEnabled=true;
+        ctx.imageSmoothingQuality="high";
 
-        finalCanvas.width =
-            2480;
+        ctx.fillStyle="#f7f3e9";
 
-        finalCanvas.height =
-            3508;
-
-
-        const finalCtx =
-            finalCanvas.getContext(
-                "2d"
-            );
-
-
-        finalCtx.imageSmoothingEnabled =
-            true;
-
-        finalCtx.imageSmoothingQuality =
-            "high";
-
-
-        /*
-        White/cream background.
-        */
-
-        finalCtx.fillStyle =
-            "#f7f3e9";
-
-        finalCtx.fillRect(
+        ctx.fillRect(
             0,
             0,
             2480,
             3508
         );
 
-
-        /*
-        Draw rendered poster.
-        */
-
-        finalCtx.drawImage(
+        ctx.drawImage(
             rendered,
             0,
             0,
@@ -3457,216 +2422,61 @@ async function createExportCanvas(){
             3508
         );
 
+        const scaleX =
+            2480/794;
 
-        /*
-        =====================================================
-        NOW DRAW MAIN PRODUCT IMAGE DIRECTLY
-        =====================================================
-        */
+        const scaleY =
+            3508/1123;
+
+
+        /* =========================
+           MAIN IMAGE
+        ========================= */
 
         if(
-            gallery.length > 0 &&
-            gallery[activeIndex] &&
-            clonedArea
+            gallery.length>0 &&
+            gallery[activeIndex]
         ){
 
             const sourceImage =
-                await loadExportImage(
+                await loadImage(
                     gallery[activeIndex].src
                 );
 
+            const area =
+                clone.querySelector(
+                    "#mainImageArea"
+                );
 
-            /*
-            Original poster coordinates.
+            if(area){
 
-            Since poster is 794 x 1123,
-            A4 scale is:
-
-            2480 / 794
-            3508 / 1123
-            */
-
-            const posterRect =
-                clone.getBoundingClientRect();
-
-
-            const areaRect =
-                clonedArea.getBoundingClientRect();
-
-
-            /*
-            Convert CSS coordinates
-            into final A4 pixels.
-            */
-
-            const scaleX =
-                2480 / 794;
-
-            const scaleY =
-                3508 / 1123;
-
-
-            const x =
-                (
-                    areaRect.left -
-                    posterRect.left
-                ) *
-                scaleX;
-
-
-            const y =
-                (
-                    areaRect.top -
-                    posterRect.top
-                ) *
-                scaleY;
-
-
-            const width =
-                areaRect.width *
-                scaleX;
-
-
-            const height =
-                areaRect.height *
-                scaleY;
-
-
-            /*
-            Clear only the image area.
-
-            This is important because the
-            placeholder/old image must not remain.
-            */
-
-            /*
-            We DON'T clear the complete area,
-            because shadows/background may be
-            part of the design.
-
-            Instead the original main image
-            was hidden before rendering, so
-            there is nothing to clear.
-            */
-
-
-            /*
-            Draw entire product image
-            using CONTAIN.
-            */
-
-            drawContain(
-                finalCtx,
-                sourceImage,
-                x,
-                y,
-                width,
-                height
-            );
-
-        }
-
-
-        /*
-        =====================================================
-        DRAW THUMBNAILS DIRECTLY TOO
-        =====================================================
-
-        This guarantees thumbnails are also
-        correct in PNG/PDF.
-        */
-
-        const thumbElements =
-            Array.from(
-                clone.querySelectorAll(
-                    ".thumbnail"
-                )
-            );
-
-
-        if(
-            gallery.length > 0 &&
-            thumbElements.length > 0
-        ){
-
-            for(
-                let i = 0;
-                i < thumbElements.length;
-                i++
-            ){
-
-                if(
-                    !gallery[i]
-                ){
-                    continue;
-                }
-
-
-                const thumb =
-                    thumbElements[i];
-
-
-                const thumbInner =
-                    thumb.querySelector(
-                        ".thumbnail-inner"
-                    );
-
-
-                if(
-                    !thumbInner
-                ){
-                    continue;
-                }
-
-
-                const rect =
-                    thumbInner.getBoundingClientRect();
-
+                const areaRect =
+                    area.getBoundingClientRect();
 
                 const posterRect =
                     clone.getBoundingClientRect();
 
-
                 const x =
                     (
-                        rect.left -
+                        areaRect.left-
                         posterRect.left
-                    ) *
-                    scaleX;
-
+                    )*scaleX;
 
                 const y =
                     (
-                        rect.top -
+                        areaRect.top-
                         posterRect.top
-                    ) *
-                    scaleY;
-
+                    )*scaleY;
 
                 const width =
-                    rect.width *
-                    scaleX;
-
+                    areaRect.width*scaleX;
 
                 const height =
-                    rect.height *
-                    scaleY;
-
-
-                const thumbImage =
-                    await loadExportImage(
-                        gallery[i].src
-                    );
-
-
-                /*
-                Draw over the HTML thumbnail
-                using exact contain.
-                */
+                    areaRect.height*scaleY;
 
                 drawContain(
-                    finalCtx,
-                    thumbImage,
+                    ctx,
+                    sourceImage,
                     x,
                     y,
                     width,
@@ -3677,6 +2487,80 @@ async function createExportCanvas(){
 
         }
 
+
+        /* =========================
+           THUMBNAILS
+        ========================= */
+
+        if(gallery.length>0){
+
+            const thumbs =
+                Array.from(
+                    clone.querySelectorAll(
+                        ".thumbnail"
+                    )
+                );
+
+            for(
+                let i=0;
+                i<thumbs.length;
+                i++
+            ){
+
+                if(!gallery[i]){
+                    continue;
+                }
+
+                const inner =
+                    thumbs[i].querySelector(
+                        ".thumbnail-inner"
+                    );
+
+                if(!inner){
+                    continue;
+                }
+
+                const rect =
+                    inner.getBoundingClientRect();
+
+                const posterRect =
+                    clone.getBoundingClientRect();
+
+                const x =
+                    (
+                        rect.left-
+                        posterRect.left
+                    )*scaleX;
+
+                const y =
+                    (
+                        rect.top-
+                        posterRect.top
+                    )*scaleY;
+
+                const width =
+                    rect.width*scaleX;
+
+                const height =
+                    rect.height*scaleY;
+
+                const image =
+                    await loadImage(
+                        gallery[i].src
+                    );
+
+                drawContain(
+                    ctx,
+                    image,
+                    x,
+                    y,
+                    width,
+                    height
+                );
+
+            }
+
+        }
 
         return finalCanvas;
 
@@ -3691,24 +2575,77 @@ async function createExportCanvas(){
 
 
 /* =========================================================
-   SAFE FILE NAME
+   SAFE NAME
 ========================================================= */
 
-function safeName(text){
+function safeName(value){
 
     return String(
-        text ||
-        "Product-Poster"
+        value || "Product-Poster"
     )
     .trim()
     .replace(
-        /[^a-z0-9-_]+/gi,
+        /[^a-z0-9_-]+/gi,
         "-"
     )
     .replace(
         /-+/g,
         "-"
+    )
+    .replace(
+        /^-|-$/g,
+        ""
     );
+
+}
+
+
+/* =========================================================
+   DOWNLOAD BLOB
+========================================================= */
+
+function downloadBlob(
+    blob,
+    filename
+){
+
+    return new Promise(function(resolve,reject){
+
+        try{
+
+            const url =
+                URL.createObjectURL(blob);
+
+            const link =
+                document.createElement("a");
+
+            link.href=url;
+            link.download=filename;
+
+            link.style.display="none";
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            setTimeout(function(){
+
+                link.remove();
+
+                URL.revokeObjectURL(url);
+
+                resolve();
+
+            },600);
+
+        }
+        catch(error){
+
+            reject(error);
+
+        }
+
+    });
 
 }
 
@@ -3719,64 +2656,64 @@ function safeName(text){
 
 async function downloadPNG(){
 
-    const originalText =
-        downloadPngButton.textContent;
-
-
-    downloadPngButton.disabled =
-        true;
-
-    downloadPngButton.textContent =
-        "CREATING A4 PNG...";
-
+    downloadPngButton.disabled=true;
+    downloadPdfButton.disabled=true;
 
     try{
+
+        showStatus(
+            "Preparing A4 PNG..."
+        );
 
         const canvas =
             await createExportCanvas();
 
-
-        /*
-        PNG is ALREADY:
-
-        2480 × 3508
-
-        EXACT A4.
-        */
-
-        const data =
-            canvas.toDataURL(
-                "image/png"
-            );
-
-
-        const link =
-            document.createElement(
-                "a"
-            );
-
-
-        link.download =
-            "A4-Poster-" +
-            safeName(
-                itemInput.value
-            ) +
-            ".png";
-
-
-        link.href =
-            data;
-
-
-        document.body.appendChild(
-            link
+        showStatus(
+            "Creating PNG..."
         );
 
+        const blob =
+            await new Promise(
+                function(resolve,reject){
 
-        link.click();
+                    canvas.toBlob(
+                        function(result){
 
+                            if(result){
+                                resolve(result);
+                            }
+                            else{
+                                reject(
+                                    new Error(
+                                        "PNG conversion failed."
+                                    )
+                                );
+                            }
 
-        link.remove();
+                        },
+                        "image/png"
+                    );
+
+                }
+            );
+
+        await downloadBlob(
+            blob,
+            "A4-Poster-"+
+            safeName(
+                itemInput.value
+            )+
+            ".png"
+        );
+
+        showStatus(
+            "PNG downloaded successfully."
+        );
+
+        setTimeout(
+            hideStatus,
+            1800
+        );
 
     }
     catch(error){
@@ -3786,19 +2723,22 @@ async function downloadPNG(){
             error
         );
 
+        showStatus(
+            "PNG ERROR"
+        );
+
         alert(
-            "PNG export failed.\n\n" +
+            "PNG download failed:\n\n"+
             error.message
         );
 
     }
+    finally{
 
+        downloadPngButton.disabled=false;
+        downloadPdfButton.disabled=false;
 
-    downloadPngButton.disabled =
-        false;
-
-    downloadPngButton.textContent =
-        originalText;
+    }
 
 }
 
@@ -3809,71 +2749,40 @@ async function downloadPNG(){
 
 async function downloadPDF(){
 
-    const originalText =
-        downloadPdfButton.textContent;
-
-
-    downloadPdfButton.disabled =
-        true;
-
-    downloadPdfButton.textContent =
-        "CREATING A4 PDF...";
-
+    downloadPngButton.disabled=true;
+    downloadPdfButton.disabled=true;
 
     try{
 
-        /*
-        Get final 2480x3508 canvas.
+        showStatus(
+            "Preparing A4 PDF..."
+        );
 
-        Main image is already manually
-        drawn here.
-        */
+        await ensureJsPDF();
 
         const canvas =
             await createExportCanvas();
 
+        showStatus(
+            "Creating A4 PDF..."
+        );
 
         const image =
             canvas.toDataURL(
                 "image/jpeg",
-                0.98
+                .97
             );
-
 
         const jsPDF =
             window.jspdf.jsPDF;
 
-
-        /*
-        EXACT A4 PDF
-        */
-
         const pdf =
             new jsPDF({
-
-                orientation:
-                    "portrait",
-
-                unit:
-                    "mm",
-
-                format:
-                    "a4",
-
-                compress:
-                    true
-
+                orientation:"portrait",
+                unit:"mm",
+                format:"a4",
+                compress:true
             });
-
-
-        /*
-        EXACT FULL PAGE:
-
-        x = 0
-        y = 0
-        width = 210mm
-        height = 297mm
-        */
 
         pdf.addImage(
             image,
@@ -3886,13 +2795,21 @@ async function downloadPDF(){
             "FAST"
         );
 
-
         pdf.save(
-            "IT -" +
+            "IT -"+
             safeName(
                 itemInput.value
-            ) +
+            )+
             ".pdf"
+        );
+
+        showStatus(
+            "PDF downloaded successfully."
+        );
+
+        setTimeout(
+            hideStatus,
+            1800
         );
 
     }
@@ -3903,19 +2820,22 @@ async function downloadPDF(){
             error
         );
 
+        showStatus(
+            "PDF ERROR"
+        );
+
         alert(
-            "PDF export failed.\n\n" +
+            "PDF download failed:\n\n"+
             error.message
         );
 
     }
+    finally{
 
+        downloadPngButton.disabled=false;
+        downloadPdfButton.disabled=false;
 
-    downloadPdfButton.disabled =
-        false;
-
-    downloadPdfButton.textContent =
-        originalText;
+    }
 
 }
 
@@ -3924,53 +2844,19 @@ async function downloadPDF(){
    EVENTS
 ========================================================= */
 
-downloadPngButton.addEventListener(
-    "click",
-    downloadPNG
-);
+downloadPngButton.onclick =
+    downloadPNG;
 
-downloadPdfButton.addEventListener(
-    "click",
-    downloadPDF
-);
+downloadPdfButton.onclick =
+    downloadPDF;
 
 
 /* =========================================================
-   INITIALIZE
+   INITIAL
 ========================================================= */
 
 updateText();
-
 renderGallery();
-
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        const logo =
-            document.getElementById(
-                "logoImage"
-            );
-
-        if(
-            logo &&
-            logo.naturalWidth > 0
-        ){
-
-            document.getElementById(
-                "logoFallback"
-            ).style.display =
-                "none";
-
-        }
-
-    }
-);
 
 </script>
 
