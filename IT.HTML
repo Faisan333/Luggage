@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Premium Product Poster</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap"
+rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
 
-html,body{
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
     margin:0;
     padding:0;
     min-height:100%;
@@ -32,9 +40,9 @@ body{
     --cream:#f7f3e9;
 }
 
-/* =========================
+/* =========================================================
    APP
-========================= */
+========================================================= */
 
 .app{
     min-height:100vh;
@@ -50,600 +58,917 @@ body{
     justify-content:center;
 }
 
-/* =========================
+/* =========================================================
    POSTER
-========================= */
+========================================================= */
 
 .poster{
     position:relative;
+
     width:794px;
     height:1123px;
+
     overflow:hidden;
+
     background:#f7f3e9;
-    box-shadow:0 35px 90px rgba(0,0,0,.55);
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.55);
 }
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .topbar{
+
     position:relative;
+
+    width:100%;
     height:135px;
+
     padding:22px 30px;
-    background:linear-gradient(
-        135deg,
-        #061b31 0%,
-        #082746 52%,
-        #0b3155 100%
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #061b31 0%,
+            #082746 52%,
+            #0b3155 100%
+        );
+
     color:#fff;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    z-index:100;
+
+    z-index:20;
 }
 
 .topbar::after{
+
     content:"";
+
     position:absolute;
+
     left:0;
     bottom:0;
+
     width:100%;
     height:5px;
-    background:linear-gradient(
-        90deg,
-        var(--gold-dark),
-        var(--gold-light),
-        var(--gold),
-        var(--gold-light),
-        var(--gold-dark)
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light),
+            var(--gold),
+            var(--gold-light),
+            var(--gold-dark)
+        );
 }
 
-/* =========================
+/* =========================================================
    LOGO
-========================= */
+========================================================= */
 
 .logo-box{
+
     width:215px;
     height:85px;
+
     padding:8px;
+
     background:#fff;
+
     border-radius:14px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
-    box-shadow:0 8px 20px rgba(0,0,0,.18);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
 }
 
 .logo-box img{
+
     display:block;
+
     width:auto;
     height:auto;
+
     max-width:100%;
     max-height:95px;
+
     object-fit:contain;
 }
 
 .logo-fallback{
+
     color:var(--navy);
+
     font-size:12px;
+
     font-weight:900;
+
     letter-spacing:2px;
 }
 
-/* =========================
+/* =========================================================
    HEADER TEXT
-========================= */
+========================================================= */
 
 .brand-copy{
     text-align:right;
 }
 
 .brand-copy small{
+
     display:block;
+
     margin-bottom:8px;
+
     color:var(--gold-light);
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:3px;
 }
 
 .brand-copy strong{
+
     font-family:Montserrat,Arial,sans-serif;
+
     font-size:30px;
+
     font-weight:900;
 }
 
 .brand-copy::after{
+
     content:"";
+
     display:block;
+
     width:90px;
     height:6px;
+
     margin:14px 0 0 auto;
+
     border-radius:10px;
-    background:linear-gradient(
-        90deg,
-        var(--gold-light),
-        var(--gold-dark)
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-light),
+            var(--gold-dark)
+        );
 }
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
+
     position:relative;
+
+    width:100%;
     height:713px;
+
     overflow:hidden;
-    background:linear-gradient(
-        135deg,
-        var(--navy) 0%,
-        var(--navy) 24%,
-        #f1ede4 24.1%,
-        #fbfaf7 100%
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy) 0%,
+            var(--navy) 24%,
+            #f1ede4 24.1%,
+            #fbfaf7 100%
+        );
 }
 
 .hero-word{
+
     position:absolute;
+
     left:-45px;
     bottom:-90px;
+
     font-family:Montserrat,Arial,sans-serif;
+
     font-size:300px;
+
     font-weight:900;
+
     line-height:1;
+
     color:rgba(255,255,255,.06);
+
     pointer-events:none;
 }
 
 .hero-side{
+
     position:absolute;
+
     left:18px;
     top:185px;
+
     writing-mode:vertical-rl;
+
     transform:rotate(180deg);
+
     color:#fff;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:4px;
+
     z-index:10;
 }
 
 .hero::before{
+
     content:"";
+
     position:absolute;
+
     left:-60px;
     top:-12px;
+
     width:500px;
     height:9px;
-    background:linear-gradient(
-        90deg,
-        var(--gold-dark),
-        var(--gold-light)
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light)
+        );
+
     transform:skewX(-42deg);
+
     z-index:20;
 }
 
-/* =========================
+/* =========================================================
    PRODUCT CARD
-========================= */
+========================================================= */
 
 .product-card{
+
     position:absolute;
+
     left:55px;
     right:30px;
+
     top:28px;
     bottom:22px;
+
     border-radius:34px;
-    background:radial-gradient(
-        circle at 50% 38%,
-        #ffffff 0%,
-        #faf8f2 62%,
-        #eee9de 100%
-    );
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            #ffffff 0%,
+            #faf8f2 62%,
+            #eee9de 100%
+        );
+
     box-shadow:
         0 30px 65px rgba(0,0,0,.18),
         inset 0 0 0 1px rgba(255,255,255,.9);
+
     overflow:hidden;
+
     z-index:30;
 }
 
-/* =========================
-   TAG
-========================= */
+/* =========================================================
+   PREMIUM TAG
+========================================================= */
 
 .premium-tag{
+
     position:absolute;
+
     left:24px;
     top:24px;
+
     z-index:100;
+
     padding:12px 18px;
+
     border-radius:9px;
-    background:linear-gradient(
-        135deg,
-        #061b31,
-        #0b3155
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #061b31,
+            #0b3155
+        );
+
     color:var(--gold-light);
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:2px;
 }
 
-/* =========================
+/* =========================================================
    DISCOUNT
-========================= */
+========================================================= */
 
 .discount{
+
     position:absolute;
+
     right:24px;
     top:24px;
+
     width:104px;
     height:104px;
+
     border-radius:50%;
-    background:radial-gradient(
-        circle at 35% 30%,
-        #fff0a8,
-        #e9bd43 50%,
-        #c8941d 100%
-    );
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0a8,
+            #e9bd43 50%,
+            #c8941d 100%
+        );
+
     color:var(--navy);
+
     display:flex;
     flex-direction:column;
+
     justify-content:center;
     align-items:center;
+
     z-index:100;
-    box-shadow:0 15px 35px rgba(5,30,55,.18);
+
+    box-shadow:
+        0 15px 35px rgba(5,30,55,.18);
 }
 
 .discount span{
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
 .discount strong{
+
     font-family:Montserrat,Arial,sans-serif;
+
     font-size:31px;
+
     line-height:1;
+
     font-weight:900;
 }
 
-/* =========================
-   MAIN IMAGE
-========================= */
+/* =========================================================
+   MAIN IMAGE AREA
+========================================================= */
 
 .main-image-area{
+
     position:absolute;
+
     left:50%;
     top:42%;
+
     transform:translate(-50%,-50%);
+
     width:78%;
     height:505px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
+
     z-index:40;
 }
 
+/*
+IMPORTANT:
+The image itself is NEVER manually resized during export.
+
+The exact preview is captured.
+*/
+
 .main-product-image{
+
     display:block;
+
     width:100% !important;
     height:100% !important;
+
     object-fit:contain !important;
+
     object-position:center center !important;
-    filter:drop-shadow(
-        0 30px 25px rgba(5,25,45,.20)
-    );
+
+    filter:
+        drop-shadow(
+            0 30px 25px rgba(5,25,45,.20)
+        );
+
     user-select:none;
+
     -webkit-user-drag:none;
 }
 
 .product-placeholder{
+
     width:350px;
     height:420px;
+
     max-width:100%;
     max-height:100%;
+
     border-radius:30px;
-    background:linear-gradient(
-        135deg,
-        #e5e3de,
-        #faf9f6,
-        #ddd9cf
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5e3de,
+            #faf9f6,
+            #ddd9cf
+        );
 }
 
-/* =========================
-   THUMBNAILS
-========================= */
+/* =========================================================
+   THUMBNAIL AREA
+========================================================= */
 
 .thumbnail-area{
+
     position:absolute;
+
     left:18px;
     right:18px;
+
     bottom:17px;
+
     height:105px;
+
     padding:9px;
+
     border-radius:15px;
+
     background:#fff;
-    box-shadow:0 10px 30px rgba(5,30,55,.13);
+
+    box-shadow:
+        0 10px 30px rgba(5,30,55,.13);
+
     z-index:100;
+
     overflow:hidden;
 }
 
 .thumbnail-scroll{
+
     width:100%;
     height:100%;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scrollbar-width:thin;
+
+    overflow:hidden;
 }
 
 .thumbnail-list{
+
     width:100%;
     height:100%;
+
     display:flex;
+
     align-items:stretch;
+
     gap:9px;
 }
 
+/*
+EVERY thumbnail receives equal width.
+
+5 images = 5 equal boxes
+3 images = 3 equal boxes
+10 images = 10 equal boxes
+
+No stretching of the actual image.
+*/
+
 .thumbnail{
+
     position:relative;
+
     flex:1 1 0;
+
     width:0;
+
     min-width:0;
+
     height:100%;
+
     padding:4px;
+
     border:2px solid #e3dfd4;
+
     border-radius:9px;
+
     background:#fff;
+
     cursor:pointer;
+
     overflow:hidden;
+
     transition:.18s;
 }
 
 .thumbnail-inner{
+
     position:relative;
+
     width:100%;
     height:100%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
+
     border-radius:5px;
+
     background:#faf9f5;
 }
 
 .thumbnail img{
+
     display:block;
+
     width:100% !important;
     height:100% !important;
+
     object-fit:contain !important;
+
     object-position:center center !important;
 }
 
 .thumbnail.active{
+
     border-color:var(--gold-dark);
+
     box-shadow:
         0 0 0 1px var(--gold),
         0 7px 18px rgba(5,30,55,.15);
 }
 
 .thumbnail-number{
+
     position:absolute;
+
     left:5px;
     bottom:5px;
+
     min-width:18px;
     height:18px;
+
     padding:0 4px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:4px;
+
     background:rgba(6,27,49,.82);
+
     color:#fff;
+
     font-size:7px;
+
     font-weight:900;
+
     pointer-events:none;
 }
 
 .empty-thumbnails{
+
     width:100%;
     height:100%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:8px;
+
     background:#f7f5ef;
+
     color:#999;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
-/* =========================
+/* =========================================================
    INFO
-========================= */
+========================================================= */
 
 .info{
+
     height:215px;
+
     padding:25px 32px 20px;
+
     background:#fff;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:space-between;
 }
 
 .info-top{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:flex-start;
+
     gap:20px;
 }
 
 .kicker{
+
     margin-bottom:6px;
+
     color:#969696;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:2px;
 }
 
 .item-number{
+
     font-family:Montserrat,Arial,sans-serif;
+
     font-size:27px;
+
     font-weight:900;
+
     color:#111;
 }
 
 .size-pill{
+
     display:inline-block;
+
     margin-top:10px;
+
     padding:8px 12px;
+
     border-left:5px solid var(--gold);
+
     border-radius:6px;
-    background:linear-gradient(
-        90deg,
-        #f0eadb,
-        #faf8f2
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            #f0eadb,
+            #faf8f2
+        );
+
     color:var(--navy);
+
     font-size:10px;
+
     font-weight:900;
 }
 
-/* =========================
+/* =========================================================
    PRICE
-========================= */
+========================================================= */
 
 .price{
     text-align:right;
 }
 
 .old-price{
+
     color:#999;
+
     font-size:15px;
+
     text-decoration:line-through;
 }
 
 .offer-price{
+
     font-family:Montserrat,Arial,sans-serif;
+
     font-size:54px;
+
     font-weight:900;
+
     line-height:.95;
+
     letter-spacing:-3px;
+
     color:var(--navy);
 }
 
 .currency{
+
     font-size:15px;
+
     letter-spacing:1px;
 }
 
 .saving{
+
     display:inline-block;
+
     margin-top:7px;
+
     padding:7px 16px;
+
     border-radius:6px;
-    background:linear-gradient(
-        90deg,
-        var(--gold),
-        var(--gold-light)
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            var(--gold-light)
+        );
+
     color:var(--navy);
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
-/* =========================
+/* =========================================================
    FEATURES
-========================= */
+========================================================= */
 
 .feature-strip{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:10px;
 }
 
 .feature{
+
     padding:11px;
+
     border-radius:8px;
-    background:linear-gradient(
-        135deg,
-        #f1ede3,
-        #faf8f2
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1ede3,
+            #faf8f2
+        );
+
     color:var(--navy);
+
     text-align:center;
+
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:.5px;
-    border-bottom:2px solid rgba(217,169,40,.45);
+
+    border-bottom:
+        2px solid rgba(217,169,40,.45);
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer{
+
     position:relative;
+
     height:60px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    background:linear-gradient(
-        135deg,
-        #061b31,
-        #082746,
-        #061b31
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #061b31,
+            #082746,
+            #061b31
+        );
+
     color:#fff;
+
     font-size:10px;
+
     font-weight:900;
+
     letter-spacing:3px;
 }
 
-/* =========================
+/* =========================================================
    EDIT BUTTON
-========================= */
+========================================================= */
 
 .edit-button{
+
     position:fixed;
+
     top:20px;
     left:20px;
+
     z-index:900;
+
     border:1px solid var(--gold);
+
     padding:13px 19px;
+
     border-radius:9px;
-    background:linear-gradient(
-        135deg,
-        var(--navy),
-        var(--navy-light)
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--navy-light)
+        );
+
     color:var(--gold-light);
+
     font-size:10px;
+
     font-weight:900;
+
     cursor:pointer;
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
 }
 
-/* =========================
-   EDITOR
-========================= */
+/* =========================================================
+   EDITOR OVERLAY
+========================================================= */
 
 .editor-overlay{
+
     position:fixed;
+
     inset:0;
+
     z-index:1000;
+
     display:none;
-    background:rgba(3,17,30,.75);
+
+    background:
+        rgba(3,17,30,.75);
+
     backdrop-filter:blur(6px);
 }
 
@@ -651,26 +976,47 @@ body{
     display:block;
 }
 
+/* =========================================================
+   EDITOR
+========================================================= */
+
 .editor-panel{
+
     position:fixed;
+
     top:20px;
     left:20px;
     bottom:20px;
+
     width:390px;
-    max-width:calc(100vw - 40px);
+
+    max-width:
+        calc(100vw - 40px);
+
     z-index:1100;
+
     display:none;
+
     overflow-y:auto;
+
     padding:22px;
-    border:1px solid rgba(217,169,40,.4);
+
+    border:
+        1px solid rgba(217,169,40,.4);
+
     border-radius:18px;
-    background:linear-gradient(
-        180deg,
-        #0b3155,
-        #061b31
-    );
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b3155,
+            #061b31
+        );
+
     color:#fff;
-    box-shadow:0 35px 100px rgba(0,0,0,.75);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.75);
 }
 
 .editor-panel.open{
@@ -678,32 +1024,50 @@ body{
 }
 
 .editor-header{
+
     display:flex;
+
     justify-content:space-between;
     align-items:flex-start;
+
     margin-bottom:22px;
 }
 
 .editor-header h2{
+
     margin:0;
+
     font-family:Montserrat,Arial,sans-serif;
+
     font-size:21px;
 }
 
 .editor-header p{
+
     margin:5px 0 0;
+
     color:#aeb8c1;
+
     font-size:9px;
 }
 
 .close-editor{
+
     width:35px;
     height:35px;
-    border:1px solid rgba(255,255,255,.2);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
     border-radius:50%;
-    background:rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.08);
+
     color:#fff;
+
     font-size:21px;
+
     cursor:pointer;
 }
 
@@ -712,55 +1076,92 @@ body{
 }
 
 .form-group label{
+
     display:block;
+
     margin-bottom:7px;
+
     color:var(--gold-light);
+
     font-size:8px;
+
     font-weight:900;
+
     text-transform:uppercase;
+
     letter-spacing:1.2px;
 }
 
 .form-group input[type="text"],
 .form-group input[type="number"]{
+
     width:100%;
+
     height:43px;
+
     padding:0 12px;
+
     outline:none;
-    border:1px solid rgba(255,255,255,.18);
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
     border-radius:8px;
+
     background:#061b31;
+
     color:#fff;
 }
 
 .upload-area{
+
     padding:15px;
-    border:1px dashed rgba(245,215,123,.5);
+
+    border:
+        1px dashed rgba(245,215,123,.5);
+
     border-radius:10px;
-    background:rgba(255,255,255,.04);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 .upload-area p{
+
     margin:0 0 11px;
+
     color:#aeb8c1;
+
     font-size:8px;
+
     line-height:1.5;
 }
 
 .upload-button{
+
     display:block;
+
     width:100%;
+
     padding:12px;
+
     border-radius:8px;
-    background:linear-gradient(
-        90deg,
-        var(--gold-dark),
-        var(--gold-light)
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light)
+        );
+
     color:var(--navy);
+
     text-align:center;
+
     font-size:9px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
@@ -768,21 +1169,39 @@ body{
     display:none;
 }
 
+/* =========================================================
+   EDITOR GALLERY
+========================================================= */
+
 .gallery-box{
+
     margin-top:12px;
+
     padding:11px;
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
     border-radius:9px;
-    background:rgba(0,0,0,.16);
+
+    background:
+        rgba(0,0,0,.16);
 }
 
 .gallery-header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:9px;
+
     font-size:8px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
@@ -791,172 +1210,281 @@ body{
 }
 
 .editor-gallery{
+
     display:flex;
+
     gap:6px;
+
     overflow-x:auto;
+
     padding-bottom:4px;
 }
 
 .editor-image{
+
     position:relative;
+
     flex:0 0 75px;
+
     width:75px;
     height:75px;
+
     padding:3px;
-    border:2px solid rgba(255,255,255,.15);
+
+    border:
+        2px solid rgba(255,255,255,.15);
+
     border-radius:7px;
+
     background:#fff;
+
     overflow:hidden;
 }
 
 .editor-image.active{
+
     border-color:var(--gold-light);
-    box-shadow:0 0 0 1px var(--gold);
+
+    box-shadow:
+        0 0 0 1px var(--gold);
 }
 
 .editor-image-inner{
+
     width:100%;
     height:100%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
+
     background:#f7f5ef;
+
     border-radius:4px;
 }
 
 .editor-image img{
+
     display:block;
+
     width:100% !important;
     height:100% !important;
+
     object-fit:contain !important;
 }
 
 .select-image{
+
     position:absolute;
+
     inset:0;
+
     border:0;
+
     background:transparent;
+
     cursor:pointer;
+
     z-index:2;
 }
 
 .delete-image{
+
     position:absolute;
+
     right:3px;
     top:3px;
+
     width:21px;
     height:21px;
+
     border:0;
+
     border-radius:50%;
+
     background:#c31e24;
+
     color:#fff;
+
     font-size:13px;
+
     font-weight:900;
+
     cursor:pointer;
+
     z-index:5;
 }
 
 .image-number{
+
     position:absolute;
+
     left:4px;
     bottom:4px;
+
     min-width:18px;
     height:18px;
+
     padding:0 4px;
+
     border-radius:4px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    background:rgba(6,27,49,.82);
+
+    background:
+        rgba(6,27,49,.82);
+
     color:#fff;
+
     font-size:7px;
+
     font-weight:900;
+
     pointer-events:none;
 }
 
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .action-buttons{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:8px;
+
     margin-top:20px;
 }
 
 .action-button{
+
     min-height:43px;
+
     border:0;
+
     border-radius:8px;
+
     font-size:8px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
 .action-button:disabled{
+
     opacity:.55;
+
     cursor:wait;
 }
 
 .btn-gold{
-    background:linear-gradient(
-        90deg,
-        var(--gold-dark),
-        var(--gold-light)
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light)
+        );
+
     color:var(--navy);
 }
 
 .btn-dark{
-    background:rgba(255,255,255,.09);
+
+    background:
+        rgba(255,255,255,.09);
+
     color:#fff;
-    border:1px solid rgba(255,255,255,.15);
+
+    border:
+        1px solid rgba(255,255,255,.15);
 }
 
 .btn-light{
+
     background:#fff;
+
     color:var(--navy);
 }
 
 .editor-note{
+
     margin-top:13px;
+
     padding:11px;
-    border-left:3px solid var(--gold);
+
+    border-left:
+        3px solid var(--gold);
+
     border-radius:6px;
-    background:rgba(0,0,0,.18);
+
+    background:
+        rgba(0,0,0,.18);
+
     color:#9ba8b2;
+
     font-size:7px;
+
     line-height:1.55;
 }
 
-/* =========================
+/* =========================================================
    STATUS
-========================= */
+========================================================= */
 
 .export-status{
+
     position:fixed;
+
     left:50%;
     bottom:25px;
+
     transform:translateX(-50%);
+
     z-index:3000;
+
     display:none;
+
     min-width:280px;
+
     padding:14px 20px;
+
     border-radius:10px;
+
     background:#061b31;
+
     color:#fff;
+
     text-align:center;
+
     font-size:10px;
+
     font-weight:800;
-    box-shadow:0 15px 50px rgba(0,0,0,.5);
-    border:1px solid var(--gold);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
+
+    border:
+        1px solid var(--gold);
 }
 
 .export-status.show{
     display:block;
 }
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:700px){
 
@@ -965,18 +1493,27 @@ body{
     }
 
     .poster{
-        width:calc(100vw - 16px);
-        height:calc(
-            (100vw - 16px) * 1.4142857
-        );
+
+        width:
+            calc(100vw - 16px);
+
+        height:
+            calc(
+                (100vw - 16px)
+                * 1.4142857
+            );
     }
 
     .editor-panel{
+
         left:8px;
         right:8px;
+
         top:8px;
         bottom:8px;
+
         width:auto;
+
         max-width:none;
     }
 
@@ -990,6 +1527,7 @@ body{
     }
 
     .logo-box{
+
         width:29%;
         height:65%;
     }
@@ -999,28 +1537,37 @@ body{
     }
 
     .offer-price{
-        font-size:clamp(
-            20px,
-            6vw,
-            54px
-        );
+
+        font-size:
+            clamp(
+                20px,
+                6vw,
+                54px
+            );
     }
 
     .item-number{
-        font-size:clamp(
-            11px,
-            3vw,
-            27px
-        );
+
+        font-size:
+            clamp(
+                11px,
+                3vw,
+                27px
+            );
     }
 
     .feature{
+
         font-size:6px;
-        padding:6px 3px;
+
+        padding:
+            6px 3px;
     }
 
     .footer{
+
         font-size:5px;
+
         letter-spacing:1px;
     }
 }
@@ -1028,9 +1575,12 @@ body{
 @media(max-width:420px){
 
     .thumbnail-area{
+
         left:10px;
         right:10px;
+
         height:92px;
+
         padding:7px;
     }
 
@@ -1043,28 +1593,48 @@ body{
     }
 
     .thumbnail-number{
+
         left:3px;
         bottom:3px;
+
         min-width:15px;
         height:15px;
+
         font-size:6px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- ======================================================
+     EDIT BUTTON
+====================================================== -->
+
 <button
     class="edit-button"
     id="openEditorButton">
+
     ✎ EDIT POSTER
+
 </button>
+
+
+<!-- ======================================================
+     EDITOR OVERLAY
+====================================================== -->
 
 <div
     class="editor-overlay"
     id="editorOverlay">
 </div>
+
+
+<!-- ======================================================
+     EDITOR
+====================================================== -->
 
 <div
     class="editor-panel"
@@ -1073,21 +1643,33 @@ body{
     <div class="editor-header">
 
         <div>
-            <h2>Poster Editor</h2>
-            <p>Premium Navy & Gold</p>
+
+            <h2>
+                Poster Editor
+            </h2>
+
+            <p>
+                Premium Navy & Gold
+            </p>
+
         </div>
 
         <button
             class="close-editor"
             id="closeEditorButton">
+
             ×
+
         </button>
 
     </div>
 
+
     <div class="form-group">
 
-        <label>Product Code</label>
+        <label>
+            Product Code
+        </label>
 
         <input
             id="itemInput"
@@ -1096,9 +1678,12 @@ body{
 
     </div>
 
+
     <div class="form-group">
 
-        <label>Product Description</label>
+        <label>
+            Product Description
+        </label>
 
         <input
             id="sizeInput"
@@ -1107,9 +1692,12 @@ body{
 
     </div>
 
+
     <div class="form-group">
 
-        <label>Old Price</label>
+        <label>
+            Old Price
+        </label>
 
         <input
             id="oldPriceInput"
@@ -1118,9 +1706,12 @@ body{
 
     </div>
 
+
     <div class="form-group">
 
-        <label>Offer Price</label>
+        <label>
+            Offer Price
+        </label>
 
         <input
             id="offerPriceInput"
@@ -1129,15 +1720,21 @@ body{
 
     </div>
 
+
     <div class="form-group">
 
-        <label>Product Images</label>
+        <label>
+            Product Images
+        </label>
 
         <div class="upload-area">
 
             <p>
+
                 Select one or many product images.
-                Images always keep their original aspect ratio.
+                Images will keep their original
+                proportions without stretching.
+
             </p>
 
             <label
@@ -1156,19 +1753,25 @@ body{
 
         </div>
 
+
         <div class="gallery-box">
 
             <div class="gallery-header">
 
-                <span>IMAGE GALLERY</span>
+                <span>
+                    IMAGE GALLERY
+                </span>
 
                 <span
                     class="gallery-count"
                     id="galleryCount">
+
                     0 IMAGES
+
                 </span>
 
             </div>
+
 
             <div
                 class="editor-gallery"
@@ -1182,7 +1785,9 @@ body{
                         font-size:8px;
                         padding:10px;
                     ">
+
                     NO IMAGES
+
                 </div>
 
             </div>
@@ -1191,39 +1796,62 @@ body{
 
     </div>
 
+
     <div class="action-buttons">
 
         <button
             class="action-button btn-gold"
             id="downloadPngButton">
+
             DOWNLOAD A4 PNG
+
         </button>
+
 
         <button
             class="action-button btn-gold"
             id="downloadPdfButton">
+
             DOWNLOAD A4 PDF
+
         </button>
+
 
         <button
             class="action-button btn-dark"
             id="clearImagesButton">
+
             CLEAR IMAGES
+
         </button>
+
 
         <button
             class="action-button btn-light"
             id="closePanelButton">
+
             DONE
+
         </button>
 
     </div>
 
+
     <div class="editor-note">
 
         <strong style="color:#fff;">
-            A4 EXPORT
+            EXPORT FIX
         </strong>
+
+        <br><br>
+
+        The downloaded file captures the
+        exact poster preview.
+
+        <br><br>
+
+        Main image is NOT redrawn or repositioned
+        during export.
 
         <br><br>
 
@@ -1235,21 +1863,27 @@ body{
         PDF:
         210 × 297 mm
 
-        <br><br>
-
-        Main product image and thumbnails are
-        redrawn during export to prevent missing
-        images and stretching.
-
     </div>
 
 </div>
 
+
+<!-- ======================================================
+     STATUS
+====================================================== -->
+
 <div
     class="export-status"
     id="exportStatus">
+
     Preparing download...
+
 </div>
+
+
+<!-- ======================================================
+     POSTER
+====================================================== -->
 
 <div class="app">
 
@@ -1259,19 +1893,19 @@ body{
     class="poster"
     id="poster">
 
-    <!-- HEADER -->
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
 
     <div class="topbar">
+
 
         <div class="logo-box">
 
             <!--
-                IMPORTANT:
-                Put your logo file as:
-
-                logo.png
-
-                in the same folder as this HTML.
+                KEEP YOUR LOGO AS logo.png
+                IN THE SAME FOLDER.
             -->
 
             <img
@@ -1288,10 +1922,13 @@ body{
                 class="logo-fallback"
                 id="logoFallback"
                 style="display:none;">
+
                 YOUR LOGO
+
             </div>
 
         </div>
+
 
         <div class="brand-copy">
 
@@ -1307,35 +1944,59 @@ body{
 
     </div>
 
-    <!-- HERO -->
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
 
     <div class="hero">
+
 
         <div class="hero-word">
             IT
         </div>
 
+
         <div class="hero-side">
+
             TRAVEL • STYLE • COMFORT
+
         </div>
+
 
         <div class="product-card">
 
+
             <div class="premium-tag">
+
                 PREMIUM PRODUCT
+
             </div>
+
 
             <div class="discount">
 
-                <span>SAVE</span>
+                <span>
+                    SAVE
+                </span>
 
-                <strong id="savingCircle">
+                <strong
+                    id="savingCircle">
+
                     70
+
                 </strong>
 
-                <span>DHS</span>
+                <span>
+                    DHS
+                </span>
 
             </div>
+
+
+            <!-- ==================================================
+                 MAIN IMAGE
+            ================================================== -->
 
             <div
                 class="main-image-area"
@@ -1345,7 +2006,8 @@ body{
                     class="main-product-image"
                     id="mainProductImage"
                     alt="Product"
-                    style="display:none;">
+                    style="display:none;"
+                >
 
                 <div
                     class="product-placeholder"
@@ -1353,6 +2015,11 @@ body{
                 </div>
 
             </div>
+
+
+            <!-- ==================================================
+                 THUMBNAILS
+            ================================================== -->
 
             <div class="thumbnail-area">
 
@@ -1362,8 +2029,11 @@ body{
                         class="thumbnail-list"
                         id="thumbnailList">
 
-                        <div class="empty-thumbnails">
+                        <div
+                            class="empty-thumbnails">
+
                             UPLOAD PRODUCT IMAGES
+
                         </div>
 
                     </div>
@@ -1376,11 +2046,16 @@ body{
 
     </div>
 
-    <!-- INFO -->
+
+    <!-- ==================================================
+         INFORMATION
+    ================================================== -->
 
     <div class="info">
 
+
         <div class="info-top">
+
 
             <div>
 
@@ -1388,27 +2063,38 @@ body{
                     PRODUCT CODE
                 </div>
 
+
                 <div
                     class="item-number"
                     id="itemText">
+
                     15-288-08
+
                 </div>
+
 
                 <div
                     class="size-pill"
                     id="sizeText">
+
                     ONLY CABINE SIZE 21"
+
                 </div>
 
             </div>
 
+
             <div class="price">
+
 
                 <div
                     class="old-price"
                     id="oldPriceText">
+
                     165 DHS
+
                 </div>
+
 
                 <div class="offer-price">
 
@@ -1422,12 +2108,15 @@ body{
 
                 </div>
 
+
                 <div class="saving">
 
                     SAVE
+
                     <span id="savingText">
                         70
                     </span>
+
                     DHS
 
                 </div>
@@ -1436,43 +2125,65 @@ body{
 
         </div>
 
+
         <div class="feature-strip">
 
-            <div class="feature">
-                ◆ &nbsp; PREMIUM QUALITY
-            </div>
 
             <div class="feature">
-                ⚙ &nbsp; MODERN DESIGN
+
+                ◆ &nbsp;
+                PREMIUM QUALITY
+
             </div>
 
+
             <div class="feature">
-                ✈ &nbsp; TRAVEL READY
+
+                ⚙ &nbsp;
+                MODERN DESIGN
+
             </div>
+
+
+            <div class="feature">
+
+                ✈ &nbsp;
+                TRAVEL READY
+
+            </div>
+
 
         </div>
 
     </div>
 
-    <!-- FOOTER -->
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
 
     <div class="footer">
+
         LIMITED TIME OFFER • WHILE STOCK LASTS
+
     </div>
 
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 
 <script>
 
 /* =========================================================
-   GLOBAL
+   DATA
 ========================================================= */
 
 let gallery = [];
+
 let activeIndex = 0;
 
 
@@ -1481,141 +2192,219 @@ let activeIndex = 0;
 ========================================================= */
 
 const editorPanel =
-    document.getElementById("editorPanel");
+    document.getElementById(
+        "editorPanel"
+    );
 
 const editorOverlay =
-    document.getElementById("editorOverlay");
+    document.getElementById(
+        "editorOverlay"
+    );
 
 const openEditorButton =
-    document.getElementById("openEditorButton");
+    document.getElementById(
+        "openEditorButton"
+    );
 
 const closeEditorButton =
-    document.getElementById("closeEditorButton");
+    document.getElementById(
+        "closeEditorButton"
+    );
 
 const closePanelButton =
-    document.getElementById("closePanelButton");
+    document.getElementById(
+        "closePanelButton"
+    );
 
 const imageInput =
-    document.getElementById("imageInput");
+    document.getElementById(
+        "imageInput"
+    );
 
 const thumbnailList =
-    document.getElementById("thumbnailList");
+    document.getElementById(
+        "thumbnailList"
+    );
 
 const editorGallery =
-    document.getElementById("editorGallery");
+    document.getElementById(
+        "editorGallery"
+    );
 
 const galleryCount =
-    document.getElementById("galleryCount");
+    document.getElementById(
+        "galleryCount"
+    );
 
 const mainProductImage =
-    document.getElementById("mainProductImage");
+    document.getElementById(
+        "mainProductImage"
+    );
 
 const productPlaceholder =
-    document.getElementById("productPlaceholder");
+    document.getElementById(
+        "productPlaceholder"
+    );
 
 const itemInput =
-    document.getElementById("itemInput");
+    document.getElementById(
+        "itemInput"
+    );
 
 const sizeInput =
-    document.getElementById("sizeInput");
+    document.getElementById(
+        "sizeInput"
+    );
 
 const oldPriceInput =
-    document.getElementById("oldPriceInput");
+    document.getElementById(
+        "oldPriceInput"
+    );
 
 const offerPriceInput =
-    document.getElementById("offerPriceInput");
+    document.getElementById(
+        "offerPriceInput"
+    );
 
 const itemText =
-    document.getElementById("itemText");
+    document.getElementById(
+        "itemText"
+    );
 
 const sizeText =
-    document.getElementById("sizeText");
+    document.getElementById(
+        "sizeText"
+    );
 
 const oldPriceText =
-    document.getElementById("oldPriceText");
+    document.getElementById(
+        "oldPriceText"
+    );
 
 const offerPriceText =
-    document.getElementById("offerPriceText");
+    document.getElementById(
+        "offerPriceText"
+    );
 
 const savingText =
-    document.getElementById("savingText");
+    document.getElementById(
+        "savingText"
+    );
 
 const savingCircle =
-    document.getElementById("savingCircle");
+    document.getElementById(
+        "savingCircle"
+    );
 
 const clearImagesButton =
-    document.getElementById("clearImagesButton");
+    document.getElementById(
+        "clearImagesButton"
+    );
 
 const downloadPngButton =
-    document.getElementById("downloadPngButton");
+    document.getElementById(
+        "downloadPngButton"
+    );
 
 const downloadPdfButton =
-    document.getElementById("downloadPdfButton");
+    document.getElementById(
+        "downloadPdfButton"
+    );
 
 const exportStatus =
-    document.getElementById("exportStatus");
+    document.getElementById(
+        "exportStatus"
+    );
 
 
 /* =========================================================
-   EDITOR OPEN/CLOSE
+   EDITOR
 ========================================================= */
 
 function openEditor(){
 
-    editorPanel.classList.add("open");
-    editorOverlay.classList.add("show");
+    editorPanel.classList.add(
+        "open"
+    );
 
-    document.body.style.overflow="hidden";
+    editorOverlay.classList.add(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "hidden";
 }
 
 function closeEditor(){
 
-    editorPanel.classList.remove("open");
-    editorOverlay.classList.remove("show");
+    editorPanel.classList.remove(
+        "open"
+    );
 
-    document.body.style.overflow="";
+    editorOverlay.classList.remove(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "";
 }
 
-openEditorButton.onclick=openEditor;
-closeEditorButton.onclick=closeEditor;
-closePanelButton.onclick=closeEditor;
-editorOverlay.onclick=closeEditor;
+openEditorButton.onclick =
+    openEditor;
 
-document.addEventListener("keydown",function(e){
+closeEditorButton.onclick =
+    closeEditor;
 
-    if(e.key==="Escape"){
-        closeEditor();
+closePanelButton.onclick =
+    closeEditor;
+
+editorOverlay.onclick =
+    closeEditor;
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+            closeEditor();
+        }
+
     }
-
-});
+);
 
 
 /* =========================================================
-   UPDATE TEXT
+   TEXT UPDATE
 ========================================================= */
 
 function updateText(){
 
     itemText.textContent =
-        itemInput.value || "15-288-08";
+        itemInput.value ||
+        "15-288-08";
 
     sizeText.textContent =
-        sizeInput.value || 'ONLY CABINE SIZE 21"';
+        sizeInput.value ||
+        'ONLY CABINE SIZE 21"';
 
     const oldPrice =
-        Number(oldPriceInput.value)||0;
+        Number(
+            oldPriceInput.value
+        ) || 0;
 
     const offerPrice =
-        Number(offerPriceInput.value)||0;
+        Number(
+            offerPriceInput.value
+        ) || 0;
 
     const saving =
         Math.max(
             0,
-            oldPrice-offerPrice
+            oldPrice - offerPrice
         );
 
     oldPriceText.textContent =
-        oldPrice+" DHS";
+        oldPrice + " DHS";
 
     offerPriceText.textContent =
         offerPrice;
@@ -1654,31 +2443,41 @@ offerPriceInput.addEventListener(
 
 function readFile(file){
 
-    return new Promise(function(resolve,reject){
+    return new Promise(
+        function(resolve,reject){
 
-        const reader =
-            new FileReader();
+            const reader =
+                new FileReader();
 
-        reader.onload=function(e){
+            reader.onload =
+                function(event){
 
-            resolve({
-                src:e.target.result,
-                name:file.name
-            });
+                    resolve({
 
-        };
+                        src:
+                            event.target.result,
 
-        reader.onerror=reject;
+                        name:
+                            file.name
 
-        reader.readAsDataURL(file);
+                    });
 
-    });
+                };
 
+            reader.onerror =
+                reject;
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+    );
 }
 
 
 /* =========================================================
-   IMAGE UPLOAD
+   UPLOAD
 ========================================================= */
 
 imageInput.addEventListener(
@@ -1686,19 +2485,29 @@ imageInput.addEventListener(
     async function(){
 
         const files =
-            Array.from(this.files);
+            Array.from(
+                this.files
+            );
 
         const validFiles =
-            files.filter(function(file){
+            files.filter(
+                function(file){
 
-                return file.type &&
-                    file.type.startsWith("image/");
+                    return (
+                        file.type &&
+                        file.type.startsWith(
+                            "image/"
+                        )
+                    );
 
-            });
+                }
+            );
 
-        if(!validFiles.length){
+        if(
+            !validFiles.length
+        ){
 
-            this.value="";
+            this.value = "";
 
             return;
         }
@@ -1707,26 +2516,34 @@ imageInput.addEventListener(
 
             const images =
                 await Promise.all(
-                    validFiles.map(readFile)
+                    validFiles.map(
+                        readFile
+                    )
                 );
 
             const wasEmpty =
-                gallery.length===0;
+                gallery.length === 0;
 
-            gallery.push(...images);
+            gallery.push(
+                ...images
+            );
 
             if(wasEmpty){
-                activeIndex=0;
+                activeIndex = 0;
             }
 
             renderGallery();
 
-            showMainImage(activeIndex);
+            showMainImage(
+                activeIndex
+            );
 
         }
         catch(error){
 
-            console.error(error);
+            console.error(
+                error
+            );
 
             alert(
                 "Image upload failed."
@@ -1734,23 +2551,27 @@ imageInput.addEventListener(
 
         }
 
-        this.value="";
+        this.value = "";
 
     }
 );
 
 
 /* =========================================================
-   MAIN IMAGE
+   SHOW MAIN IMAGE
 ========================================================= */
 
-function showMainImage(index){
+function showMainImage(
+    index
+){
 
-    if(!gallery[index]){
+    if(
+        !gallery[index]
+    ){
         return;
     }
 
-    activeIndex=index;
+    activeIndex = index;
 
     mainProductImage.src =
         gallery[index].src;
@@ -1762,6 +2583,7 @@ function showMainImage(index){
         "none";
 
     renderPosterThumbnails();
+
     renderEditorGallery();
 }
 
@@ -1770,36 +2592,55 @@ function showMainImage(index){
    DELETE IMAGE
 ========================================================= */
 
-function deleteImage(index){
+function deleteImage(
+    index
+){
 
-    gallery.splice(index,1);
+    gallery.splice(
+        index,
+        1
+    );
 
-    if(gallery.length===0){
+    if(
+        gallery.length === 0
+    ){
 
-        activeIndex=0;
+        activeIndex = 0;
 
-        mainProductImage.src="";
+        mainProductImage.src =
+            "";
 
-        mainProductImage.style.display="none";
+        mainProductImage.style.display =
+            "none";
 
-        productPlaceholder.style.display="block";
+        productPlaceholder.style.display =
+            "block";
 
         renderGallery();
 
         return;
     }
 
-    if(activeIndex>index){
+    if(
+        activeIndex > index
+    ){
         activeIndex--;
     }
 
-    if(activeIndex>=gallery.length){
-        activeIndex=gallery.length-1;
+    if(
+        activeIndex >= gallery.length
+    ){
+
+        activeIndex =
+            gallery.length - 1;
+
     }
 
     renderGallery();
 
-    showMainImage(activeIndex);
+    showMainImage(
+        activeIndex
+    );
 }
 
 
@@ -1809,11 +2650,14 @@ function deleteImage(index){
 
 function renderPosterThumbnails(){
 
-    thumbnailList.innerHTML="";
+    thumbnailList.innerHTML =
+        "";
 
-    if(gallery.length===0){
+    if(
+        gallery.length === 0
+    ){
 
-        thumbnailList.innerHTML=`
+        thumbnailList.innerHTML = `
             <div class="empty-thumbnails">
                 UPLOAD PRODUCT IMAGES
             </div>
@@ -1822,52 +2666,87 @@ function renderPosterThumbnails(){
         return;
     }
 
-    gallery.forEach(function(image,index){
+    gallery.forEach(
+        function(image,index){
 
-        const button =
-            document.createElement("button");
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.type="button";
+            button.type =
+                "button";
 
-        button.className="thumbnail";
+            button.className =
+                "thumbnail";
 
-        if(index===activeIndex){
-            button.classList.add("active");
+            if(
+                index === activeIndex
+            ){
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+            const inner =
+                document.createElement(
+                    "div"
+                );
+
+            inner.className =
+                "thumbnail-inner";
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+            img.src =
+                image.src;
+
+            img.alt =
+                "Product "+(index+1);
+
+            inner.appendChild(
+                img
+            );
+
+            button.appendChild(
+                inner
+            );
+
+            const number =
+                document.createElement(
+                    "div"
+                );
+
+            number.className =
+                "thumbnail-number";
+
+            number.textContent =
+                index + 1;
+
+            button.appendChild(
+                number
+            );
+
+            button.onclick =
+                function(){
+
+                    showMainImage(
+                        index
+                    );
+
+                };
+
+            thumbnailList.appendChild(
+                button
+            );
+
         }
-
-        const inner =
-            document.createElement("div");
-
-        inner.className="thumbnail-inner";
-
-        const img =
-            document.createElement("img");
-
-        img.src=image.src;
-
-        inner.appendChild(img);
-
-        button.appendChild(inner);
-
-        const number =
-            document.createElement("div");
-
-        number.className="thumbnail-number";
-
-        number.textContent=index+1;
-
-        button.appendChild(number);
-
-        button.onclick=function(){
-
-            showMainImage(index);
-
-        };
-
-        thumbnailList.appendChild(button);
-
-    });
-
+    );
 }
 
 
@@ -1877,13 +2756,17 @@ function renderPosterThumbnails(){
 
 function renderEditorGallery(){
 
-    editorGallery.innerHTML="";
+    editorGallery.innerHTML =
+        "";
 
-    if(gallery.length===0){
+    if(
+        gallery.length === 0
+    ){
 
-        galleryCount.textContent="0 IMAGES";
+        galleryCount.textContent =
+            "0 IMAGES";
 
-        editorGallery.innerHTML=`
+        editorGallery.innerHTML = `
             <div
                 style="
                     color:#777;
@@ -1891,7 +2774,8 @@ function renderEditorGallery(){
                     text-align:center;
                     font-size:8px;
                     padding:10px;
-                ">
+                "
+            >
                 NO IMAGES
             </div>
         `;
@@ -1900,147 +2784,208 @@ function renderEditorGallery(){
     }
 
     galleryCount.textContent =
-        gallery.length+
+        gallery.length +
         (
-            gallery.length===1
+            gallery.length === 1
             ? " IMAGE"
             : " IMAGES"
         );
 
-    gallery.forEach(function(image,index){
+    gallery.forEach(
+        function(image,index){
 
-        const box =
-            document.createElement("div");
+            const box =
+                document.createElement(
+                    "div"
+                );
 
-        box.className="editor-image";
+            box.className =
+                "editor-image";
 
-        if(index===activeIndex){
-            box.classList.add("active");
+            if(
+                index === activeIndex
+            ){
+
+                box.classList.add(
+                    "active"
+                );
+
+            }
+
+            const inner =
+                document.createElement(
+                    "div"
+                );
+
+            inner.className =
+                "editor-image-inner";
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+            img.src =
+                image.src;
+
+            inner.appendChild(
+                img
+            );
+
+            box.appendChild(
+                inner
+            );
+
+            const select =
+                document.createElement(
+                    "button"
+                );
+
+            select.type =
+                "button";
+
+            select.className =
+                "select-image";
+
+            select.onclick =
+                function(){
+
+                    showMainImage(
+                        index
+                    );
+
+                };
+
+            box.appendChild(
+                select
+            );
+
+            const deleteButton =
+                document.createElement(
+                    "button"
+                );
+
+            deleteButton.type =
+                "button";
+
+            deleteButton.className =
+                "delete-image";
+
+            deleteButton.textContent =
+                "×";
+
+            deleteButton.onclick =
+                function(event){
+
+                    event.stopPropagation();
+
+                    deleteImage(
+                        index
+                    );
+
+                };
+
+            box.appendChild(
+                deleteButton
+            );
+
+            const number =
+                document.createElement(
+                    "div"
+                );
+
+            number.className =
+                "image-number";
+
+            number.textContent =
+                index + 1;
+
+            box.appendChild(
+                number
+            );
+
+            editorGallery.appendChild(
+                box
+            );
+
         }
-
-        const inner =
-            document.createElement("div");
-
-        inner.className="editor-image-inner";
-
-        const img =
-            document.createElement("img");
-
-        img.src=image.src;
-
-        inner.appendChild(img);
-
-        box.appendChild(inner);
-
-        const select =
-            document.createElement("button");
-
-        select.type="button";
-
-        select.className="select-image";
-
-        select.onclick=function(){
-
-            showMainImage(index);
-
-        };
-
-        box.appendChild(select);
-
-        const deleteButton =
-            document.createElement("button");
-
-        deleteButton.type="button";
-
-        deleteButton.className="delete-image";
-
-        deleteButton.textContent="×";
-
-        deleteButton.onclick=function(e){
-
-            e.stopPropagation();
-
-            deleteImage(index);
-
-        };
-
-        box.appendChild(deleteButton);
-
-        const number =
-            document.createElement("div");
-
-        number.className="image-number";
-
-        number.textContent=index+1;
-
-        box.appendChild(number);
-
-        editorGallery.appendChild(box);
-
-    });
-
+    );
 }
 
 
 /* =========================================================
-   RENDER ALL
+   RENDER
 ========================================================= */
 
 function renderGallery(){
 
     renderPosterThumbnails();
+
     renderEditorGallery();
 
 }
 
 
 /* =========================================================
-   CLEAR IMAGES
+   CLEAR
 ========================================================= */
 
-clearImagesButton.onclick=function(){
+clearImagesButton.onclick =
+    function(){
 
-    if(gallery.length===0){
-        return;
-    }
+        if(
+            gallery.length === 0
+        ){
+            return;
+        }
 
-    if(!confirm(
-        "Delete all product images?"
-    )){
-        return;
-    }
+        if(
+            !confirm(
+                "Delete all product images?"
+            )
+        ){
+            return;
+        }
 
-    gallery=[];
+        gallery = [];
 
-    activeIndex=0;
+        activeIndex = 0;
 
-    mainProductImage.src="";
+        mainProductImage.src =
+            "";
 
-    mainProductImage.style.display="none";
+        mainProductImage.style.display =
+            "none";
 
-    productPlaceholder.style.display="block";
+        productPlaceholder.style.display =
+            "block";
 
-    renderGallery();
+        renderGallery();
 
-};
+    };
 
 
 /* =========================================================
    STATUS
 ========================================================= */
 
-function showStatus(text){
+function showStatus(
+    text
+){
 
-    exportStatus.textContent=text;
+    exportStatus.textContent =
+        text;
 
-    exportStatus.classList.add("show");
-
+    exportStatus.classList.add(
+        "show"
+    );
 }
 
 function hideStatus(){
 
-    exportStatus.classList.remove("show");
-
+    exportStatus.classList.remove(
+        "show"
+    );
 }
 
 
@@ -2048,31 +2993,45 @@ function hideStatus(){
    LOAD SCRIPT
 ========================================================= */
 
-function loadScript(url){
+function loadScript(
+    url
+){
 
-    return new Promise(function(resolve,reject){
+    return new Promise(
+        function(resolve,reject){
 
-        const script =
-            document.createElement("script");
+            const script =
+                document.createElement(
+                    "script"
+                );
 
-        script.src=url;
+            script.src =
+                url;
 
-        script.onload=function(){
-            resolve();
-        };
+            script.onload =
+                function(){
 
-        script.onerror=function(){
-            reject(
-                new Error(
-                    "Could not load library."
-                )
+                    resolve();
+
+                };
+
+            script.onerror =
+                function(){
+
+                    reject(
+                        new Error(
+                            "Library could not be loaded."
+                        )
+                    );
+
+                };
+
+            document.head.appendChild(
+                script
             );
-        };
 
-        document.head.appendChild(script);
-
-    });
-
+        }
+    );
 }
 
 
@@ -2082,8 +3041,13 @@ function loadScript(url){
 
 async function ensureHtml2Canvas(){
 
-    if(typeof html2canvas==="function"){
+    if(
+        typeof html2canvas ===
+        "function"
+    ){
+
         return;
+
     }
 
     try{
@@ -2101,14 +3065,16 @@ async function ensureHtml2Canvas(){
 
     }
 
-    if(typeof html2canvas!=="function"){
+    if(
+        typeof html2canvas !==
+        "function"
+    ){
 
         throw new Error(
-            "PNG export library failed to load."
+            "html2canvas failed to load."
         );
 
     }
-
 }
 
 
@@ -2122,7 +3088,9 @@ async function ensureJsPDF(){
         window.jspdf &&
         window.jspdf.jsPDF
     ){
+
         return;
+
     }
 
     try{
@@ -2146,61 +3114,86 @@ async function ensureJsPDF(){
     ){
 
         throw new Error(
-            "PDF export library failed to load."
+            "jsPDF failed to load."
         );
 
     }
-
 }
 
 
 /* =========================================================
-   WAIT IMAGE
+   WAIT FOR ALL IMAGES
 ========================================================= */
 
-function waitForImage(img){
+function waitForImage(
+    img
+){
 
-    return new Promise(function(resolve){
+    return new Promise(
+        function(resolve){
 
-        if(
-            img.complete &&
-            img.naturalWidth>0
-        ){
+            if(
+                img.complete &&
+                img.naturalWidth > 0
+            ){
 
-            resolve();
+                resolve();
 
-            return;
+                return;
+            }
+
+            let done = false;
+
+            function finish(){
+
+                if(done){
+                    return;
+                }
+
+                done = true;
+
+                resolve();
+
+            }
+
+            img.onload =
+                finish;
+
+            img.onerror =
+                finish;
+
+            setTimeout(
+                finish,
+                5000
+            );
+
         }
-
-        img.onload=function(){
-            resolve();
-        };
-
-        img.onerror=function(){
-            resolve();
-        };
-
-    });
-
+    );
 }
 
 
 /* =========================================================
-   WAIT POSTER
+   WAIT FOR POSTER
 ========================================================= */
 
 async function waitForPoster(){
 
     const poster =
-        document.getElementById("poster");
+        document.getElementById(
+            "poster"
+        );
 
     const images =
         Array.from(
-            poster.querySelectorAll("img")
+            poster.querySelectorAll(
+                "img"
+            )
         );
 
     await Promise.all(
-        images.map(waitForImage)
+        images.map(
+            waitForImage
+        )
     );
 
     if(
@@ -2208,380 +3201,214 @@ async function waitForPoster(){
         document.fonts.ready
     ){
 
-        await document.fonts.ready;
+        try{
+
+            await document.fonts.ready;
+
+        }
+        catch(e){}
 
     }
 
-    await new Promise(function(resolve){
+    await new Promise(
+        function(resolve){
 
-        requestAnimationFrame(function(){
+            requestAnimationFrame(
+                function(){
 
-            requestAnimationFrame(resolve);
+                    requestAnimationFrame(
+                        resolve
+                    );
 
-        });
-
-    });
-
-}
-
-
-/* =========================================================
-   LOAD IMAGE
-========================================================= */
-
-function loadImage(src){
-
-    return new Promise(function(resolve,reject){
-
-        const img =
-            new Image();
-
-        img.onload=function(){
-            resolve(img);
-        };
-
-        img.onerror=function(){
-
-            reject(
-                new Error(
-                    "Product image failed to load."
-                )
+                }
             );
 
-        };
-
-        img.src=src;
-
-    });
-
-}
-
-
-/* =========================================================
-   DRAW CONTAIN
-========================================================= */
-
-function drawContain(
-    ctx,
-    img,
-    x,
-    y,
-    width,
-    height
-){
-
-    const iw =
-        img.naturalWidth ||
-        img.width;
-
-    const ih =
-        img.naturalHeight ||
-        img.height;
-
-    if(!iw || !ih){
-        return;
-    }
-
-    const scale =
-        Math.min(
-            width/iw,
-            height/ih
-        );
-
-    const dw =
-        iw*scale;
-
-    const dh =
-        ih*scale;
-
-    const dx =
-        x+(width-dw)/2;
-
-    const dy =
-        y+(height-dh)/2;
-
-    ctx.drawImage(
-        img,
-        dx,
-        dy,
-        dw,
-        dh
+        }
     );
-
 }
 
 
 /* =========================================================
-   CREATE EXPORT CANVAS
+   THE IMPORTANT EXPORT FUNCTION
 ========================================================= */
 
-async function createExportCanvas(){
+/*
+    OLD PROBLEM:
+
+    The previous version:
+       1. Captured the poster.
+       2. Hid the main image.
+       3. Drew the main image again manually.
+       4. Drew thumbnails again manually.
+
+    That caused the downloaded image to have
+    different positioning from the preview.
+
+    NEW METHOD:
+
+       Capture the ACTUAL poster directly.
+
+    Therefore:
+
+       PREVIEW = PNG = PDF
+
+    No manual image redraw.
+*/
+
+async function createExactPosterCanvas(){
 
     await ensureHtml2Canvas();
 
     await waitForPoster();
 
     const poster =
-        document.getElementById("poster");
+        document.getElementById(
+            "poster"
+        );
 
-    const clone =
-        poster.cloneNode(true);
 
-    clone.style.position="fixed";
-    clone.style.left="-100000px";
-    clone.style.top="0";
-    clone.style.width="794px";
-    clone.style.height="1123px";
-    clone.style.margin="0";
-    clone.style.transform="none";
-    clone.style.boxShadow="none";
+    /*
+        Poster is always exactly:
 
-    const holder =
-        document.createElement("div");
+        794 × 1123 CSS pixels
 
-    holder.style.position="fixed";
-    holder.style.left="-100000px";
-    holder.style.top="0";
-    holder.style.width="794px";
-    holder.style.height="1123px";
-    holder.style.overflow="hidden";
-    holder.style.background="#f7f3e9";
+        A4 ratio:
+        210 / 297
+    */
 
-    holder.appendChild(clone);
+    const sourceWidth =
+        794;
 
-    document.body.appendChild(holder);
+    const sourceHeight =
+        1123;
 
-    try{
 
-        const clonedMain =
-            clone.querySelector(
-                "#mainProductImage"
-            );
+    /*
+        Render at high resolution.
+    */
 
-        if(clonedMain){
-            clonedMain.style.display="none";
-        }
+    const captured =
+        await html2canvas(
+            poster,
+            {
 
-        const clonedThumbImages =
-            clone.querySelectorAll(
-                ".thumbnail img"
-            );
+                scale:4,
 
-        clonedThumbImages.forEach(
-            function(img){
-                img.style.visibility="hidden";
+                width:
+                    sourceWidth,
+
+                height:
+                    sourceHeight,
+
+                windowWidth:
+                    sourceWidth,
+
+                windowHeight:
+                    sourceHeight,
+
+                x:0,
+                y:0,
+
+                scrollX:0,
+                scrollY:0,
+
+                backgroundColor:
+                    "#f7f3e9",
+
+                useCORS:true,
+
+                allowTaint:false,
+
+                imageTimeout:15000,
+
+                logging:false,
+
+                foreignObjectRendering:false,
+
+                removeContainer:true
+
             }
         );
 
-        const rendered =
-            await html2canvas(
-                clone,
-                {
-                    scale:3,
-                    width:794,
-                    height:1123,
-                    windowWidth:794,
-                    windowHeight:1123,
-                    backgroundColor:"#f7f3e9",
-                    useCORS:true,
-                    allowTaint:false,
-                    imageTimeout:0,
-                    logging:false,
-                    removeContainer:true,
-                    scrollX:0,
-                    scrollY:0
-                }
-            );
 
-        const finalCanvas =
-            document.createElement("canvas");
+    /*
+        Now resize ONLY the final canvas.
 
-        finalCanvas.width=2480;
-        finalCanvas.height=3508;
+        IMPORTANT:
+        We do NOT redraw the main image.
 
-        const ctx =
-            finalCanvas.getContext("2d");
+        Everything already exists in captured.
+    */
 
-        ctx.imageSmoothingEnabled=true;
-        ctx.imageSmoothingQuality="high";
-
-        ctx.fillStyle="#f7f3e9";
-
-        ctx.fillRect(
-            0,
-            0,
-            2480,
-            3508
+    const finalCanvas =
+        document.createElement(
+            "canvas"
         );
 
-        ctx.drawImage(
-            rendered,
-            0,
-            0,
-            2480,
-            3508
+    finalCanvas.width =
+        2480;
+
+    finalCanvas.height =
+        3508;
+
+
+    const ctx =
+        finalCanvas.getContext(
+            "2d"
         );
 
-        const scaleX =
-            2480/794;
 
-        const scaleY =
-            3508/1123;
+    ctx.imageSmoothingEnabled =
+        true;
 
-
-        /* =========================
-           MAIN IMAGE
-        ========================= */
-
-        if(
-            gallery.length>0 &&
-            gallery[activeIndex]
-        ){
-
-            const sourceImage =
-                await loadImage(
-                    gallery[activeIndex].src
-                );
-
-            const area =
-                clone.querySelector(
-                    "#mainImageArea"
-                );
-
-            if(area){
-
-                const areaRect =
-                    area.getBoundingClientRect();
-
-                const posterRect =
-                    clone.getBoundingClientRect();
-
-                const x =
-                    (
-                        areaRect.left-
-                        posterRect.left
-                    )*scaleX;
-
-                const y =
-                    (
-                        areaRect.top-
-                        posterRect.top
-                    )*scaleY;
-
-                const width =
-                    areaRect.width*scaleX;
-
-                const height =
-                    areaRect.height*scaleY;
-
-                drawContain(
-                    ctx,
-                    sourceImage,
-                    x,
-                    y,
-                    width,
-                    height
-                );
-
-            }
-
-        }
+    ctx.imageSmoothingQuality =
+        "high";
 
 
-        /* =========================
-           THUMBNAILS
-        ========================= */
+    ctx.fillStyle =
+        "#f7f3e9";
 
-        if(gallery.length>0){
 
-            const thumbs =
-                Array.from(
-                    clone.querySelectorAll(
-                        ".thumbnail"
-                    )
-                );
+    ctx.fillRect(
+        0,
+        0,
+        2480,
+        3508
+    );
 
-            for(
-                let i=0;
-                i<thumbs.length;
-                i++
-            ){
 
-                if(!gallery[i]){
-                    continue;
-                }
+    ctx.drawImage(
+        captured,
 
-                const inner =
-                    thumbs[i].querySelector(
-                        ".thumbnail-inner"
-                    );
+        0,
+        0,
 
-                if(!inner){
-                    continue;
-                }
+        captured.width,
+        captured.height,
 
-                const rect =
-                    inner.getBoundingClientRect();
+        0,
+        0,
 
-                const posterRect =
-                    clone.getBoundingClientRect();
+        2480,
+        3508
+    );
 
-                const x =
-                    (
-                        rect.left-
-                        posterRect.left
-                    )*scaleX;
 
-                const y =
-                    (
-                        rect.top-
-                        posterRect.top
-                    )*scaleY;
-
-                const width =
-                    rect.width*scaleX;
-
-                const height =
-                    rect.height*scaleY;
-
-                const image =
-                    await loadImage(
-                        gallery[i].src
-                    );
-
-                drawContain(
-                    ctx,
-                    image,
-                    x,
-                    y,
-                    width,
-                    height
-                );
-
-            }
-
-        }
-
-        return finalCanvas;
-
-    }
-    finally{
-
-        holder.remove();
-
-    }
-
+    return finalCanvas;
 }
 
 
 /* =========================================================
-   SAFE NAME
+   SAFE FILE NAME
 ========================================================= */
 
-function safeName(value){
+function safeName(
+    value
+){
 
     return String(
-        value || "Product-Poster"
+        value ||
+        "Product-Poster"
     )
     .trim()
     .replace(
@@ -2596,7 +3423,6 @@ function safeName(value){
         /^-|-$/g,
         ""
     );
-
 }
 
 
@@ -2609,55 +3435,74 @@ function downloadBlob(
     filename
 ){
 
-    return new Promise(function(resolve,reject){
+    return new Promise(
+        function(resolve,reject){
 
-        try{
+            try{
 
-            const url =
-                URL.createObjectURL(blob);
+                const url =
+                    URL.createObjectURL(
+                        blob
+                    );
 
-            const link =
-                document.createElement("a");
+                const link =
+                    document.createElement(
+                        "a"
+                    );
 
-            link.href=url;
-            link.download=filename;
+                link.href =
+                    url;
 
-            link.style.display="none";
+                link.download =
+                    filename;
 
-            document.body.appendChild(link);
+                link.style.display =
+                    "none";
 
-            link.click();
+                document.body.appendChild(
+                    link
+                );
 
-            setTimeout(function(){
+                link.click();
 
-                link.remove();
+                setTimeout(
+                    function(){
 
-                URL.revokeObjectURL(url);
+                        link.remove();
 
-                resolve();
+                        URL.revokeObjectURL(
+                            url
+                        );
 
-            },600);
+                        resolve();
+
+                    },
+                    800
+                );
+
+            }
+            catch(error){
+
+                reject(error);
+
+            }
 
         }
-        catch(error){
-
-            reject(error);
-
-        }
-
-    });
-
+    );
 }
 
 
 /* =========================================================
-   DOWNLOAD PNG
+   PNG EXPORT
 ========================================================= */
 
 async function downloadPNG(){
 
-    downloadPngButton.disabled=true;
-    downloadPdfButton.disabled=true;
+    downloadPngButton.disabled =
+        true;
+
+    downloadPdfButton.disabled =
+        true;
 
     try{
 
@@ -2665,12 +3510,21 @@ async function downloadPNG(){
             "Preparing A4 PNG..."
         );
 
+
+        /*
+            THIS IS THE IMPORTANT PART.
+
+            We capture the exact poster.
+        */
+
         const canvas =
-            await createExportCanvas();
+            await createExactPosterCanvas();
+
 
         showStatus(
             "Creating PNG..."
         );
+
 
         const blob =
             await new Promise(
@@ -2680,35 +3534,46 @@ async function downloadPNG(){
                         function(result){
 
                             if(result){
-                                resolve(result);
+
+                                resolve(
+                                    result
+                                );
+
                             }
                             else{
+
                                 reject(
                                     new Error(
-                                        "PNG conversion failed."
+                                        "PNG creation failed."
                                     )
                                 );
+
                             }
 
                         },
+
                         "image/png"
                     );
 
                 }
             );
 
+
         await downloadBlob(
             blob,
-            "A4-Poster-"+
+
+            "A4-Poster-" +
             safeName(
                 itemInput.value
-            )+
+            ) +
             ".png"
         );
+
 
         showStatus(
             "PNG downloaded successfully."
         );
+
 
         setTimeout(
             hideStatus,
@@ -2723,34 +3588,37 @@ async function downloadPNG(){
             error
         );
 
-        showStatus(
-            "PNG ERROR"
-        );
+        hideStatus();
 
         alert(
-            "PNG download failed:\n\n"+
+            "PNG download failed.\n\n" +
             error.message
         );
 
     }
     finally{
 
-        downloadPngButton.disabled=false;
-        downloadPdfButton.disabled=false;
+        downloadPngButton.disabled =
+            false;
+
+        downloadPdfButton.disabled =
+            false;
 
     }
-
 }
 
 
 /* =========================================================
-   DOWNLOAD PDF
+   PDF EXPORT
 ========================================================= */
 
 async function downloadPDF(){
 
-    downloadPngButton.disabled=true;
-    downloadPdfButton.disabled=true;
+    downloadPngButton.disabled =
+        true;
+
+    downloadPdfButton.disabled =
+        true;
 
     try{
 
@@ -2758,54 +3626,102 @@ async function downloadPDF(){
             "Preparing A4 PDF..."
         );
 
+
         await ensureJsPDF();
 
+
+        /*
+            SAME EXACT CANVAS
+            USED FOR PNG.
+
+            So PDF and PNG are identical.
+        */
+
         const canvas =
-            await createExportCanvas();
+            await createExactPosterCanvas();
+
 
         showStatus(
             "Creating A4 PDF..."
         );
 
-        const image =
+
+        const imageData =
             canvas.toDataURL(
                 "image/jpeg",
-                .97
+                0.98
             );
+
 
         const jsPDF =
             window.jspdf.jsPDF;
 
+
+        /*
+            EXACT A4
+        */
+
         const pdf =
             new jsPDF({
-                orientation:"portrait",
-                unit:"mm",
-                format:"a4",
-                compress:true
+
+                orientation:
+                    "portrait",
+
+                unit:
+                    "mm",
+
+                format:
+                    "a4",
+
+                compress:
+                    true
+
             });
 
+
+        /*
+            A4:
+
+            Width  = 210 mm
+            Height = 297 mm
+
+            Full image fills A4.
+        */
+
         pdf.addImage(
-            image,
+
+            imageData,
+
             "JPEG",
+
             0,
             0,
+
             210,
             297,
+
             undefined,
+
             "FAST"
+
         );
 
+
         pdf.save(
-            "IT -"+
+
+            "IT -" +
             safeName(
                 itemInput.value
-            )+
+            ) +
             ".pdf"
+
         );
+
 
         showStatus(
             "PDF downloaded successfully."
         );
+
 
         setTimeout(
             hideStatus,
@@ -2820,23 +3736,23 @@ async function downloadPDF(){
             error
         );
 
-        showStatus(
-            "PDF ERROR"
-        );
+        hideStatus();
 
         alert(
-            "PDF download failed:\n\n"+
+            "PDF download failed.\n\n" +
             error.message
         );
 
     }
     finally{
 
-        downloadPngButton.disabled=false;
-        downloadPdfButton.disabled=false;
+        downloadPngButton.disabled =
+            false;
+
+        downloadPdfButton.disabled =
+            false;
 
     }
-
 }
 
 
@@ -2852,10 +3768,11 @@ downloadPdfButton.onclick =
 
 
 /* =========================================================
-   INITIAL
+   INITIALIZE
 ========================================================= */
 
 updateText();
+
 renderGallery();
 
 </script>
