@@ -2,36 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1.0">
+<title>Premium A4 Product Poster</title>
 
-<title>A4 Product Poster</title>
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com">
-
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap"
-    rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     box-sizing:border-box;
 }
@@ -40,58 +22,45 @@ html,
 body{
     margin:0;
     padding:0;
+    min-height:100%;
 }
 
 body{
-
-    min-height:100vh;
-
+    font-family:Inter,Arial,sans-serif;
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(215,25,32,.18),
-            transparent 30%
-        ),
-        #090a0d;
-
-    font-family:
-        Inter,
-        Arial,
-        sans-serif;
+        radial-gradient(circle at 10% 10%,rgba(215,25,32,.18),transparent 30%),
+        radial-gradient(circle at 90% 90%,rgba(255,180,0,.08),transparent 25%),
+        #08090c;
+    color:#111;
 }
-
 
 /* =========================================================
    APP
 ========================================================= */
 
 .app{
-
     min-height:100vh;
-
+    padding:80px 20px 30px;
     display:flex;
-
     justify-content:center;
-
-    align-items:center;
-
-    padding:30px;
+    align-items:flex-start;
 }
 
+.poster-wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
 
 /* =========================================================
-   A4 POSTER
-
-   EXACT A4 RATIO
-   210 : 297
+   EXACT A4 POSTER
+   794 x 1123 = A4 proportion
 ========================================================= */
 
 .poster{
-
     position:relative;
 
     width:794px;
-
     height:1123px;
 
     max-width:100%;
@@ -101,134 +70,114 @@ body{
     background:#f4f2ec;
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.55);
-
+        0 35px 90px rgba(0,0,0,.6);
 }
-
 
 /* =========================================================
    TOP HEADER
 ========================================================= */
 
 .topbar{
-
     position:relative;
-
-    width:100%;
-
     height:135px;
 
-    padding:
-        25px 32px;
+    padding:24px 30px;
 
     background:#111216;
-
     color:#fff;
 
     display:flex;
-
-    justify-content:space-between;
-
     align-items:center;
+    justify-content:space-between;
 
     z-index:50;
 }
 
 .topbar::after{
-
     content:"";
 
     position:absolute;
-
     left:0;
-
     bottom:0;
 
     width:48%;
-
     height:6px;
 
     background:#d71920;
 }
-
 
 /* =========================================================
    LOGO
 ========================================================= */
 
 .logo-box{
-
-    width:220px;
-
-    height:80px;
+    width:215px;
+    height:82px;
 
     padding:10px;
 
+    background:#fff;
     border-radius:12px;
 
-    background:#fff;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     overflow:hidden;
 }
 
 .logo-box img{
-
     display:block;
 
     max-width:100%;
-
-    max-height:90px;
+    max-height:91px;
 
     width:auto;
-
     height:auto;
 
     object-fit:contain;
 }
 
+.logo-fallback{
+    color:#222;
+
+    font-size:12px;
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-align:center;
+}
 
 .brand-copy{
-
     text-align:right;
 }
 
 .brand-copy small{
-
     display:block;
+
+    margin-bottom:8px;
 
     color:#999;
 
     font-size:10px;
-
     font-weight:800;
 
     letter-spacing:3px;
-
-    margin-bottom:8px;
 }
 
 .brand-copy strong{
-
     font-family:Montserrat,Arial,sans-serif;
 
-    font-size:31px;
-
+    font-size:30px;
     font-weight:900;
 }
-
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
-
     position:relative;
 
     height:713px;
@@ -246,75 +195,67 @@ body{
 }
 
 .hero-word{
-
     position:absolute;
 
     left:-30px;
-
-    bottom:-100px;
+    bottom:-95px;
 
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:300px;
-
     font-weight:900;
 
     line-height:1;
 
-    color:
-        rgba(255,255,255,.12);
+    color:rgba(255,255,255,.11);
 
     letter-spacing:-25px;
+
+    pointer-events:none;
 }
 
 .hero-side{
-
     position:absolute;
 
-    left:20px;
-
-    top:190px;
+    left:18px;
+    top:185px;
 
     writing-mode:vertical-rl;
-
     transform:rotate(180deg);
 
     color:#fff;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:4px;
 
     z-index:5;
-}
 
+    pointer-events:none;
+}
 
 /* =========================================================
    PRODUCT CARD
 ========================================================= */
 
 .product-card{
-
     position:absolute;
 
     left:55px;
-
     right:30px;
 
     top:28px;
-
     bottom:22px;
 
-    border-radius:35px;
+    border-radius:34px;
 
     background:
         radial-gradient(
-            circle at 50% 40%,
+            circle at 50% 37%,
             #ffffff 0%,
             #faf9f6 55%,
-            #e6e4dd 100%
+            #e5e3dd 100%
         );
 
     box-shadow:
@@ -325,66 +266,47 @@ body{
     z-index:3;
 }
 
-
 /* =========================================================
-   MAIN PRODUCT IMAGE
-
-   IMPORTANT:
-   CONTAIN = NEVER STRETCH
+   MAIN IMAGE
+   NEVER STRETCH
 ========================================================= */
 
-.product-image{
-
+.main-product-image{
     position:absolute;
 
     left:50%;
-
     top:42%;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     width:92%;
-
     height:535px;
 
     object-fit:contain;
-
     object-position:center;
 
-    /*
-       DO NOT USE:
-       object-fit:cover
-    */
+    display:none;
 
     z-index:5;
 
     filter:
         drop-shadow(
-            0 35px 25px
-            rgba(0,0,0,.25)
+            0 32px 24px rgba(0,0,0,.24)
         );
+
+    pointer-events:none;
 }
 
-
-/* =========================================================
-   PLACEHOLDER
-========================================================= */
-
-.placeholder{
-
+.product-placeholder{
     position:absolute;
 
     left:50%;
-
     top:42%;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
-    width:360px;
-
-    height:430px;
+    width:350px;
+    height:420px;
 
     border-radius:30px;
 
@@ -392,137 +314,110 @@ body{
         linear-gradient(
             135deg,
             #dededc,
-            #f7f7f5,
+            #f8f8f6,
             #d0d0ce
         );
+
+    z-index:4;
 }
 
-
 /* =========================================================
-   PREMIUM TAG
+   TAG
 ========================================================= */
 
 .premium-tag{
-
     position:absolute;
 
-    left:25px;
+    left:24px;
+    top:24px;
 
-    top:25px;
+    z-index:25;
 
-    z-index:20;
-
-    background:#111216;
-
-    color:#fff;
-
-    padding:
-        13px 18px;
+    padding:12px 17px;
 
     border-radius:8px;
 
-    font-size:10px;
+    background:#111216;
+    color:#fff;
 
+    font-size:10px;
     font-weight:900;
 
     letter-spacing:2px;
 }
-
 
 /* =========================================================
    DISCOUNT
 ========================================================= */
 
 .discount{
-
     position:absolute;
 
-    right:25px;
+    right:24px;
+    top:24px;
 
-    top:25px;
-
-    width:105px;
-
-    height:105px;
+    width:104px;
+    height:104px;
 
     border-radius:50%;
 
     background:#d71920;
-
     color:#fff;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     align-items:center;
 
-    z-index:20;
+    z-index:25;
 
     box-shadow:
-        0 15px 35px
-        rgba(215,25,32,.30);
+        0 15px 35px rgba(215,25,32,.3);
 
     transform:rotate(7deg);
 }
 
 .discount span{
-
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:1px;
 }
 
 .discount strong{
-
     font-family:Montserrat,Arial,sans-serif;
 
-    font-size:32px;
-
+    font-size:31px;
     line-height:1;
 }
 
-
 /* =========================================================
-   THUMBNAILS
-
-   ALWAYS BELOW MAIN IMAGE
+   BOTTOM THUMBNAILS
 ========================================================= */
 
 .thumbnail-area{
-
     position:absolute;
 
-    left:20px;
-
-    right:20px;
-
-    bottom:18px;
+    left:18px;
+    right:18px;
+    bottom:17px;
 
     height:105px;
 
-    padding:10px;
+    padding:9px;
 
-    background:
-        rgba(255,255,255,.98);
+    border-radius:15px;
 
-    border-radius:16px;
+    background:rgba(255,255,255,.98);
 
     box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.15);
+        0 10px 30px rgba(0,0,0,.16);
 
-    z-index:30;
+    z-index:35;
 }
 
 .thumbnail-list{
-
     width:100%;
-
     height:100%;
 
     display:grid;
@@ -533,36 +428,39 @@ body{
             minmax(0,1fr)
         );
 
-    gap:10px;
+    gap:9px;
 
     overflow:hidden;
 }
 
 .thumbnail{
+    position:relative;
 
     min-width:0;
 
     width:100%;
-
     height:100%;
 
     padding:3px;
 
-    border:
-        3px solid
-        #e1e1e1;
+    border:3px solid #e1e1e1;
 
-    border-radius:10px;
+    border-radius:9px;
 
     background:#fff;
 
     cursor:pointer;
 
     overflow:hidden;
+
+    transition:.18s ease;
+}
+
+.thumbnail:hover{
+    transform:translateY(-2px);
 }
 
 .thumbnail.active{
-
     border-color:#d71920;
 
     box-shadow:
@@ -570,136 +468,103 @@ body{
 }
 
 .thumbnail img{
-
-    width:100%;
-
-    height:100%;
-
     display:block;
 
-    /*
-       IMPORTANT:
-       THUMBNAILS ALSO NEVER STRETCH
-    */
+    width:100%;
+    height:100%;
 
     object-fit:contain;
-
     object-position:center;
 
     background:#fafafa;
 }
 
-
-/* =========================================================
-   EMPTY THUMBNAILS
-========================================================= */
-
-.empty-thumbs{
-
+.empty-thumbnails{
     width:100%;
-
     height:100%;
 
     display:flex;
-
+    justify-content:center;
     align-items:center;
 
-    justify-content:center;
+    border-radius:8px;
+
+    background:#f6f6f6;
 
     color:#999;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:1px;
-
-    background:#f7f7f7;
-
-    border-radius:8px;
 }
 
-
 /* =========================================================
-   PRODUCT INFORMATION
+   INFO
 ========================================================= */
 
 .info{
-
     height:215px;
 
-    padding:
-        25px 32px 20px;
+    padding:25px 32px 20px;
 
     background:#fff;
 
     display:flex;
-
     flex-direction:column;
 
     justify-content:space-between;
 }
 
 .info-top{
-
     display:flex;
 
     justify-content:space-between;
-
     align-items:flex-start;
+
+    gap:20px;
 }
 
 .kicker{
+    margin-bottom:6px;
 
     color:#999;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:2px;
-
-    margin-bottom:6px;
 }
 
 .item-number{
-
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:27px;
-
     font-weight:900;
 }
 
 .size-pill{
-
     display:inline-block;
 
     margin-top:10px;
 
-    padding:
-        8px 12px;
+    padding:8px 12px;
 
-    border-left:
-        4px solid
-        #d71920;
+    border-left:4px solid #d71920;
 
     border-radius:5px;
 
     background:#f0efeb;
 
     font-size:10px;
-
     font-weight:900;
 }
 
 .price{
-
     text-align:right;
 }
 
 .old-price{
-
     color:#999;
 
     font-size:15px;
@@ -708,11 +573,9 @@ body{
 }
 
 .offer-price{
-
     font-family:Montserrat,Arial,sans-serif;
 
     font-size:54px;
-
     font-weight:900;
 
     line-height:.95;
@@ -721,642 +584,1457 @@ body{
 }
 
 .currency{
-
     font-size:15px;
-
     letter-spacing:1px;
 }
 
 .saving{
-
     margin-top:7px;
 
     color:#d71920;
 
     font-size:10px;
-
     font-weight:900;
 
     letter-spacing:1px;
 }
 
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
 .feature-strip{
-
     display:grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
     gap:10px;
 }
 
 .feature{
-
     padding:10px;
-
-    text-align:center;
-
-    background:#f5f4f0;
 
     border-radius:7px;
 
+    background:#f5f4f0;
+
     color:#666;
 
-    font-size:9px;
+    text-align:center;
 
+    font-size:9px;
     font-weight:900;
 
     letter-spacing:.5px;
 }
-
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 .footer{
-
     height:60px;
 
-    background:#111216;
-
-    color:#fff;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    font-size:10px;
+    background:#111216;
+    color:#fff;
 
+    font-size:10px;
     font-weight:900;
 
     letter-spacing:3px;
 }
-
 
 /* =========================================================
    EDIT BUTTON
 ========================================================= */
 
 .edit-button{
-
     position:fixed;
 
     top:20px;
-
     left:20px;
 
-    z-index:999;
-
-    padding:
-        13px 18px;
+    z-index:900;
 
     border:0;
+
+    padding:13px 19px;
 
     border-radius:9px;
 
     background:#d71920;
-
     color:#fff;
 
     font-size:10px;
+    font-weight:900;
 
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+    transition:.2s;
+}
+
+.edit-button:hover{
+    background:#b9141a;
+
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.editor-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:none;
+
+    background:rgba(0,0,0,.68);
+
+    backdrop-filter:blur(5px);
+}
+
+.editor-overlay.show{
+    display:block;
+}
+
+/* =========================================================
+   EDITOR PANEL
+========================================================= */
+
+.editor-panel{
+    position:fixed;
+
+    top:20px;
+    left:20px;
+    bottom:20px;
+
+    width:390px;
+
+    max-width:
+        calc(100vw - 40px);
+
+    z-index:1100;
+
+    display:none;
+
+    overflow-y:auto;
+
+    padding:22px;
+
+    border:1px solid #38393e;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #202125,
+            #101114
+        );
+
+    color:#fff;
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.75);
+}
+
+.editor-panel.open{
+    display:block;
+
+    animation:
+        editorIn .2s ease;
+}
+
+@keyframes editorIn{
+    from{
+        opacity:0;
+        transform:translateX(-15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.editor-header{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:flex-start;
+
+    margin-bottom:22px;
+}
+
+.editor-header h2{
+    margin:0;
+
+    font-family:Montserrat,Arial,sans-serif;
+
+    font-size:21px;
+}
+
+.editor-header p{
+    margin:5px 0 0;
+
+    color:#85868b;
+
+    font-size:9px;
+}
+
+.close-editor{
+    width:35px;
+    height:35px;
+
+    border:0;
+    border-radius:50%;
+
+    background:#303136;
+    color:#fff;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#aaa;
+
+    font-size:8px;
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.2px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"]{
+    width:100%;
+    height:43px;
+
+    padding:0 12px;
+
+    outline:none;
+
+    border:1px solid #3b3c41;
+
+    border-radius:8px;
+
+    background:#0c0d10;
+    color:#fff;
+
+    font-family:Inter,Arial,sans-serif;
+}
+
+.form-group input:focus{
+    border-color:#d71920;
+}
+
+/* =========================================================
+   UPLOAD AREA
+========================================================= */
+
+.upload-area{
+    padding:15px;
+
+    border:1px dashed #555;
+
+    border-radius:10px;
+
+    background:#111216;
+}
+
+.upload-area p{
+    margin:0 0 11px;
+
+    color:#888;
+
+    font-size:8px;
+
+    line-height:1.5;
+}
+
+.upload-button{
+    display:block;
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    background:#d71920;
+    color:#fff;
+
+    text-align:center;
+
+    font-size:9px;
     font-weight:900;
 
     cursor:pointer;
 }
 
+.upload-button:hover{
+    background:#b9141a;
+}
+
+#imageInput{
+    display:none;
+}
 
 /* =========================================================
-   RESPONSIVE PREVIEW
-
-   IMPORTANT:
-   Actual poster remains A4.
+   EDITOR GALLERY
 ========================================================= */
 
-@media(max-width:850px){
+.gallery-box{
+    margin-top:12px;
+
+    padding:11px;
+
+    border:1px solid #333;
+
+    border-radius:9px;
+
+    background:#0c0d10;
+}
+
+.gallery-header{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:9px;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.gallery-count{
+    color:#777;
+}
+
+.editor-gallery{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            var(--editor-count,1),
+            minmax(0,1fr)
+        );
+
+    gap:6px;
+}
+
+.editor-image{
+    position:relative;
+
+    min-width:0;
+
+    aspect-ratio:1;
+
+    border:2px solid #333;
+
+    border-radius:7px;
+
+    background:#fff;
+
+    overflow:hidden;
+}
+
+.editor-image.active{
+    border-color:#d71920;
+
+    box-shadow:
+        0 0 0 1px #d71920;
+}
+
+.editor-image img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+}
+
+.select-image{
+    position:absolute;
+
+    inset:0;
+
+    border:0;
+
+    background:transparent;
+
+    cursor:pointer;
+}
+
+.delete-image{
+    position:absolute;
+
+    right:3px;
+    top:3px;
+
+    width:21px;
+    height:21px;
+
+    border:0;
+    border-radius:50%;
+
+    background:#d71920;
+    color:#fff;
+
+    font-size:13px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    z-index:5;
+}
+
+.image-number{
+    position:absolute;
+
+    left:4px;
+    bottom:4px;
+
+    min-width:18px;
+    height:18px;
+
+    padding:0 4px;
+
+    border-radius:4px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,.7);
+    color:#fff;
+
+    font-size:7px;
+    font-weight:900;
+
+    pointer-events:none;
+}
+
+.gallery-help{
+    margin-top:9px;
+
+    color:#666;
+
+    font-size:7px;
+
+    line-height:1.5;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-buttons{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+    margin-top:20px;
+}
+
+.action-button{
+    min-height:43px;
+
+    border:0;
+
+    border-radius:8px;
+
+    font-size:8px;
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.btn-red{
+    background:#d71920;
+    color:#fff;
+}
+
+.btn-red:hover{
+    background:#b9141a;
+}
+
+.btn-dark{
+    background:#303136;
+    color:#fff;
+}
+
+.btn-light{
+    background:#eee;
+    color:#111;
+}
+
+.editor-note{
+    margin-top:13px;
+
+    padding:11px;
+
+    border-left:3px solid #d71920;
+
+    border-radius:6px;
+
+    background:#0b0c0f;
+
+    color:#777;
+
+    font-size:7px;
+
+    line-height:1.55;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
 
     .app{
-
         padding:
-            75px 10px 20px;
+            75px 8px 20px;
     }
 
     .poster{
-
         width:
-            min(
-                794px,
-                calc(100vw - 20px)
-            );
-
-        /*
-           A4 ratio maintained
-        */
+            calc(100vw - 16px);
 
         height:
             calc(
-                min(
-                    794px,
-                    calc(100vw - 20px)
-                ) * 1.4142857
+                (100vw - 16px)
+                * 1.4142857
             );
     }
 
-    .topbar{
+    .editor-panel{
+        left:8px;
+        right:8px;
+        top:8px;
+        bottom:8px;
 
-        height:12%;
+        width:auto;
 
-        padding:3% 4%;
-    }
-
-    .logo-box{
-
-        width:28%;
-
-        height:65%;
+        max-width:none;
     }
 
     .brand-copy strong{
-
-        font-size:
-            clamp(
-                10px,
-                3vw,
-                31px
-            );
+        font-size:15px;
     }
 
     .brand-copy small{
-
-        font-size:
-            clamp(
-                5px,
-                1.2vw,
-                10px
-            );
+        font-size:6px;
+        letter-spacing:1px;
     }
 
-    .hero{
-
-        height:63.5%;
+    .logo-box{
+        width:29%;
+        height:65%;
     }
 
-    .product-card{
-
-        left:7%;
-
-        right:4%;
-
-        top:4%;
-
-        bottom:3%;
-    }
-
-    .product-image{
-
-        width:92%;
-
-        height:76%;
-    }
-
-    .thumbnail-area{
-
-        height:14%;
-
-        left:3%;
-
-        right:3%;
-
-        bottom:2%;
-    }
-
-    .info{
-
-        height:19.1%;
-
-        padding:
-            3% 4%;
+    .hero-word{
+        font-size:170px;
     }
 
     .offer-price{
-
-        font-size:
-            clamp(
-                25px,
-                6vw,
-                54px
-            );
+        font-size:clamp(20px,6vw,54px);
     }
 
     .item-number{
+        font-size:clamp(11px,3vw,27px);
+    }
 
-        font-size:
-            clamp(
-                13px,
-                3vw,
-                27px
-            );
+    .feature{
+        font-size:6px;
+        padding:6px 3px;
     }
 
     .footer{
-
-        height:5.35%;
-
-        font-size:
-            clamp(
-                5px,
-                1.5vw,
-                10px
-            );
+        font-size:5px;
+        letter-spacing:1px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================================================
      EDIT BUTTON
-===================================================== -->
+========================================================= -->
 
 <button
     class="edit-button"
-    onclick="openEditor()">
+    id="openEditorButton">
 
-    ✎ EDIT
+    ✎ EDIT POSTER
 
 </button>
 
 
-<!-- =====================================================
-     A4 POSTER
-===================================================== -->
-
-<div class="app">
+<!-- =========================================================
+     EDITOR OVERLAY
+========================================================= -->
 
 <div
-    class="poster"
-    id="poster">
+    class="editor-overlay"
+    id="editorOverlay">
+</div>
 
 
-    <!-- =================================================
-         HEADER
-    ================================================== -->
+<!-- =========================================================
+     EDITOR PANEL
+========================================================= -->
 
-    <div class="topbar">
+<div
+    class="editor-panel"
+    id="editorPanel">
 
-        <div class="logo-box">
+    <div class="editor-header">
 
-            <!--
-                CHANGE logo.png TO YOUR LOGO
-            -->
+        <div>
 
-            <img
-                src="assets/IT.jpeg"
-                alt="Logo">
+            <h2>
+                Poster Editor
+            </h2>
+
+            <p>
+                Edit your poster without changing the A4 layout.
+            </p>
+
+        </div>
+
+        <button
+            class="close-editor"
+            id="closeEditorButton">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         ITEM NUMBER
+    ====================================================== -->
+
+    <div class="form-group">
+
+        <label>
+            Item Number
+        </label>
+
+        <input
+            id="itemInput"
+            type="text"
+            value="15-288-08">
+
+    </div>
+
+
+    <!-- =====================================================
+         SIZE
+    ====================================================== -->
+
+    <div class="form-group">
+
+        <label>
+            Size / Description
+        </label>
+
+        <input
+            id="sizeInput"
+            type="text"
+            value='ONLY CABINE SIZE 21"'>
+
+    </div>
+
+
+    <!-- =====================================================
+         OLD PRICE
+    ====================================================== -->
+
+    <div class="form-group">
+
+        <label>
+            Old Price
+        </label>
+
+        <input
+            id="oldPriceInput"
+            type="number"
+            value="165"
+            min="0"
+            step="1">
+
+    </div>
+
+
+    <!-- =====================================================
+         OFFER PRICE
+    ====================================================== -->
+
+    <div class="form-group">
+
+        <label>
+            Offer Price
+        </label>
+
+        <input
+            id="offerPriceInput"
+            type="number"
+            value="95"
+            min="0"
+            step="1">
+
+    </div>
+
+
+    <!-- =====================================================
+         IMAGE UPLOAD
+    ====================================================== -->
+
+    <div class="form-group">
+
+        <label>
+            Product Images
+        </label>
+
+        <div class="upload-area">
+
+            <p>
+                Upload one image or many images.
+                The selected image becomes the large main image.
+                Every image keeps its original proportions.
+            </p>
+
+            <label
+                class="upload-button"
+                for="imageInput">
+
+                + ADD PRODUCT IMAGES
+
+            </label>
+
+            <input
+                id="imageInput"
+                type="file"
+                accept="image/*"
+                multiple>
 
         </div>
 
 
-        <div class="brand-copy">
+        <!-- =================================================
+             EDITOR IMAGE GALLERY
+        ================================================== -->
 
-            <small>
-                PREMIUM COLLECTION
-            </small>
+        <div class="gallery-box">
 
-            <strong>
-                SPECIAL OFFER
-            </strong>
+            <div class="gallery-header">
+
+                <span>
+                    IMAGE GALLERY
+                </span>
+
+                <span
+                    class="gallery-count"
+                    id="galleryCount">
+
+                    0 IMAGES
+
+                </span>
+
+            </div>
+
+
+            <div
+                class="editor-gallery"
+                id="editorGallery">
+
+                <div
+                    style="
+                        grid-column:1/-1;
+                        color:#666;
+                        text-align:center;
+                        font-size:8px;
+                        padding:10px;
+                    ">
+
+                    NO IMAGES
+
+                </div>
+
+            </div>
+
+
+            <div class="gallery-help">
+
+                Click an image to make it the main image.
+                Click × to remove an image.
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         HERO
-    ================================================== -->
+    <!-- =====================================================
+         ACTIONS
+    ====================================================== -->
 
-    <div class="hero">
+    <div class="action-buttons">
 
-        <div class="hero-word">
-            IT
-        </div>
+        <button
+            class="action-button btn-red"
+            id="downloadPngButton">
 
-        <div class="hero-side">
-            TRAVEL • STYLE • COMFORT
-        </div>
+            DOWNLOAD PNG
 
-
-        <div class="product-card">
+        </button>
 
 
-            <div class="premium-tag">
-                PREMIUM PRODUCT
+        <button
+            class="action-button btn-red"
+            id="downloadPdfButton">
+
+            DOWNLOAD A4 PDF
+
+        </button>
+
+
+        <button
+            class="action-button btn-dark"
+            id="clearImagesButton">
+
+            CLEAR IMAGES
+
+        </button>
+
+
+        <button
+            class="action-button btn-light"
+            id="closePanelButton">
+
+            DONE
+
+        </button>
+
+    </div>
+
+
+    <div class="editor-note">
+
+        <strong style="color:#fff;">
+            A4 EXPORT
+        </strong>
+
+        <br>
+
+        PNG export is 2480 × 3508 px.
+        PDF export is exactly 210 × 297 mm.
+        Product images use contain mode so they
+        cannot be stretched.
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     POSTER
+========================================================= -->
+
+<div class="app">
+
+    <div class="poster-wrap">
+
+        <div
+            class="poster"
+            id="poster">
+
+
+            <!-- =============================================
+                 HEADER
+            ============================================== -->
+
+            <div class="topbar">
+
+                <div class="logo-box">
+
+
+                    <img
+                        src="assets/IT.jpeg"
+                        alt="Company Logo"
+                        id="logoImage"
+                        onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';">
+
+                    <div
+                        class="logo-fallback"
+                        id="logoFallback"
+                        style="display:none;">
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="brand-copy">
+
+                    <small>
+                        PREMIUM COLLECTION
+                    </small>
+
+                    <strong>
+                        SPECIAL OFFER
+                    </strong>
+
+                </div>
+
             </div>
 
 
-            <div class="discount">
+            <!-- =============================================
+                 HERO
+            ============================================== -->
 
-                <span>
-                    SAVE
-                </span>
+            <div class="hero">
 
-                <strong id="savingCircle">
-                    70
-                </strong>
+                <div class="hero-word">
+                    IT
+                </div>
 
-                <span>
-                    DHS
-                </span>
-
-            </div>
+                <div class="hero-side">
+                    TRAVEL • STYLE • COMFORT
+                </div>
 
 
-            <!--
-                IMPORTANT:
-                Product image always uses CONTAIN
-                so it cannot stretch.
-            -->
-
-            <img
-                id="mainImage"
-                class="product-image"
-                src=""
-                alt="Product"
-                style="display:none;">
+                <div class="product-card">
 
 
-            <div
-                class="placeholder"
-                id="placeholder">
-            </div>
+                    <div class="premium-tag">
+                        PREMIUM PRODUCT
+                    </div>
 
 
-            <!-- =========================================
-                 THUMBNAILS
-            ========================================== -->
+                    <div class="discount">
 
-            <div class="thumbnail-area">
+                        <span>
+                            SAVE
+                        </span>
 
-                <div
-                    class="thumbnail-list"
-                    id="thumbnailList">
+                        <strong
+                            id="savingCircle">
 
-                    <div class="empty-thumbs">
-                        UPLOAD PRODUCT IMAGES
+                            70
+
+                        </strong>
+
+                        <span>
+                            DHS
+                        </span>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         MAIN PRODUCT IMAGE
+                    ====================================== -->
+
+                    <img
+                        class="main-product-image"
+                        id="mainProductImage"
+                        alt="Product">
+
+
+                    <div
+                        class="product-placeholder"
+                        id="productPlaceholder">
+                    </div>
+
+
+                    <!-- =====================================
+                         BOTTOM THUMBNAILS
+                    ====================================== -->
+
+                    <div class="thumbnail-area">
+
+                        <div
+                            class="thumbnail-list"
+                            id="thumbnailList">
+
+                            <div class="empty-thumbnails">
+
+                                UPLOAD PRODUCT IMAGES
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+            <!-- =============================================
+                 INFORMATION
+            ============================================== -->
+
+            <div class="info">
+
+                <div class="info-top">
+
+
+                    <div>
+
+                        <div class="kicker">
+                            PRODUCT CODE
+                        </div>
+
+                        <div
+                            class="item-number"
+                            id="itemText">
+
+                            15-288-08
+
+                        </div>
+
+
+                        <div
+                            class="size-pill"
+                            id="sizeText">
+
+                            ONLY CABINE SIZE 21"
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="price">
+
+                        <div
+                            class="old-price"
+                            id="oldPriceText">
+
+                            165 DHS
+
+                        </div>
+
+
+                        <div class="offer-price">
+
+                            <span class="currency">
+                                AED
+                            </span>
+
+                            <span id="offerPriceText">
+                                95
+                            </span>
+
+                        </div>
+
+
+                        <div class="saving">
+
+                            SAVE
+                            <span id="savingText">
+                                70
+                            </span>
+                            DHS
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-strip">
+
+                    <div class="feature">
+                        PREMIUM QUALITY
+                    </div>
+
+                    <div class="feature">
+                        MODERN DESIGN
+                    </div>
+
+                    <div class="feature">
+                        TRAVEL READY
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 FOOTER
+            ============================================== -->
+
+            <div class="footer">
+
+                LIMITED TIME OFFER • WHILE STOCK LASTS
+
+            </div>
+
+
         </div>
 
     </div>
-
-
-    <!-- =================================================
-         INFO
-    ================================================== -->
-
-    <div class="info">
-
-        <div class="info-top">
-
-
-            <div>
-
-                <div class="kicker">
-                    PRODUCT CODE
-                </div>
-
-                <div
-                    class="item-number"
-                    id="itemNumber">
-
-                    15-288-08
-
-                </div>
-
-                <div
-                    class="size-pill"
-                    id="sizeText">
-
-                    ONLY CABINE SIZE 21"
-
-                </div>
-
-            </div>
-
-
-            <div class="price">
-
-                <div
-                    class="old-price"
-                    id="oldPrice">
-
-                    165 DHS
-
-                </div>
-
-                <div class="offer-price">
-
-                    <span class="currency">
-                        AED
-                    </span>
-
-                    <span id="newPrice">
-                        95
-                    </span>
-
-                </div>
-
-                <div class="saving">
-
-                    SAVE
-                    <span id="saving">
-                        70
-                    </span>
-                    DHS
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="feature-strip">
-
-            <div class="feature">
-                PREMIUM QUALITY
-            </div>
-
-            <div class="feature">
-                MODERN DESIGN
-            </div>
-
-            <div class="feature">
-                TRAVEL READY
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         FOOTER
-    ================================================== -->
-
-    <div class="footer">
-
-        LIMITED TIME OFFER • WHILE STOCK LASTS
-
-    </div>
-
-
-</div>
 
 </div>
 
 
 <script>
-
 /* =========================================================
-   DATA
+   STATE
 ========================================================= */
 
-let images = [];
+let gallery = [];
 
-let activeImage = 0;
+let activeIndex = 0;
 
 
 /* =========================================================
-   UPLOAD INPUT
+   ELEMENTS
 ========================================================= */
 
-function createUpload(){
+const editorPanel =
+    document.getElementById(
+        "editorPanel"
+    );
 
-    const input =
-        document.createElement("input");
+const editorOverlay =
+    document.getElementById(
+        "editorOverlay"
+    );
 
-    input.type =
-        "file";
+const openEditorButton =
+    document.getElementById(
+        "openEditorButton"
+    );
 
-    input.accept =
-        "image/*";
+const closeEditorButton =
+    document.getElementById(
+        "closeEditorButton"
+    );
 
-    input.multiple =
-        true;
+const closePanelButton =
+    document.getElementById(
+        "closePanelButton"
+    );
 
-    input.style.display =
-        "none";
+const imageInput =
+    document.getElementById(
+        "imageInput"
+    );
+
+const editorGallery =
+    document.getElementById(
+        "editorGallery"
+    );
+
+const thumbnailList =
+    document.getElementById(
+        "thumbnailList"
+    );
+
+const galleryCount =
+    document.getElementById(
+        "galleryCount"
+    );
+
+const mainProductImage =
+    document.getElementById(
+        "mainProductImage"
+    );
+
+const productPlaceholder =
+    document.getElementById(
+        "productPlaceholder"
+    );
+
+const itemInput =
+    document.getElementById(
+        "itemInput"
+    );
+
+const sizeInput =
+    document.getElementById(
+        "sizeInput"
+    );
+
+const oldPriceInput =
+    document.getElementById(
+        "oldPriceInput"
+    );
+
+const offerPriceInput =
+    document.getElementById(
+        "offerPriceInput"
+    );
+
+const itemText =
+    document.getElementById(
+        "itemText"
+    );
+
+const sizeText =
+    document.getElementById(
+        "sizeText"
+    );
+
+const oldPriceText =
+    document.getElementById(
+        "oldPriceText"
+    );
+
+const offerPriceText =
+    document.getElementById(
+        "offerPriceText"
+    );
+
+const savingText =
+    document.getElementById(
+        "savingText"
+    );
+
+const savingCircle =
+    document.getElementById(
+        "savingCircle"
+    );
+
+const clearImagesButton =
+    document.getElementById(
+        "clearImagesButton"
+    );
+
+const downloadPngButton =
+    document.getElementById(
+        "downloadPngButton"
+    );
+
+const downloadPdfButton =
+    document.getElementById(
+        "downloadPdfButton"
+    );
 
 
-    input.onchange =
-        function(){
+/* =========================================================
+   OPEN EDITOR
+========================================================= */
 
-            const files =
-                Array.from(
-                    input.files
-                );
+function openEditor(){
 
-            loadImages(files);
+    editorPanel.classList.add(
+        "open"
+    );
 
-        };
+    editorOverlay.classList.add(
+        "show"
+    );
 
-
-    document.body.appendChild(input);
-
-    input.click();
+    document.body.style.overflow =
+        "hidden";
 }
 
 
 /* =========================================================
-   LOAD IMAGES
+   CLOSE EDITOR
 ========================================================= */
 
-function loadImages(files){
+function closeEditor(){
 
-    const valid =
-        files.filter(
-            file =>
-                file.type.startsWith(
-                    "image/"
-                )
-        );
+    editorPanel.classList.remove(
+        "open"
+    );
+
+    editorOverlay.classList.remove(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "";
+}
 
 
-    if(!valid.length){
+openEditorButton.addEventListener(
+    "click",
+    openEditor
+);
 
-        return;
+closeEditorButton.addEventListener(
+    "click",
+    closeEditor
+);
+
+closePanelButton.addEventListener(
+    "click",
+    closeEditor
+);
+
+editorOverlay.addEventListener(
+    "click",
+    closeEditor
+);
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape" &&
+            editorPanel.classList.contains(
+                "open"
+            )
+        ){
+
+            closeEditor();
+
+        }
+
     }
+);
 
 
-    const promises =
-        valid.map(
-            file =>
-                new Promise(
-                    resolve => {
+/* =========================================================
+   UPDATE TEXT
+========================================================= */
 
-                        const reader =
-                            new FileReader();
+function updateText(){
 
+    itemText.textContent =
+        itemInput.value ||
+        "15-288-08";
 
-                        reader.onload =
-                            e => {
-
-                                resolve(
-                                    e.target.result
-                                );
-
-                            };
+    sizeText.textContent =
+        sizeInput.value ||
+        'ONLY CABINE SIZE 21"';
 
 
-                        reader.readAsDataURL(
-                            file
-                        );
+    const oldPrice =
+        Number(
+            oldPriceInput.value
+        ) || 0;
 
-                    }
-                )
+
+    const offerPrice =
+        Number(
+            offerPriceInput.value
+        ) || 0;
+
+
+    const saving =
+        Math.max(
+            0,
+            oldPrice - offerPrice
         );
 
 
-    Promise.all(promises)
-    .then(
-        result => {
-
-            images =
-                images.concat(
-                    result
-                );
+    oldPriceText.textContent =
+        oldPrice + " DHS";
 
 
-            if(images.length){
+    offerPriceText.textContent =
+        offerPrice;
 
-                activeImage =
-                    Math.min(
-                        activeImage,
-                        images.length - 1
-                    );
 
-                showImage(
-                    activeImage
-                );
+    savingText.textContent =
+        saving;
 
-            }
+
+    savingCircle.textContent =
+        saving;
+
+}
+
+
+itemInput.addEventListener(
+    "input",
+    updateText
+);
+
+sizeInput.addEventListener(
+    "input",
+    updateText
+);
+
+oldPriceInput.addEventListener(
+    "input",
+    updateText
+);
+
+offerPriceInput.addEventListener(
+    "input",
+    updateText
+);
+
+
+/* =========================================================
+   READ FILE AS DATA URL
+========================================================= */
+
+function readFile(file){
+
+    return new Promise(
+        function(resolve,reject){
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function(event){
+
+                    resolve({
+                        src:event.target.result,
+                        name:file.name
+                    });
+
+                };
+
+            reader.onerror =
+                reject;
+
+            reader.readAsDataURL(
+                file
+            );
 
         }
     );
@@ -1364,74 +2042,245 @@ function loadImages(files){
 
 
 /* =========================================================
-   SHOW IMAGE
+   UPLOAD IMAGES
 ========================================================= */
 
-function showImage(index){
+imageInput.addEventListener(
+    "change",
+    async function(){
 
-    if(!images[index]){
+        const files =
+            Array.from(
+                this.files
+            );
+
+
+        const validFiles =
+            files.filter(
+                function(file){
+
+                    return file.type &&
+                        file.type.startsWith(
+                            "image/"
+                        );
+
+                }
+            );
+
+
+        if(
+            validFiles.length === 0
+        ){
+
+            this.value = "";
+
+            return;
+
+        }
+
+
+        try{
+
+            const newImages =
+                await Promise.all(
+                    validFiles.map(
+                        readFile
+                    )
+                );
+
+
+            const firstUpload =
+                gallery.length === 0;
+
+
+            gallery =
+                gallery.concat(
+                    newImages
+                );
+
+
+            if(firstUpload){
+
+                activeIndex = 0;
+
+            }
+
+
+            activeIndex =
+                Math.min(
+                    activeIndex,
+                    gallery.length - 1
+                );
+
+
+            renderAllGallery();
+
+            showMainImage(
+                activeIndex
+            );
+
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                "Unable to read one of the images."
+            );
+
+        }
+
+
+        /*
+           Allows the same image to be
+           selected again later.
+        */
+
+        this.value = "";
+
+    }
+);
+
+
+/* =========================================================
+   SHOW MAIN IMAGE
+========================================================= */
+
+function showMainImage(index){
+
+    if(
+        !gallery[index]
+    ){
+
+        return;
+
+    }
+
+
+    activeIndex =
+        index;
+
+
+    mainProductImage.src =
+        gallery[index].src;
+
+
+    mainProductImage.style.display =
+        "block";
+
+
+    productPlaceholder.style.display =
+        "none";
+
+
+    renderAllGallery();
+
+}
+
+
+/* =========================================================
+   DELETE IMAGE
+========================================================= */
+
+function deleteImage(index){
+
+    if(
+        index < 0 ||
+        index >= gallery.length
+    ){
+
+        return;
+
+    }
+
+
+    gallery.splice(
+        index,
+        1
+    );
+
+
+    if(
+        gallery.length === 0
+    ){
+
+        activeIndex = 0;
+
+        mainProductImage.src =
+            "";
+
+        mainProductImage.style.display =
+            "none";
+
+        productPlaceholder.style.display =
+            "block";
+
+        renderAllGallery();
 
         return;
     }
 
 
-    activeImage =
-        index;
+    if(
+        index < activeIndex
+    ){
+
+        activeIndex--;
+
+    }else if(
+        index === activeIndex &&
+        activeIndex >= gallery.length
+    ){
+
+        activeIndex =
+            gallery.length - 1;
+
+    }
 
 
-    const main =
-        document.getElementById(
-            "mainImage"
-        );
+    renderAllGallery();
 
+    showMainImage(
+        activeIndex
+    );
 
-    const placeholder =
-        document.getElementById(
-            "placeholder"
-        );
-
-
-    main.src =
-        images[index];
-
-
-    main.style.display =
-        "block";
-
-
-    placeholder.style.display =
-        "none";
-
-
-    renderThumbnails();
 }
 
 
 /* =========================================================
-   THUMBNAILS
+   RENDER EVERYTHING
 ========================================================= */
 
-function renderThumbnails(){
+function renderAllGallery(){
 
-    const list =
-        document.getElementById(
-            "thumbnailList"
-        );
+    renderPosterThumbnails();
+
+    renderEditorGallery();
+
+}
 
 
-    list.innerHTML =
+/* =========================================================
+   POSTER THUMBNAILS
+========================================================= */
+
+function renderPosterThumbnails(){
+
+    thumbnailList.innerHTML =
         "";
 
 
-    if(!images.length){
+    if(
+        gallery.length === 0
+    ){
 
-        list.innerHTML = `
-            <div class="empty-thumbs">
+        thumbnailList.innerHTML = `
+            <div class="empty-thumbnails">
                 UPLOAD PRODUCT IMAGES
             </div>
         `;
 
-        list.style.setProperty(
+        thumbnailList.style.setProperty(
             "--thumb-count",
             1
         );
@@ -1441,17 +2290,17 @@ function renderThumbnails(){
 
 
     /*
-       AUTOMATIC WIDTH
+       AUTOMATIC THUMBNAIL WIDTH
     */
 
-    list.style.setProperty(
+    thumbnailList.style.setProperty(
         "--thumb-count",
-        images.length
+        gallery.length
     );
 
 
-    images.forEach(
-        (src,index) => {
+    gallery.forEach(
+        function(image,index){
 
             const button =
                 document.createElement(
@@ -1459,11 +2308,17 @@ function renderThumbnails(){
                 );
 
 
+            button.type =
+                "button";
+
+
             button.className =
                 "thumbnail";
 
 
-            if(index === activeImage){
+            if(
+                index === activeIndex
+            ){
 
                 button.classList.add(
                     "active"
@@ -1472,274 +2327,307 @@ function renderThumbnails(){
             }
 
 
-            const image =
+            const img =
                 document.createElement(
                     "img"
                 );
 
 
-            image.src =
-                src;
+            img.src =
+                image.src;
 
 
-            image.alt =
+            img.alt =
                 "Product image " +
                 (index + 1);
 
 
             button.appendChild(
-                image
+                img
             );
 
 
-            button.onclick =
-                () => {
+            button.addEventListener(
+                "click",
+                function(){
 
-                    showImage(
+                    showMainImage(
                         index
                     );
 
-                };
+                }
+            );
 
 
-            list.appendChild(
+            thumbnailList.appendChild(
                 button
             );
 
         }
     );
+
 }
 
 
 /* =========================================================
-   EDITOR
+   EDITOR GALLERY
 ========================================================= */
 
-function openEditor(){
+function renderEditorGallery(){
 
-    const choice =
-        confirm(
-            "OK = Upload Product Images\n\nCancel = Close"
+    editorGallery.innerHTML =
+        "";
+
+
+    if(
+        gallery.length === 0
+    ){
+
+        editorGallery.innerHTML = `
+            <div
+                style="
+                    grid-column:1/-1;
+                    color:#666;
+                    text-align:center;
+                    font-size:8px;
+                    padding:10px;
+                "
+            >
+                NO IMAGES
+            </div>
+        `;
+
+        editorGallery.style.setProperty(
+            "--editor-count",
+            1
+        );
+
+        galleryCount.textContent =
+            "0 IMAGES";
+
+        return;
+    }
+
+
+    galleryCount.textContent =
+        gallery.length +
+        (
+            gallery.length === 1
+            ? " IMAGE"
+            : " IMAGES"
         );
 
 
-    if(choice){
+    editorGallery.style.setProperty(
+        "--editor-count",
+        gallery.length
+    );
 
-        createUpload();
 
-    }
+    gallery.forEach(
+        function(image,index){
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+
+            box.className =
+                "editor-image";
+
+
+            if(
+                index === activeIndex
+            ){
+
+                box.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.src =
+                image.src;
+
+
+            img.alt =
+                "Image " +
+                (index + 1);
+
+
+            box.appendChild(
+                img
+            );
+
+
+            const select =
+                document.createElement(
+                    "button"
+                );
+
+
+            select.type =
+                "button";
+
+            select.className =
+                "select-image";
+
+            select.title =
+                "Make main image";
+
+
+            select.addEventListener(
+                "click",
+                function(){
+
+                    showMainImage(
+                        index
+                    );
+
+                }
+            );
+
+
+            box.appendChild(
+                select
+            );
+
+
+            const deleteButton =
+                document.createElement(
+                    "button"
+                );
+
+
+            deleteButton.type =
+                "button";
+
+            deleteButton.className =
+                "delete-image";
+
+            deleteButton.textContent =
+                "×";
+
+            deleteButton.title =
+                "Delete image";
+
+
+            deleteButton.addEventListener(
+                "click",
+                function(event){
+
+                    event.stopPropagation();
+
+                    deleteImage(
+                        index
+                    );
+
+                }
+            );
+
+
+            box.appendChild(
+                deleteButton
+            );
+
+
+            const number =
+                document.createElement(
+                    "div"
+                );
+
+
+            number.className =
+                "image-number";
+
+            number.textContent =
+                index + 1;
+
+
+            box.appendChild(
+                number
+            );
+
+
+            editorGallery.appendChild(
+                box
+            );
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   TEXT EDIT
+   CLEAR ALL IMAGES
 ========================================================= */
 
-document.addEventListener(
-    "dblclick",
-    function(event){
-
-        const target =
-            event.target;
-
+clearImagesButton.addEventListener(
+    "click",
+    function(){
 
         if(
-            target.id ===
-            "itemNumber"
-        ){
-
-            const value =
-                prompt(
-                    "Enter Item Number:",
-                    target.textContent.trim()
-                );
-
-
-            if(value !== null){
-
-                target.textContent =
-                    value;
-
-            }
-
-        }
-
-
-        if(
-            target.id ===
-            "sizeText"
-        ){
-
-            const value =
-                prompt(
-                    "Enter Size:",
-                    target.textContent.trim()
-                );
-
-
-            if(value !== null){
-
-                target.textContent =
-                    value;
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PRICE EDIT
-========================================================= */
-
-document.addEventListener(
-    "dblclick",
-    function(event){
-
-        if(
-            event.target.id !==
-            "newPrice"
+            gallery.length === 0
         ){
 
             return;
+
         }
 
 
-        const oldValue =
-            parseFloat(
-                document
-                .getElementById("newPrice")
-                .textContent
-            ) || 0;
-
-
-        const value =
-            prompt(
-                "Enter New Price:",
-                oldValue
+        const confirmed =
+            confirm(
+                "Remove all product images?"
             );
 
 
-        if(value === null){
-
-            return;
-        }
-
-
-        const newPrice =
-            parseFloat(value) || 0;
-
-
-        document
-            .getElementById("newPrice")
-            .textContent =
-            newPrice;
-
-
-        calculateSaving();
-
-    }
-);
-
-
-/* =========================================================
-   OLD PRICE
-========================================================= */
-
-document.addEventListener(
-    "dblclick",
-    function(event){
-
         if(
-            event.target.id !==
-            "oldPrice"
+            !confirmed
         ){
 
             return;
+
         }
 
 
-        const current =
-            parseFloat(
-                event.target.textContent
-            ) || 0;
+        gallery = [];
+
+        activeIndex = 0;
 
 
-        const value =
-            prompt(
-                "Enter Old Price:",
-                current
-            );
+        mainProductImage.src =
+            "";
+
+        mainProductImage.style.display =
+            "none";
 
 
-        if(value === null){
-
-            return;
-        }
+        productPlaceholder.style.display =
+            "block";
 
 
-        event.target.textContent =
-            value + " DHS";
-
-
-        calculateSaving();
+        renderAllGallery();
 
     }
 );
-
-
-/* =========================================================
-   SAVING
-========================================================= */
-
-function calculateSaving(){
-
-    const oldPrice =
-        parseFloat(
-            document
-            .getElementById("oldPrice")
-            .textContent
-        ) || 0;
-
-
-    const newPrice =
-        parseFloat(
-            document
-            .getElementById("newPrice")
-            .textContent
-        ) || 0;
-
-
-    const saving =
-        Math.max(
-            0,
-            oldPrice - newPrice
-        );
-
-
-    document
-        .getElementById("saving")
-        .textContent =
-        saving;
-
-
-    document
-        .getElementById("savingCircle")
-        .textContent =
-        saving;
-}
 
 
 /* =========================================================
    WAIT FOR IMAGES
 ========================================================= */
 
-function waitForImages(){
+async function waitForImages(){
 
-    const allImages =
+    const imgs =
         Array.from(
             document.querySelectorAll(
                 "#poster img"
@@ -1747,49 +2635,52 @@ function waitForImages(){
         );
 
 
-    return Promise.all(
+    await Promise.all(
+        imgs.map(
+            function(img){
 
-        allImages.map(
-            image =>
-                new Promise(
-                    resolve => {
+                return new Promise(
+                    function(resolve){
 
                         if(
-                            image.complete
+                            img.complete
                         ){
 
                             resolve();
 
-                        }else{
-
-                            image.onload =
-                                resolve;
-
-                            image.onerror =
-                                resolve;
+                            return;
 
                         }
 
-                    }
-                )
-        )
 
+                        img.onload =
+                            resolve;
+
+                        img.onerror =
+                            resolve;
+
+                    }
+                );
+
+            }
+        )
     );
+
+
+    if(
+        document.fonts &&
+        document.fonts.ready
+    ){
+
+        await document.fonts.ready;
+
+    }
 
 }
 
 
 /* =========================================================
-   EXPORT CANVAS
-
-   IMPORTANT:
-
-   The poster itself is EXACT A4 ratio.
-
-   Therefore canvas also remains
-   EXACT A4 ratio.
-
-   No stretching.
+   CREATE EXPORT CANVAS
 ========================================================= */
 
 async function createExportCanvas(){
@@ -1803,66 +2694,98 @@ async function createExportCanvas(){
         );
 
 
-    return await html2canvas(
-        poster,
-        {
+    /*
+       Poster itself is already
+       exact A4 proportion.
 
-            /*
-               3X QUALITY
-            */
+       Capture the whole poster.
+    */
 
-            scale:3,
+    const canvas =
+        await html2canvas(
+            poster,
+            {
 
-            useCORS:true,
+                scale:3,
 
-            allowTaint:false,
+                useCORS:true,
 
-            backgroundColor:
-                "#f4f2ec",
+                allowTaint:false,
 
-            /*
-               CRITICAL
-               DO NOT manually change
-               width/height ratio.
-            */
+                backgroundColor:
+                    "#f4f2ec",
 
-            width:
-                poster.offsetWidth,
+                width:
+                    poster.offsetWidth,
 
-            height:
-                poster.offsetHeight,
+                height:
+                    poster.offsetHeight,
 
-            scrollX:0,
+                x:0,
+                y:0,
 
-            scrollY:0,
+                scrollX:0,
+                scrollY:0,
 
-            logging:false
+                logging:false
 
-        }
+            }
+        );
+
+
+    return canvas;
+
+}
+
+
+/* =========================================================
+   SAFE FILE NAME
+========================================================= */
+
+function safeName(text){
+
+    return String(
+        text || "Product-Poster"
+    )
+    .trim()
+    .replace(
+        /[^a-z0-9-_]+/gi,
+        "-"
+    )
+    .replace(
+        /-+/g,
+        "-"
     );
 
 }
 
 
 /* =========================================================
-   DOWNLOAD PNG
-
-   EXACT A4 RATIO
+   PNG EXPORT
 ========================================================= */
 
 async function downloadPNG(){
 
+    const originalText =
+        downloadPngButton.textContent;
+
+
+    downloadPngButton.textContent =
+        "CREATING...";
+
+
+    downloadPngButton.disabled =
+        true;
+
+
     try{
 
-        const canvas =
+        const sourceCanvas =
             await createExportCanvas();
 
 
         /*
-           Create a fresh A4 canvas.
-
-           A4 ratio:
-           210 / 297
+           Exact A4 pixels.
         */
 
         const A4_WIDTH =
@@ -1885,30 +2808,31 @@ async function downloadPNG(){
             A4_HEIGHT;
 
 
-        const ctx =
+        const context =
             output.getContext(
                 "2d"
             );
 
 
-        /*
-           Never stretch.
+        context.imageSmoothingEnabled =
+            true;
 
-           Draw poster proportionally.
+        context.imageSmoothingQuality =
+            "high";
+
+
+        /*
+           Poster itself is A4.
+           Drawing it exactly into
+           the A4 canvas does not distort it.
         */
 
-        ctx.drawImage(
-
-            canvas,
-
+        context.drawImage(
+            sourceCanvas,
             0,
-
             0,
-
             A4_WIDTH,
-
             A4_HEIGHT
-
         );
 
 
@@ -1919,7 +2843,11 @@ async function downloadPNG(){
 
 
         link.download =
-            "A4-Product-Poster.png";
+            "A4-Poster-" +
+            safeName(
+                itemInput.value
+            ) +
+            ".png";
 
 
         link.href =
@@ -1936,24 +2864,40 @@ async function downloadPNG(){
         console.error(error);
 
         alert(
-            "PNG export failed."
+            "PNG download failed.\n\n" +
+            error.message
         );
 
     }
+
+
+    downloadPngButton.disabled =
+        false;
+
+
+    downloadPngButton.textContent =
+        originalText;
 
 }
 
 
 /* =========================================================
-   DOWNLOAD A4 PDF
-
-   EXACT:
-   210mm × 297mm
-
-   POSTER FILLS WHOLE PAGE
+   A4 PDF EXPORT
 ========================================================= */
 
 async function downloadPDF(){
+
+    const originalText =
+        downloadPdfButton.textContent;
+
+
+    downloadPdfButton.textContent =
+        "CREATING...";
+
+
+    downloadPdfButton.disabled =
+        true;
+
 
     try{
 
@@ -1964,18 +2908,17 @@ async function downloadPDF(){
         const image =
             canvas.toDataURL(
                 "image/jpeg",
-                1
+                0.98
             );
 
 
-        const {
-            jsPDF
-        } =
-            window.jspdf;
+        const jsPDF =
+            window.jspdf.jsPDF;
 
 
         /*
-           EXACT A4
+           EXACT A4:
+           210 × 297 mm
         */
 
         const pdf =
@@ -1988,7 +2931,7 @@ async function downloadPDF(){
                     "mm",
 
                 format:
-                    [210,297],
+                    "a4",
 
                 compress:
                     true
@@ -1996,32 +2939,36 @@ async function downloadPDF(){
 
 
         /*
-           EXACT PAGE SIZE
+           The captured poster has the
+           exact same ratio as A4.
+
+           Therefore:
+           x = 0
+           y = 0
+           width = 210
+           height = 297
+
+           Full-page A4.
         */
 
         pdf.addImage(
-
             image,
-
             "JPEG",
-
             0,
-
             0,
-
             210,
-
             297,
-
             undefined,
-
             "FAST"
-
         );
 
 
         pdf.save(
-            "A4-Product-Poster.pdf"
+            "A4-Poster-" +
+            safeName(
+                itemInput.value
+            ) +
+            ".pdf"
         );
 
 
@@ -2030,61 +2977,45 @@ async function downloadPDF(){
         console.error(error);
 
         alert(
-            "PDF export failed."
+            "PDF download failed.\n\n" +
+            error.message
         );
 
     }
+
+
+    downloadPdfButton.disabled =
+        false;
+
+
+    downloadPdfButton.textContent =
+        originalText;
 
 }
 
 
 /* =========================================================
    DOWNLOAD BUTTONS
-
-   Ctrl + Shift + P = PNG
-   Ctrl + Shift + D = PDF
 ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event){
+downloadPngButton.addEventListener(
+    "click",
+    downloadPNG
+);
 
-        if(
-            event.ctrlKey &&
-            event.shiftKey &&
-            event.key.toLowerCase() === "p"
-        ){
-
-            event.preventDefault();
-
-            downloadPNG();
-
-        }
-
-
-        if(
-            event.ctrlKey &&
-            event.shiftKey &&
-            event.key.toLowerCase() === "d"
-        ){
-
-            event.preventDefault();
-
-            downloadPDF();
-
-        }
-
-    }
+downloadPdfButton.addEventListener(
+    "click",
+    downloadPDF
 );
 
 
 /* =========================================================
-   INITIAL
+   INITIALIZE
 ========================================================= */
 
-calculateSaving();
+updateText();
 
-renderThumbnails();
+renderAllGallery();
 
 </script>
 
