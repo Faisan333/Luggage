@@ -1,48 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Premium A4 Product Poster</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>IT Poster</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- GOOGLE FONT -->
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- HTML2CANVAS -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+<!-- JSPDF -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
 <style>
 
 /* =========================================================
-   PREMIUM NAVY + GOLD THEME
-========================================================= */
-
-:root{
-
-    --navy:#082746;
-    --navy-dark:#061b31;
-    --navy-mid:#0b3155;
-
-    --gold:#d9a928;
-    --gold-light:#f5d77b;
-    --gold-dark:#b98616;
-
-    --cream:#f7f3e9;
-    --cream-dark:#ebe5d7;
-
-    --white:#ffffff;
-
-    --text:#092844;
-    --muted:#8b8c8c;
-
-}
-
-
-/* =========================================================
-   RESET
+   GLOBAL
 ========================================================= */
 
 *{
@@ -63,7 +55,7 @@ body{
     background:
         radial-gradient(
             circle at 15% 10%,
-            rgba(217,169,40,.16),
+            rgba(217,169,40,.14),
             transparent 28%
         ),
 
@@ -81,7 +73,29 @@ body{
 
 
 /* =========================================================
-   APP
+   COLORS
+========================================================= */
+
+:root{
+
+    --navy:#082746;
+    --navy-dark:#061b31;
+    --navy-light:#0b3155;
+
+    --gold:#d9a928;
+    --gold-light:#f5d77b;
+    --gold-dark:#b98616;
+
+    --cream:#f7f3e9;
+    --cream-dark:#ebe5d7;
+
+    --text:#092844;
+
+}
+
+
+/* =========================================================
+   MAIN APP
 ========================================================= */
 
 .app{
@@ -98,7 +112,6 @@ body{
 
 }
 
-
 .poster-wrap{
 
     width:100%;
@@ -111,7 +124,7 @@ body{
 
 
 /* =========================================================
-   EXACT A4 POSTER
+   A4 POSTER
 ========================================================= */
 
 .poster{
@@ -122,11 +135,9 @@ body{
 
     height:1123px;
 
-    max-width:100%;
-
     overflow:hidden;
 
-    background:var(--cream);
+    background:#f7f3e9;
 
     box-shadow:
         0 35px 90px rgba(0,0,0,.55);
@@ -135,7 +146,7 @@ body{
 
 
 /* =========================================================
-   TOP HEADER
+   HEADER
 ========================================================= */
 
 .topbar{
@@ -167,8 +178,6 @@ body{
 }
 
 
-/* Gold bottom line */
-
 .topbar::after{
 
     content:"";
@@ -196,10 +205,6 @@ body{
 }
 
 
-/* =========================================================
-   GOLD ANGLE
-========================================================= */
-
 .topbar::before{
 
     content:"";
@@ -224,8 +229,6 @@ body{
             0 100%
         );
 
-    opacity:.95;
-
 }
 
 
@@ -237,7 +240,7 @@ body{
 
     width:215px;
 
-    height:82px;
+    height:93px;
 
     padding:9px;
 
@@ -263,13 +266,13 @@ body{
 
     display:block;
 
-    max-width:100%;
-
-    max-height:91px;
-
     width:auto;
 
     height:auto;
+
+    max-width:100%;
+
+    max-height:65px;
 
     object-fit:contain;
 
@@ -377,10 +380,6 @@ body{
 }
 
 
-/* =========================================================
-   LARGE BACKGROUND TEXT
-========================================================= */
-
 .hero-word{
 
     position:absolute;
@@ -406,10 +405,6 @@ body{
 }
 
 
-/* =========================================================
-   SIDE TEXT
-========================================================= */
-
 .hero-side{
 
     position:absolute;
@@ -432,14 +427,8 @@ body{
 
     z-index:5;
 
-    pointer-events:none;
-
 }
 
-
-/* =========================================================
-   GOLD DECORATIVE DIAGONALS
-========================================================= */
 
 .hero::before{
 
@@ -516,7 +505,6 @@ body{
     border-radius:34px;
 
     background:
-
         radial-gradient(
             circle at 50% 38%,
             #ffffff 0%,
@@ -525,7 +513,6 @@ body{
         );
 
     box-shadow:
-
         0 30px 65px rgba(0,0,0,.18),
 
         inset 0 0 0 1px
@@ -534,100 +521,6 @@ body{
     overflow:hidden;
 
     z-index:3;
-
-}
-
-
-/* =========================================================
-   PRODUCT CARD GOLD BORDER
-========================================================= */
-
-.product-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:34px;
-
-    border:1px solid
-        rgba(217,169,40,.14);
-
-    pointer-events:none;
-
-}
-
-
-/* =========================================================
-   MAIN IMAGE
-========================================================= */
-
-.main-product-image{
-
-    position:absolute;
-
-    left:50%;
-
-    top:42%;
-
-    transform:
-        translate(-50%,-50%);
-
-    width:92%;
-
-    height:535px;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    display:none;
-
-    z-index:5;
-
-    filter:
-        drop-shadow(
-            0 30px 25px rgba(5,25,45,.20)
-        );
-
-    pointer-events:none;
-
-}
-
-
-/* =========================================================
-   IMAGE PLACEHOLDER
-========================================================= */
-
-.product-placeholder{
-
-    position:absolute;
-
-    left:50%;
-
-    top:42%;
-
-    transform:
-        translate(-50%,-50%);
-
-    width:350px;
-
-    height:420px;
-
-    border-radius:30px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #e5e3de,
-            #faf9f6,
-            #ddd9cf
-        );
-
-    z-index:4;
 
 }
 
@@ -644,7 +537,7 @@ body{
 
     top:24px;
 
-    z-index:25;
+    z-index:40;
 
     padding:12px 18px;
 
@@ -665,14 +558,11 @@ body{
 
     letter-spacing:2px;
 
-    box-shadow:
-        0 8px 18px rgba(0,0,0,.14);
-
 }
 
 
 /* =========================================================
-   DISCOUNT CIRCLE
+   DISCOUNT
 ========================================================= */
 
 .discount{
@@ -690,7 +580,6 @@ body{
     border-radius:50%;
 
     background:
-
         radial-gradient(
             circle at 35% 30%,
             #fff0a8,
@@ -708,7 +597,7 @@ body{
 
     align-items:center;
 
-    z-index:25;
+    z-index:40;
 
     box-shadow:
         0 15px 35px rgba(5,30,55,.18);
@@ -741,6 +630,99 @@ body{
 
 
 /* =========================================================
+   MAIN IMAGE AREA
+========================================================= */
+
+.main-image-area{
+
+    position:absolute;
+
+    left:50%;
+
+    top:43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:78%;
+
+    height:500px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    z-index:10;
+
+}
+
+
+/* =========================================================
+   MAIN IMAGE - NEVER STRETCH
+========================================================= */
+
+.main-product-image{
+
+    display:none;
+
+    width:auto;
+
+    height:auto;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    flex:0 0 auto;
+
+    filter:
+        drop-shadow(
+            0 30px 25px rgba(5,25,45,.20)
+        );
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.product-placeholder{
+
+    width:350px;
+
+    height:420px;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5e3de,
+            #faf9f6,
+            #ddd9cf
+        );
+
+}
+
+
+/* =========================================================
    THUMBNAIL AREA
 ========================================================= */
 
@@ -765,7 +747,30 @@ body{
     box-shadow:
         0 10px 30px rgba(5,30,55,.13);
 
-    z-index:35;
+    z-index:50;
+
+}
+
+
+/* =========================================================
+   THUMBNAIL SCROLLER
+========================================================= */
+
+.thumbnail-scroll{
+
+    width:100%;
+
+    height:100%;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    scrollbar-width:thin;
+
+    scrollbar-color:
+        var(--gold)
+        #eee;
 
 }
 
@@ -776,40 +781,41 @@ body{
 
 .thumbnail-list{
 
-    width:100%;
-
     height:100%;
 
-    display:grid;
+    width:100%;
 
-    grid-template-columns:
-        repeat(
-            var(--thumb-count,1),
-            minmax(0,1fr)
-        );
+    display:flex;
+
+    align-items:stretch;
 
     gap:9px;
-
-    overflow:hidden;
 
 }
 
 
-/* =========================================================
-   THUMBNAIL
-========================================================= */
+/*
+    IMPORTANT:
+
+    The thumbnail itself has a controlled width.
+
+    The image INSIDE is never forced
+    to the thumbnail dimensions.
+
+    This prevents stretching.
+*/
 
 .thumbnail{
 
     position:relative;
 
-    min-width:0;
+    flex:1 1 0;
 
-    width:100%;
+    min-width:0;
 
     height:100%;
 
-    padding:3px;
+    padding:4px;
 
     border:2px solid #e3dfd4;
 
@@ -826,12 +832,76 @@ body{
 }
 
 
-.thumbnail:hover{
+/* For many images, prevent them becoming
+   extremely tiny */
 
-    transform:translateY(-2px);
+.thumbnail-list.many .thumbnail{
+
+    flex:
+        0 0 82px;
 
 }
 
+
+/* =========================================================
+   THUMBNAIL INNER
+========================================================= */
+
+.thumbnail-inner{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    border-radius:5px;
+
+    background:#faf9f5;
+
+}
+
+
+/* =========================================================
+   THUMBNAIL IMAGE
+========================================================= */
+
+.thumbnail img{
+
+    display:block;
+
+    width:auto !important;
+
+    height:auto !important;
+
+    max-width:100% !important;
+
+    max-height:100% !important;
+
+    object-fit:contain !important;
+
+    object-position:center;
+
+    flex:0 0 auto;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+
+/* =========================================================
+   ACTIVE THUMBNAIL
+========================================================= */
 
 .thumbnail.active{
 
@@ -843,25 +913,19 @@ body{
 }
 
 
-.thumbnail img{
+/* =========================================================
+   THUMBNAIL HOVER
+========================================================= */
 
-    display:block;
+.thumbnail:hover{
 
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    background:#faf9f5;
+    transform:translateY(-2px);
 
 }
 
 
 /* =========================================================
-   EMPTY THUMBNAIL
+   EMPTY THUMBNAILS
 ========================================================= */
 
 .empty-thumbnails{
@@ -892,6 +956,45 @@ body{
 
 
 /* =========================================================
+   IMAGE COUNTER
+========================================================= */
+
+.thumbnail-number{
+
+    position:absolute;
+
+    left:5px;
+
+    bottom:5px;
+
+    min-width:18px;
+
+    height:18px;
+
+    padding:0 4px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:4px;
+
+    background:rgba(6,27,49,.82);
+
+    color:#fff;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    pointer-events:none;
+
+}
+
+
+/* =========================================================
    INFO
 ========================================================= */
 
@@ -912,10 +1015,6 @@ body{
 }
 
 
-/* =========================================================
-   INFO TOP
-========================================================= */
-
 .info-top{
 
     display:flex;
@@ -928,10 +1027,6 @@ body{
 
 }
 
-
-/* =========================================================
-   KICKER
-========================================================= */
 
 .kicker{
 
@@ -948,10 +1043,6 @@ body{
 }
 
 
-/* =========================================================
-   ITEM NUMBER
-========================================================= */
-
 .item-number{
 
     font-family:Montserrat,Arial,sans-serif;
@@ -964,10 +1055,6 @@ body{
 
 }
 
-
-/* =========================================================
-   SIZE PILL
-========================================================= */
 
 .size-pill{
 
@@ -982,7 +1069,6 @@ body{
     border-radius:6px;
 
     background:
-
         linear-gradient(
             90deg,
             #f0eadb,
@@ -1057,7 +1143,6 @@ body{
     border-radius:6px;
 
     background:
-
         linear-gradient(
             90deg,
             var(--gold),
@@ -1098,7 +1183,6 @@ body{
     border-radius:8px;
 
     background:
-
         linear-gradient(
             135deg,
             #f1ede3,
@@ -1139,7 +1223,6 @@ body{
     justify-content:center;
 
     background:
-
         linear-gradient(
             135deg,
             #061b31,
@@ -1157,10 +1240,6 @@ body{
 
 }
 
-
-/* =========================================================
-   FOOTER GOLD LINES
-========================================================= */
 
 .footer::before{
 
@@ -1229,11 +1308,10 @@ body{
     border-radius:9px;
 
     background:
-
         linear-gradient(
             135deg,
             var(--navy),
-            var(--navy-mid)
+            var(--navy-light)
         );
 
     color:var(--gold-light);
@@ -1325,7 +1403,6 @@ body{
     border-radius:18px;
 
     background:
-
         linear-gradient(
             180deg,
             #0b3155,
@@ -1501,7 +1578,7 @@ body{
 
 
 /* =========================================================
-   UPLOAD AREA
+   UPLOAD
 ========================================================= */
 
 .upload-area{
@@ -1544,7 +1621,6 @@ body{
     border-radius:8px;
 
     background:
-
         linear-gradient(
             90deg,
             var(--gold-dark),
@@ -1579,7 +1655,7 @@ body{
 
 
 /* =========================================================
-   GALLERY
+   EDITOR GALLERY
 ========================================================= */
 
 .gallery-box{
@@ -1628,15 +1704,13 @@ body{
 
 .editor-gallery{
 
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            var(--editor-count,1),
-            minmax(0,1fr)
-        );
+    display:flex;
 
     gap:6px;
+
+    overflow-x:auto;
+
+    padding-bottom:4px;
 
 }
 
@@ -1645,9 +1719,13 @@ body{
 
     position:relative;
 
-    min-width:0;
+    flex:0 0 75px;
 
-    aspect-ratio:1;
+    width:75px;
+
+    height:75px;
+
+    padding:3px;
 
     border:
         2px solid
@@ -1672,18 +1750,47 @@ body{
 }
 
 
-.editor-image img{
+.editor-image-inner{
 
     width:100%;
 
     height:100%;
 
-    display:block;
+    display:flex;
 
-    object-fit:contain;
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:#f7f5ef;
+
+    border-radius:4px;
 
 }
 
+
+.editor-image img{
+
+    display:block;
+
+    width:auto !important;
+
+    height:auto !important;
+
+    max-width:100% !important;
+
+    max-height:100% !important;
+
+    object-fit:contain !important;
+
+}
+
+
+/* =========================================================
+   EDITOR BUTTONS
+========================================================= */
 
 .select-image{
 
@@ -1696,6 +1803,8 @@ body{
     background:transparent;
 
     cursor:pointer;
+
+    z-index:2;
 
 }
 
@@ -1766,19 +1875,6 @@ body{
 }
 
 
-.gallery-help{
-
-    margin-top:9px;
-
-    color:#82909b;
-
-    font-size:7px;
-
-    line-height:1.5;
-
-}
-
-
 /* =========================================================
    ACTION BUTTONS
 ========================================================= */
@@ -1813,10 +1909,9 @@ body{
 }
 
 
-.btn-red{
+.btn-gold{
 
     background:
-
         linear-gradient(
             90deg,
             var(--gold-dark),
@@ -1824,13 +1919,6 @@ body{
         );
 
     color:var(--navy);
-
-}
-
-
-.btn-red:hover{
-
-    background:var(--gold);
 
 }
 
@@ -2003,6 +2091,7 @@ body{
 }
 
 </style>
+
 </head>
 
 
@@ -2033,7 +2122,7 @@ body{
 
 
 <!-- =========================================================
-     EDITOR PANEL
+     EDITOR
 ========================================================= -->
 
 <div
@@ -2050,7 +2139,7 @@ body{
             </h2>
 
             <p>
-                Premium Navy & Gold Theme
+                Premium Navy & Gold
             </p>
 
         </div>
@@ -2067,12 +2156,12 @@ body{
     </div>
 
 
-    <!-- ITEM NUMBER -->
+    <!-- ITEM -->
 
     <div class="form-group">
 
         <label>
-            Item Number
+            Product Code
         </label>
 
         <input
@@ -2088,7 +2177,7 @@ body{
     <div class="form-group">
 
         <label>
-            Size / Description
+            Product Description
         </label>
 
         <input
@@ -2110,14 +2199,12 @@ body{
         <input
             id="oldPriceInput"
             type="number"
-            value="165"
-            min="0"
-            step="1">
+            value="165">
 
     </div>
 
 
-    <!-- OFFER PRICE -->
+    <!-- OFFER -->
 
     <div class="form-group">
 
@@ -2128,14 +2215,12 @@ body{
         <input
             id="offerPriceInput"
             type="number"
-            value="95"
-            min="0"
-            step="1">
+            value="95">
 
     </div>
 
 
-    <!-- IMAGE UPLOAD -->
+    <!-- UPLOAD -->
 
     <div class="form-group">
 
@@ -2148,9 +2233,8 @@ body{
 
             <p>
 
-                Upload one image or multiple images.
-                Click any thumbnail to make it the main image.
-                Images are never stretched.
+                Add one or multiple product images.
+                The original aspect ratio is always preserved.
 
             </p>
 
@@ -2170,12 +2254,14 @@ body{
                 accept="image/*"
                 multiple>
 
+
         </div>
 
 
-        <!-- GALLERY -->
+        <!-- EDITOR GALLERY -->
 
         <div class="gallery-box">
+
 
             <div class="gallery-header">
 
@@ -2198,10 +2284,11 @@ body{
                 class="editor-gallery"
                 id="editorGallery">
 
+
                 <div
                     style="
-                        grid-column:1/-1;
                         color:#777;
+                        width:100%;
                         text-align:center;
                         font-size:8px;
                         padding:10px;
@@ -2211,27 +2298,22 @@ body{
 
                 </div>
 
-            </div>
-
-
-            <div class="gallery-help">
-
-                Click an image to make it the main product image.
-                Click × to delete it.
 
             </div>
+
 
         </div>
 
     </div>
 
 
-    <!-- ACTION BUTTONS -->
+    <!-- ACTIONS -->
 
     <div class="action-buttons">
 
+
         <button
-            class="action-button btn-red"
+            class="action-button btn-gold"
             id="downloadPngButton">
 
             DOWNLOAD PNG
@@ -2240,7 +2322,7 @@ body{
 
 
         <button
-            class="action-button btn-red"
+            class="action-button btn-gold"
             id="downloadPdfButton">
 
             DOWNLOAD A4 PDF
@@ -2265,34 +2347,43 @@ body{
 
         </button>
 
+
     </div>
 
 
     <div class="editor-note">
 
         <strong style="color:#fff;">
-            A4 EXPORT
+            IMAGE PROTECTION
         </strong>
+
+        <br><br>
+
+        Main image:
+        original aspect ratio preserved.
+
+        <br>
+
+        Thumbnail:
+        original aspect ratio preserved.
+
+        <br>
+
+        No image stretching.
 
         <br>
 
         PNG:
-        2480 × 3508 px
+        2480 × 3508 px.
 
         <br>
 
         PDF:
-        210 × 297 mm
-
-        <br>
-
-        Product images use
-        <strong style="color:#f5d77b;">
-            contain
-        </strong>
-        mode and will not stretch.
+        exact A4
+        210 × 297 mm.
 
     </div>
+
 
 </div>
 
@@ -2303,7 +2394,9 @@ body{
 
 <div class="app">
 
+
 <div class="poster-wrap">
+
 
 <div
     class="poster"
@@ -2311,7 +2404,7 @@ body{
 
 
 <!-- =========================================================
-     HEADER
+     TOP
 ========================================================= -->
 
 <div class="topbar">
@@ -2319,10 +2412,9 @@ body{
 
     <div class="logo-box">
 
-
         <img
             src="assets/IT.jpeg"
-            alt="Company Logo"
+            alt="Logo"
             id="logoImage"
             onerror="
                 this.style.display='none';
@@ -2339,6 +2431,7 @@ body{
 
         </div>
 
+
     </div>
 
 
@@ -2353,6 +2446,7 @@ body{
         </strong>
 
     </div>
+
 
 </div>
 
@@ -2370,9 +2464,7 @@ body{
 
 
     <div class="hero-side">
-
         TRAVEL • STYLE • COMFORT
-
     </div>
 
 
@@ -2380,9 +2472,7 @@ body{
 
 
         <div class="premium-tag">
-
             PREMIUM PRODUCT
-
         </div>
 
 
@@ -2392,11 +2482,8 @@ body{
                 SAVE
             </span>
 
-            <strong
-                id="savingCircle">
-
+            <strong id="savingCircle">
                 70
-
             </strong>
 
             <span>
@@ -2406,46 +2493,65 @@ body{
         </div>
 
 
-        <!-- MAIN PRODUCT IMAGE -->
+        <!-- MAIN IMAGE AREA -->
 
-        <img
-            class="main-product-image"
-            id="mainProductImage"
-            alt="Product">
+        <div class="main-image-area">
 
 
-        <div
-            class="product-placeholder"
-            id="productPlaceholder">
+            <img
+                class="main-product-image"
+                id="mainProductImage"
+                alt="Product">
+
+
+            <div
+                class="product-placeholder"
+                id="productPlaceholder">
+            </div>
+
+
         </div>
 
 
-        <!-- BOTTOM THUMBNAILS -->
+        <!-- =================================================
+             THUMBNAILS
+        ================================================= -->
 
         <div class="thumbnail-area">
 
-            <div
-                class="thumbnail-list"
-                id="thumbnailList">
 
-                <div class="empty-thumbnails">
+            <div class="thumbnail-scroll">
 
-                    UPLOAD PRODUCT IMAGES
+
+                <div
+                    class="thumbnail-list"
+                    id="thumbnailList">
+
+
+                    <div class="empty-thumbnails">
+
+                        UPLOAD PRODUCT IMAGES
+
+                    </div>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
 
     </div>
 
+
 </div>
 
 
 <!-- =========================================================
-     INFO
+     INFORMATION
 ========================================================= -->
 
 <div class="info">
@@ -2455,6 +2561,7 @@ body{
 
 
         <div>
+
 
             <div class="kicker">
                 PRODUCT CODE
@@ -2478,6 +2585,7 @@ body{
 
             </div>
 
+
         </div>
 
 
@@ -2495,13 +2603,16 @@ body{
 
             <div class="offer-price">
 
+
                 <span class="currency">
                     AED
                 </span>
 
+
                 <span id="offerPriceText">
                     95
                 </span>
+
 
             </div>
 
@@ -2522,6 +2633,8 @@ body{
 
     </div>
 
+
+    <!-- FEATURES -->
 
     <div class="feature-strip">
 
@@ -2560,7 +2673,9 @@ body{
 
 </div>
 
+
 </div>
+
 
 </div>
 
@@ -2568,7 +2683,7 @@ body{
 <script>
 
 /* =========================================================
-   STATE
+   VARIABLES
 ========================================================= */
 
 let gallery = [];
@@ -2610,14 +2725,14 @@ const imageInput =
         "imageInput"
     );
 
-const editorGallery =
-    document.getElementById(
-        "editorGallery"
-    );
-
 const thumbnailList =
     document.getElementById(
         "thumbnailList"
+    );
+
+const editorGallery =
+    document.getElementById(
+        "editorGallery"
     );
 
 const galleryCount =
@@ -2702,7 +2817,7 @@ const downloadPdfButton =
 
 
 /* =========================================================
-   OPEN EDITOR
+   EDITOR OPEN
 ========================================================= */
 
 function openEditor(){
@@ -2721,8 +2836,14 @@ function openEditor(){
 }
 
 
+openEditorButton.addEventListener(
+    "click",
+    openEditor
+);
+
+
 /* =========================================================
-   CLOSE EDITOR
+   EDITOR CLOSE
 ========================================================= */
 
 function closeEditor(){
@@ -2739,12 +2860,6 @@ function closeEditor(){
         "";
 
 }
-
-
-openEditorButton.addEventListener(
-    "click",
-    openEditor
-);
 
 
 closeEditorButton.addEventListener(
@@ -2767,13 +2882,10 @@ editorOverlay.addEventListener(
 
 document.addEventListener(
     "keydown",
-    function(event){
+    function(e){
 
         if(
-            event.key === "Escape" &&
-            editorPanel.classList.contains(
-                "open"
-            )
+            e.key === "Escape"
         ){
 
             closeEditor();
@@ -2862,7 +2974,7 @@ offerPriceInput.addEventListener(
 
 
 /* =========================================================
-   READ FILE
+   FILE READER
 ========================================================= */
 
 function readFile(file){
@@ -2875,12 +2987,12 @@ function readFile(file){
 
 
             reader.onload =
-                function(event){
+                function(e){
 
                     resolve({
 
                         src:
-                            event.target.result,
+                            e.target.result,
 
                         name:
                             file.name
@@ -2905,7 +3017,7 @@ function readFile(file){
 
 
 /* =========================================================
-   UPLOAD IMAGES
+   UPLOAD
 ========================================================= */
 
 imageInput.addEventListener(
@@ -2920,22 +3032,20 @@ imageInput.addEventListener(
 
         const validFiles =
             files.filter(
-                function(file){
-
-                    return file.type &&
-                        file.type.startsWith(
-                            "image/"
-                        );
-
-                }
+                file =>
+                    file.type &&
+                    file.type.startsWith(
+                        "image/"
+                    )
             );
 
 
         if(
-            validFiles.length === 0
+            !validFiles.length
         ){
 
-            this.value = "";
+            this.value =
+                "";
 
             return;
 
@@ -2944,7 +3054,7 @@ imageInput.addEventListener(
 
         try{
 
-            const newImages =
+            const images =
                 await Promise.all(
                     validFiles.map(
                         readFile
@@ -2952,31 +3062,25 @@ imageInput.addEventListener(
                 );
 
 
-            const firstUpload =
+            const hadNoImages =
                 gallery.length === 0;
 
 
-            gallery =
-                gallery.concat(
-                    newImages
-                );
+            gallery.push(
+                ...images
+            );
 
 
-            if(firstUpload){
+            if(
+                hadNoImages
+            ){
 
                 activeIndex = 0;
 
             }
 
 
-            activeIndex =
-                Math.min(
-                    activeIndex,
-                    gallery.length - 1
-                );
-
-
-            renderAllGallery();
+            renderGallery();
 
 
             showMainImage(
@@ -2989,20 +3093,21 @@ imageInput.addEventListener(
             console.error(error);
 
             alert(
-                "Unable to read the selected image."
+                "Could not load image."
             );
 
         }
 
 
-        this.value = "";
+        this.value =
+            "";
 
     }
 );
 
 
 /* =========================================================
-   SHOW MAIN IMAGE
+   SHOW MAIN
 ========================================================= */
 
 function showMainImage(index){
@@ -3032,26 +3137,16 @@ function showMainImage(index){
         "none";
 
 
-    renderAllGallery();
+    renderGallery();
 
 }
 
 
 /* =========================================================
-   DELETE IMAGE
+   DELETE
 ========================================================= */
 
 function deleteImage(index){
-
-    if(
-        index < 0 ||
-        index >= gallery.length
-    ){
-
-        return;
-
-    }
-
 
     gallery.splice(
         index,
@@ -3063,7 +3158,8 @@ function deleteImage(index){
         gallery.length === 0
     ){
 
-        activeIndex = 0;
+        activeIndex =
+            0;
 
 
         mainProductImage.src =
@@ -3078,7 +3174,7 @@ function deleteImage(index){
             "block";
 
 
-        renderAllGallery();
+        renderGallery();
 
         return;
 
@@ -3086,14 +3182,15 @@ function deleteImage(index){
 
 
     if(
-        index < activeIndex
+        activeIndex > index
     ){
 
         activeIndex--;
 
     }
-    else if(
-        index === activeIndex &&
+
+
+    if(
         activeIndex >= gallery.length
     ){
 
@@ -3103,25 +3200,12 @@ function deleteImage(index){
     }
 
 
-    renderAllGallery();
+    renderGallery();
 
 
     showMainImage(
         activeIndex
     );
-
-}
-
-
-/* =========================================================
-   RENDER ALL
-========================================================= */
-
-function renderAllGallery(){
-
-    renderPosterThumbnails();
-
-    renderEditorGallery();
 
 }
 
@@ -3140,6 +3224,11 @@ function renderPosterThumbnails(){
         gallery.length === 0
     ){
 
+        thumbnailList.classList.remove(
+            "many"
+        );
+
+
         thumbnailList.innerHTML = `
 
             <div class="empty-thumbnails">
@@ -3150,22 +3239,33 @@ function renderPosterThumbnails(){
 
         `;
 
-
-        thumbnailList.style.setProperty(
-            "--thumb-count",
-            1
-        );
-
-
         return;
 
     }
 
 
-    thumbnailList.style.setProperty(
-        "--thumb-count",
-        gallery.length
-    );
+    /*
+        If more than 4 images,
+        use fixed thumbnail width
+        and horizontal scrolling.
+    */
+
+    if(
+        gallery.length > 4
+    ){
+
+        thumbnailList.classList.add(
+            "many"
+        );
+
+    }
+    else{
+
+        thumbnailList.classList.remove(
+            "many"
+        );
+
+    }
 
 
     gallery.forEach(
@@ -3196,6 +3296,24 @@ function renderPosterThumbnails(){
             }
 
 
+            /*
+                INNER CONTAINER
+            */
+
+            const inner =
+                document.createElement(
+                    "div"
+                );
+
+
+            inner.className =
+                "thumbnail-inner";
+
+
+            /*
+                IMAGE
+            */
+
             const img =
                 document.createElement(
                     "img"
@@ -3207,14 +3325,76 @@ function renderPosterThumbnails(){
 
 
             img.alt =
-                "Product image " +
+                "Product " +
                 (index + 1);
 
 
-            button.appendChild(
+            /*
+                VERY IMPORTANT:
+
+                We explicitly use
+                width:auto / height:auto
+                and max dimensions.
+
+                This prevents stretching.
+            */
+
+            img.style.width =
+                "auto";
+
+
+            img.style.height =
+                "auto";
+
+
+            img.style.maxWidth =
+                "100%";
+
+
+            img.style.maxHeight =
+                "100%";
+
+
+            img.style.objectFit =
+                "contain";
+
+
+            inner.appendChild(
                 img
             );
 
+
+            button.appendChild(
+                inner
+            );
+
+
+            /*
+                NUMBER
+            */
+
+            const number =
+                document.createElement(
+                    "div"
+                );
+
+
+            number.className =
+                "thumbnail-number";
+
+
+            number.textContent =
+                index + 1;
+
+
+            button.appendChild(
+                number
+            );
+
+
+            /*
+                CLICK
+            */
 
             button.addEventListener(
                 "click",
@@ -3252,12 +3432,16 @@ function renderEditorGallery(){
         gallery.length === 0
     ){
 
+        galleryCount.textContent =
+            "0 IMAGES";
+
+
         editorGallery.innerHTML = `
 
             <div
                 style="
-                    grid-column:1/-1;
                     color:#777;
+                    width:100%;
                     text-align:center;
                     font-size:8px;
                     padding:10px;
@@ -3269,17 +3453,6 @@ function renderEditorGallery(){
             </div>
 
         `;
-
-
-        editorGallery.style.setProperty(
-            "--editor-count",
-            1
-        );
-
-
-        galleryCount.textContent =
-            "0 IMAGES";
-
 
         return;
 
@@ -3293,12 +3466,6 @@ function renderEditorGallery(){
             ? " IMAGE"
             : " IMAGES"
         );
-
-
-    editorGallery.style.setProperty(
-        "--editor-count",
-        gallery.length
-    );
 
 
     gallery.forEach(
@@ -3325,6 +3492,16 @@ function renderEditorGallery(){
             }
 
 
+            const inner =
+                document.createElement(
+                    "div"
+                );
+
+
+            inner.className =
+                "editor-image-inner";
+
+
             const img =
                 document.createElement(
                     "img"
@@ -3335,10 +3512,43 @@ function renderEditorGallery(){
                 image.src;
 
 
-            box.appendChild(
+            /*
+                NEVER STRETCH
+            */
+
+            img.style.width =
+                "auto";
+
+
+            img.style.height =
+                "auto";
+
+
+            img.style.maxWidth =
+                "100%";
+
+
+            img.style.maxHeight =
+                "100%";
+
+
+            img.style.objectFit =
+                "contain";
+
+
+            inner.appendChild(
                 img
             );
 
+
+            box.appendChild(
+                inner
+            );
+
+
+            /*
+                SELECT
+            */
 
             const select =
                 document.createElement(
@@ -3352,10 +3562,6 @@ function renderEditorGallery(){
 
             select.className =
                 "select-image";
-
-
-            select.title =
-                "Make main image";
 
 
             select.addEventListener(
@@ -3375,6 +3581,10 @@ function renderEditorGallery(){
             );
 
 
+            /*
+                DELETE
+            */
+
             const deleteButton =
                 document.createElement(
                     "button"
@@ -3393,15 +3603,11 @@ function renderEditorGallery(){
                 "×";
 
 
-            deleteButton.title =
-                "Delete image";
-
-
             deleteButton.addEventListener(
                 "click",
-                function(event){
+                function(e){
 
-                    event.stopPropagation();
+                    e.stopPropagation();
 
                     deleteImage(
                         index
@@ -3415,6 +3621,10 @@ function renderEditorGallery(){
                 deleteButton
             );
 
+
+            /*
+                NUMBER
+            */
 
             const number =
                 document.createElement(
@@ -3446,7 +3656,20 @@ function renderEditorGallery(){
 
 
 /* =========================================================
-   CLEAR IMAGES
+   RENDER
+========================================================= */
+
+function renderGallery(){
+
+    renderPosterThumbnails();
+
+    renderEditorGallery();
+
+}
+
+
+/* =========================================================
+   CLEAR
 ========================================================= */
 
 clearImagesButton.addEventListener(
@@ -3454,7 +3677,7 @@ clearImagesButton.addEventListener(
     function(){
 
         if(
-            gallery.length === 0
+            !gallery.length
         ){
 
             return;
@@ -3464,7 +3687,7 @@ clearImagesButton.addEventListener(
 
         if(
             !confirm(
-                "Remove all product images?"
+                "Delete all images?"
             )
         ){
 
@@ -3490,19 +3713,19 @@ clearImagesButton.addEventListener(
             "block";
 
 
-        renderAllGallery();
+        renderGallery();
 
     }
 );
 
 
 /* =========================================================
-   WAIT FOR IMAGES
+   WAIT IMAGES
 ========================================================= */
 
 async function waitForImages(){
 
-    const imgs =
+    const images =
         Array.from(
             document.querySelectorAll(
                 "#poster img"
@@ -3512,7 +3735,7 @@ async function waitForImages(){
 
     await Promise.all(
 
-        imgs.map(
+        images.map(
             function(img){
 
                 return new Promise(
@@ -3558,7 +3781,7 @@ async function waitForImages(){
 
 
 /* =========================================================
-   CREATE EXPORT CANVAS
+   CREATE CANVAS
 ========================================================= */
 
 async function createExportCanvas(){
@@ -3572,53 +3795,46 @@ async function createExportCanvas(){
         );
 
 
-    const canvas =
-        await html2canvas(
-            poster,
-            {
+    return await html2canvas(
+        poster,
+        {
 
-                scale:3,
+            scale:3,
 
-                useCORS:true,
+            useCORS:true,
 
-                allowTaint:false,
+            allowTaint:false,
 
-                backgroundColor:
-                    "#f7f3e9",
+            backgroundColor:
+                "#f7f3e9",
 
-                width:
-                    poster.offsetWidth,
+            width:
+                poster.offsetWidth,
 
-                height:
-                    poster.offsetHeight,
+            height:
+                poster.offsetHeight,
 
-                x:0,
+            scrollX:0,
 
-                y:0,
+            scrollY:0,
 
-                scrollX:0,
+            logging:false
 
-                scrollY:0,
-
-                logging:false
-
-            }
-        );
-
-
-    return canvas;
+        }
+    );
 
 }
 
 
 /* =========================================================
-   SAFE NAME
+   SAFE FILE NAME
 ========================================================= */
 
 function safeName(text){
 
     return String(
-        text || "Product-Poster"
+        text ||
+        "Product-Poster"
     )
 
     .trim()
@@ -3637,12 +3853,12 @@ function safeName(text){
 
 
 /* =========================================================
-   PNG DOWNLOAD
+   PNG
 ========================================================= */
 
 async function downloadPNG(){
 
-    const originalText =
+    const oldText =
         downloadPngButton.textContent;
 
 
@@ -3656,17 +3872,13 @@ async function downloadPNG(){
 
     try{
 
-        const sourceCanvas =
+        const source =
             await createExportCanvas();
 
 
-        const A4_WIDTH =
-            2480;
-
-
-        const A4_HEIGHT =
-            3508;
-
+        /*
+            EXACT A4 PIXELS
+        */
 
         const output =
             document.createElement(
@@ -3675,39 +3887,33 @@ async function downloadPNG(){
 
 
         output.width =
-            A4_WIDTH;
+            2480;
 
 
         output.height =
-            A4_HEIGHT;
+            3508;
 
 
-        const context =
+        const ctx =
             output.getContext(
                 "2d"
             );
 
 
-        context.imageSmoothingEnabled =
+        ctx.imageSmoothingEnabled =
             true;
 
 
-        context.imageSmoothingQuality =
+        ctx.imageSmoothingQuality =
             "high";
 
 
-        context.drawImage(
-
-            sourceCanvas,
-
+        ctx.drawImage(
+            source,
             0,
-
             0,
-
-            A4_WIDTH,
-
-            A4_HEIGHT
-
+            2480,
+            3508
         );
 
 
@@ -3739,8 +3945,7 @@ async function downloadPNG(){
         console.error(error);
 
         alert(
-            "PNG download failed.\n\n" +
-            error.message
+            "PNG export failed."
         );
 
     }
@@ -3751,18 +3956,18 @@ async function downloadPNG(){
 
 
     downloadPngButton.textContent =
-        originalText;
+        oldText;
 
 }
 
 
 /* =========================================================
-   PDF DOWNLOAD
+   PDF
 ========================================================= */
 
 async function downloadPDF(){
 
-    const originalText =
+    const oldText =
         downloadPdfButton.textContent;
 
 
@@ -3783,7 +3988,7 @@ async function downloadPDF(){
         const image =
             canvas.toDataURL(
                 "image/jpeg",
-                0.98
+                .98
             );
 
 
@@ -3809,6 +4014,11 @@ async function downloadPDF(){
             });
 
 
+        /*
+            EXACT A4
+            210 × 297 mm
+        */
+
         pdf.addImage(
 
             image,
@@ -3832,7 +4042,7 @@ async function downloadPDF(){
 
         pdf.save(
 
-            "IT-" +
+            "IT -" +
             safeName(
                 itemInput.value
             ) +
@@ -3846,8 +4056,7 @@ async function downloadPDF(){
         console.error(error);
 
         alert(
-            "PDF download failed.\n\n" +
-            error.message
+            "PDF export failed."
         );
 
     }
@@ -3858,13 +4067,13 @@ async function downloadPDF(){
 
 
     downloadPdfButton.textContent =
-        originalText;
+        oldText;
 
 }
 
 
 /* =========================================================
-   DOWNLOAD EVENTS
+   EVENTS
 ========================================================= */
 
 downloadPngButton.addEventListener(
@@ -3880,14 +4089,15 @@ downloadPdfButton.addEventListener(
 
 
 /* =========================================================
-   INITIALIZE
+   INITIAL
 ========================================================= */
 
 updateText();
 
-renderAllGallery();
+renderGallery();
 
 </script>
 
 </body>
+
 </html>
