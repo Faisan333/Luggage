@@ -503,7 +503,6 @@ body{
 
 /* =========================================================
    MAIN IMAGE AREA
-   FULL IMAGE VISIBLE
 ========================================================= */
 
 .main-image-area{
@@ -536,29 +535,31 @@ body{
 
 /* =========================================================
    MAIN PRODUCT IMAGE
-   IMPORTANT:
-   - COMPLETE IMAGE
-   - NO CROP
-   - NO STRETCH
-   - KEEP ORIGINAL RATIO
+   FIXED:
+   NEVER FORCE WIDTH + HEIGHT TO 100%
+   ORIGINAL ASPECT RATIO PRESERVED
 ========================================================= */
 
 .main-product-image{
 
-    position:absolute;
-
-    inset:0;
+    position:relative !important;
 
     display:block;
 
-    width:100% !important;
-    height:100% !important;
+    width:auto !important;
+    height:auto !important;
+
+    max-width:100% !important;
+    max-height:100% !important;
+
+    min-width:0 !important;
+    min-height:0 !important;
 
     object-fit:contain !important;
 
-    object-position:center center;
+    object-position:center center !important;
 
-    margin:0;
+    margin:0 auto !important;
     padding:0;
 
     border:0;
@@ -576,15 +577,11 @@ body{
 
     -webkit-user-drag:none;
 
-    flex:none;
+    flex:0 0 auto;
 
-    min-width:0;
-    min-height:0;
+    aspect-ratio:auto !important;
 
-    max-width:none !important;
-    max-height:none !important;
-
-    aspect-ratio:auto;
+    transform:none !important;
 }
 
 
@@ -725,27 +722,36 @@ body{
     min-height:0;
 }
 
+
+/* =========================================================
+   THUMBNAIL IMAGE
+   FIXED:
+   ORIGINAL RATIO PRESERVED
+========================================================= */
+
 .thumbnail img{
 
     display:block;
 
-    width:100% !important;
-    height:100% !important;
+    width:auto !important;
+    height:auto !important;
+
+    max-width:100% !important;
+    max-height:100% !important;
+
+    min-width:0 !important;
+    min-height:0 !important;
 
     object-fit:contain !important;
 
-    object-position:center center;
+    object-position:center center !important;
 
-    margin:0;
+    margin:auto !important;
     padding:0;
 
-    flex:none;
+    flex:0 0 auto;
 
-    min-width:0;
-    min-height:0;
-
-    max-width:none !important;
-    max-height:none !important;
+    aspect-ratio:auto !important;
 
     user-select:none;
 
@@ -1382,19 +1388,32 @@ body{
     border-radius:4px;
 }
 
+
+/* =========================================================
+   EDITOR GALLERY IMAGE
+   FIXED ASPECT RATIO
+========================================================= */
+
 .editor-image img{
 
     display:block;
 
-    width:100% !important;
-    height:100% !important;
+    width:auto !important;
+    height:auto !important;
 
-    max-width:none !important;
-    max-height:none !important;
+    max-width:100% !important;
+    max-height:100% !important;
+
+    min-width:0 !important;
+    min-height:0 !important;
 
     object-fit:contain !important;
 
-    object-position:center;
+    object-position:center center !important;
+
+    margin:auto !important;
+
+    aspect-ratio:auto !important;
 }
 
 .select-image{
@@ -1634,7 +1653,6 @@ body{
 
 /* =========================================================
    EXPORT CLONE
-   HIGH QUALITY EXPORT
 ========================================================= */
 
 #poster-export-clone{
@@ -1670,7 +1688,7 @@ body{
 
 
 /* =========================================================
-   EXPORT IMAGE AREA
+   EXPORT MAIN IMAGE AREA
 ========================================================= */
 
 #poster-export-clone .main-image-area{
@@ -1700,22 +1718,26 @@ body{
 
 /* =========================================================
    EXPORT MAIN IMAGE
+   IMPORTANT FIX
 ========================================================= */
 
 #poster-export-clone .main-product-image{
 
-    position:absolute !important;
+    position:relative !important;
 
-    left:0 !important;
-    top:0 !important;
-    right:0 !important;
-    bottom:0 !important;
+    left:auto !important;
+    top:auto !important;
+    right:auto !important;
+    bottom:auto !important;
 
-    width:100% !important;
-    height:100% !important;
+    width:auto !important;
+    height:auto !important;
 
-    max-width:none !important;
-    max-height:none !important;
+    max-width:100% !important;
+    max-height:100% !important;
+
+    min-width:0 !important;
+    min-height:0 !important;
 
     object-fit:contain !important;
 
@@ -1723,10 +1745,14 @@ body{
 
     transform:none !important;
 
-    margin:0 !important;
+    margin:auto !important;
     padding:0 !important;
 
     display:block !important;
+
+    aspect-ratio:auto !important;
+
+    flex:0 0 auto !important;
 }
 
 
@@ -1734,15 +1760,61 @@ body{
    EXPORT THUMBNAILS
 ========================================================= */
 
+#poster-export-clone .thumbnail{
+
+    display:flex !important;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+}
+
+#poster-export-clone .thumbnail-inner{
+
+    display:flex !important;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+}
+
 #poster-export-clone .thumbnail img{
 
-    width:100% !important;
-    height:100% !important;
+    width:auto !important;
+    height:auto !important;
 
-    max-width:none !important;
-    max-height:none !important;
+    max-width:100% !important;
+    max-height:100% !important;
+
+    min-width:0 !important;
+    min-height:0 !important;
 
     object-fit:contain !important;
+
+    object-position:center center !important;
+
+    margin:auto !important;
+
+    transform:none !important;
+
+    aspect-ratio:auto !important;
+}
+
+
+/* =========================================================
+   EXPORT EDITOR GALLERY
+========================================================= */
+
+#poster-export-clone .editor-image img{
+
+    width:auto !important;
+    height:auto !important;
+
+    max-width:100% !important;
+    max-height:100% !important;
+
+    object-fit:contain !important;
+
 }
 
 
@@ -1755,21 +1827,6 @@ body{
 
     animation:none !important;
     transition:none !important;
-}
-
-
-/* =========================================================
-   EXPORT MODE
-========================================================= */
-
-.exporting .poster{
-
-    transform:none !important;
-
-    margin-bottom:0 !important;
-
-    width:794px !important;
-    height:1123px !important;
 }
 
 
@@ -1835,8 +1892,6 @@ body{
     </div>
 
 
-    <!-- PRODUCT CODE -->
-
     <div class="form-group">
 
         <label>
@@ -1850,8 +1905,6 @@ body{
 
     </div>
 
-
-    <!-- DESCRIPTION -->
 
     <div class="form-group">
 
@@ -1867,8 +1920,6 @@ body{
     </div>
 
 
-    <!-- OLD PRICE -->
-
     <div class="form-group">
 
         <label>
@@ -1882,8 +1933,6 @@ body{
 
     </div>
 
-
-    <!-- OFFER PRICE -->
 
     <div class="form-group">
 
@@ -1899,8 +1948,6 @@ body{
     </div>
 
 
-    <!-- PRODUCT IMAGES -->
-
     <div class="form-group">
 
         <label>
@@ -1911,8 +1958,8 @@ body{
 
             <p>
                 Select one or many product images.
-                The complete image is preserved.
-                No crop. No stretch. Original aspect ratio.
+                Images keep their original aspect ratio.
+                No crop. No stretch.
             </p>
 
             <label
@@ -1974,8 +2021,6 @@ body{
     </div>
 
 
-    <!-- LOGO -->
-
     <div class="form-group">
 
         <label>
@@ -2007,8 +2052,6 @@ body{
 
     </div>
 
-
-    <!-- ACTION BUTTONS -->
 
     <div class="action-buttons">
 
@@ -2071,12 +2114,7 @@ body{
         <br>
 
         Product image:
-        complete image visible.
-
-        <br>
-
-        Aspect ratio:
-        preserved.
+        original aspect ratio.
 
         <br>
 
@@ -2183,16 +2221,12 @@ body{
         <div class="product-card">
 
 
-            <!-- PREMIUM -->
-
             <div class="premium-tag">
 
                 PREMIUM PRODUCT
 
             </div>
 
-
-            <!-- DISCOUNT -->
 
             <div class="discount">
 
@@ -2295,8 +2329,6 @@ body{
             </div>
 
 
-            <!-- PRICE -->
-
             <div class="price">
 
                 <div
@@ -2336,8 +2368,6 @@ body{
         </div>
 
 
-        <!-- FEATURES -->
-
         <div class="feature-strip">
 
             <div class="feature">
@@ -2356,8 +2386,6 @@ body{
 
     </div>
 
-
-    <!-- FOOTER -->
 
     <div class="footer">
 
@@ -2473,30 +2501,24 @@ const exportStatus =
 
 
 /* =========================================================
-   EDITOR OPEN
+   EDITOR
 ========================================================= */
 
 function openEditorPanel(){
 
     editorPanel.classList.add("open");
-
     editorOverlay.classList.add("show");
+    document.body.style.overflow = "hidden";
 
-    document.body.style.overflow =
-        "hidden";
 }
-
 
 function closeEditorPanel(){
 
     editorPanel.classList.remove("open");
-
     editorOverlay.classList.remove("show");
+    document.body.style.overflow = "";
 
-    document.body.style.overflow =
-        "";
 }
-
 
 openEditorButton.addEventListener(
     "click",
@@ -2518,15 +2540,12 @@ editorOverlay.addEventListener(
     closeEditorPanel
 );
 
-
 document.addEventListener(
     "keydown",
     function(event){
 
         if(event.key === "Escape"){
-
             closeEditorPanel();
-
         }
 
     }
@@ -2572,8 +2591,8 @@ function updateText(){
 
     savingCircle.textContent =
         saving;
-}
 
+}
 
 itemInput.addEventListener(
     "input",
@@ -2608,20 +2627,15 @@ function readFile(file){
             const reader =
                 new FileReader();
 
-
             reader.onload =
                 function(event){
 
                     resolve({
-
                         src:event.target.result,
-
                         name:file.name
-
                     });
 
                 };
-
 
             reader.onerror =
                 function(){
@@ -2634,11 +2648,11 @@ function readFile(file){
 
                 };
 
-
             reader.readAsDataURL(file);
 
         }
     );
+
 }
 
 
@@ -2674,6 +2688,7 @@ imageInput.addEventListener(
             this.value = "";
 
             return;
+
         }
 
 
@@ -2702,9 +2717,7 @@ imageInput.addEventListener(
 
 
             if(wasEmpty){
-
                 activeIndex = 0;
-
             }
 
 
@@ -2739,7 +2752,7 @@ imageInput.addEventListener(
 
 /* =========================================================
    MAIN IMAGE
-   COMPLETE IMAGE / NO CROP
+   KEEP ORIGINAL ASPECT RATIO
 ========================================================= */
 
 function showMainImage(index){
@@ -2749,8 +2762,7 @@ function showMainImage(index){
     }
 
 
-    activeIndex =
-        index;
+    activeIndex = index;
 
 
     const image =
@@ -2768,14 +2780,29 @@ function showMainImage(index){
     mainProductImage.style.display =
         "block";
 
+
     productPlaceholder.style.display =
         "none";
 
 
+    /*
+       IMPORTANT:
+       Do NOT set width/height to 100%.
+
+       Auto size + max dimensions preserves
+       original image ratio.
+    */
+
     mainProductImage.style.width =
-        "100%";
+        "auto";
 
     mainProductImage.style.height =
+        "auto";
+
+    mainProductImage.style.maxWidth =
+        "100%";
+
+    mainProductImage.style.maxHeight =
         "100%";
 
     mainProductImage.style.objectFit =
@@ -2785,28 +2812,10 @@ function showMainImage(index){
         "center center";
 
 
-    if(!mainProductImage.complete){
-
-        mainProductImage.onload =
-            function(){
-
-                mainProductImage.style.width =
-                    "100%";
-
-                mainProductImage.style.height =
-                    "100%";
-
-                mainProductImage.style.objectFit =
-                    "contain";
-
-            };
-
-    }
-
-
     renderPosterThumbnails();
 
     renderEditorGallery();
+
 }
 
 
@@ -2837,13 +2846,12 @@ function deleteImage(index){
         renderGallery();
 
         return;
+
     }
 
 
     if(activeIndex > index){
-
         activeIndex--;
-
     }
 
 
@@ -2860,6 +2868,7 @@ function deleteImage(index){
     showMainImage(
         activeIndex
     );
+
 }
 
 
@@ -2881,6 +2890,7 @@ function renderPosterThumbnails(){
         `;
 
         return;
+
     }
 
 
@@ -2895,7 +2905,6 @@ function renderPosterThumbnails(){
 
             button.type =
                 "button";
-
 
             button.className =
                 "thumbnail";
@@ -2937,6 +2946,27 @@ function renderPosterThumbnails(){
                 false;
 
 
+            /*
+               IMPORTANT:
+               Keep thumbnail ratio.
+            */
+
+            img.style.width =
+                "auto";
+
+            img.style.height =
+                "auto";
+
+            img.style.maxWidth =
+                "100%";
+
+            img.style.maxHeight =
+                "100%";
+
+            img.style.objectFit =
+                "contain";
+
+
             inner.appendChild(
                 img
             );
@@ -2954,7 +2984,6 @@ function renderPosterThumbnails(){
 
             number.className =
                 "thumbnail-number";
-
 
             number.textContent =
                 index + 1;
@@ -2983,6 +3012,7 @@ function renderPosterThumbnails(){
 
         }
     );
+
 }
 
 
@@ -3016,6 +3046,7 @@ function renderEditorGallery(){
         `;
 
         return;
+
     }
 
 
@@ -3071,6 +3102,26 @@ function renderEditorGallery(){
 
             img.draggable =
                 false;
+
+
+            /*
+               Preserve original ratio.
+            */
+
+            img.style.width =
+                "auto";
+
+            img.style.height =
+                "auto";
+
+            img.style.maxWidth =
+                "100%";
+
+            img.style.maxHeight =
+                "100%";
+
+            img.style.objectFit =
+                "contain";
 
 
             inner.appendChild(
@@ -3167,6 +3218,7 @@ function renderEditorGallery(){
 
         }
     );
+
 }
 
 
@@ -3179,6 +3231,7 @@ function renderGallery(){
     renderPosterThumbnails();
 
     renderEditorGallery();
+
 }
 
 
@@ -3256,6 +3309,7 @@ logoUpload.addEventListener(
             this.value = "";
 
             return;
+
         }
 
 
@@ -3359,6 +3413,7 @@ function loadSavedLogo(){
         console.warn(error);
 
     }
+
 }
 
 
@@ -3374,6 +3429,7 @@ function showStatus(text){
     exportStatus.classList.add(
         "show"
     );
+
 }
 
 
@@ -3382,6 +3438,7 @@ function hideStatus(){
     exportStatus.classList.remove(
         "show"
     );
+
 }
 
 
@@ -3401,6 +3458,7 @@ function delay(ms){
 
         }
     );
+
 }
 
 
@@ -3476,11 +3534,12 @@ async function waitForImage(img){
 
         }
     );
+
 }
 
 
 /* =========================================================
-   WAIT FOR FONTS + IMAGES
+   WAIT POSTER
 ========================================================= */
 
 async function waitForPoster(){
@@ -3522,11 +3581,12 @@ async function waitForPoster(){
 
 
     await delay(500);
+
 }
 
 
 /* =========================================================
-   IMAGE -> DATA URL
+   IMAGE TO DATA URL
 ========================================================= */
 
 async function imageToDataURL(src){
@@ -3600,11 +3660,12 @@ async function imageToDataURL(src){
 
         }
     );
+
 }
 
 
 /* =========================================================
-   CREATE EXPORT CLONE
+   CREATE SAFE EXPORT CLONE
 ========================================================= */
 
 async function createSafeExportClone(){
@@ -3674,11 +3735,6 @@ async function createSafeExportClone(){
         "999999";
 
 
-    /*
-       Convert images into safe
-       data URLs.
-    */
-
     const originalImages =
         Array.from(
             original.querySelectorAll(
@@ -3712,9 +3768,7 @@ async function createSafeExportClone(){
             !source ||
             !target
         ){
-
             continue;
-
         }
 
 
@@ -3739,9 +3793,7 @@ async function createSafeExportClone(){
 
         if(
             source.src &&
-            source.src.startsWith(
-                "data:"
-            )
+            source.src.startsWith("data:")
         ){
 
             target.src =
@@ -3814,10 +3866,6 @@ async function createSafeExportClone(){
     }
 
 
-    /*
-       Append clone.
-    */
-
     document.body.appendChild(
         clone
     );
@@ -3825,10 +3873,6 @@ async function createSafeExportClone(){
 
     await delay(300);
 
-
-    /*
-       Wait for clone images.
-    */
 
     await Promise.all(
         Array.from(
@@ -3842,8 +3886,9 @@ async function createSafeExportClone(){
 
 
     /*
-       Force exact main image
-       containment.
+       =====================================================
+       IMPORTANT EXPORT IMAGE FIX
+       =====================================================
     */
 
     const cloneMain =
@@ -3855,31 +3900,37 @@ async function createSafeExportClone(){
     if(cloneMain){
 
         cloneMain.style.position =
-            "absolute";
+            "relative";
 
         cloneMain.style.left =
-            "0";
+            "auto";
 
         cloneMain.style.top =
-            "0";
+            "auto";
 
         cloneMain.style.right =
-            "0";
+            "auto";
 
         cloneMain.style.bottom =
-            "0";
+            "auto";
 
         cloneMain.style.width =
-            "100%";
+            "auto";
 
         cloneMain.style.height =
-            "100%";
+            "auto";
 
         cloneMain.style.maxWidth =
-            "none";
+            "100%";
 
         cloneMain.style.maxHeight =
-            "none";
+            "100%";
+
+        cloneMain.style.minWidth =
+            "0";
+
+        cloneMain.style.minHeight =
+            "0";
 
         cloneMain.style.objectFit =
             "contain";
@@ -3890,10 +3941,84 @@ async function createSafeExportClone(){
         cloneMain.style.transform =
             "none";
 
+        cloneMain.style.margin =
+            "auto";
+
+        cloneMain.style.aspectRatio =
+            "auto";
+
     }
 
 
+    /*
+       =====================================================
+       EXPORT THUMBNAIL FIX
+       =====================================================
+    */
+
+    clone.querySelectorAll(
+        ".thumbnail img"
+    ).forEach(
+        function(img){
+
+            img.style.width =
+                "auto";
+
+            img.style.height =
+                "auto";
+
+            img.style.maxWidth =
+                "100%";
+
+            img.style.maxHeight =
+                "100%";
+
+            img.style.minWidth =
+                "0";
+
+            img.style.minHeight =
+                "0";
+
+            img.style.objectFit =
+                "contain";
+
+            img.style.objectPosition =
+                "center center";
+
+            img.style.margin =
+                "auto";
+
+            img.style.transform =
+                "none";
+
+            img.style.aspectRatio =
+                "auto";
+
+        }
+    );
+
+
+    /*
+       Disable animations.
+    */
+
+    clone
+        .querySelectorAll("*")
+        .forEach(
+            function(element){
+
+                element.style.animation =
+                    "none";
+
+                element.style.transition =
+                    "none";
+
+            }
+        );
+
+
     return clone;
+
 }
 
 
@@ -3921,20 +4046,6 @@ async function createExportCanvas(){
             "Rendering HD poster..."
         );
 
-
-        /*
-           4X HTML rendering.
-
-           Original poster:
-           794 × 1123
-
-           4X:
-           3176 × 4492
-
-           This gives very sharp text,
-           shapes and product images
-           before final A4 conversion.
-        */
 
         captured =
             await html2canvas(
@@ -4005,18 +4116,6 @@ async function createExportCanvas(){
                         clonedPoster.style.height =
                             "1123px";
 
-                        clonedPoster.style.minWidth =
-                            "794px";
-
-                        clonedPoster.style.minHeight =
-                            "1123px";
-
-                        clonedPoster.style.maxWidth =
-                            "794px";
-
-                        clonedPoster.style.maxHeight =
-                            "1123px";
-
                         clonedPoster.style.transform =
                             "none";
 
@@ -4025,8 +4124,8 @@ async function createExportCanvas(){
 
 
                         /*
-                           Important:
-                           force full product image.
+                           MAIN IMAGE:
+                           NEVER FORCE 100% WIDTH/HEIGHT.
                         */
 
                         const image =
@@ -4038,37 +4137,46 @@ async function createExportCanvas(){
                         if(image){
 
                             image.style.position =
-                                "absolute";
+                                "relative";
 
                             image.style.left =
-                                "0";
+                                "auto";
 
                             image.style.top =
-                                "0";
+                                "auto";
 
                             image.style.right =
-                                "0";
+                                "auto";
 
                             image.style.bottom =
-                                "0";
+                                "auto";
 
                             image.style.width =
-                                "100%";
+                                "auto";
 
                             image.style.height =
-                                "100%";
+                                "auto";
 
                             image.style.maxWidth =
-                                "none";
+                                "100%";
 
                             image.style.maxHeight =
-                                "none";
+                                "100%";
+
+                            image.style.minWidth =
+                                "0";
+
+                            image.style.minHeight =
+                                "0";
 
                             image.style.objectFit =
                                 "contain";
 
                             image.style.objectPosition =
                                 "center center";
+
+                            image.style.margin =
+                                "auto";
 
                             image.style.transform =
                                 "none";
@@ -4077,7 +4185,52 @@ async function createExportCanvas(){
 
 
                         /*
-                           Disable animations.
+                           THUMBNAILS
+                        */
+
+                        clonedPoster
+                            .querySelectorAll(
+                                ".thumbnail img"
+                            )
+                            .forEach(
+                                function(img){
+
+                                    img.style.width =
+                                        "auto";
+
+                                    img.style.height =
+                                        "auto";
+
+                                    img.style.maxWidth =
+                                        "100%";
+
+                                    img.style.maxHeight =
+                                        "100%";
+
+                                    img.style.minWidth =
+                                        "0";
+
+                                    img.style.minHeight =
+                                        "0";
+
+                                    img.style.objectFit =
+                                        "contain";
+
+                                    img.style.objectPosition =
+                                        "center center";
+
+                                    img.style.margin =
+                                        "auto";
+
+                                    img.style.transform =
+                                        "none";
+
+                                }
+                            );
+
+
+                        /*
+                           Disable animation.
                         */
 
                         clonedPoster
@@ -4127,13 +4280,7 @@ async function createExportCanvas(){
 
     /*
        FINAL A4 SIZE
-
-       300 DPI equivalent:
-
        2480 × 3508 px
-
-       A4:
-       210 × 297 mm
     */
 
     const finalCanvas =
@@ -4167,10 +4314,6 @@ async function createExportCanvas(){
     }
 
 
-    /*
-       High quality downsampling.
-    */
-
     ctx.imageSmoothingEnabled =
         true;
 
@@ -4190,11 +4333,6 @@ async function createExportCanvas(){
     );
 
 
-    /*
-       Draw the 4X capture
-       into exact A4 dimensions.
-    */
-
     ctx.drawImage(
 
         captured,
@@ -4212,11 +4350,6 @@ async function createExportCanvas(){
     );
 
 
-    /*
-       Release captured canvas
-       memory when possible.
-    */
-
     try{
 
         captured.width = 1;
@@ -4227,6 +4360,7 @@ async function createExportCanvas(){
 
 
     return finalCanvas;
+
 }
 
 
@@ -4253,6 +4387,7 @@ function safeName(value){
         /^-|-$/g,
         ""
     );
+
 }
 
 
@@ -4324,21 +4459,18 @@ function downloadBlob(
 
         }
     );
+
 }
 
 
 /* =========================================================
-   PNG DOWNLOAD - HD
+   DOWNLOAD PNG
 ========================================================= */
 
 async function downloadPNG(){
 
-    if(
-        downloadPngButton.disabled
-    ){
-
+    if(downloadPngButton.disabled){
         return;
-
     }
 
 
@@ -4359,11 +4491,6 @@ async function downloadPNG(){
             "Creating HD A4 PNG..."
         );
 
-
-        /*
-           PNG keeps full lossless
-           quality.
-        */
 
         const blob =
             await new Promise(
@@ -4456,21 +4583,18 @@ async function downloadPNG(){
             false;
 
     }
+
 }
 
 
 /* =========================================================
-   PDF DOWNLOAD - HIGH QUALITY A4
+   DOWNLOAD PDF
 ========================================================= */
 
 async function downloadPDF(){
 
-    if(
-        downloadPdfButton.disabled
-    ){
-
+    if(downloadPdfButton.disabled){
         return;
-
     }
 
 
@@ -4496,11 +4620,6 @@ async function downloadPDF(){
             "Encoding high-quality PDF..."
         );
 
-
-        /*
-           Use JPEG at high quality
-           for a smaller but sharp PDF.
-        */
 
         const imageData =
             canvas.toDataURL(
@@ -4537,10 +4656,6 @@ async function downloadPDF(){
             window.jspdf.jsPDF;
 
 
-        /*
-           Exact A4 document.
-        */
-
         const pdf =
             new jsPDF({
 
@@ -4558,14 +4673,6 @@ async function downloadPDF(){
 
             });
 
-
-        /*
-           Exact A4 dimensions:
-
-           210 × 297 mm
-
-           Zero margin.
-        */
 
         pdf.addImage(
 
@@ -4590,7 +4697,7 @@ async function downloadPDF(){
 
         pdf.save(
 
-            "IT -" +
+            "IT-" +
             safeName(
                 itemInput.value
             ) +
@@ -4636,6 +4743,7 @@ async function downloadPDF(){
             false;
 
     }
+
 }
 
 
@@ -4666,7 +4774,7 @@ loadSavedLogo();
 
 
 /* =========================================================
-   SAFE INITIAL LOGO
+   INITIAL LOGO
 ========================================================= */
 
 (async function(){
@@ -4675,9 +4783,7 @@ loadSavedLogo();
 
         if(
             logoImage.src &&
-            !logoImage.src.startsWith(
-                "data:"
-            )
+            !logoImage.src.startsWith("data:")
         ){
 
             try{
@@ -4739,9 +4845,15 @@ window.addEventListener(
         ){
 
             mainProductImage.style.width =
-                "100%";
+                "auto";
 
             mainProductImage.style.height =
+                "auto";
+
+            mainProductImage.style.maxWidth =
+                "100%";
+
+            mainProductImage.style.maxHeight =
                 "100%";
 
             mainProductImage.style.objectFit =
